@@ -25,6 +25,13 @@ public class LoginActivity extends RootActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+        int i = 0;
+        i = i+ 88;
+        alert(i+"sdds");
+
+
+
         popup = new LanguagePopup(this);
 
         LangSwitch.put(Locale.US, f->{
