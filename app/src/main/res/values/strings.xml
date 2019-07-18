@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WM_Casino</string>
+    <string name="zero">0</string>
+    <!-- login page -->
+    <string name="user_hint">Username</string>
+    <string name="pass_hint">Password</string>
+    <string name="user_login">Login</string>
+    <string name="demo">Demo</string>
+    <string name="video">Video Casino</string>
+    <string name="download_now">Download Now</string>
+    <!-- lobby page -->
+    <string name="baccarat">Baccarat</string>
+    <string name="dragon_tiger">Dragon &amp; Tiger</string>
+    <string name="niuniu">Niuniu</string>
+    <string name="samgong">Samgong</string>
+    <string name="golden_flower">GoldenFlower</string>
+    <string name="roulette">Roulette</string>
+    <string name="sic_bo">Sic Bo</string>
+    <string name="fantan">Fantan</string>
+    <string name="fish_prawn_crab">Fish Prawn Crab Dice</string>
+    <string name="multiply">Multiply</string>
+    <string name="online_users">Online users</string>
+    <string name="the_best">The best live casino platforms</string>
+    <string name="welcom_to_WM">WM Group (WM Group) was established in 2014 and is the latest gaming entertainment group in Asia. We have successfully built a baccarat game based on the experience and efforts of dozens of gambling experts and the advantages of network technology. Super game platform.</string>
+    <!-- setting pop -->
+    <string name="information">Information</string>
+    <string name="ranking">Ranking</string>
+    <string name="rule">Rule</string>
+    <string name="follow">Follow</string>
+    <string name="settings">Settings</string>
+    <string name="quit">Quit</string>
+</resources>

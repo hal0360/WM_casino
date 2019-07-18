@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WM_Casino</string>
+    <string name="zero">0</string>
+    <!-- login page -->
+    <string name="user_hint">帳號</string>
+    <string name="pass_hint">密碼</string>
+    <string name="user_login">玩家登入</string>
+    <string name="demo">遊戲試玩</string>
+    <string name="video">賭場現場視頻</string>
+    <string name="download_now">Download Now</string>
+    <!-- lobby page -->
+    <string name="baccarat">百家樂</string>
+    <string name="dragon_tiger">龍虎</string>
+    <string name="niuniu">牛牛</string>
+    <string name="samgong">三公</string>
+    <string name="golden_flower">炸金花</string>
+    <string name="roulette">輪盤</string>
+    <string name="sic_bo">骰寶</string>
+    <string name="fantan">番攤</string>
+    <string name="fish_prawn_crab">魚蝦蟹</string>
+    <string name="multiply">多台</string>
+    <string name="online_users">在線總人數</string>
+    <string name="the_best">專\u0020\u0020\u0020業\u0020\u0020\u0020的\u0020\u0020\u0020真\u0020\u0020\u0020人\u0020\u0020\u0020娛\u0020\u0020\u0020樂\u0020\u0020\u0020城</string>
+    <string name="welcom_to_WM">WM集团（WM Group）成立于2014 年，是亚洲最新兴的博彩娱乐集团，我们凭着数十位博彩专家的经验与心血并结合网络技术优势，成功打造出一个以百家乐游戏为主的超级游戏平台。</string>
+    <!-- setting pop -->
+    <string name="information">個人資訊</string>
+    <string name="ranking">今日排名</string>
+    <string name="rule">遊戲須知</string>
+    <string name="follow">關注</string>
+    <string name="settings">系統設置</string>
+    <string name="quit">退出遊戲</string>
+</resources>
