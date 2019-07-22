@@ -71,6 +71,7 @@ public class Table {
         secGrid = new GridRoad();
         secGrid.setSec(sortedRoad);
         thirdGrid = new GridRoad();
+
         thirdGrid.setThird(sortedRoad);
         fourthGrid = new GridRoad();
         fourthGrid.setFourth(sortedRoad);

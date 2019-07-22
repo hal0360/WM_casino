@@ -1,6 +1,7 @@
 package tw.com.lixin.wm_casino.global;
 
-import tw.com.lixin.wmcasino.App;
+
+import tw.com.lixin.wm_casino.App;
 
 public class Setting {
 
