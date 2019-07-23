@@ -18,7 +18,6 @@ import tw.com.lixin.wm_casino.interfaces.CmdStr;
 
 public class WMSocket extends WebSocketListener {
 
-
     private WebSocket webSocket = null;
     private CmdStr cmdSocket;
     private Cmd cmdOpen, cmdFail;

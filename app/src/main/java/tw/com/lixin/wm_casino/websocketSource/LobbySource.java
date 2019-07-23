@@ -12,6 +12,9 @@ import tw.com.atromoby.utils.Cmd;
 import tw.com.atromoby.utils.CountDown;
 import tw.com.atromoby.utils.Json;
 import tw.com.atromoby.widgets.Popup;
+import tw.com.lixin.wm_casino.dataModels.LobbyData;
+import tw.com.lixin.wm_casino.dataModels.gameData.Game;
+import tw.com.lixin.wm_casino.dataModels.gameData.Group;
 import tw.com.lixin.wm_casino.global.Url;
 import tw.com.lixin.wm_casino.interfaces.BacBridge;
 import tw.com.lixin.wm_casino.interfaces.CmdBool;
@@ -29,12 +32,16 @@ public class LobbySource extends CasinoSource{
     }
 
     private LobbySource() {
-
         defineURL(Url.Lobby);
+        games = new ArrayList<>();
     }
 
     private LobbyBridge lobbyBridge;
+    private ArrayList<Game> games;
 
+    public void bind(LobbyBridge bridge){
+        lobbyBridge = bridge;
+    }
 
 
     public void unbind(){
@@ -44,6 +51,23 @@ public class LobbySource extends CasinoSource{
 
     @Override
     public void onReceive(String text) {
+        LobbyData lobbyData = Json.from(text, LobbyData.class);
+        switch(lobbyData.protocol) {
+            case 35:
+                games.addAll(lobbyData.data.gameArr);
 
+                break;
+            case 30:
+              //  User.balance(lobbyData.data.balance);
+                if(lobbyBridge != null) handlePost(() -> lobbyBridge.balanceUpdated());
+                break;
+            case 34:
+                if(lobbyBridge != null) handlePost(() -> lobbyBridge.peopleOnlineUpdate(lobbyData.data.onlinePeople));
+                break;
+            case 999:
+                if(lobbyBridge != null) handlePost(() -> lobbyBridge.nineUpdate());
+                break;
+            default:
+        }
     }
 }

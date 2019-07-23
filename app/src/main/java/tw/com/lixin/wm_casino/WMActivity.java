@@ -7,25 +7,37 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import tw.com.atromoby.widgets.RootActivity;
+import tw.com.lixin.wm_casino.tools.LoadDialog;
 
 public abstract class WMActivity extends RootActivity {
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    private LoadDialog loadDialog;
 
-        int orientation = getResources().getConfiguration().orientation;
-        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            landscape_created();
-        }else{
-            portrait_created();
-        }
+    @Override
+    protected void onCreate(Bundle saveInstanceState) {
+        super.onCreate(saveInstanceState);
+
+        loadDialog = new LoadDialog(this);
+
+
     }
 
+    public void loading(){
+        loadDialog.show();
+    }
 
+    public void unloading(){
+        loadDialog.dismiss();
+    }
 
-    protected abstract void landscape_created();
+    public int orientation(){
+        return getResources().getConfiguration().orientation;
+    }
 
-    protected abstract void portrait_created();
+    @Override
+    protected void onPause() {
+        super.onPause();
+        loadDialog.dismiss();
+    }
 }
