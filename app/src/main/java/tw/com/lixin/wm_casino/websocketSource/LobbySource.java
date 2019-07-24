@@ -16,6 +16,7 @@ import tw.com.lixin.wm_casino.dataModels.LobbyData;
 import tw.com.lixin.wm_casino.dataModels.gameData.Game;
 import tw.com.lixin.wm_casino.dataModels.gameData.Group;
 import tw.com.lixin.wm_casino.global.Url;
+import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.BacBridge;
 import tw.com.lixin.wm_casino.interfaces.CmdBool;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
@@ -32,7 +33,7 @@ public class LobbySource extends CasinoSource{
     }
 
     private LobbySource() {
-        defineURL(Url.Lobby);
+        defineURL("ws://gameserver.a45.me:15109");
         games = new ArrayList<>();
     }
 
@@ -55,19 +56,15 @@ public class LobbySource extends CasinoSource{
         switch(lobbyData.protocol) {
             case 35:
                 games.addAll(lobbyData.data.gameArr);
-
                 break;
             case 30:
-              //  User.balance(lobbyData.data.balance);
+                User.balance(lobbyData.data.balance);
                 if(lobbyBridge != null) handlePost(() -> lobbyBridge.balanceUpdated());
                 break;
             case 34:
-                if(lobbyBridge != null) handlePost(() -> lobbyBridge.peopleOnlineUpdate(lobbyData.data.onlinePeople));
+
+                if(lobbyBridge != null) handlePost(() -> lobbyBridge.peopleOnlineUpdate(lobbyData.data.gameID, lobbyData.data.onlinePeople));
                 break;
-            case 999:
-                if(lobbyBridge != null) handlePost(() -> lobbyBridge.nineUpdate());
-                break;
-            default:
         }
     }
 }

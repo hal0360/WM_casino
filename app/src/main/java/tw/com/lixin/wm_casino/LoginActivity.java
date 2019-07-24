@@ -10,12 +10,12 @@ import java.util.Map;
 import java.util.Objects;
 
 import tw.com.atromoby.widgets.CustomInput;
-import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.CmdImg;
 import tw.com.lixin.wm_casino.popups.LanguagePopup;
+import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
-public class LoginActivity extends RootActivity {
+public class LoginActivity extends WMActivity {
 
     private LanguagePopup popup;
     private Map<Locale, CmdImg> LangSwitch = new HashMap<>();
@@ -25,12 +25,8 @@ public class LoginActivity extends RootActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        int i = 0;
-        i = i+ 88;
-        alert(i+"sdds");
-
-
         popup = new LanguagePopup(this);
+        LobbySource source = LobbySource.getInstance();
 
         LangSwitch.put(Locale.US, f->{
             f.setImageResource(R.drawable.lang_us);
@@ -50,13 +46,36 @@ public class LoginActivity extends RootActivity {
             CustomInput passIn = findViewById(R.id.pass_input);
             String user = userIn.getRawText();
             String pass = passIn.getRawText();
-            User.account(user);
-            toActivity(LobbyActivity.class, pass);
+
+            loading();
+            source.login(user,pass,data->{
+                unloading();
+                User.account(data.account);
+                User.gameID(data.gameID);
+                User.userName(data.userName);
+                User.memberID(data.memberID);
+                User.sid(data.sid);
+                toActivity(LobbyActivity.class);
+            }, fail->{
+                unloading();
+                alert(fail);
+            });
         });
 
         clicked(R.id.demo_btn, v->{
-            User.account("ANONYMOUS");
-            toActivity(SplashActivity.class, "1234");
+            loading();
+            source.login("ANONYMOUS","1234",data->{
+                unloading();
+                User.account(data.account);
+                User.gameID(data.gameID);
+                User.userName(data.userName);
+                User.memberID(data.memberID);
+                User.sid(data.sid);
+                toActivity(LobbyActivity.class);
+            }, fail->{
+                unloading();
+                alert(fail);
+            });
         });
 
         clicked(R.id.lang_btn,v-> popup.show());
@@ -75,4 +94,5 @@ public class LoginActivity extends RootActivity {
         super.onStart();
         Objects.requireNonNull(LangSwitch.get(getLocale())).exec(findViewById(R.id.lang_btn));
     }
+
 }

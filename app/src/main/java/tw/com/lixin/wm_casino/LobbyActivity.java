@@ -2,8 +2,11 @@ package tw.com.lixin.wm_casino;
 
 import android.os.Bundle;
 
+import tw.com.lixin.wm_casino.global.User;
+import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
 
-public class LobbyActivity extends WMActivity {
+
+public class LobbyActivity extends WMActivity implements LobbyBridge {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,13 +16,17 @@ public class LobbyActivity extends WMActivity {
 
     }
 
-    @Override
-    protected void landscape_created() {
 
+    @Override
+    public void balanceUpdated() {
+        if(!isPortrait()) setTextView(R.id.balance_txt, User.balance() +"");
     }
 
     @Override
-    protected void portrait_created() {
-
+    public void peopleOnlineUpdate(int gameID, int number) {
+        if(gameID != 109) return;
+        if(!isPortrait()) setTextView(R.id.online_ppl_txt, number+"");
     }
+
+
 }

@@ -2,6 +2,8 @@ package tw.com.lixin.wm_casino.models;
 
 import java.util.List;
 
+import tw.com.lixin.wm_casino.global.Road;
+
 
 public class GridRoad {
 
