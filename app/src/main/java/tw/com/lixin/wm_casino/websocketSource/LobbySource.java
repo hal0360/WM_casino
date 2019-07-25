@@ -38,7 +38,10 @@ public class LobbySource extends CasinoSource{
     }
 
     private LobbyBridge lobbyBridge;
-    private ArrayList<Game> games;
+    public ArrayList<Game> games;
+    public int totalOnline;
+    public int bacOnline;
+
 
     public void bind(LobbyBridge bridge){
         lobbyBridge = bridge;
@@ -62,6 +65,11 @@ public class LobbySource extends CasinoSource{
                 if(lobbyBridge != null) handlePost(() -> lobbyBridge.balanceUpdated());
                 break;
             case 34:
+                if(lobbyData.data.gameID == 109){
+                    totalOnline = lobbyData.data.onlinePeople;
+                }else if(lobbyData.data.gameID == 101){
+                    bacOnline = lobbyData.data.onlinePeople;
+                }
 
                 if(lobbyBridge != null) handlePost(() -> lobbyBridge.peopleOnlineUpdate(lobbyData.data.gameID, lobbyData.data.onlinePeople));
                 break;

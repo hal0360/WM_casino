@@ -1,16 +1,11 @@
 package tw.com.lixin.wm_casino;
 
-import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager;
 
 import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.tools.LoadDialog;
 
 public abstract class WMActivity extends RootActivity {
-
 
     private LoadDialog loadDialog;
 
@@ -19,7 +14,6 @@ public abstract class WMActivity extends RootActivity {
         super.onCreate(saveInstanceState);
 
         loadDialog = new LoadDialog(this);
-
 
     }
 

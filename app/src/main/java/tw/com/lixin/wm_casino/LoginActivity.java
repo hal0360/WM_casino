@@ -81,6 +81,7 @@ public class LoginActivity extends WMActivity {
         clicked(R.id.lang_btn,v-> popup.show());
     }
 
+
     public void setLangTxt(String txt){
         int orientation = getResources().getConfiguration().orientation;
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) {

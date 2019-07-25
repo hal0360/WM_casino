@@ -8,5 +8,5 @@ public interface BacBridge {
     void betUpdate(boolean betOK);
     void gridUpdate();
     void betCountdown(int sec);
-
+    void tableLogin(boolean logOk);
 }
