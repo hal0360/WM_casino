@@ -13,8 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:theme="@style/StatBarTheme"
-            android:name=".LoginActivity">
+            android:name=".LoginActivity"
+            android:theme="@style/StatBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,9 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".LobbyActivity" />
-        <activity android:name=".SplashActivity">
-
-        </activity>
+        <activity android:name=".SplashActivity"></activity>
+        <activity android:name=".BacActivity"></activity>
     </application>
 
 </manifest>
