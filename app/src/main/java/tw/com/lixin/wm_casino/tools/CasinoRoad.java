@@ -61,7 +61,6 @@ public class CasinoRoad {
 
     private void divide(int rawVal){
 
-
         List<Integer> powers = new ArrayList<>();
         for(int i = 10; i >= 0; i-- ){
             int boss = (int) Math.pow(2,i);

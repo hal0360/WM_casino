@@ -54,6 +54,10 @@ public class BacSource extends CasinoSource{
    // private Popup winPopup;
     public List<Table> tables;
 
+    private Table findTable(int id){
+        for(Table tTable: tables) if(id == tTable.groupID) return tTable;
+        return null;
+    }
 
     public void bind(BacBridge bridge){
         this.bridge = bridge;
@@ -106,36 +110,23 @@ public class BacSource extends CasinoSource{
             }
             handle(() -> bridge.tableLogin(bacData.data.bOk));
         }else if(bacData.protocol == 20){
-          //  if (winPopup != null) winPopup.dismiss();
-            isBettingNow = false;
-            cardIsOpening = false;
-            displayCard = false;
-            if (bacData.data.gameStage == 1) {
-                pokers = new SparseIntArray();
-                isBettingNow = true;
-                pokerWin = -1;
-            } else if (bacData.data.gameStage == 2) {
-                cardIsOpening = true;
-                countDownTimer.cancel();
-                displayCard = true;
-            }
-            cardStatus = bacData.data.gameStage;
-            handle(() -> bridge.statusUpdate());
+            Table tt = findTable(bacData.data.groupID);
+            if(tt != null)tt.statusUpdate(bacData.data.gameStage);
         }else if(bacData.protocol == 22){
             handle(() -> bridge.betUpdate(bacData.data.bOk));
         }else if(bacData.protocol == 23){
             handle(() -> bridge.balanceUpdate(bacData.data.balance));
         }else if(bacData.protocol == 24){
-            //pokers.put(bacData.data.cardArea,Poker.NUM(bacData.data.cardID));
-           // handle(() -> bridge.cardUpdate(bacData.data.cardArea, Poker.NUM(bacData.data.cardID)));
+            Table tt = findTable(bacData.data.groupID);
+            if(tt != null)tt.cardUpdate(bacData.data.cardArea, bacData.data.cardID);
         }else if(bacData.protocol == 25){
             //pokerWin = Move.divide(bacData.data.result);
             playerScore = bacData.data.playerScore;
             bankerScore = bacData.data.bankerScore;
             handle(() -> bridge.resultUpadte());
         }else if(bacData.protocol == 26){
-            table.update(bacData);
-            handle(() -> bridge.gridUpdate());
+            Table tt = findTable(bacData.data.groupID);
+            if(tt != null)tt.update(bacData);
         }else if(bacData.protocol == 31){
             /*
             if(User.memberID() != bacData.data.memberID || bridge == null) return;
@@ -193,6 +184,10 @@ public class BacSource extends CasinoSource{
             mText.setText(bacData.data.moneyWin + "");
             winPopup.show(); */
         }else if(bacData.protocol == 38){
+
+            Table tt = findTable(bacData.data.groupID);
+            if(tt != null)tt.update(bacData);
+
             handle(() -> countDownTimer.start(bacData.data.timeMillisecond, i->{
                 if(!cardIsOpening){
                     if(bridge != null) bridge.betCountdown(i);

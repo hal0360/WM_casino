@@ -1,25 +1,35 @@
 package tw.com.lixin.wm_casino.models;
 
 
+import android.os.Handler;
+import android.util.SparseIntArray;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import tw.com.atromoby.utils.Cmd;
+import tw.com.atromoby.utils.CountDown;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.dataModels.BacData;
+import tw.com.lixin.wm_casino.global.Poker;
 import tw.com.lixin.wm_casino.global.Road;
+import tw.com.lixin.wm_casino.interfaces.BacTableBridge;
 
 
 public class Table {
-    /* public CasinoRoad casinoRoad;
-    public SecRoad secRoad;
-    public SecRoad secRoadPreP;
-    public SecRoad secRoadPreB;
-    public ThirdRoad thirdRoad;
-    public ThirdRoad thirdRoadPreP;
-    public ThirdRoad thirdRoadPreB;
-    public FourthRoad fourthRoad;
-    public FourthRoad fourthRoadPreP;
-    public FourthRoad fourthRoadPreB; */
+
+
+    public BacTableBridge bridge;
+    public boolean comission = false;
+    public boolean cardIsOpening = true;
+    public boolean isBettingNow = true;
+    public CountDown countDownTimer;
+    public SparseIntArray pokers;
+    public int cardStatus = 0;
+    public boolean displayCard = false;
+    public Handler handler;
+
+
     public int score;
     public int number;
     public int stage;
@@ -46,8 +56,41 @@ public class Table {
     private int preWin = 0;
     private int preRes = 0;
 
-    public Table(){
+public void bind(BacTableBridge bridge){
+this.bridge = bridge;
+}
+    public void unBind(){
+        bridge = null;
+    }
 
+    public void statusUpdate(int stage){
+        isBettingNow = false;
+        cardIsOpening = false;
+        displayCard = false;
+        if (stage == 1) {
+            pokers = new SparseIntArray();
+            isBettingNow = true;
+        } else if (stage == 2) {
+            cardIsOpening = true;
+            countDownTimer.cancel();
+            displayCard = true;
+        }
+        cardStatus = stage;
+        handle(() -> bridge.statusUpdate());
+    }
+
+    public void cardUpdate(int area, int id){
+        pokers.put(area,Poker.NUM(id));
+        handle(() -> bridge.cardUpdate(area, Poker.NUM(id)));
+    }
+
+    public void handle(Cmd cmd){
+        if(bridge == null) return;
+        handler.post(cmd::exec);
+    }
+
+    public Table(){
+        handler = new Handler();
     }
 
     public void update(BacData bacData){
@@ -59,6 +102,7 @@ public class Table {
         tieCount = bacData.data.historyData.tieCount;
         playPairCount = bacData.data.historyData.playerPairCount;
         bankPairCount = bacData.data.historyData.bankerPairCount;
+       // handle(() -> bridge.gridUpdate();
     }
 
 
