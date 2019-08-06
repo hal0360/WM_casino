@@ -85,8 +85,9 @@ this.bridge = bridge;
     }
 
     public void handle(Cmd cmd){
-        if(bridge == null) return;
-        handler.post(cmd::exec);
+        handler.post(()->{
+            if(bridge != null) cmd.exec();
+        });
     }
 
     public Table(){

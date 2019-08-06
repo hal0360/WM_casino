@@ -68,10 +68,10 @@ public class BacSource extends CasinoSource{
     }
 
     public void handle(Cmd cmd){
-        if(bridge == null) return;
-        super.handlePost(cmd);
+        super.handle(() ->{
+            if(bridge != null) cmd.exec();
+        });
     }
-
     public void tableLogin(Table table){
         this.table = table;
         groupID = table.groupID;
