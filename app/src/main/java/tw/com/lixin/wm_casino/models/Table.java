@@ -6,6 +6,8 @@ import android.util.SparseIntArray;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import tw.com.atromoby.utils.Cmd;
 import tw.com.atromoby.utils.CountDown;
@@ -18,16 +20,12 @@ import tw.com.lixin.wm_casino.interfaces.BacTableBridge;
 
 public class Table {
 
-
     public BacTableBridge bridge;
-    public boolean comission = false;
-    public boolean cardIsOpening = true;
-    public boolean isBettingNow = true;
-    public CountDown countDownTimer;
-    public SparseIntArray pokers;
     public int cardStatus = 0;
-    public boolean displayCard = false;
     public Handler handler;
+    private Timer timer = new Timer();
+    public int curTime;
+    public SparseIntArray pokers = new SparseIntArray();
 
 
     public int score;
@@ -37,21 +35,17 @@ public class Table {
     public int groupID;
     public int groupType;
     public int betSec;
-
     public int bankCount = 1;
     public int playCount = 1;
     public int tieCount = 1;
     public int bankPairCount = 1;
     public int playPairCount = 1;
-
     public List<List<Integer>> sortedRoad;
     public List<Integer> mainRoad;
     public GridRoad firstGrid;
     public GridRoad secGrid;
     public GridRoad thirdGrid;
     public GridRoad fourthGrid;
-
-
     private List<Integer> tempRoad;
     private int preWin = 0;
     private int preRes = 0;
@@ -64,24 +58,29 @@ this.bridge = bridge;
     }
 
     public void statusUpdate(int stage){
-        isBettingNow = false;
-        cardIsOpening = false;
-        displayCard = false;
         if (stage == 1) {
-            pokers = new SparseIntArray();
-            isBettingNow = true;
+            pokers.clear();
         } else if (stage == 2) {
-            cardIsOpening = true;
-            countDownTimer.cancel();
-            displayCard = true;
+            timer.cancel();
         }
         cardStatus = stage;
         handle(() -> bridge.statusUpdate());
     }
 
     public void cardUpdate(int area, int id){
-        pokers.put(area,Poker.NUM(id));
+        pokers.put(area,Poker.NUM(id ));
         handle(() -> bridge.cardUpdate(area, Poker.NUM(id)));
+    }
+
+    public void startCountDown(int mille){
+        curTime = mille/1000;
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                curTime--;
+                handle(() -> bridge.betCountdown(curTime));
+            }
+        }, 1000, curTime);
     }
 
     public void handle(Cmd cmd){
