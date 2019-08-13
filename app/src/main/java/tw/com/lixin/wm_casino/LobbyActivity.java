@@ -2,6 +2,8 @@ package tw.com.lixin.wm_casino;
 
 import android.os.Bundle;
 
+import tw.com.atromoby.utils.Json;
+import tw.com.lixin.wm_casino.dataModels.Client35;
 import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
@@ -31,19 +33,27 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
         super.onResume();
 
         source.bind(this);
-        if(source.isConnected()) return;
-        loading();
-        source.login(User.sid(),data->{
-            unloading();
-        }, fail->{
-            alert("Connection lost");
-            unloading();
-            toActivity(LoginActivity.class);
-        });
+        if(source.isConnected()){
+            source.send(Json.to(new Client35()));
+        }else{
+            loading();
+            source.login(User.sid(),data->{
+                unloading();
+            }, fail->{
+                alert("Connection lost");
+                unloading();
+                toActivity(LoginActivity.class);
+            });
+        }
 
 
     }
 
+
+    @Override
+    public void wholeDataUpdated() {
+alert("data updated");
+    }
 
     @Override
     public void balanceUpdated() {

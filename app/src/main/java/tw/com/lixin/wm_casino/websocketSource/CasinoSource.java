@@ -31,6 +31,12 @@ public abstract class CasinoSource extends WebSocketListener{
     private CmdLog cmdLogOpen;
     private CmdStr cmdLogFail;
 
+    private boolean isBinded = false;
+
+    public void binded(boolean bid){
+        isBinded = bid;
+    }
+
     @Override
     public void onOpen(WebSocket webSocket, Response response) {
         send(loginDataStr);
@@ -112,6 +118,10 @@ public abstract class CasinoSource extends WebSocketListener{
     }
 
     public void handle(Cmd cmd){
+        if(isBinded) genHandler.post(()->{ if(isBinded) cmd.exec(); });
+    }
+
+    public void handleSimple(Cmd cmd){
         genHandler.post(cmd::exec);
     }
 

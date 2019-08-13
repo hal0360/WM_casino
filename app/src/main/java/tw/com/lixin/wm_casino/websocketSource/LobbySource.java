@@ -19,14 +19,6 @@ public class LobbySource extends CasinoSource{
         return single_instance;
     }
 
-
-    public void handle(Cmd cmd){
-        super.handle(() ->{
-            if(bridge != null) cmd.exec();
-        });
-    }
-
-
     private LobbySource() {
         defineURL("ws://gameserver.a45.me:15109");
         games = new ArrayList<>();
@@ -40,11 +32,13 @@ public class LobbySource extends CasinoSource{
 
     public void bind(LobbyBridge bridge){
         this.bridge = bridge;
+        binded(true);
     }
 
 
     public void unbind(){
         bridge = null;
+        binded(false);
     }
 
 

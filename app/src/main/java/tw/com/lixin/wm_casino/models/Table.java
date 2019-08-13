@@ -28,6 +28,8 @@ public class Table {
     public SparseIntArray pokers = new SparseIntArray();
 
 
+    public String dealerImage;
+    public String dealerName;
     public int score;
     public int number;
     public int stage;
@@ -49,12 +51,15 @@ public class Table {
     private List<Integer> tempRoad;
     private int preWin = 0;
     private int preRes = 0;
+    private boolean isBinded = false;
 
-public void bind(BacTableBridge bridge){
-this.bridge = bridge;
-}
+    public void bind(BacTableBridge bridge){
+      this.bridge = bridge;
+        isBinded  = true;
+    }
     public void unBind(){
         bridge = null;
+        isBinded  = false;
     }
 
     public void statusUpdate(int stage){
@@ -84,9 +89,7 @@ this.bridge = bridge;
     }
 
     public void handle(Cmd cmd){
-        handler.post(()->{
-            if(bridge != null) cmd.exec();
-        });
+        if(isBinded) handler.post(()->{ if(isBinded) cmd.exec(); });
     }
 
     public Table(){
@@ -102,7 +105,7 @@ this.bridge = bridge;
         tieCount = bacData.data.historyData.tieCount;
         playPairCount = bacData.data.historyData.playerPairCount;
         bankPairCount = bacData.data.historyData.bankerPairCount;
-       // handle(() -> bridge.gridUpdate();
+        handle(() -> bridge.gridUpdate());
     }
 
 
