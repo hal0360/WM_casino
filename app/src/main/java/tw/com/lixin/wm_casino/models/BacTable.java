@@ -1,6 +1,5 @@
 package tw.com.lixin.wm_casino.models;
 
-
 import android.os.Handler;
 import android.util.SparseIntArray;
 
@@ -18,7 +17,7 @@ import tw.com.lixin.wm_casino.global.Road;
 import tw.com.lixin.wm_casino.interfaces.BacTableBridge;
 
 
-public class Table {
+public class BacTable {
 
     public BacTableBridge bridge;
     public int cardStatus = 0;
@@ -54,7 +53,7 @@ public class Table {
     private boolean isBinded = false;
 
     public void bind(BacTableBridge bridge){
-      this.bridge = bridge;
+        this.bridge = bridge;
         isBinded  = true;
     }
 
@@ -93,7 +92,7 @@ public class Table {
         if(isBinded) handler.post(()->{ if(isBinded) cmd.exec(); });
     }
 
-    public Table(){
+    public BacTable(){
         handler = new Handler();
     }
 

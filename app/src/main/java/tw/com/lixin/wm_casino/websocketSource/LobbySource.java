@@ -29,6 +29,12 @@ public class LobbySource extends CasinoSource{
     public int totalOnline;
     public int bacOnline;
 
+    public Game findGame(int id){
+        for(Game game: games){
+            if (game.gameID == id) return game;
+        }
+        return null;
+    }
 
     public void bind(LobbyBridge bridge){
         this.bridge = bridge;

@@ -15,6 +15,7 @@ import tw.com.lixin.wm_casino.dataModels.BacData;
 import tw.com.lixin.wm_casino.dataModels.Client10;
 import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.BacBridge;
+import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.CoinStackData;
 import tw.com.lixin.wm_casino.models.Table;
 
@@ -50,29 +51,26 @@ public class BacSource extends CasinoSource{
     public int pokerWin = -1;
     public int maxBetVal;
     public int playerScore, bankerScore;
-    public Table table;
+    public BacTable table;
    // private Popup winPopup;
-    public List<Table> tables;
+    public List<BacTable> tables;
 
-    private Table findTable(int id){
-        for(Table tTable: tables) if(id == tTable.groupID) return tTable;
+    private BacTable findTable(int id){
+        for(BacTable tTable: tables) if(id == tTable.groupID) return tTable;
         return null;
     }
 
     public void bind(BacBridge bridge){
         this.bridge = bridge;
+        binded(true);
     }
 
     public void unbind(){
         this.bridge = null;
+        binded(false);
     }
 
-    public void handle(Cmd cmd){
-        super.handle(() ->{
-            if(bridge != null) cmd.exec();
-        });
-    }
-    public void tableLogin(Table table){
+    public void tableLogin(BacTable table){
         this.table = table;
         groupID = table.groupID;
         Client10 client = new Client10(table.groupID);
@@ -109,15 +107,16 @@ public class BacSource extends CasinoSource{
                 if(maxBetVal < bacData.data.maxBet04) maxBetVal = bacData.data.maxBet04;
             }
             handle(() -> bridge.tableLogin(bacData.data.bOk));
+
         }else if(bacData.protocol == 20){
-            Table tt = findTable(bacData.data.groupID);
+            BacTable tt = findTable(bacData.data.groupID);
             if(tt != null)tt.statusUpdate(bacData.data.gameStage);
         }else if(bacData.protocol == 22){
             handle(() -> bridge.betUpdate(bacData.data.bOk));
         }else if(bacData.protocol == 23){
             handle(() -> bridge.balanceUpdate(bacData.data.balance));
         }else if(bacData.protocol == 24){
-            Table tt = findTable(bacData.data.groupID);
+            BacTable tt = findTable(bacData.data.groupID);
             if(tt != null)tt.cardUpdate(bacData.data.cardArea, bacData.data.cardID);
         }else if(bacData.protocol == 25){
             //pokerWin = Move.divide(bacData.data.result);
@@ -125,7 +124,7 @@ public class BacSource extends CasinoSource{
             bankerScore = bacData.data.bankerScore;
             handle(() -> bridge.resultUpadte());
         }else if(bacData.protocol == 26){
-            Table tt = findTable(bacData.data.groupID);
+            BacTable tt = findTable(bacData.data.groupID);
             if(tt != null)tt.update(bacData);
         }else if(bacData.protocol == 31){
             /*
@@ -185,7 +184,7 @@ public class BacSource extends CasinoSource{
             winPopup.show(); */
         }else if(bacData.protocol == 38){
 
-            Table tt = findTable(bacData.data.groupID);
+            BacTable tt = findTable(bacData.data.groupID);
             if(tt != null)tt.update(bacData);
 
             handle(() -> countDownTimer.start(bacData.data.timeMillisecond, i->{
