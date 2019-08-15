@@ -45,6 +45,7 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
                         table.score = tableStage.bankerScore;
                         table.round = tableStage.gameNoRound;
                         table.number = tableStage.gameNo;
+                        table.dealerImage = tableStage.dealerImage;
                         bacSource.tables.add(table);
                     }
                 }
