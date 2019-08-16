@@ -46,6 +46,7 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
                         table.round = tableStage.gameNoRound;
                         table.number = tableStage.gameNo;
                         table.dealerImage = tableStage.dealerImage;
+                        table.dealerName = tableStage.dealerName;
                         bacSource.tables.add(table);
                     }
                 }
@@ -55,7 +56,6 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
                 unloading();
                 toActivity(LoginActivity.class);
             });
-
 
 
         });
