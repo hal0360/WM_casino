@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="170dp"
+    tools:ignore="SpUsage"
     android:background="#000">
 
     <android.support.constraint.ConstraintLayout
@@ -16,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/table_name_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -79,7 +80,7 @@
     </android.support.constraint.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/imageView22"
+        android:id="@+id/dealer_img"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="6dp"
@@ -88,17 +89,61 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
         app:srcCompat="@drawable/hamster" />
 
-    <android.support.constraint.ConstraintLayout
+    <tw.com.lixin.wm_casino.tools.CasinoGrid
+        android:id="@+id/road_grid"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="6dp"
         android:layout_marginLeft="6dp"
         android:layout_marginTop="6dp"
         android:layout_marginBottom="6dp"
+        android:background="#fff"
+        android:divider="@drawable/table_divider"
+        android:showDividers="middle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView22"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+        app:layout_constraintStart_toEndOf="@+id/dealer_img"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/road_grid_block"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:background="#80000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dealer_img"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" >
+
+        <ImageView
+            android:id="@+id/imageView22"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/dark_circle"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.27"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/card_opening" />
+
+        <TextView
+            android:id="@+id/status_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="Dealing"
+            android:textColor="#DFBC7D"
+            android:textSize="22dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView22"
+            app:layout_constraintStart_toEndOf="@+id/imageView22"
+            app:layout_constraintTop_toTopOf="@+id/imageView22" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -111,8 +156,8 @@
         android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView22"
-        app:layout_constraintStart_toStartOf="@+id/imageView22"
-        app:layout_constraintTop_toBottomOf="@+id/imageView22" />
+        app:layout_constraintEnd_toEndOf="@+id/dealer_img"
+        app:layout_constraintStart_toStartOf="@+id/dealer_img"
+        app:layout_constraintTop_toBottomOf="@+id/dealer_img" />
 
 </android.support.constraint.ConstraintLayout>

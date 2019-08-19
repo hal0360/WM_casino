@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.SparseIntArray;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import tw.com.atromoby.utils.Cmd;
@@ -28,7 +29,8 @@ public class BacSource extends CasinoSource{
         return single_instance;
     }
     private BacSource() {
-        defineURL("");
+        tables = new ArrayList<>();
+        defineURL("ws://gameserver.a45.me:15101");
     }
 
     private BacBridge bridge;
