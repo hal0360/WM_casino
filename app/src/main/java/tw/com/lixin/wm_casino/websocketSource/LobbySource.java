@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import tw.com.atromoby.utils.Cmd;
 import tw.com.atromoby.utils.Json;
 import tw.com.lixin.wm_casino.dataModels.LobbyData;
+import tw.com.lixin.wm_casino.dataModels.LoginResData;
 import tw.com.lixin.wm_casino.dataModels.gameData.Game;
 import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
@@ -69,5 +70,10 @@ public class LobbySource extends CasinoSource{
                 handle(()-> bridge.peopleOnlineUpdate(lobbyData.data.gameID, lobbyData.data.onlinePeople));
                 break;
         }
+    }
+
+    @Override
+    public void onLogin(LoginResData data) {
+
     }
 }

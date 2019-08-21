@@ -1,6 +1,17 @@
 package tw.com.lixin.wm_casino;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.ImageView;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
 
 import tw.com.atromoby.utils.Json;
 import tw.com.lixin.wm_casino.dataModels.Client35;
@@ -10,6 +21,7 @@ import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.Table;
+import tw.com.lixin.wm_casino.tools.ImageGetTask;
 import tw.com.lixin.wm_casino.websocketSource.BacSource;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
@@ -29,35 +41,27 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
         if(!isPortrait()) setTextView(R.id.balance_txt, User.balance() +"");
 
         clicked(R.id.baccarat_game,v->{
-
             BacSource bacSource = BacSource.getInstance();
-            loading();
             bacSource.login(User.sid(),data->{
-                Game bacGame = source.findGame(101);
-                if(bacGame == null) return;
-                for(Group tableStage: bacGame.groupArr){
-                    if ( tableStage.gameStage != 4){
-                        BacTable table = new BacTable();
-                        table.setUp(tableStage.historyArr);
-                        table.stage = tableStage.gameStage;
-                        table.groupID = tableStage.groupID;
-                        table.groupType = tableStage.groupType;
-                        table.score = tableStage.bankerScore;
-                        table.round = tableStage.gameNoRound;
-                        table.number = tableStage.gameNo;
-                        table.dealerImage = tableStage.dealerImage;
-                        table.dealerName = tableStage.dealerName;
-                        bacSource.tables.add(table);
-                    }
-                }
-                unloading();
+
+                alert("okokok");
+              // toActivity(BacActivity.class);
             }, fail->{
                 alert("Unable to connect to bac");
-                unloading();
-                toActivity(LoginActivity.class);
             });
+        });
 
 
+        clicked(R.id.roulette_game,v->{
+            toActivity(BacActivity.class);
+        });
+
+        clicked(R.id.dragon_tiger_game,v->{
+            BacSource bacSource = BacSource.getInstance();
+            for(BacTable table: bacSource.tables){
+                if(table.dealerImage != null) Log.e("dealerImage", "not null");
+                else Log.e("dealerImage", "is null");
+            }
         });
     }
 
@@ -100,4 +104,7 @@ alert("data updated");
     }
 
 
+    public void dealerImgLoaded(){
+
+    }
 }

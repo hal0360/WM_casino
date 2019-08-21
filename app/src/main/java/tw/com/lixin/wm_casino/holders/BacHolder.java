@@ -18,10 +18,11 @@ import tw.com.lixin.wm_casino.tools.CasinoGrid;
 
 public class BacHolder extends ItemHolder {
 
-    private BacTable table;
+    public  BacTable table;
+    public  Bitmap bitmap;
 
     public BacHolder(BacTable table) {
-        super(R.layout.bac_vertical_item);
+        super(R.layout.bac_item);
         this.table = table;
     }
 
@@ -37,7 +38,11 @@ public class BacHolder extends ItemHolder {
         TextView tableName = findViewById(R.id.table_name_txt);
 
         tableName.setText("Barcarrat" + table.groupID);
-        new DownloadImageTask(dealerImg).execute(table.dealerName);
+
+       // else  Log.e("dealerImage", "is null");
+         dealerImg.setImageBitmap(table.dealerImage);
+       // new DownloadImageTask(dealerImg).execute(table.dealerName);
+
         grid.post(() -> {
             double dim = grid.getMeasuredHeight() / 6.0;
             int wGrid = (int) Math.round(grid.getMeasuredWidth()/dim);
@@ -52,6 +57,7 @@ public class BacHolder extends ItemHolder {
 
     }
 
+    /*
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
 
@@ -75,5 +81,5 @@ public class BacHolder extends ItemHolder {
         protected void onPostExecute(Bitmap result) {
             bmImage.setImageBitmap(result);
         }
-    }
+    }*/
 }

@@ -1,5 +1,6 @@
 package tw.com.lixin.wm_casino.models;
 
+import android.graphics.Bitmap;
 import android.os.Handler;
 import android.util.SparseIntArray;
 
@@ -27,7 +28,8 @@ public class BacTable {
     public SparseIntArray pokers = new SparseIntArray();
 
 
-    public String dealerImage;
+    public Bitmap dealerImage;
+    public String dealerImageUrl;
     public String dealerName;
     public int score;
     public int number;
@@ -93,7 +95,7 @@ public class BacTable {
     }
 
     public BacTable(){
-        handler = new Handler();
+       //  handler = new Handler();
     }
 
     public void update(BacData bacData){
