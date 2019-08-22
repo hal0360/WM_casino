@@ -1,43 +1,12 @@
 package tw.com.lixin.wm_casino.models;
 
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.util.SparseIntArray;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import tw.com.atromoby.utils.Cmd;
-import tw.com.atromoby.utils.CountDown;
 import tw.com.lixin.wm_casino.R;
-import tw.com.lixin.wm_casino.dataModels.BacData;
-import tw.com.lixin.wm_casino.global.Poker;
+import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.global.Road;
-import tw.com.lixin.wm_casino.interfaces.BacTableBridge;
 
-
-public class BacTable {
-
-    public BacTableBridge bridge;
-    public int cardStatus = 0;
-    public Handler handler;
-    private Timer timer = new Timer();
-    public int curTime;
-    public SparseIntArray pokers = new SparseIntArray();
-
-
-    public Bitmap dealerImage;
-    public String dealerImageUrl;
-    public String dealerName;
-    public int score;
-    public int number;
-    public int stage;
-    public int round;
-    public int groupID;
-    public int groupType;
-    public int betSec;
+public class BacTable extends Table{
     public int bankCount = 1;
     public int playCount = 1;
     public int tieCount = 1;
@@ -52,62 +21,18 @@ public class BacTable {
     private List<Integer> tempRoad;
     private int preWin = 0;
     private int preRes = 0;
-    private boolean isBinded = false;
 
-    public void bind(BacTableBridge bridge){
-        this.bridge = bridge;
-        isBinded  = true;
-    }
-
-    public void unBind(){
-        bridge = null;
-        isBinded  = false;
-    }
-
-    public void statusUpdate(int stage){
-        if (stage == 1) {
-            pokers.clear();
-        } else if (stage == 2) {
-            timer.cancel();
-        }
-        cardStatus = stage;
-        handle(() -> bridge.statusUpdate());
-    }
-
-    public void cardUpdate(int area, int id){
-        pokers.put(area,Poker.NUM(id ));
-        handle(() -> bridge.cardUpdate(area, Poker.NUM(id)));
-    }
-
-    public void startCountDown(int mille){
-        curTime = mille/1000;
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                curTime--;
-                handle(() -> bridge.betCountdown(curTime));
-            }
-        }, 1000, curTime);
-    }
-
-    public void handle(Cmd cmd){
-        if(isBinded) handler.post(()->{ if(isBinded) cmd.exec(); });
-    }
-
-    public BacTable(){
-       //  handler = new Handler();
-    }
-
-    public void update(BacData bacData){
-        setUp(bacData.data.historyArr);
-        groupType = bacData.data.groupType;
-        round = bacData.data.historyArr.size();
-        playCount = bacData.data.historyData.playerCount;
-        bankCount = bacData.data.historyData.bankerCount;
-        tieCount = bacData.data.historyData.tieCount;
-        playPairCount = bacData.data.historyData.playerPairCount;
-        bankPairCount = bacData.data.historyData.bankerPairCount;
-        handle(() -> bridge.gridUpdate());
+    @Override
+    public void update(TableData tableData){
+        setUp(tableData.data.historyArr);
+        groupType = tableData.data.groupType;
+        round = tableData.data.historyArr.size();
+        playCount = tableData.data.historyData.playerCount;
+        bankCount = tableData.data.historyData.bankerCount;
+        tieCount = tableData.data.historyData.tieCount;
+        playPairCount = tableData.data.historyData.playerPairCount;
+        bankPairCount = tableData.data.historyData.bankerPairCount;
+        super.update(tableData);
     }
 
     public void setUp(List<Integer> arr){

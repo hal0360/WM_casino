@@ -85,8 +85,6 @@ public abstract class CasinoSource extends WebSocketListener{
 
     public abstract void onReceive(String text);
 
-    public abstract void onLogin(LoginResData data);
-
     @Override
     public void onMessage(WebSocket webSocket, String text) {
         if(!connected){
@@ -94,7 +92,6 @@ public abstract class CasinoSource extends WebSocketListener{
             if(logRespend.protocol == 0){
                 logHandler.removeCallbacksAndMessages(null);
                 if(logRespend.data.bOk){
-                    onLogin(logRespend);
                     connected = true;
                     cmdLogFail = null;
                     genHandler.post(() -> {

@@ -56,13 +56,14 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
             toActivity(BacActivity.class);
         });
 
+        /*
         clicked(R.id.dragon_tiger_game,v->{
             BacSource bacSource = BacSource.getInstance();
             for(BacTable table: bacSource.tables){
                 if(table.dealerImage != null) Log.e("dealerImage", "not null");
                 else Log.e("dealerImage", "is null");
             }
-        });
+        });*/
     }
 
     @Override
