@@ -74,7 +74,6 @@ public abstract class CasinoSource extends WebSocketListener{
         client.dispatcher().executorService().shutdown();
     }
 
-
     public void defineURL(String url){
         webUrl = url;
     }

@@ -23,12 +23,13 @@ import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.tools.ImageGetTask;
 import tw.com.lixin.wm_casino.websocketSource.BacSource;
+import tw.com.lixin.wm_casino.websocketSource.GameSource;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
 
 public class LobbyActivity extends WMActivity implements LobbyBridge {
 
-    private LobbySource source;
+    private LobbySource lobbySource;
 
 
     @Override
@@ -36,17 +37,38 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lobby);
 
-        source = LobbySource.getInstance();
-        if(!isPortrait()) setTextView(R.id.online_ppl_txt, source.totalOnline+"");
+        lobbySource = LobbySource.getInstance();
+        if(!isPortrait()) setTextView(R.id.online_ppl_txt, lobbySource.totalOnline+"");
         if(!isPortrait()) setTextView(R.id.balance_txt, User.balance() +"");
 
         clicked(R.id.baccarat_game,v->{
             BacSource bacSource = BacSource.getInstance();
+            bacSource.gameID = 101;
+            bacSource.gameName = getString(R.string.wmbaccarat);
+            loading();
             bacSource.login(User.sid(),data->{
+                Game bacGame = lobbySource.findGame(101);
+                if(bacGame == null) return;
+                bacSource.tables.clear();
+                for(Group tableStage: bacGame.groupArr){
+                    if ( tableStage.gameStage != 4){
+                        BacTable table = new BacTable();
+                        table.setUp(tableStage.historyArr);
+                        table.stage = tableStage.gameStage;
+                        table.groupID = tableStage.groupID;
+                        table.groupType = tableStage.groupType;
+                        table.score = tableStage.bankerScore;
+                        table.round = tableStage.gameNoRound;
+                        table.number = tableStage.gameNo;
+                        table.dealerName = tableStage.dealerName;
+                        table.dealerImageUrl = tableStage.dealerImage;
+                        bacSource.tables.add(table);
+                    }
+                }
+                new ImageGetTask(this, bacSource.tables).execute();
 
-                alert("okokok");
-              // toActivity(BacActivity.class);
             }, fail->{
+                unloading();
                 alert("Unable to connect to bac");
             });
         });
@@ -66,16 +88,46 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
         });*/
     }
 
+    /*
+    private void gameSetUp(GameSource source){
+        loading();
+        source.login(User.sid(),data->{
+            Game bacGame = lobbySource.findGame(101);
+            if(bacGame == null) return;
+            source.tables.clear();
+            for(Group tableStage: bacGame.groupArr){
+                if ( tableStage.gameStage != 4){
+                    BacTable table = new BacTable();
+                    table.setUp(tableStage.historyArr);
+                    table.stage = tableStage.gameStage;
+                    table.groupID = tableStage.groupID;
+                    table.groupType = tableStage.groupType;
+                    table.score = tableStage.bankerScore;
+                    table.round = tableStage.gameNoRound;
+                    table.number = tableStage.gameNo;
+                    table.dealerName = tableStage.dealerName;
+                    table.dealerImageUrl = tableStage.dealerImage;
+                    bacSource.tables.add(table);
+                }
+            }
+            new ImageGetTask(this, bacSource.tables).execute();
+
+        }, fail->{
+            unloading();
+            alert("Unable to connect to bac");
+        });
+    }*/
+
     @Override
     public void onResume() {
         super.onResume();
 
-        source.bind(this);
-        if(source.isConnected()){
-            source.send(Json.to(new Client35()));
+        lobbySource.bind(this);
+        if(lobbySource.isConnected()){
+            lobbySource.send(Json.to(new Client35()));
         }else{
             loading();
-            source.login(User.sid(),data->{
+            lobbySource.login(User.sid(),data->{
                 unloading();
             }, fail->{
                 alert("Connection lost");
@@ -87,15 +139,15 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
 
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        lobbySource.unbind();
+    }
 
     @Override
     public void wholeDataUpdated() {
 alert("data updated");
-    }
-
-    @Override
-    public void balanceUpdated() {
-        if(!isPortrait()) setTextView(R.id.balance_txt, User.balance() +"");
     }
 
     @Override
@@ -104,8 +156,8 @@ alert("data updated");
         if(!isPortrait()) setTextView(R.id.online_ppl_txt, number+"");
     }
 
-
     public void dealerImgLoaded(){
-
+        unloading();
+        toActivity(GameActivity.class);
     }
 }

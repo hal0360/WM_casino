@@ -1,31 +1,19 @@
 package tw.com.lixin.wm_casino.websocketSource;
 
-import android.graphics.BitmapFactory;
-import android.util.Log;
-import android.util.SparseIntArray;
-
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import tw.com.atromoby.utils.CountDown;
 import tw.com.atromoby.utils.Json;
-import tw.com.lixin.wm_casino.dataModels.BacData;
 import tw.com.lixin.wm_casino.dataModels.Client10;
-import tw.com.lixin.wm_casino.dataModels.LoginResData;
 import tw.com.lixin.wm_casino.dataModels.TableData;
-import tw.com.lixin.wm_casino.dataModels.gameData.Game;
-import tw.com.lixin.wm_casino.dataModels.gameData.Group;
-import tw.com.lixin.wm_casino.interfaces.BacBridge;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
-import tw.com.lixin.wm_casino.models.BacTable;
-import tw.com.lixin.wm_casino.models.CoinStackData;
 import tw.com.lixin.wm_casino.models.Table;
 
 public abstract class GameSource extends CasinoSource{
 
-    public int groupID = -1;
+    public int groupID = -11;
+    public int gameID = -11;
+    public String gameName = "skull";
     public Table table;
     public List<Table> tables = new ArrayList<>();
     private GameBridge bridge;

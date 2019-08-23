@@ -7,23 +7,24 @@ import android.util.Log;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import tw.com.lixin.wm_casino.LobbyActivity;
-import tw.com.lixin.wm_casino.models.BacTable;
+import tw.com.lixin.wm_casino.models.Table;
 
 public class ImageGetTask extends AsyncTask<Void, Void, Boolean> {
-    ArrayList<BacTable> tables;
+    List<Table> tables;
      LobbyActivity activity;
 
-    public ImageGetTask(LobbyActivity activity, ArrayList<BacTable> tables) {
-        this.tables = tables;
+    public ImageGetTask(LobbyActivity activity, List<Table> tables) {
+        this.tables =  tables;
         this.activity = activity;
     }
 
     @Override
     protected Boolean doInBackground(Void... voids) {
 
-        for(BacTable table: tables){
+        for(Table table: tables){
             try {
                 InputStream in = new java.net.URL(table.dealerImageUrl).openStream();
                 table.dealerImage = BitmapFactory.decodeStream(in);
@@ -32,12 +33,11 @@ public class ImageGetTask extends AsyncTask<Void, Void, Boolean> {
             }
         }
 
-return true;
+        return true;
     }
 
     protected void onPostExecute(Boolean result) {
         activity.dealerImgLoaded();
         activity = null;
-        //  bmImage.setImageBitmap(result);
     }
 }

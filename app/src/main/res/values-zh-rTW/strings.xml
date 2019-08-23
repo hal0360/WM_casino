@@ -30,4 +30,13 @@
     <string name="follow">關注</string>
     <string name="settings">系統設置</string>
     <string name="quit">退出遊戲</string>
+    <!-- Casino page -->
+    <string name="player_score">闲</string>
+    <string name="banker_score">庄</string>
+    <string name="super_score">超级6</string>
+    <string name="tie_score">和</string>
+    <string name="player_pair_score">闲对</string>
+    <string name="banker_pair_score">庄对</string>
+    <!-- game page -->
+    <string name="wmbaccarat">百家樂</string>
 </resources>

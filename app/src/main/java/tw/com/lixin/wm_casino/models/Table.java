@@ -5,19 +5,12 @@ import android.graphics.Bitmap;
 import android.os.Handler;
 import android.util.SparseIntArray;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import tw.com.atromoby.utils.Cmd;
-import tw.com.atromoby.utils.CountDown;
-import tw.com.lixin.wm_casino.R;
-import tw.com.lixin.wm_casino.dataModels.BacData;
 import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.global.Poker;
-import tw.com.lixin.wm_casino.global.Road;
-import tw.com.lixin.wm_casino.interfaces.BacTableBridge;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
 
 
@@ -72,6 +65,7 @@ public class Table {
 
     public void startCountDown(int mille){
         curTime = mille/1000;
+        timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {

@@ -30,4 +30,13 @@
     <string name="follow">Follow</string>
     <string name="settings">Settings</string>
     <string name="quit">Quit</string>
+    <!-- Casino page -->
+    <string name="player_score">Player</string>
+    <string name="banker_score">Banker</string>
+    <string name="super_score">Super6</string>
+    <string name="tie_score">Tie</string>
+    <string name="player_pair_score">Player pair</string>
+    <string name="banker_pair_score">Banker pair</string>
+    <!-- game page -->
+    <string name="wmbaccarat">WMBaccarat</string>
 </resources>
