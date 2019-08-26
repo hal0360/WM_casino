@@ -12,8 +12,6 @@ import tw.com.lixin.wm_casino.models.Table;
 public abstract class GameSource extends CasinoSource{
 
     public int groupID = -11;
-    public int gameID = -11;
-    public String gameName = "skull";
     public Table table;
     public List<Table> tables = new ArrayList<>();
     private GameBridge bridge;
@@ -22,6 +20,26 @@ public abstract class GameSource extends CasinoSource{
         for(Table tTable: tables) if(id == tTable.groupID) return tTable;
         return null;
     }
+
+    /*
+    public final void gameLogin(int gameNum, String sid, CmdLog logOK, CmdStr logFail){
+        super.login(sid);
+        close();
+        webUrl = "ws://gameserver.a45.me:15" + gameNum;
+        cmdLogOpen = logOK;
+        cmdLogFail = logFail;
+        logHandler.postDelayed(()-> {
+            cmdLogOpen = null;
+            if(cmdLogFail != null) cmdLogFail.exec("Websocket login timeout");
+            cmdLogFail = null;
+            close();
+        },6000);
+        loginDataStr = Json.to(new CheckData(sid));
+        OkHttpClient client = new OkHttpClient();
+        webSocket = client.newWebSocket(new Request.Builder().url(webUrl).build(), this);
+        client.dispatcher().executorService().shutdown();
+    }*/
+
 
     public void bind(GameBridge bridge){
         this.bridge = bridge;

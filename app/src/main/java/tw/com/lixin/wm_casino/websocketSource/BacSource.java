@@ -16,7 +16,6 @@ public class BacSource extends GameSource{
     }
 
     public boolean comission = false;
-
     public CoinStackData stackLeft, stackRight, stackBTL, stackBTR, stackTop, stackSuper;
     public String tableRightScore;
     public String tableLeftScore;

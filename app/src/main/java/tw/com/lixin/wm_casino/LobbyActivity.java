@@ -31,20 +31,19 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
 
     private LobbySource lobbySource;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lobby);
 
         lobbySource = LobbySource.getInstance();
-        if(!isPortrait()) setTextView(R.id.online_ppl_txt, lobbySource.totalOnline+"");
+        if(!isPortrait()) setTextView(R.id.online_ppl_txt, lobbySource.peopleOnline.get(109)+"");
         if(!isPortrait()) setTextView(R.id.balance_txt, User.balance() +"");
 
         clicked(R.id.baccarat_game,v->{
             BacSource bacSource = BacSource.getInstance();
-            bacSource.gameID = 101;
-            bacSource.gameName = getString(R.string.wmbaccarat);
+            lobbySource.gameID = 101;
+            lobbySource.gameName = getString(R.string.wmbaccarat);
             loading();
             bacSource.login(User.sid(),data->{
                 Game bacGame = lobbySource.findGame(101);
@@ -72,7 +71,6 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
                 alert("Unable to connect to bac");
             });
         });
-
 
         clicked(R.id.roulette_game,v->{
             toActivity(BacActivity.class);
@@ -122,11 +120,11 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
     public void onResume() {
         super.onResume();
 
+        loading();
         lobbySource.bind(this);
         if(lobbySource.isConnected()){
             lobbySource.send(Json.to(new Client35()));
         }else{
-            loading();
             lobbySource.login(User.sid(),data->{
                 unloading();
             }, fail->{
@@ -147,6 +145,7 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
 
     @Override
     public void wholeDataUpdated() {
+        unloading();
 alert("data updated");
     }
 

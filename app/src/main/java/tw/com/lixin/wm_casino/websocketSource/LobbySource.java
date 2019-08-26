@@ -1,5 +1,8 @@
 package tw.com.lixin.wm_casino.websocketSource;
 
+import android.util.SparseArray;
+import android.util.SparseIntArray;
+
 import java.util.ArrayList;
 
 import tw.com.atromoby.utils.Json;
@@ -25,8 +28,10 @@ public class LobbySource extends CasinoSource{
 
     private LobbyBridge bridge;
     public ArrayList<Game> games;
-    public int totalOnline;
-    public int bacOnline;
+    public SparseIntArray peopleOnline = new SparseIntArray();
+
+    public int gameID = -11;
+    public String gameName = "skull";
 
     public Game findGame(int id){
         for(Game game: games){
@@ -56,10 +61,11 @@ public class LobbySource extends CasinoSource{
                 handle(()-> bridge.wholeDataUpdated());
                 break;
             case 34:
+                peopleOnline.append(lobbyData.data.gameID,lobbyData.data.onlinePeople);
                 if(lobbyData.data.gameID == 109){
-                    totalOnline = lobbyData.data.onlinePeople;
+                   // totalOnline = lobbyData.data.onlinePeople;
                 }else if(lobbyData.data.gameID == 101){
-                    bacOnline = lobbyData.data.onlinePeople;
+                   // bacOnline = lobbyData.data.onlinePeople;
                 }
                 handle(()-> bridge.peopleOnlineUpdate(lobbyData.data.gameID, lobbyData.data.onlinePeople));
                 break;

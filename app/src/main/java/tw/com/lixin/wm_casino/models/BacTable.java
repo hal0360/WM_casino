@@ -7,6 +7,22 @@ import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.global.Road;
 
 public class BacTable extends Table{
+
+
+    public boolean comission = false;
+    public CoinStackData stackLeft, stackRight, stackBTL, stackBTR, stackTop, stackSuper;
+    public String tableRightScore;
+    public String tableLeftScore;
+    public String tableTopScore;
+    public String tableBtlScore;
+    public String tableBtrScore;
+    public int pokerWin = -1;
+    public int maxBetVal;
+    public int playerScore, bankerScore;
+
+
+
+
     public int bankCount = 1;
     public int playCount = 1;
     public int tieCount = 1;

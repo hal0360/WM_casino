@@ -74,6 +74,26 @@ public abstract class CasinoSource extends WebSocketListener{
         client.dispatcher().executorService().shutdown();
     }
 
+
+    public final void login(int gameNum, String sid, CmdLog logOK, CmdStr logFail){
+        close();
+        webUrl = "ws://gameserver.a45.me:15" + gameNum;
+        cmdLogOpen = logOK;
+        cmdLogFail = logFail;
+        logHandler.postDelayed(()-> {
+            cmdLogOpen = null;
+            if(cmdLogFail != null) cmdLogFail.exec("Websocket login timeout");
+            cmdLogFail = null;
+            close();
+        },6000);
+        loginDataStr = Json.to(new CheckData(sid));
+        OkHttpClient client = new OkHttpClient();
+        webSocket = client.newWebSocket(new Request.Builder().url(webUrl).build(), this);
+        client.dispatcher().executorService().shutdown();
+    }
+
+
+
     public void defineURL(String url){
         webUrl = url;
     }
