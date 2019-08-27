@@ -77,6 +77,7 @@ public abstract class GameSource extends CasinoSource{
         if(tableData.data.groupID != groupID) return;
         onData(tableData.protocol, tableData.data);
         if(tableData.protocol == 10){
+            if(tt != null)tt.update(tableData);
             handle(() -> bridge.tableLogin(tableData.data.bOk));
         }else if(tableData.protocol == 22){
             handle(() -> bridge.betUpdate(tableData.data.bOk));

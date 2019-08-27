@@ -11,11 +11,7 @@ public class BacTable extends Table{
 
     public boolean comission = false;
     public CoinStackData stackLeft, stackRight, stackBTL, stackBTR, stackTop, stackSuper;
-    public String tableRightScore;
-    public String tableLeftScore;
-    public String tableTopScore;
-    public String tableBtlScore;
-    public String tableBtrScore;
+    public String tableRightScore, tableLeftScore, tableTopScore, tableBtlScore, tableBtrScore;
     public int pokerWin = -1;
     public int maxBetVal;
     public int playerScore, bankerScore;
@@ -39,8 +35,23 @@ public class BacTable extends Table{
     private int preRes = 0;
 
     @Override
+    public void historySetup(List<Integer> histories) {
+        mainRoad = new ArrayList<>();
+        sortedRoad = new ArrayList<>();
+        for(int val: histories) divide(val);
+        firstGrid = new GridRoad();
+        firstGrid.setFirst(sortedRoad);
+        secGrid = new GridRoad();
+        secGrid.setSec(sortedRoad);
+        thirdGrid = new GridRoad();
+        thirdGrid.setThird(sortedRoad);
+        fourthGrid = new GridRoad();
+        fourthGrid.setFourth(sortedRoad);
+    }
+
+    @Override
     public void update(TableData tableData){
-        setUp(tableData.data.historyArr);
+        historySetup(tableData.data.historyArr);
         groupType = tableData.data.groupType;
         round = tableData.data.historyArr.size();
         playCount = tableData.data.historyData.playerCount;
@@ -51,6 +62,7 @@ public class BacTable extends Table{
         super.update(tableData);
     }
 
+    /*
     public void setUp(List<Integer> arr){
         mainRoad = new ArrayList<>();
         sortedRoad = new ArrayList<>();
@@ -60,11 +72,10 @@ public class BacTable extends Table{
         secGrid = new GridRoad();
         secGrid.setSec(sortedRoad);
         thirdGrid = new GridRoad();
-
         thirdGrid.setThird(sortedRoad);
         fourthGrid = new GridRoad();
         fourthGrid.setFourth(sortedRoad);
-    }
+    }*/
 
     private void divide(int rawVal){
 

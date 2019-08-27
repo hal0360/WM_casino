@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Handler;
 import android.util.SparseIntArray;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -14,7 +15,7 @@ import tw.com.lixin.wm_casino.global.Poker;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
 
 
-public class Table {
+public abstract class Table {
 
     private TableBridge bridge;
     public int cardStatus = 0;
@@ -43,6 +44,8 @@ public class Table {
         bridge = null;
         isBinded  = false;
     }
+
+    public abstract void historySetup(List<Integer> histories);
 
     public void update(TableData data){
         handle(() -> bridge.gridUpdate());
