@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.dataModels.TableData;
+import tw.com.lixin.wm_casino.dataModels.gameData.Group;
 import tw.com.lixin.wm_casino.global.Road;
 
 public class BacTable extends Table{
-
 
     public boolean comission = false;
     public CoinStackData stackLeft, stackRight, stackBTL, stackBTR, stackTop, stackSuper;
@@ -15,8 +15,6 @@ public class BacTable extends Table{
     public int pokerWin = -1;
     public int maxBetVal;
     public int playerScore, bankerScore;
-
-
 
 
     public int bankCount = 1;
@@ -34,6 +32,10 @@ public class BacTable extends Table{
     private int preWin = 0;
     private int preRes = 0;
 
+    public BacTable(Group group) {
+        super(group);
+    }
+
     @Override
     public void historySetup(List<Integer> histories) {
         mainRoad = new ArrayList<>();
@@ -50,6 +52,38 @@ public class BacTable extends Table{
     }
 
     @Override
+    public void loginSetup(TableData.Data data) {
+        stackSuper = new CoinStackData();
+        stackTop = new CoinStackData();
+        stackBTR = new CoinStackData();
+        stackRight = new CoinStackData();
+        stackBTL = new CoinStackData();
+        stackLeft = new CoinStackData();
+        tableLeftScore = data.dtOdds.get(2);
+        tableRightScore = data.dtOdds.get(1);
+        tableBtlScore = data.dtOdds.get(5);
+        tableBtrScore = data.dtOdds.get(4);
+        tableTopScore = data.dtOdds.get(3);
+        stackLeft.maxValue = data.maxBet02;
+        stackBTL.maxValue = data.maxBet04;
+        stackRight.maxValue = data.maxBet01;
+        stackBTR.maxValue = data.maxBet04;
+        stackTop.maxValue = data.maxBet03;
+        stackSuper.maxValue = data.maxBet04;
+        maxBetVal = data.maxBet01;
+        if(maxBetVal < data.maxBet02) maxBetVal = data.maxBet02;
+        if(maxBetVal < data.maxBet03) maxBetVal = data.maxBet03;
+        if(maxBetVal < data.maxBet04) maxBetVal = data.maxBet04;
+    }
+
+    @Override
+    public void resultUpdate(TableData.Data data) {
+        //pokerWin = Move.divide(data.result);
+        playerScore = data.playerScore;
+        bankerScore = data.bankerScore;
+    }
+
+    @Override
     public void update(TableData tableData){
         historySetup(tableData.data.historyArr);
         groupType = tableData.data.groupType;
@@ -61,21 +95,6 @@ public class BacTable extends Table{
         bankPairCount = tableData.data.historyData.bankerPairCount;
         super.update(tableData);
     }
-
-    /*
-    public void setUp(List<Integer> arr){
-        mainRoad = new ArrayList<>();
-        sortedRoad = new ArrayList<>();
-        for(int val: arr) divide(val);
-        firstGrid = new GridRoad();
-        firstGrid.setFirst(sortedRoad);
-        secGrid = new GridRoad();
-        secGrid.setSec(sortedRoad);
-        thirdGrid = new GridRoad();
-        thirdGrid.setThird(sortedRoad);
-        fourthGrid = new GridRoad();
-        fourthGrid.setFourth(sortedRoad);
-    }*/
 
     private void divide(int rawVal){
 

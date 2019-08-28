@@ -11,6 +11,7 @@ import java.util.TimerTask;
 
 import tw.com.atromoby.utils.Cmd;
 import tw.com.lixin.wm_casino.dataModels.TableData;
+import tw.com.lixin.wm_casino.dataModels.gameData.Group;
 import tw.com.lixin.wm_casino.global.Poker;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
 
@@ -35,6 +36,18 @@ public abstract class Table {
     public int groupType;
     public SparseIntArray pokers = new SparseIntArray();
 
+    public Table(Group group){
+        historySetup(group.historyArr);
+        stage = group.gameStage;
+        groupID = group.groupID;
+        groupType = group.groupType;
+        score = group.bankerScore;
+        round = group.gameNoRound;
+        number = group.gameNo;
+        dealerName = group.dealerName;
+        dealerImageUrl = group.dealerImage;
+    }
+
     public void bind(TableBridge bridge){
       this.bridge = bridge;
         isBinded  = true;
@@ -46,6 +59,10 @@ public abstract class Table {
     }
 
     public abstract void historySetup(List<Integer> histories);
+
+    public abstract void loginSetup(TableData.Data data);
+
+    public abstract void resultUpdate(TableData.Data data);
 
     public void update(TableData data){
         handle(() -> bridge.gridUpdate());
@@ -63,7 +80,6 @@ public abstract class Table {
 
     public void cardUpdate(int area, int id){
         pokers.put(area,Poker.NUM(id ));
-        handle(() -> bridge.cardUpdate(area, Poker.NUM(id)));
     }
 
     public void startCountDown(int mille){

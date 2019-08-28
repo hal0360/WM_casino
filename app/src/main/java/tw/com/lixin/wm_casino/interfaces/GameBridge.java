@@ -5,4 +5,5 @@ public interface GameBridge {
     void balanceUpdate(float value);
     void betUpdate(boolean betOK);
     void tableLogin(boolean logOk);
+    void cardUpdate(int area, int img);
 }

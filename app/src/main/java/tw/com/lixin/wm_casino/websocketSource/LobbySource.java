@@ -1,6 +1,5 @@
 package tw.com.lixin.wm_casino.websocketSource;
 
-import android.util.SparseArray;
 import android.util.SparseIntArray;
 
 import java.util.ArrayList;
@@ -8,7 +7,6 @@ import java.util.ArrayList;
 import tw.com.atromoby.utils.Json;
 import tw.com.lixin.wm_casino.dataModels.LobbyData;
 import tw.com.lixin.wm_casino.dataModels.gameData.Game;
-import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
 
 
@@ -30,8 +28,6 @@ public class LobbySource extends CasinoSource{
     public ArrayList<Game> games;
     public SparseIntArray peopleOnline = new SparseIntArray();
 
-    public int gameID = -11;
-    public String gameName = "skull";
 
     public Game findGame(int id){
         for(Game game: games){

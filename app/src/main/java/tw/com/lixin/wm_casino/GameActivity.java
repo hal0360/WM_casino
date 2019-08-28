@@ -6,34 +6,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tw.com.atromoby.widgets.ItemsView;
+import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.holders.BacHolder;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.Table;
-import tw.com.lixin.wm_casino.websocketSource.BacSource;
+import tw.com.lixin.wm_casino.websocketSource.GameSource;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
 public class GameActivity extends WMActivity implements GameBridge, LobbyBridge {
 
     LobbySource lobbySource;
+    GameSource gameSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bac);
 
-        BacSource source = BacSource.getInstance();
-        LobbySource lobbySource = LobbySource.getInstance();
-        setTextView(R.id.game_title, lobbySource.gameName);
+        gameSource = GameSource.getInstance();
+        lobbySource = LobbySource.getInstance();
+
         ItemsView tableList = findViewById(R.id.table_list);
         List<BacHolder> holders = new ArrayList<>();
 
-        if(lobbySource.gameID == 101){
-            for(Table table: source.tables){
-                holders.add(new BacHolder((BacTable) table));
-            }
-        }else if(lobbySource.gameID == 102){
+        if(gameSource.gameID == 101){
+            setTextView(R.id.game_title, getString(R.string.wmbaccarat));
+            for(Table table: gameSource.tables) holders.add(new BacHolder((BacTable) table));
+        }else if(gameSource.gameID == 102){
 
         }else{
             alert("error!");
@@ -44,10 +45,42 @@ public class GameActivity extends WMActivity implements GameBridge, LobbyBridge 
         tableList.add(holders);
     }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        lobbySource.bind(this);
+        gameSource.bind(this);
+        if(!lobbySource.isConnected()){
+            loading();
+            lobbySource.login(User.sid(), data->{
+                unloading();
+            }, fail->{
+                alert("Connection lost");
+                unloading();
+                toActivity(LoginActivity.class);
+            });
+        }
+        if(!gameSource.isConnected()){
+            loading();
+            gameSource.login(User.sid(), data->{
+                unloading();
+            }, fail->{
+                alert("Connection lost");
+                unloading();
+                toActivity(LoginActivity.class);
+            });
+        }
+
+    }
+
+
     @Override
     public void tableLogin(boolean logOk) {
 
     }
+
 
     @Override
     public void balanceUpdate(float value) {
@@ -60,6 +93,9 @@ public class GameActivity extends WMActivity implements GameBridge, LobbyBridge 
     }
 
 //not used
+
+    @Override
+    public void cardUpdate(int area, int img) { }
     @Override
     public void resultUpadte() {}
     @Override

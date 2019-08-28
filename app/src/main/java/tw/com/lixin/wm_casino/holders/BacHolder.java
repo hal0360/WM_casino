@@ -61,6 +61,7 @@ public class BacHolder extends ItemHolder implements TableBridge {
             grid.drawRoad(table.firstGrid);
         });
 
+        table.bind(this);
     }
 
     @Override
@@ -73,10 +74,6 @@ public class BacHolder extends ItemHolder implements TableBridge {
 
     }
 
-    @Override
-    public void cardUpdate(int area, int img) {
-
-    }
 
     @Override
     public void gridUpdate() {
