@@ -1,17 +1,10 @@
 package tw.com.lixin.wm_casino.holders;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.os.AsyncTask;
 import android.support.constraint.ConstraintLayout;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.io.InputStream;
 
 import tw.com.atromoby.widgets.ItemHolder;
 import tw.com.lixin.wm_casino.R;
@@ -21,8 +14,11 @@ import tw.com.lixin.wm_casino.tools.CasinoGrid;
 
 public class BacHolder extends ItemHolder implements TableBridge {
 
-    public  BacTable table;
-    public  Bitmap bitmap;
+    private BacTable table;
+    private TextView countDown, dealing;
+    private ConstraintLayout block;
+    private CasinoGrid grid;
+
 
     public BacHolder(BacTable table) {
         super(R.layout.bac_item);
@@ -31,25 +27,19 @@ public class BacHolder extends ItemHolder implements TableBridge {
 
     @Override
     public void onBind() {
-        CasinoGrid grid = findViewById(R.id.road_grid);
-        ConstraintLayout block = findViewById(R.id.road_grid_block);
+        grid = findViewById(R.id.road_grid);
+        block = findViewById(R.id.road_grid_block);
         ImageView dealerImg = findViewById(R.id.dealer_img);
-        TextView countDown = findViewById(R.id.countdown_txt);
-        TextView dealing = findViewById(R.id.dealing_txt);
+        countDown = findViewById(R.id.countdown_txt);
+        dealing = findViewById(R.id.dealing_txt);
 
-        if(table.cardStatus == 1){
-            countDown.setVisibility(View.VISIBLE);
-            dealing.setVisibility(View.INVISIBLE);
-        }else{
-            countDown.setVisibility(View.INVISIBLE);
-            dealing.setVisibility(View.VISIBLE);
-        }
+        statusUpdate();
 
         Activity act = (Activity) getContex();
         setTextView(R.id.table_name_txt, act.getString(R.string.baccarat) + table.groupID);
         int bankTol = table.bankCount + table.bankPairCount;
         int playTol = table.playCount + table.playPairCount;
-        setTextView(R.id.win_rate_txt, act.getString(R.string.banker_score) + ":" + bankTol + act.getString(R.string.player_score) + ":" + playTol + act.getString(R.string.tie_score) + ":" + table.tieCount);
+        setTextView(R.id.win_rate_txt, act.getString(R.string.banker_abb) + ":" + bankTol + act.getString(R.string.player_abb) + ":" + playTol + act.getString(R.string.tie_abb) + ":" + table.tieCount);
         setTextView(R.id.dealername_txt, table.dealerName);
 
         if(table.dealerImage != null) dealerImg.setImageBitmap(table.dealerImage);
@@ -66,22 +56,30 @@ public class BacHolder extends ItemHolder implements TableBridge {
 
     @Override
     public void onRecycle() {
-
+        table.unBind();
     }
 
     @Override
     public void statusUpdate() {
-
+        if(table.cardStatus == 1){
+            countDown.setVisibility(View.VISIBLE);
+            dealing.setVisibility(View.INVISIBLE);
+            block.setVisibility(View.INVISIBLE);
+        }else{
+            countDown.setVisibility(View.INVISIBLE);
+            dealing.setVisibility(View.VISIBLE);
+            block.setVisibility(View.VISIBLE);
+        }
     }
 
 
     @Override
     public void gridUpdate() {
-
+        grid.drawRoad(table.firstGrid);
     }
 
     @Override
     public void betCountdown(int sec) {
-
+        countDown.setText(sec+"");
     }
 }

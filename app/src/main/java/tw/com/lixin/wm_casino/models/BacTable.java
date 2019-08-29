@@ -84,16 +84,14 @@ public class BacTable extends Table{
     }
 
     @Override
-    public void update(TableData tableData){
-        historySetup(tableData.data.historyArr);
-        groupType = tableData.data.groupType;
-        round = tableData.data.historyArr.size();
-        playCount = tableData.data.historyData.playerCount;
-        bankCount = tableData.data.historyData.bankerCount;
-        tieCount = tableData.data.historyData.tieCount;
-        playPairCount = tableData.data.historyData.playerPairCount;
-        bankPairCount = tableData.data.historyData.bankerPairCount;
-        super.update(tableData);
+    public void update(TableData.Data data){
+        round = data.historyArr.size();
+        playCount = data.historyData.playerCount;
+        bankCount = data.historyData.bankerCount;
+        tieCount = data.historyData.tieCount;
+        playPairCount = data.historyData.playerPairCount;
+        bankPairCount = data.historyData.bankerPairCount;
+        super.update(data);
     }
 
     private void divide(int rawVal){

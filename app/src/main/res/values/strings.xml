@@ -31,12 +31,17 @@
     <string name="settings">Settings</string>
     <string name="quit">Quit</string>
     <!-- Casino page -->
-    <string name="player_score">Player</string>
-    <string name="banker_score">Banker</string>
-    <string name="super_score">Super6</string>
-    <string name="tie_score">Tie</string>
-    <string name="player_pair_score">Player pair</string>
-    <string name="banker_pair_score">Banker pair</string>
+    <string name="player">Player</string>
+    <string name="banker">Banker</string>
+    <string name="super6">Super6</string>
+    <string name="tie">Tie</string>
+    <string name="player_pair">Player pair</string>
+    <string name="banker_pair">Banker pair</string>
+    <string name="player_abb">P</string>
+    <string name="banker_abb">B</string>
+    <string name="tie_abb">T</string>
     <!-- game page -->
     <string name="wmbaccarat">WMBaccarat</string>
+    <string name="baccarat_fast">Bac(fast)</string>
+    <string name="dealing">Dealing</string>
 </resources>

@@ -67,7 +67,7 @@ public class GameSource extends CasinoSource{
             if(tt != null)tt.cardUpdate(tableData.data.cardArea, tableData.data.cardID);
             if(tableData.data.groupID == groupID) handle(() -> bridge.cardUpdate(tableData.data.cardArea, tableData.data.cardID));
         }else if(tableData.protocol == 26){
-            if(tt != null)tt.update(tableData);
+            if(tt != null)tt.update(tableData.data);
         }else if(tableData.protocol == 38){
             if(tt != null)tt.startCountDown(tableData.data.timeMillisecond);
         }else if(tableData.protocol == 25){

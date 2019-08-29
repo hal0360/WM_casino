@@ -23,7 +23,7 @@ public class GameActivity extends WMActivity implements GameBridge, LobbyBridge 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bac);
+        setContentView(R.layout.activity_game);
 
         gameSource = GameSource.getInstance();
         lobbySource = LobbySource.getInstance();

@@ -1,6 +1,7 @@
 package tw.com.lixin.wm_casino;
 
 import android.os.Bundle;
+import android.view.View;
 
 import tw.com.atromoby.utils.Json;
 import tw.com.lixin.wm_casino.dataModels.Client35;
@@ -27,40 +28,29 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
         if(!isPortrait()) setTextView(R.id.online_ppl_txt, lobbySource.peopleOnline.get(109)+"");
         if(!isPortrait()) setTextView(R.id.balance_txt, User.balance() +"");
 
-        clicked(R.id.baccarat_game,v->{
-
-            GameSource gameSource = GameSource.getInstance();
-            loading();
-            gameSource.gameLogin(101,User.sid(),data->{
-                Game bacGame = lobbySource.findGame(101);
-                if(bacGame == null) return;
-                gameSource.tables.clear();
-                for(Group tableStage: bacGame.groupArr){
-                    if ( tableStage.gameStage != 4){
-                        gameSource.tables.add(new BacTable(tableStage));
-                    }
-                }
-                new ImageGetTask(this, gameSource.tables).execute();
-            }, fail->{
-                unloading();
-                alert("Unable to connect to bac");
-            });
-
-        });
-
-        clicked(R.id.roulette_game,v->{
-           // toActivity(BacActivity.class);
-        });
-
-        /*
-        clicked(R.id.dragon_tiger_game,v->{
-            BacSource bacSource = BacSource.getInstance();
-            for(BacTable table: bacSource.tables){
-                if(table.dealerImage != null) Log.e("dealerImage", "not null");
-                else Log.e("dealerImage", "is null");
-            }
-        });*/
     }
+
+    public void enterGame(View view){
+        int gameid = Integer.parseInt((String) view.getTag());
+        GameSource gameSource = GameSource.getInstance();
+        loading();
+        gameSource.gameLogin(gameid,User.sid(),data->{
+            Game bacGame = lobbySource.findGame(gameid);
+            if(bacGame == null) return;
+            gameSource.tables.clear();
+            for(Group tableStage: bacGame.groupArr){
+                if ( tableStage.gameStage != 4){
+                    if (gameid == 101) gameSource.tables.add(new BacTable(tableStage));
+                }
+            }
+            new ImageGetTask(this, gameSource.tables).execute();
+        }, fail->{
+            unloading();
+            alert("Unable to connect to game server");
+        });
+
+    }
+
 
     /*
     private void gameSetUp(GameSource source){

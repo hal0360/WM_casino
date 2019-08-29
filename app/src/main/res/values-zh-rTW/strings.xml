@@ -31,12 +31,17 @@
     <string name="settings">系統設置</string>
     <string name="quit">退出遊戲</string>
     <!-- Casino page -->
-    <string name="player_score">闲</string>
-    <string name="banker_score">庄</string>
-    <string name="super_score">超级6</string>
-    <string name="tie_score">和</string>
-    <string name="player_pair_score">闲对</string>
-    <string name="banker_pair_score">庄对</string>
+    <string name="player">閒</string>
+    <string name="banker">莊</string>
+    <string name="super6">超级6</string>
+    <string name="tie">和</string>
+    <string name="player_pair">閒對</string>
+    <string name="banker_pair">莊對</string>
+    <string name="player_abb">閒</string>
+    <string name="banker_abb">莊</string>
+    <string name="tie_abb">和</string>
     <!-- game page -->
-    <string name="wmbaccarat">百家樂</string>
+    <string name="wmbaccarat">WM百家樂</string>
+    <string name="baccarat_fast">快速百家樂</string>
+    <string name="dealing">開牌中</string>
 </resources>

@@ -10,6 +10,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import tw.com.atromoby.utils.Cmd;
+import tw.com.atromoby.utils.CountDown;
 import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.dataModels.gameData.Group;
 import tw.com.lixin.wm_casino.global.Poker;
@@ -24,6 +25,7 @@ public abstract class Table {
     private Timer timer = new Timer();
     public int curTime;
     private boolean isBinded = false;
+    private CountDown countDown = new CountDown();
 
     public Bitmap dealerImage;
     public String dealerImageUrl;
@@ -64,7 +66,9 @@ public abstract class Table {
 
     public abstract void resultUpdate(TableData.Data data);
 
-    public void update(TableData data){
+    public void update(TableData.Data data){
+        historySetup(data.historyArr);
+        groupType = data.groupType;
         handle(() -> bridge.gridUpdate());
     }
 
@@ -83,15 +87,15 @@ public abstract class Table {
     }
 
     public void startCountDown(int mille){
-        curTime = mille/1000;
-        timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                curTime--;
-                handle(() -> bridge.betCountdown(curTime));
-            }
-        }, 1000, curTime);
+
+        handle(()->{
+            countDown.start(mille, s->{
+               // handle(() -> bridge.betCountdown(s));
+                bridge.betCountdown(s);
+            });
+        });
+
+
     }
 
     public void handle(Cmd cmd){
