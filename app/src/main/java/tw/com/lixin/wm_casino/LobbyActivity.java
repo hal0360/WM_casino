@@ -31,18 +31,11 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
     }
 
     public void enterGame(View view){
+        loading();
         int gameid = Integer.parseInt((String) view.getTag());
         GameSource gameSource = GameSource.getInstance();
-        loading();
+        gameSource.addTables(gameid);
         gameSource.gameLogin(gameid,User.sid(),data->{
-            Game bacGame = lobbySource.findGame(gameid);
-            if(bacGame == null) return;
-            gameSource.tables.clear();
-            for(Group tableStage: bacGame.groupArr){
-                if ( tableStage.gameStage != 4){
-                    if (gameid == 101) gameSource.tables.add(new BacTable(tableStage));
-                }
-            }
             new ImageGetTask(this, gameSource.tables).execute();
         }, fail->{
             unloading();

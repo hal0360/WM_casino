@@ -15,9 +15,10 @@ import tw.com.lixin.wm_casino.tools.CasinoGrid;
 public class BacHolder extends ItemHolder implements TableBridge {
 
     private BacTable table;
-    private TextView countDown, dealing;
+    private TextView countDown, dealing, waiting;
     private ConstraintLayout block;
     private CasinoGrid grid;
+    private ImageView cardImg;
 
 
     public BacHolder(BacTable table) {
@@ -32,11 +33,13 @@ public class BacHolder extends ItemHolder implements TableBridge {
         ImageView dealerImg = findViewById(R.id.dealer_img);
         countDown = findViewById(R.id.countdown_txt);
         dealing = findViewById(R.id.dealing_txt);
-
+        waiting = findViewById(R.id.waiting_txt);
+        cardImg = findViewById(R.id.card_img);
         statusUpdate();
-
+        table.bind(this);
         Activity act = (Activity) getContex();
-        setTextView(R.id.table_name_txt, act.getString(R.string.baccarat) + table.groupID);
+        if(table.groupType == 5) setTextView(R.id.table_name_txt, act.getString(R.string.baccarat_fast) + table.groupID);
+        else setTextView(R.id.table_name_txt, act.getString(R.string.baccarat) + table.groupID);
         int bankTol = table.bankCount + table.bankPairCount;
         int playTol = table.playCount + table.playPairCount;
         setTextView(R.id.win_rate_txt, act.getString(R.string.banker_abb) + ":" + bankTol + act.getString(R.string.player_abb) + ":" + playTol + act.getString(R.string.tie_abb) + ":" + table.tieCount);
@@ -49,9 +52,8 @@ public class BacHolder extends ItemHolder implements TableBridge {
             int wGrid = (int) Math.round(grid.getMeasuredWidth()/dim);
             grid.setGrid(wGrid, 6);
             grid.drawRoad(table.firstGrid);
-        });
 
-        table.bind(this);
+        });
     }
 
     @Override
@@ -64,10 +66,22 @@ public class BacHolder extends ItemHolder implements TableBridge {
         if(table.cardStatus == 1){
             countDown.setVisibility(View.VISIBLE);
             dealing.setVisibility(View.INVISIBLE);
+            waiting.setVisibility(View.INVISIBLE);
             block.setVisibility(View.INVISIBLE);
-        }else{
+            countDown.setText(table.curTime + "");
+        }else {
+            if(table.cardStatus == 2){
+                setTextView(R.id.status_txt, getContex().getString(R.string.dealing));
+                cardImg.setImageResource(R.drawable.card_dealing);
+                waiting.setVisibility(View.INVISIBLE);
+                dealing.setVisibility(View.VISIBLE);
+            }else{
+                setTextView(R.id.status_txt, getContex().getString(R.string.waiting));
+                cardImg.setImageResource(R.drawable.card_waiting);
+                waiting.setVisibility(View.VISIBLE);
+                dealing.setVisibility(View.INVISIBLE);
+            }
             countDown.setVisibility(View.INVISIBLE);
-            dealing.setVisibility(View.VISIBLE);
             block.setVisibility(View.VISIBLE);
         }
     }

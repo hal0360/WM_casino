@@ -6,9 +6,12 @@ import java.util.List;
 import tw.com.atromoby.utils.Json;
 import tw.com.lixin.wm_casino.dataModels.Client10;
 import tw.com.lixin.wm_casino.dataModels.TableData;
+import tw.com.lixin.wm_casino.dataModels.gameData.Game;
+import tw.com.lixin.wm_casino.dataModels.gameData.Group;
 import tw.com.lixin.wm_casino.interfaces.CmdLog;
 import tw.com.lixin.wm_casino.interfaces.CmdStr;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
+import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.Table;
 
 public class GameSource extends CasinoSource{
@@ -26,6 +29,17 @@ public class GameSource extends CasinoSource{
     public Table table;
     public List<Table> tables = new ArrayList<>();
     private GameBridge bridge;
+
+    public void addTables(int gameid){
+        Game bacGame = LobbySource.getInstance().findGame(gameid);
+        if(bacGame == null) return;
+        tables.clear();
+        for(Group tableStage: bacGame.groupArr){
+            if ( tableStage.gameStage != 4){
+                if (gameid == 101) tables.add(new BacTable(tableStage));
+            }
+        }
+    }
 
     private Table findTable(int id){
         for(Table tTable: tables) if(id == tTable.groupID) return tTable;
