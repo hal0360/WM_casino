@@ -45,4 +45,5 @@
     <string name="baccarat_fast">Bac(fast)</string>
     <string name="dealing">Dealing</string>
     <string name="waiting">Waiting</string>
+    <string name="back_to_lobby">BACK</string>
 </resources>

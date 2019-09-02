@@ -78,8 +78,8 @@
                 android:id="@+id/textView"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginLeft="25dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
                 android:singleLine="true"
                 android:text="Ron Lu"
                 android:textColor="#33ADEC"
@@ -119,11 +119,10 @@
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/setting_btn"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
             android:background="@drawable/white_circle"
             android:scaleType="fitXY"
             app:layout_constraintStart_toStartOf="parent"
@@ -898,28 +897,34 @@
 
     </ScrollView>
 
-    <ImageView
-        android:id="@+id/imageView17"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/music_button"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/music_on"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/scrollView3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.89"
-        app:srcCompat="@drawable/music_on" />
+        app:layout_constraintVertical_bias="0.9">
 
-    <TextView
-        android:id="@+id/music_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="13dp"
-        android:textColor="#fff"
-        android:text="ON"
-        app:layout_constraintEnd_toEndOf="@+id/imageView17"
-        app:layout_constraintStart_toStartOf="@+id/imageView17"
-        app:layout_constraintTop_toBottomOf="@+id/imageView17"
-        tools:ignore="HardcodedText" />
+        <TextView
+            android:id="@+id/music_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginBottom="1dp"
+            android:text="OFF"
+            android:textColor="#fff"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>
