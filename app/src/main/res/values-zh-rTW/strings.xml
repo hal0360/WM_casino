@@ -46,4 +46,5 @@
     <string name="dealing">開牌中</string>
     <string name="waiting">換牌中</string>
     <string name="back_to_lobby">回大廳</string>
+    <string name="gyu_shu">局數</string>
 </resources>

@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="545dp"
     android:layout_height="110dp"
+    android:layout_marginBottom="10dp"
     tools:ignore="SpUsage,UnusedAttribute"
-    android:background="#000">
-
+    android:background="@drawable/bac_gradiant">
 
     <ImageView
         android:id="@+id/dealer_img"
@@ -35,12 +35,25 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:text="@string/baccarat"
         android:textColor="#fff"
         android:textSize="12dp"
         app:layout_constraintStart_toEndOf="@+id/dealer_img"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/gyu_shu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="3dp"
+        android:text="@string/gyu_shu"
+        android:textColor="#fff"
+        android:textSize="11dp"
+        app:layout_constraintStart_toEndOf="@+id/dealer_img"
+        app:layout_constraintTop_toBottomOf="@+id/table_name_txt" />
 
     <TextView
         android:id="@+id/bank_rate"
@@ -185,7 +198,7 @@
         app:layout_constraintTop_toTopOf="@+id/play_percent" />
 
     <tw.com.lixin.wm_casino.tools.CasinoGrid
-        android:id="@+id/casinoGrid"
+        android:id="@+id/main_grid"
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:layout_marginStart="12dp"
@@ -198,63 +211,90 @@
     </tw.com.lixin.wm_casino.tools.CasinoGrid>
 
     <tw.com.lixin.wm_casino.tools.CasinoGrid
-        android:id="@+id/casinoGrid2"
+        android:id="@+id/second_grid"
         android:layout_width="105dp"
         android:layout_height="30dp"
         android:layout_marginTop="5dp"
         android:background="#fff"
-        app:layout_constraintStart_toStartOf="@+id/casinoGrid"
-        app:layout_constraintTop_toBottomOf="@+id/casinoGrid">
+        app:layout_constraintStart_toStartOf="@+id/main_grid"
+        app:layout_constraintTop_toBottomOf="@+id/main_grid">
 
     </tw.com.lixin.wm_casino.tools.CasinoGrid>
 
     <tw.com.lixin.wm_casino.tools.CasinoGrid
-        android:id="@+id/casinoGrid3"
+        android:id="@+id/third_grid"
         android:layout_width="105dp"
         android:layout_height="30dp"
         android:layout_marginStart="3dp"
         android:layout_marginLeft="3dp"
         android:background="#fff"
-        app:layout_constraintStart_toEndOf="@+id/casinoGrid2"
-        app:layout_constraintTop_toTopOf="@+id/casinoGrid2">
+        app:layout_constraintStart_toEndOf="@+id/second_grid"
+        app:layout_constraintTop_toTopOf="@+id/second_grid">
 
     </tw.com.lixin.wm_casino.tools.CasinoGrid>
 
     <tw.com.lixin.wm_casino.tools.CasinoGrid
-        android:id="@+id/casinoGrid4"
+        android:id="@+id/fourth_grid"
         android:layout_width="105dp"
         android:layout_height="30dp"
         android:layout_marginStart="3dp"
         android:layout_marginLeft="3dp"
         android:background="#fff"
-        app:layout_constraintStart_toEndOf="@+id/casinoGrid3"
-        app:layout_constraintTop_toTopOf="@+id/casinoGrid3">
+        app:layout_constraintStart_toEndOf="@+id/third_grid"
+        app:layout_constraintTop_toTopOf="@+id/third_grid">
 
     </tw.com.lixin.wm_casino.tools.CasinoGrid>
 
     <tw.com.lixin.wm_casino.tools.CasinoGrid
+        android:id="@+id/first_grid"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="3dp"
         android:layout_marginLeft="3dp"
         android:layout_marginTop="8dp"
         android:background="#fff"
-        app:layout_constraintEnd_toEndOf="@+id/casinoGrid4"
-        app:layout_constraintStart_toEndOf="@+id/casinoGrid"
+        app:layout_constraintEnd_toEndOf="@+id/fourth_grid"
+        app:layout_constraintStart_toEndOf="@+id/main_grid"
         app:layout_constraintTop_toTopOf="parent">
 
     </tw.com.lixin.wm_casino.tools.CasinoGrid>
 
     <TextView
-        android:id="@+id/textView18"
-        android:layout_width="47dp"
-        android:layout_height="11dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/dealer_img"
-        app:layout_constraintTop_toBottomOf="@+id/table_name_txt" />
+        android:id="@+id/waiting_txt"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginRight="7dp"
+        app:layout_constraintEnd_toStartOf="@+id/main_grid"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/card_waiting" />
 
+    <TextView
+        android:id="@+id/dealing_txt"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginRight="7dp"
+        app:layout_constraintEnd_toStartOf="@+id/main_grid"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/card_dealing" />
+
+    <TextView
+        android:id="@+id/countdown_txt"
+        android:background="@drawable/red_circle"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginRight="7dp"
+        android:text="34"
+        android:gravity="center"
+        android:textSize="16dp"
+        android:textColor="#fff"
+        app:layout_constraintEnd_toStartOf="@+id/main_grid"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
 </android.support.constraint.ConstraintLayout>

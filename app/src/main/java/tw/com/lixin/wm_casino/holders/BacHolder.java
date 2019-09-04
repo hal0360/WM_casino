@@ -17,8 +17,8 @@ public class BacHolder extends ItemHolder implements TableBridge {
     private BacTable table;
     private TextView countDown, dealing, waiting;
     private ConstraintLayout block;
-    private CasinoGrid grid;
     private ImageView cardImg;
+    private CasinoGrid mainGrid, firstGrid, secondGrid, thirdGrid, fourthGrid;
 
 
     public BacHolder(BacTable table) {
@@ -28,7 +28,51 @@ public class BacHolder extends ItemHolder implements TableBridge {
 
     @Override
     public void onBind() {
-        grid = findViewById(R.id.road_grid);
+
+        firstGrid = findViewById(R.id.first_grid);
+        if(isPortrait()){
+            firstGrid.post(this::setFirstGrid);
+        }else {
+            mainGrid = findViewById(R.id.main_grid);
+            secondGrid = findViewById(R.id.second_grid);
+            thirdGrid = findViewById(R.id.third_grid);
+            fourthGrid = findViewById(R.id.fourth_grid);
+
+            mainGrid.post(() -> {
+                double dim = mainGrid.getMeasuredHeight() / 6.0;
+                mainGrid.getLayoutParams().width = (int) Math.round(dim * 14);
+                mainGrid.setGrid(14, 6);
+                int indexx = 0;
+                for (int x = 0; x < mainGrid.width; x++) {
+                    for (int y = 0; y < mainGrid.height; y++) {
+                        if (indexx >= table.mainRoad.size()) return;
+                        mainGrid.insertImage(x, y, table.mainRoad.get(indexx));
+                        indexx++;
+                    }
+                }
+                setFirstGrid();
+            });
+            secondGrid.post(() -> {
+                double dim = secondGrid.getMeasuredHeight() / 3.0;
+                int wGrid = (int) Math.round(secondGrid.getMeasuredWidth()/dim);
+                secondGrid.setGridDouble(wGrid, 3);
+                secondGrid.drawRoad(table.secGrid);
+            });
+            thirdGrid.post(() -> {
+                double dim = thirdGrid.getMeasuredHeight() / 3.0;
+                int wGrid = (int) Math.round(thirdGrid.getMeasuredWidth()/dim);
+                thirdGrid.setGridDouble(wGrid, 3);
+                thirdGrid.drawRoad(table.thirdGrid);
+            });
+            fourthGrid.post(() -> {
+                double dim = fourthGrid.getMeasuredHeight() / 3.0;
+                int wGrid = (int) Math.round(fourthGrid.getMeasuredWidth()/dim);
+                fourthGrid.setGridDouble(wGrid, 3);
+                fourthGrid.drawRoad(table.fourthGrid);
+            });
+        }
+
+
         block = findViewById(R.id.road_grid_block);
         ImageView dealerImg = findViewById(R.id.dealer_img);
         countDown = findViewById(R.id.countdown_txt);
@@ -47,13 +91,14 @@ public class BacHolder extends ItemHolder implements TableBridge {
 
         if(table.dealerImage != null) dealerImg.setImageBitmap(table.dealerImage);
 
-        grid.post(() -> {
-            double dim = grid.getMeasuredHeight() / 6.0;
-            int wGrid = (int) Math.round(grid.getMeasuredWidth()/dim);
-            grid.setGrid(wGrid, 6);
-            grid.drawRoad(table.firstGrid);
 
-        });
+    }
+
+    private void setFirstGrid(){
+        double dim = firstGrid.getMeasuredHeight() / 6.0;
+        int wGrid = (int) Math.round(firstGrid.getMeasuredWidth()/dim);
+        firstGrid.setGrid(wGrid, 6);
+        firstGrid.drawRoad(table.firstGrid);
     }
 
     @Override
@@ -89,7 +134,7 @@ public class BacHolder extends ItemHolder implements TableBridge {
 
     @Override
     public void gridUpdate() {
-        grid.drawRoad(table.firstGrid);
+       // grid.drawRoad(table.firstGrid);
     }
 
     @Override

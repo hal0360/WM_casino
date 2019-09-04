@@ -107,7 +107,7 @@
         tools:ignore="ContentDescription" />
 
     <tw.com.lixin.wm_casino.tools.CasinoGrid
-        android:id="@+id/road_grid"
+        android:id="@+id/first_grid"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="6dp"
