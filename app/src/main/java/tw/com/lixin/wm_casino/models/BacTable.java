@@ -85,7 +85,6 @@ public class BacTable extends Table{
 
     @Override
     public void update(TableData.Data data){
-        round = data.historyArr.size();
         playCount = data.historyData.playerCount;
         bankCount = data.historyData.bankerCount;
         tieCount = data.historyData.tieCount;

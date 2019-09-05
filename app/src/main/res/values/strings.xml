@@ -37,9 +37,9 @@
     <string name="tie">Tie</string>
     <string name="player_pair">Player pair</string>
     <string name="banker_pair">Banker pair</string>
-    <string name="player_abb">P</string>
-    <string name="banker_abb">B</string>
-    <string name="tie_abb">T</string>
+    <string name="player_abb">P:</string>
+    <string name="banker_abb">B:</string>
+    <string name="tie_abb">T:</string>
     <!-- game page -->
     <string name="wmbaccarat">WMBaccarat</string>
     <string name="baccarat_fast">Bac(fast)</string>

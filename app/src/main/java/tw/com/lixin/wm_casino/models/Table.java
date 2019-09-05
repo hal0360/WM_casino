@@ -65,6 +65,7 @@ public abstract class Table {
     public abstract void resultUpdate(TableData.Data data);
 
     public void update(TableData.Data data){
+        round = data.historyArr.size();
         historySetup(data.historyArr);
         groupType = data.groupType;
         handle(() -> bridge.gridUpdate());

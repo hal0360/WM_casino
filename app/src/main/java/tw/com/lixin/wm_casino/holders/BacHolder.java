@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import tw.com.atromoby.widgets.ItemHolder;
@@ -30,14 +31,30 @@ public class BacHolder extends ItemHolder implements TableBridge {
     public void onBind() {
 
         firstGrid = findViewById(R.id.first_grid);
+
         if(isPortrait()){
-            firstGrid.post(this::setFirstGrid);
+            firstGrid.setGrid(13, 6);
         }else {
             mainGrid = findViewById(R.id.main_grid);
             secondGrid = findViewById(R.id.second_grid);
             thirdGrid = findViewById(R.id.third_grid);
             fourthGrid = findViewById(R.id.fourth_grid);
+            mainGrid.setGrid(14, 6);
+            firstGrid.setGrid(16, 6);
+            secondGrid.setGridDouble(10, 3);
+            thirdGrid.setGridDouble(10, 3);
+            fourthGrid.setGridDouble(10, 3);
 
+
+
+            ProgressBar bankPro = findViewById(R.id.bank_progress);
+
+            bankPro.setMax(50);
+            bankPro.setProgress(20);
+
+
+
+            /*
             mainGrid.post(() -> {
                 double dim = mainGrid.getMeasuredHeight() / 6.0;
                 mainGrid.getLayoutParams().width = (int) Math.round(dim * 14);
@@ -69,10 +86,16 @@ public class BacHolder extends ItemHolder implements TableBridge {
                 int wGrid = (int) Math.round(fourthGrid.getMeasuredWidth()/dim);
                 fourthGrid.setGridDouble(wGrid, 3);
                 fourthGrid.drawRoad(table.fourthGrid);
-            });
+            });*/
+
         }
 
+        ImageView dealerImg = findViewById(R.id.dealer_img);
+        setTextView(R.id.dealername_txt, table.dealerName);
+        if(table.dealerImage != null) dealerImg.setImageBitmap(table.dealerImage);
+        setTextView(R.id.table_no, table.groupID+"");
 
+        /*
         block = findViewById(R.id.road_grid_block);
         ImageView dealerImg = findViewById(R.id.dealer_img);
         countDown = findViewById(R.id.countdown_txt);
@@ -90,7 +113,7 @@ public class BacHolder extends ItemHolder implements TableBridge {
         setTextView(R.id.dealername_txt, table.dealerName);
 
         if(table.dealerImage != null) dealerImg.setImageBitmap(table.dealerImage);
-
+*/
 
     }
 
@@ -98,7 +121,6 @@ public class BacHolder extends ItemHolder implements TableBridge {
         double dim = firstGrid.getMeasuredHeight() / 6.0;
         int wGrid = (int) Math.round(firstGrid.getMeasuredWidth()/dim);
         firstGrid.setGrid(wGrid, 6);
-        firstGrid.drawRoad(table.firstGrid);
     }
 
     @Override
@@ -134,7 +156,37 @@ public class BacHolder extends ItemHolder implements TableBridge {
 
     @Override
     public void gridUpdate() {
-       // grid.drawRoad(table.firstGrid);
+        int bankTol = table.bankCount + table.bankPairCount;
+        int playTol = table.playCount + table.playPairCount;
+        if(!isPortrait()){
+            int indexx = 0;
+            for (int x = 0; x < mainGrid.width; x++) {
+                for (int y = 0; y < mainGrid.height; y++) {
+                    if (indexx >= table.mainRoad.size()) return;
+                    mainGrid.insertImage(x, y, table.mainRoad.get(indexx));
+                    indexx++;
+                }
+            }
+            secondGrid.drawRoad(table.secGrid);
+            thirdGrid.drawRoad(table.thirdGrid);
+            fourthGrid.drawRoad(table.fourthGrid);
+            int bankPer = bankTol*100/table.round;
+            int playPer = playTol*100/table.round;
+            int tiePer = 100 - bankPer - playPer;
+            setTextView(R.id.bank_percent, bankPer+"");
+            setTextView(R.id.play_percent, playPer+"");
+            setTextView(R.id.tie_percent, tiePer+"");
+            ProgressBar bankPro = findViewById(R.id.bank_progress);
+            bankPro.setProgress(bankPer);
+            ProgressBar playPro = findViewById(R.id.play_progress);
+            playPro.setProgress(playPer);
+            ProgressBar tiePro = findViewById(R.id.tie_progress);
+            tiePro.setProgress(tiePer);
+        }
+        firstGrid.drawRoad(table.firstGrid);
+        setTextView(R.id.bank_rate, table.bankCount + table.bankPairCount + "");
+        setTextView(R.id.play_rate, table.playCount + table.playPairCount + "");
+        setTextView(R.id.tie_rate, table.tieCount + "");
     }
 
     @Override

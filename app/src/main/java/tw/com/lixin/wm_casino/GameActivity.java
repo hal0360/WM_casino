@@ -32,7 +32,7 @@ public class GameActivity extends WMActivity implements GameBridge, LobbyBridge 
         List<BacHolder> holders = new ArrayList<>();
 
         if(gameSource.gameID == 101){
-            setTextView(R.id.game_title, getString(R.string.wmbaccarat));
+//            setTextView(R.id.game_title, getString(R.string.wmbaccarat));
             for(Table table: gameSource.tables) holders.add(new BacHolder((BacTable) table));
         }else if(gameSource.gameID == 102){
 
@@ -57,7 +57,7 @@ public class GameActivity extends WMActivity implements GameBridge, LobbyBridge 
             lobbySource.login(User.sid(), data->{
                 unloading();
             }, fail->{
-                alert("Connection lost");
+                alert("lobby connection lost");
                 unloading();
                 toActivity(LoginActivity.class);
             });
@@ -67,7 +67,7 @@ public class GameActivity extends WMActivity implements GameBridge, LobbyBridge 
             gameSource.login(User.sid(), data->{
                 unloading();
             }, fail->{
-                alert("Connection lost");
+                alert(" Game connection lost");
                 unloading();
                 toActivity(LoginActivity.class);
             });
