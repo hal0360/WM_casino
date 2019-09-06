@@ -96,4 +96,10 @@ public class LoginActivity extends WMActivity {
         Objects.requireNonNull(LangSwitch.get(getLocale())).exec(findViewById(R.id.lang_btn));
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        popup.dismiss();
+    }
+
 }

@@ -17,11 +17,11 @@ public class BacTable extends Table{
     public int playerScore, bankerScore;
 
 
-    public int bankCount = 1;
-    public int playCount = 1;
-    public int tieCount = 1;
-    public int bankPairCount = 1;
-    public int playPairCount = 1;
+    public int bankCount = 0;
+    public int playCount = 0;
+    public int tieCount = 0;
+    public int bankPairCount = 0;
+    public int playPairCount = 0;
     public List<List<Integer>> sortedRoad;
     public List<Integer> mainRoad;
     public GridRoad firstGrid;

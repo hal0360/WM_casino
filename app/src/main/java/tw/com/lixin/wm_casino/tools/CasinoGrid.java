@@ -1,8 +1,13 @@
 package tw.com.lixin.wm_casino.tools;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
+import android.text.InputType;
+import android.text.method.PasswordTransformationMethod;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -27,6 +32,17 @@ public class CasinoGrid extends TableLayout {
     {
         super(context, attrs);
         this.context = context;
+        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CasinoGrid, 0, 0);
+        int gridX, gridY;
+        boolean isDouble = a.getBoolean(R.styleable.CasinoGrid_grid_double,false);
+        gridY = a.getInt(R.styleable.CasinoGrid_grid_y,0);
+        gridX = a.getInt(R.styleable.CasinoGrid_grid_x, 0);
+        a.recycle();
+        if(isDouble){
+            iniGridDouble(gridX, gridY);
+        }else{
+            iniGrid(gridX, gridY);
+        }
     }
 
     public void drawRoad(GridRoad road){
@@ -124,9 +140,7 @@ public class CasinoGrid extends TableLayout {
         }
     }
 
-    public void setGrid(int x, int y){
-
-        this.removeAllViews();
+    private void iniGrid(int x, int y){
         width = x;
         height = y;
         viewGrid = new View[x][y];
@@ -151,9 +165,12 @@ public class CasinoGrid extends TableLayout {
         }
     }
 
-    public void setGridDouble(int x, int y){
-
+    public void setGrid(int x, int y){
         this.removeAllViews();
+        iniGrid(x,y);
+    }
+
+    private void iniGridDouble(int x, int y){
         width = x*2;
         height = y*2;
         viewGrid = new View[width][height];
@@ -190,5 +207,10 @@ public class CasinoGrid extends TableLayout {
             }
             this.addView(tr_head);
         }
+    }
+
+    public void setGridDouble(int x, int y){
+        this.removeAllViews();
+        iniGridDouble(x,y);
     }
 }

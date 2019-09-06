@@ -35,7 +35,7 @@ public class GameSource extends CasinoSource{
         if(bacGame == null) return;
         tables.clear();
         for(Group tableStage: bacGame.groupArr){
-            if ( tableStage.gameStage != 4){
+            if ( tableStage.gameStage != 4 && !tableStage.dealerImage.equals("")){
                 if (gameid == 101) tables.add(new BacTable(tableStage));
             }
         }

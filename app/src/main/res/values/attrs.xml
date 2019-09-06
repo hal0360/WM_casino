@@ -1,0 +1,10 @@
+<resources>
+
+    <declare-styleable name="CasinoGrid">
+        <attr name="grid_y" format="integer" />
+        <attr name="grid_x" format="integer" />
+        <attr name="grid_double" format="boolean" />
+    </declare-styleable>
+
+
+</resources>

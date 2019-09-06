@@ -10,10 +10,9 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout454"
-        android:layout_width="0dp"
+        android:layout_width="360dp"
         android:layout_height="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -27,14 +26,15 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
 
         <ImageView
             android:id="@+id/setting_btn"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginRight="1dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -44,7 +44,7 @@
     <ScrollView
         android:layout_width="360dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/oragin_bg"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,10 +58,10 @@
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/dragon_tiger_game"
-                android:tag="102"
-                android:onClick="enterGame"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
+                android:onClick="enterGame"
+                android:tag="102"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -124,12 +124,12 @@
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/baccarat_game"
-                android:tag="101"
-                android:onClick="enterGame"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginRight="15dp"
+                android:onClick="enterGame"
+                android:tag="101"
                 app:layout_constraintEnd_toStartOf="@+id/dragon_tiger_game"
                 app:layout_constraintTop_toTopOf="@+id/dragon_tiger_game">
 
@@ -189,12 +189,12 @@
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/niuniu_game"
-                android:tag="105"
-                android:onClick="enterGame"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginLeft="15dp"
+                android:onClick="enterGame"
+                android:tag="105"
                 app:layout_constraintStart_toEndOf="@+id/dragon_tiger_game"
                 app:layout_constraintTop_toTopOf="@+id/dragon_tiger_game">
 
@@ -254,11 +254,11 @@
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/golden_flower_game"
-                android:tag="111"
-                android:onClick="enterGame"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_marginTop="25dp"
+                android:onClick="enterGame"
+                android:tag="111"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dragon_tiger_game">
@@ -320,12 +320,12 @@
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/samgong_game"
-                android:tag="106"
-                android:onClick="enterGame"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginRight="15dp"
+                android:onClick="enterGame"
+                android:tag="106"
                 app:layout_constraintEnd_toStartOf="@+id/golden_flower_game"
                 app:layout_constraintTop_toTopOf="@+id/golden_flower_game">
 
@@ -386,12 +386,12 @@
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/roulette_game"
-                android:tag="103"
-                android:onClick="enterGame"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginLeft="15dp"
+                android:onClick="enterGame"
+                android:tag="103"
                 app:layout_constraintStart_toEndOf="@+id/golden_flower_game"
                 app:layout_constraintTop_toTopOf="@+id/golden_flower_game">
 
@@ -452,11 +452,11 @@
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/fantan_game"
-                android:tag="107"
-                android:onClick="enterGame"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_marginTop="25dp"
+                android:onClick="enterGame"
+                android:tag="107"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/golden_flower_game">
@@ -518,12 +518,12 @@
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/sic_bo_game"
-                android:tag="104"
-                android:onClick="enterGame"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginRight="15dp"
+                android:onClick="enterGame"
+                android:tag="104"
                 app:layout_constraintEnd_toStartOf="@+id/fantan_game"
                 app:layout_constraintTop_toTopOf="@+id/fantan_game">
 
@@ -584,12 +584,12 @@
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/fish_prawn_game"
-                android:tag="110"
-                android:onClick="enterGame"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginLeft="15dp"
+                android:onClick="enterGame"
+                android:tag="110"
                 app:layout_constraintStart_toEndOf="@+id/fantan_game"
                 app:layout_constraintTop_toTopOf="@+id/fantan_game">
 

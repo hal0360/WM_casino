@@ -58,11 +58,6 @@ public class LobbySource extends CasinoSource{
                 break;
             case 34:
                 peopleOnline.append(lobbyData.data.gameID,lobbyData.data.onlinePeople);
-                if(lobbyData.data.gameID == 109){
-                   // totalOnline = lobbyData.data.onlinePeople;
-                }else if(lobbyData.data.gameID == 101){
-                   // bacOnline = lobbyData.data.onlinePeople;
-                }
                 handle(()-> bridge.peopleOnlineUpdate(lobbyData.data.gameID, lobbyData.data.onlinePeople));
                 break;
         }
