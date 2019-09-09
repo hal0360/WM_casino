@@ -39,6 +39,8 @@
     <string name="banker_pair">Banker pair</string>
     <string name="player_abb">P:</string>
     <string name="banker_abb">B:</string>
+    <string name="player_pair_abb">PP:</string>
+    <string name="banker_pair_abb">BP:</string>
     <string name="tie_abb">T:</string>
     <!-- game page -->
     <string name="wmbaccarat">WMBaccarat</string>

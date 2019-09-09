@@ -39,6 +39,8 @@
     <string name="banker_pair">庄对</string>
     <string name="player_abb">闲:</string>
     <string name="banker_abb">庄:</string>
+    <string name="player_pair_abb">闲对:</string>
+    <string name="banker_pair_abb">庄对:</string>
     <string name="tie_abb">和:</string>
     <!-- game page -->
     <string name="wmbaccarat">WM百家乐</string>
