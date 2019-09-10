@@ -6,5 +6,9 @@
         <attr name="grid_double" format="boolean" />
     </declare-styleable>
 
-
+    <declare-styleable name="ChipView">
+        <attr name="value" format="integer" />
+        <attr name="chip_image" format="integer" />
+        <attr name="is_on" format="boolean" />
+    </declare-styleable>
 </resources>

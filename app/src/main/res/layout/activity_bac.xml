@@ -43,45 +43,46 @@
 
     <tw.com.lixin.wm_casino.tools.CasinoGrid
         android:id="@+id/main_grid"
-        android:layout_width="160dp"
-        android:layout_height="68dp"
+        android:layout_width="159dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="1dp"
         android:background="#fff"
         android:divider="@drawable/table_divider"
         android:showDividers="middle"
         app:grid_x="14"
         app:grid_y="6"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayout454">
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout454"
+        app:layout_constraintTop_toBottomOf="@+id/first_grid">
 
 
     </tw.com.lixin.wm_casino.tools.CasinoGrid>
 
     <tw.com.lixin.wm_casino.tools.CasinoGrid
         android:id="@+id/third_grid"
-        android:layout_width="80dp"
-        android:layout_height="33.5dp"
-        android:layout_marginStart="0.5dp"
-        android:layout_marginLeft="0.5dp"
+        android:layout_width="79dp"
+        android:layout_height="32.5dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
         android:background="#fff"
         android:divider="@drawable/table_divider"
         android:showDividers="middle"
         app:grid_x="7"
         app:grid_y="3"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/main_grid"
         app:layout_constraintStart_toEndOf="@+id/main_grid" />
 
     <tw.com.lixin.wm_casino.tools.CasinoGrid
         android:id="@+id/fourth_grid"
-        android:layout_width="80dp"
-        android:layout_height="33.5dp"
-        android:layout_marginStart="0.5dp"
-        android:layout_marginLeft="0.5dp"
+        android:layout_width="79dp"
+        android:layout_height="32.5dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
         android:background="#fff"
         android:divider="@drawable/table_divider"
         android:showDividers="middle"
         app:grid_x="7"
         app:grid_y="3"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/main_grid"
         app:layout_constraintStart_toEndOf="@+id/third_grid">
 
     </tw.com.lixin.wm_casino.tools.CasinoGrid>
@@ -93,10 +94,10 @@
         android:layout_marginStart="0.5dp"
         android:layout_marginLeft="0.5dp"
         android:background="#fff"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/main_grid"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout454"
         app:layout_constraintStart_toEndOf="@+id/fourth_grid"
-        app:layout_constraintTop_toTopOf="@+id/first_grid">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout24">
 
         <TextView
             android:id="@+id/textView13"
@@ -265,9 +266,10 @@
         android:id="@+id/second_grid"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="0.5dp"
-        android:layout_marginLeft="0.5dp"
-        android:layout_marginBottom="0.5dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
         android:background="#fff"
         android:divider="@drawable/table_divider"
         android:showDividers="middle"
@@ -276,7 +278,7 @@
         app:layout_constraintBottom_toTopOf="@+id/third_grid"
         app:layout_constraintEnd_toEndOf="@+id/fourth_grid"
         app:layout_constraintStart_toEndOf="@+id/main_grid"
-        app:layout_constraintTop_toTopOf="@+id/main_grid">
+        app:layout_constraintTop_toBottomOf="@+id/first_grid">
 
 
     </tw.com.lixin.wm_casino.tools.CasinoGrid>
@@ -284,31 +286,43 @@
     <tw.com.lixin.wm_casino.tools.CasinoGrid
         android:id="@+id/first_grid"
         android:layout_width="0dp"
-        android:layout_height="68dp"
-        android:layout_marginBottom="0.5dp"
+        android:layout_height="67dp"
         android:background="#fff"
         android:divider="@drawable/table_divider"
         android:showDividers="middle"
         app:grid_x="28"
         app:grid_y="6"
-        app:layout_constraintBottom_toTopOf="@+id/main_grid"
         app:layout_constraintEnd_toEndOf="@+id/fourth_grid"
-        app:layout_constraintStart_toStartOf="@+id/main_grid"></tw.com.lixin.wm_casino.tools.CasinoGrid>
+        app:layout_constraintStart_toStartOf="@+id/main_grid"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout24"></tw.com.lixin.wm_casino.tools.CasinoGrid>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout25"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="190dp"
         android:background="#fff"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout454"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout454"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout454">
 
+        <ImageView
+            android:id="@+id/imageView23"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="56dp"
+            android:background="@drawable/chip_light"
+            android:padding="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/chip100" />
 
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout23"
         android:layout_width="0dp"
         android:layout_height="30dp"
         android:background="#818181"
@@ -319,13 +333,98 @@
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout24"
         android:layout_width="0dp"
         android:layout_height="80dp"
-        app:layout_constraintBottom_toTopOf="@+id/first_grid"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout25"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayout25">
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout25"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <ImageView
+            android:id="@+id/imageView25"
+            android:layout_width="45dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="18dp"
+            android:rotation="90"
+            android:scaleType="fitXY"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/poker_c7" />
+
+        <ImageView
+            android:id="@+id/imageView26"
+            android:layout_width="45dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView25"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/poker_c3" />
+
+        <ImageView
+            android:id="@+id/imageView27"
+            android:layout_width="45dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginLeft="3dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView26"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/poker_c3" />
+
+        <ImageView
+            android:id="@+id/imageView28"
+            android:layout_width="45dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="17dp"
+            android:layout_marginRight="17dp"
+            android:rotation="90"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/poker_c2" />
+
+        <ImageView
+            android:id="@+id/imageView29"
+            android:layout_width="45dp"
+            android:layout_height="65dp"
+            android:layout_marginEnd="13dp"
+            android:layout_marginRight="13dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageView28"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/poker_c10" />
+
+        <ImageView
+            android:id="@+id/imageView30"
+            android:layout_width="45dp"
+            android:layout_height="65dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginRight="3dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageView29"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/poker_d10" />
 
     </android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:background="#006400"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout25"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout25"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout23"></LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>
