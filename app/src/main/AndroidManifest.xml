@@ -15,16 +15,16 @@
         <activity
             android:name=".LoginActivity"
             android:theme="@style/StatBarTheme">
-
-        </activity>
-        <activity android:name=".LobbyActivity" />
-        <activity android:name=".SplashActivity" />
-        <activity android:name=".BacActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".LobbyActivity" />
+        <activity android:name=".SplashActivity" />
+        <activity android:name=".BacActivity" >
+
         </activity>
         <activity android:name=".GameActivity"></activity>
     </application>

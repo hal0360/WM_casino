@@ -9,8 +9,9 @@
     tools:context=".GameActivity">
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="610dp"
-        android:layout_height="0dp"
+        android:layout_width="605dp"
+        android:layout_height="338dp"
+        android:layout_marginBottom="4dp"
         android:background="@drawable/lobby_bg01"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,7 +21,7 @@
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraintLayout14"
             android:layout_width="230dp"
-            android:layout_height="20dp"
+            android:layout_height="25dp"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:background="@drawable/grey_lobby_area"
@@ -103,9 +104,9 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="210dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="150dp"
-            android:layout_marginLeft="150dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="155dp"
+            android:layout_marginLeft="155dp"
             android:background="@drawable/grey_lobby_area"
             app:layout_constraintBottom_toBottomOf="@+id/constraintLayout14"
             app:layout_constraintStart_toEndOf="@+id/constraintLayout14"
@@ -149,8 +150,8 @@
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraintLayout20"
-            android:layout_width="50dp"
-            android:layout_height="140dp"
+            android:layout_width="45dp"
+            android:layout_height="130dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/back_table"
             app:layout_constraintStart_toStartOf="parent"
@@ -160,7 +161,7 @@
                 android:id="@+id/textView12"
                 android:layout_width="14dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="43dp"
+                android:layout_marginTop="40dp"
                 android:gravity="center"
                 android:text="@string/back_to_lobby"
                 android:textColor="#fff"
@@ -211,7 +212,7 @@
                 android:layout_width="0dp"
                 android:layout_height="21dp"
                 android:gravity="center"
-                android:text="1214232"
+                android:text="2233"
                 android:textColor="#fff"
                 android:textSize="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
