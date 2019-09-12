@@ -1,6 +1,7 @@
 package tw.com.lixin.wm_casino.tools;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.view.View;
@@ -33,12 +34,12 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
 
     public ChipStack(Context context) {
         super(context);
-        init(context);
+        init(context, null);
     }
 
     public ChipStack(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context);
+        init(context, attrs);
     }
 
     public void cancelBet(){
@@ -56,9 +57,8 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         reset();
     }
 
-    private void init(Context context) {
-        /*
-        View.inflate(context, R.layout.coin_stack_layout, this);
+    private void init(Context context, AttributeSet attrs) {
+        View.inflate(context, R.layout.chip_stack, this);
         setDescendantFocusability(FOCUS_BLOCK_DESCENDANTS);
         this.setClipChildren(false);
         this.setClipToPadding(false);
@@ -66,7 +66,15 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         coin2 = findViewById(R.id.coin2);
         coin3 = findViewById(R.id.coin3);
         coin4 = findViewById(R.id.coin4);
-        valTxt = findViewById(R.id.stack_value);
+        valTxt = findViewById(R.id.bet_value);
+
+        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ChipStack, 0, 0);
+      //  int gridX, gridY;
+       // boolean isDouble = a.getBoolean(R.styleable.CasinoGrid_grid_double,false);
+       // gridY = a.getInt(R.styleable.CasinoGrid_grid_y,0);
+       // gridX = a.getInt(R.styleable.CasinoGrid_grid_x, 0);
+       // a.recycle();
+
         coin1.setVisibility(View.INVISIBLE);
         coin2.setVisibility(View.INVISIBLE);
         coin3.setVisibility(View.INVISIBLE);
@@ -75,7 +83,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         animeDwn = AnimationUtils.loadAnimation(context, R.anim.coin_anime_down);
         animeDwn.setAnimationListener(this);
         animeUp = AnimationUtils.loadAnimation(context, R.anim.coin_anime_up);
-        */
+
     }
 
     public void setUp(ChipStackData cData){
@@ -102,23 +110,23 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     }
 
     private void noAnimeAdd(Chip coin){
-        /*
-        ids.add(coin.img_res);
+
+        ids.add(coin.image);
         if(hit == 0){
-            coin1 .setImageResource(coin.img_res);
+            coin1 .setImageResource(coin.image);
             coin1.setVisibility(View.VISIBLE);
         }else if(hit == 1){
-            coin2.setImageResource(coin.img_res);
+            coin2.setImageResource(coin.image);
             coin2.setVisibility(View.VISIBLE);
         }else if( hit == 2){
-            coin3.setImageResource(coin.img_res);
+            coin3.setImageResource(coin.image);
             coin3.setVisibility(View.VISIBLE);
         }else if(hit == 3){
-            coin4.setImageResource(coin.img_res);
+            coin4.setImageResource(coin.image);
             coin4.setVisibility(View.VISIBLE);
         }else{
             ids.remove(0);
-            coin4.setImageResource(coin.img_res);
+            coin4.setImageResource(coin.image);
             coin1.setImageResource(ids.get(0));
             coin2.setImageResource(ids.get(1));
             coin3.setImageResource(ids.get(2));
@@ -126,40 +134,40 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         hit++;
         valTxt.setVisibility(View.VISIBLE);
         valTxt.setText(data.value + "");
-        */
+
     }
 
     public void add(Chip coin){
-        /*
+
         if(disabled) return;
         if(!data.add(coin)) return;
         valTxt.setVisibility(View.VISIBLE);
         valTxt.setText(data.value + "");
-        ids.add(coin.img_res);
+        ids.add(coin.image);
         if(hit == 0){
-            coin1.setImageResource(coin.img_res);
+            coin1.setImageResource(coin.image);
             coin1.setVisibility(View.VISIBLE);
             coin1.startAnimation(animeUp);
         }else if(hit == 1){
-            coin2.setImageResource(coin.img_res);
+            coin2.setImageResource(coin.image);
             coin2.setVisibility(View.VISIBLE);
             coin2.startAnimation(animeUp);
         }else if( hit == 2){
-            coin3.setImageResource(coin.img_res);
+            coin3.setImageResource(coin.image);
             coin3.setVisibility(View.VISIBLE);
             coin3.startAnimation(animeUp);
         }else if(hit == 3){
-            coin4.setImageResource(coin.img_res);
+            coin4.setImageResource(coin.image);
             coin4.setVisibility(View.VISIBLE);
             coin4.startAnimation(animeUp);
         }else{
             ids.remove(0);
-            coin4.setImageResource(coin.img_res);
+            coin4.setImageResource(coin.image);
             coin4.startAnimation(animeUp);
             coin1.startAnimation(animeDwn);
         }
         hit++;
-        */
+
     }
 
     @Override

@@ -10,7 +10,7 @@ import tw.com.lixin.wm_casino.global.Road;
 public class BacTable extends Table{
 
     public boolean comission = false;
-    public CoinStackData stackLeft, stackRight, stackBTL, stackBTR, stackTop, stackSuper;
+    public ChipStackData stackLeft, stackRight, stackBTL, stackBTR, stackTop, stackSuper;
     public String tableRightScore, tableLeftScore, tableTopScore, tableBtlScore, tableBtrScore;
     public int pokerWin = -1;
     public int maxBetVal;
@@ -53,12 +53,12 @@ public class BacTable extends Table{
 
     @Override
     public void loginSetup(TableData.Data data) {
-        stackSuper = new CoinStackData();
-        stackTop = new CoinStackData();
-        stackBTR = new CoinStackData();
-        stackRight = new CoinStackData();
-        stackBTL = new CoinStackData();
-        stackLeft = new CoinStackData();
+        stackSuper = new ChipStackData();
+        stackTop = new ChipStackData();
+        stackBTR = new ChipStackData();
+        stackRight = new ChipStackData();
+        stackBTL = new ChipStackData();
+        stackLeft = new ChipStackData();
         tableLeftScore = data.dtOdds.get(2);
         tableRightScore = data.dtOdds.get(1);
         tableBtlScore = data.dtOdds.get(5);
