@@ -7,8 +7,8 @@ import tw.com.lixin.wm_casino.models.Chip;
 
 public class ChipView extends android.support.v7.widget.AppCompatImageView{
 
-    private Chip chip;
-    int imageOn, imageOff;
+    protected Chip chip;
+    protected int imageOn, imageOff;
 
     public ChipView(Context context) {
         super(context);
