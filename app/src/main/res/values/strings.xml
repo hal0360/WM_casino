@@ -50,4 +50,10 @@
     <string name="back_to_lobby">BACK</string>
     <string name="gyu_shu">No.</string>
     <string name="custom">Custom</string>
+    <string name="confirm">Confirm</string>
+    <string name="re_bet">Re-bet</string>
+    <string name="cancel">Cancel</string>
+    <string name="bet">Bet:</string>
+    <string name="limit">Limit</string>
+    <string name="no_comm">No Comm</string>
 </resources>

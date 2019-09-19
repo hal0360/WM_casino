@@ -23,7 +23,7 @@ public class ChipView extends android.support.v7.widget.AppCompatImageView imple
     protected void init(int val, int imgOn, int imgOff){
         imageOn = imgOn;
         imageOff = imgOff;
-        setImageResource(imgOn);
+        setImageResource(imgOff);
         chip = new Chip(val, imgOff, getId());
     }
 

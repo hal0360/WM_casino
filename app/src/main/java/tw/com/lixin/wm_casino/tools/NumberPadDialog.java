@@ -77,7 +77,7 @@ public class NumberPadDialog extends Popup {
             chip.numTxt.setText(numStr);
         } catch(NumberFormatException e){
             chip.chip.value = 1;
-            chip.numTxt.setText(context.getString(R.string.custom));
+            chip.numTxt.setText(1+"");
         }
     }
 }
