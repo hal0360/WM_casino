@@ -372,8 +372,8 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout23"
         android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:background="#818181"
+        android:layout_height="30dp"
+        android:background="#0A2A1C"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout25"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout25"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout25">
@@ -381,21 +381,21 @@
         <TextView
             android:id="@+id/limit_btn"
             android:layout_width="60dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:text="@string/limit"
-            android:textSize="10dp"
-            android:textColor="#fff"
-            android:gravity="center"
+            android:layout_height="23dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
             android:background="@drawable/limit_button_border"
+            android:gravity="center"
+            android:text="@string/limit"
+            android:textColor="#fff"
+            android:textSize="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <RadioButton
             android:id="@+id/radioButton"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:scaleX="0.8"
             android:scaleY="0.8"
@@ -409,23 +409,51 @@
             android:id="@+id/imageView23"
             android:layout_width="13dp"
             android:layout_height="13dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/radioButton"
             app:layout_constraintStart_toEndOf="@+id/radioButton"
             app:layout_constraintTop_toTopOf="@+id/radioButton"
             app:srcCompat="@drawable/blueuser" />
 
         <TextView
-            android:id="@+id/textView23"
-            android:layout_width="wrap_content"
+            android:id="@+id/member_txt"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:text="TextView"
+            android:layout_marginStart="3dp"
+            android:layout_marginLeft="3dp"
+            android:text="Mariko"
+            android:textColor="#fff"
+            android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView23"
             app:layout_constraintStart_toEndOf="@+id/imageView23"
             app:layout_constraintTop_toTopOf="@+id/imageView23" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginLeft="1dp"
+            android:background="@drawable/no_border"
+            android:gravity="center"
+            android:text="@string/gyu_shu"
+            android:textColor="#fff"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/member_txt"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/gyu_shu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginLeft="3dp"
+            android:text="1212323-089"
+            android:textColor="#fff"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView21"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 
