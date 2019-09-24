@@ -56,4 +56,6 @@
     <string name="bet">Bet:</string>
     <string name="limit">Limit</string>
     <string name="no_comm">No Comm</string>
+    <string name="next_p">Next P</string>
+    <string name="next_b">Next B</string>
 </resources>

@@ -56,4 +56,6 @@
     <string name="bet">押注:</string>
     <string name="limit">房間限制</string>
     <string name="no_comm">免傭</string>
+    <string name="next_p">閒問路</string>
+    <string name="next_b">莊問路</string>
 </resources>

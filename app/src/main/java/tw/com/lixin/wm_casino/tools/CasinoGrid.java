@@ -1,7 +1,9 @@
 package tw.com.lixin.wm_casino.tools;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.text.InputType;
@@ -37,6 +39,9 @@ public class CasinoGrid extends TableLayout {
         boolean isDouble = a.getBoolean(R.styleable.CasinoGrid_grid_double,false);
         gridY = a.getInt(R.styleable.CasinoGrid_grid_y,0);
         gridX = a.getInt(R.styleable.CasinoGrid_grid_x, 0);
+        setDividerDrawable(ContextCompat.getDrawable(context, R.drawable.table_divider));
+        setShowDividers(TableRow.SHOW_DIVIDER_MIDDLE);
+        setBackgroundColor(Color.parseColor("#ffffff"));
         a.recycle();
         if(isDouble){
             iniGridDouble(gridX, gridY);
