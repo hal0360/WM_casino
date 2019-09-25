@@ -39,6 +39,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/white_menu" />
+
     </android.support.constraint.ConstraintLayout>
 
     <ScrollView
@@ -770,6 +771,5 @@
             app:srcCompat="@drawable/marquee_icon" />
 
     </android.support.constraint.ConstraintLayout>
-
 
 </android.support.constraint.ConstraintLayout>

@@ -59,9 +59,9 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
 
     private void init(Context context, AttributeSet attrs) {
         View.inflate(context, R.layout.chip_stack, this);
-        setDescendantFocusability(FOCUS_BLOCK_DESCENDANTS);
-        this.setClipChildren(false);
-        this.setClipToPadding(false);
+      //  setDescendantFocusability(FOCUS_BLOCK_DESCENDANTS);
+       // this.setClipChildren(false);
+      //  this.setClipToPadding(false);
         coin1 = findViewById(R.id.coin1);
         coin2 = findViewById(R.id.coin2);
         coin3 = findViewById(R.id.coin3);

@@ -2,11 +2,10 @@ package tw.com.lixin.wm_casino.tools.chips;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View;
 
 import tw.com.lixin.wm_casino.models.Chip;
 
-public class ChipView extends android.support.v7.widget.AppCompatImageView implements View.OnClickListener {
+public class ChipView extends android.support.v7.widget.AppCompatImageView{
 
     protected Chip chip;
     protected int imageOn, imageOff;
@@ -35,17 +34,5 @@ public class ChipView extends android.support.v7.widget.AppCompatImageView imple
         setImageResource(imageOff);
     }
 
-    @Override
-    public void onClick(View v) {
-        turnOn();
-        if(Chip.isCustom){
-            CustomChip bridge = findViewById(Chip.curChip.chipId);
-            bridge.turnOff();
-        }else {
-            ChipView bridge = findViewById(Chip.curChip.chipId);
-            bridge.turnOff();
-        }
-        Chip.isCustom = false;
-        Chip.curChip = chip;
-    }
+
 }

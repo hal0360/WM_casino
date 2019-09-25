@@ -294,7 +294,7 @@
         app:grid_y="6"
         app:layout_constraintEnd_toEndOf="@+id/fourth_grid"
         app:layout_constraintStart_toStartOf="@+id/main_grid"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout24"></tw.com.lixin.wm_casino.tools.CasinoGrid>
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout24" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout25"
@@ -466,79 +466,6 @@
         app:layout_constraintStart_toStartOf="@+id/constraintLayout25"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-        <HorizontalScrollView
-            android:layout_width="297dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <tw.com.lixin.wm_casino.tools.chips.Chip1
-                    android:id="@+id/chip1"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="5dp" />
-
-                <tw.com.lixin.wm_casino.tools.chips.Chip5
-                    android:id="@+id/chip5"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="5dp" />
-
-                <tw.com.lixin.wm_casino.tools.chips.Chip10
-                    android:id="@+id/chip10"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="5dp" />
-
-                <tw.com.lixin.wm_casino.tools.chips.Chip20
-                    android:id="@+id/chip20"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="5dp" />
-
-                <tw.com.lixin.wm_casino.tools.chips.Chip50
-                    android:id="@+id/chip50"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="5dp" />
-
-                <tw.com.lixin.wm_casino.tools.chips.Chip100
-                    android:id="@+id/chip100"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="5dp" />
-
-                <tw.com.lixin.wm_casino.tools.chips.Chip500
-                    android:id="@+id/chip500"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="5dp" />
-
-                <tw.com.lixin.wm_casino.tools.chips.Chip1000
-                    android:id="@+id/chip1000"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="5dp" />
-
-                <tw.com.lixin.wm_casino.tools.chips.Chip5000
-                    android:id="@+id/chip5000"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="5dp" />
-
-                <tw.com.lixin.wm_casino.tools.chips.Chip10000
-                    android:id="@+id/chip10000"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="5dp" />
-            </LinearLayout>
-        </HorizontalScrollView>
-
         <tw.com.lixin.wm_casino.tools.chips.CustomChip
             android:id="@+id/customChip"
             android:layout_width="57dp"
@@ -622,6 +549,12 @@
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView20"
             app:layout_constraintStart_toEndOf="@+id/textView20" />
+
+        <tw.com.lixin.wm_casino.tools.ChipSelection
+            android:layout_width="297dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/card_area"

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="ContentDescription,SpUsage"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/imageView24"
+        android:layout_width="12dp"
+        android:layout_height="10dp"
+        android:rotation="180"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/arrow_down" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView32"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView24">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <tw.com.lixin.wm_casino.tools.chips.Chip1
+                android:id="@+id/chip1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp" />
+
+            <tw.com.lixin.wm_casino.tools.chips.Chip5
+                android:id="@+id/chip5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp" />
+
+            <tw.com.lixin.wm_casino.tools.chips.Chip10
+                android:id="@+id/chip10"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp" />
+
+            <tw.com.lixin.wm_casino.tools.chips.Chip20
+                android:id="@+id/chip20"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp" />
+
+            <tw.com.lixin.wm_casino.tools.chips.Chip50
+                android:id="@+id/chip50"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp" />
+
+            <tw.com.lixin.wm_casino.tools.chips.Chip100
+                android:id="@+id/chip100"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp" />
+
+            <tw.com.lixin.wm_casino.tools.chips.Chip500
+                android:id="@+id/chip500"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp" />
+
+            <tw.com.lixin.wm_casino.tools.chips.Chip1000
+                android:id="@+id/chip1000"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp" />
+
+            <tw.com.lixin.wm_casino.tools.chips.Chip5000
+                android:id="@+id/chip5000"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp" />
+
+            <tw.com.lixin.wm_casino.tools.chips.Chip1000
+                android:id="@+id/chip10000"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageView32"
+        android:layout_width="12dp"
+        android:layout_height="10dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/arrow_down" />
+
+</merge>
