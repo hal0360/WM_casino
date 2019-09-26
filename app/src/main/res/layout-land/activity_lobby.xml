@@ -27,16 +27,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <android.support.constraint.ConstraintLayout
+            <tw.com.lixin.wm_casino.tools.NewsBroadcast
                 android:layout_width="210dp"
                 android:layout_height="25dp"
-                android:layout_marginStart="155dp"
-                android:layout_marginLeft="155dp"
-                android:background="@drawable/grey_lobby_area"
                 app:layout_constraintBottom_toBottomOf="@+id/constraintLayout14"
-                app:layout_constraintStart_toEndOf="@+id/constraintLayout14"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/constraintLayout14">
 
+                <!--
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -69,8 +67,9 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/marquee_icon" />
+                    -->
 
-            </android.support.constraint.ConstraintLayout>
+            </tw.com.lixin.wm_casino.tools.NewsBroadcast>
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/constraintLayout14"
@@ -133,7 +132,6 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/white_circle"
-                android:scaleType="fitXY"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
