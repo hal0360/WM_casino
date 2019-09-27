@@ -1,5 +1,6 @@
 package tw.com.lixin.wm_casino.tools;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
@@ -23,9 +24,10 @@ public class MusicButton extends ConstraintLayout implements View.OnClickListene
         init(context);
     }
 
+    @SuppressLint("SetTextI18n")
     private void init(Context context) {
         View.inflate(context, R.layout.music_button, this);
-        setDescendantFocusability(FOCUS_BLOCK_DESCENDANTS);
+       // setDescendantFocusability(FOCUS_BLOCK_DESCENDANTS);
         musicTxt = findViewById(R.id.music_txt);
         setBackgroundResource(R.drawable.music_on);
         musicTxt.setText("ON");
@@ -33,6 +35,7 @@ public class MusicButton extends ConstraintLayout implements View.OnClickListene
         setOnClickListener(this);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onClick(View v) {
         if(turnOn){

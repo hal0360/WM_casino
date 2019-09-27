@@ -14,4 +14,13 @@
     <declare-styleable name="CustomChip">
         <attr name="number_size" format="integer" />
     </declare-styleable>
+
+    <declare-styleable name="ControlButton">
+        <attr name="control_type" format="enum">
+            <enum name="rebet" value="1"/>
+            <enum name="confirm" value="2"/>
+            <enum name="cancel" value="3"/>
+        </attr>
+    </declare-styleable>
+
 </resources>

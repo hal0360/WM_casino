@@ -34,7 +34,8 @@ public class CasinoGrid extends TableLayout {
     {
         super(context, attrs);
         this.context = context;
-        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CasinoGrid, 0, 0);
+       // TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CasinoGrid, 0, 0);
+        TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.CasinoGrid);
         int gridX, gridY;
         boolean isDouble = a.getBoolean(R.styleable.CasinoGrid_grid_double,false);
         gridY = a.getInt(R.styleable.CasinoGrid_grid_y,0);

@@ -13,7 +13,7 @@ public class ProfileSetting extends ConstraintLayout implements View.OnClickList
 
     private Context context;
     private TextView balance;
-    private ImageView settingBtn;
+    private View settingBtn;
 
     public ProfileSetting(Context context) {
         super(context);

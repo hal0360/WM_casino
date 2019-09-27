@@ -79,6 +79,8 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
     public void onResume() {
         super.onResume();
 
+        /*
+
         loading();
         lobbySource.bind(this);
         if(lobbySource.isConnected()){
@@ -92,7 +94,7 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
                 toActivity(LoginActivity.class);
             });
         }
-
+*/
     }
 
     @Override
