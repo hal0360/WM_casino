@@ -25,7 +25,9 @@
         android:layout_height="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/profile_setting"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/profile_setting" />
+        app:layout_constraintTop_toTopOf="@+id/profile_setting" >
+
+    </tw.com.lixin.wm_casino.tools.NewsBroadcast>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout20"

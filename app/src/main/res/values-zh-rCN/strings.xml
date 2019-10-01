@@ -59,4 +59,5 @@
     <string name="next_p">闲问路</string>
     <string name="next_b">庄问路</string>
     <string name="change_table">换桌</string>
+    <string name="table_limit">台红</string>
 </resources>

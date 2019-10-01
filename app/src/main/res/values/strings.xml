@@ -59,4 +59,5 @@
     <string name="next_p">Next P</string>
     <string name="next_b">Next B</string>
     <string name="change_table">Change table</string>
+    <string name="table_limit">Table limit</string>
 </resources>

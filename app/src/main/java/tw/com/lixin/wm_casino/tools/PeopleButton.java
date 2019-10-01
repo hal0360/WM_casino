@@ -8,29 +8,26 @@ import android.view.View;
 
 import tw.com.lixin.wm_casino.R;
 
-public class TableSwitchButton extends ConstraintLayout {
+public class PeopleButton extends ConstraintLayout {
 
     private Context context;
 
-    public TableSwitchButton(Context context) {
+    public PeopleButton(Context context) {
         super(context);
         init(context);
     }
 
-    public TableSwitchButton(Context context, AttributeSet attrs) {
+    public PeopleButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
     private void init(Context context){
         this.context = context;
-        View.inflate(context, R.layout.table_switch_button, this);
-
+        View.inflate(context, R.layout.people_button, this);
         int orientation = getResources().getConfiguration().orientation;
         if(orientation == Configuration.ORIENTATION_LANDSCAPE){
-            setBackgroundResource(R.drawable.table_switch_border);
-        }else {
-            setBackgroundResource(R.drawable.video_button_border);
+            setBackgroundResource(R.drawable.online_people_bg);
         }
     }
 }

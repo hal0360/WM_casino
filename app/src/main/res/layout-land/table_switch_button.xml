@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:id="@+id/imageView31"
         android:layout_width="39dp"
         android:layout_height="30dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -12,11 +11,10 @@
         app:srcCompat="@drawable/change_table" />
 
     <TextView
-        android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="3dp"
-        android:text="@string/re_bet"
+        android:text="@string/change_table"
         android:textColor="#fff"
         android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="parent"

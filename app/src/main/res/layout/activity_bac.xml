@@ -301,66 +301,42 @@
         app:layout_constraintStart_toStartOf="@+id/constraintLayout454"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout454">
 
-        <ImageView
-            android:id="@+id/messege_btn"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@drawable/video_button_border"
-            android:padding="7dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/message_on" />
-
-        <ImageView
-            android:id="@+id/signal_btn"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/video_button_border"
-            android:padding="7dp"
-            app:layout_constraintEnd_toEndOf="@+id/messege_btn"
-            app:layout_constraintStart_toStartOf="@+id/messege_btn"
-            app:layout_constraintTop_toBottomOf="@+id/messege_btn"
-            app:srcCompat="@drawable/signal" />
-
-        <ImageView
-            android:id="@+id/switch_btn"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/video_button_border"
-            android:padding="7dp"
-            app:layout_constraintEnd_toEndOf="@+id/signal_btn"
-            app:layout_constraintStart_toStartOf="@+id/signal_btn"
-            app:layout_constraintTop_toBottomOf="@+id/signal_btn"
-            app:srcCompat="@drawable/changetable" />
-
-        <ImageView
-            android:id="@+id/ppl_online_btn"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/video_button_border"
-            android:padding="7dp"
-            app:layout_constraintEnd_toEndOf="@+id/switch_btn"
-            app:layout_constraintStart_toStartOf="@+id/switch_btn"
-            app:layout_constraintTop_toBottomOf="@+id/switch_btn"
-            app:srcCompat="@drawable/this_table_ppl" />
-
         <android.support.constraint.ConstraintLayout
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="13dp"
-            android:layout_marginRight="13dp"
+            android:layout_marginTop="48dp"
             android:background="@drawable/countdown_border"
-            app:layout_constraintEnd_toStartOf="@+id/messege_btn"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="136dp">
 
         </android.support.constraint.ConstraintLayout>
+
+        <tw.com.lixin.wm_casino.tools.PeopleButton
+            android:id="@+id/peopleButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <tw.com.lixin.wm_casino.tools.TableSwitchButton
+            android:id="@+id/tableSwitchButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/peopleButton"
+            app:layout_constraintEnd_toEndOf="@+id/peopleButton" />
+
+        <tw.com.lixin.wm_casino.tools.SignalButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/tableSwitchButton"
+            app:layout_constraintEnd_toEndOf="@+id/peopleButton" />
 
     </android.support.constraint.ConstraintLayout>
 
