@@ -60,4 +60,6 @@
     <string name="next_b">Next B</string>
     <string name="change_table">Change table</string>
     <string name="table_limit">Table limit</string>
+    <string name="table">Table</string>
+    <string name="dealer">Dealer</string>
 </resources>

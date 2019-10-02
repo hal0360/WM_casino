@@ -60,4 +60,6 @@
     <string name="next_b">莊問路</string>
     <string name="change_table">換桌</string>
     <string name="table_limit">台紅</string>
+    <string name="table">房間號</string>
+    <string name="dealer">荷官</string>
 </resources>

@@ -304,10 +304,12 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="48dp"
             android:background="@drawable/countdown_border"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="136dp">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
         </android.support.constraint.ConstraintLayout>
 
