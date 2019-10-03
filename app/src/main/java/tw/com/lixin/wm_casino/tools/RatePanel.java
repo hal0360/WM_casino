@@ -9,7 +9,7 @@ import android.view.View;
 
 import tw.com.lixin.wm_casino.R;
 
-public class RatePanel extends ConstraintLayout {
+public class RatePanel extends ConstraintLayout{
 
     private Context context;
 
@@ -28,10 +28,25 @@ public class RatePanel extends ConstraintLayout {
         View.inflate(context, R.layout.rate_panel, this);
         int orientation = getResources().getConfiguration().orientation;
         if(orientation == Configuration.ORIENTATION_LANDSCAPE){
-            setBackgroundColor(Color.parseColor("#000000"));
-
+            findViewById(R.id.collapse_btn).setOnClickListener(v->{
+                findViewById(R.id.expanded_panel).setVisibility(GONE);
+                findViewById(R.id.expanded_buttons).setVisibility(GONE);
+                findViewById(R.id.collapsed_panel).setVisibility(VISIBLE);
+                findViewById(R.id.expand_btn).setVisibility(VISIBLE);
+            });
+            findViewById(R.id.expand_btn).setOnClickListener(v->{
+                findViewById(R.id.expanded_panel).setVisibility(VISIBLE);
+                findViewById(R.id.expanded_buttons).setVisibility(VISIBLE);
+                findViewById(R.id.collapsed_panel).setVisibility(GONE);
+                findViewById(R.id.expand_btn).setVisibility(GONE);
+            });
+            findViewById(R.id.expanded_panel).setVisibility(VISIBLE);
+            findViewById(R.id.expanded_buttons).setVisibility(VISIBLE);
+            findViewById(R.id.collapsed_panel).setVisibility(GONE);
+            findViewById(R.id.expand_btn).setVisibility(GONE);
         }else{
             setBackgroundColor(Color.parseColor("#0A2A1C"));
         }
     }
+
 }
