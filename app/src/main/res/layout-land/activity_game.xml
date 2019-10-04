@@ -14,9 +14,6 @@
         android:id="@+id/profile_setting"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="2dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,9 +22,7 @@
         android:layout_height="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/profile_setting"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/profile_setting" >
-
-    </tw.com.lixin.wm_casino.tools.NewsBroadcast>
+        app:layout_constraintTop_toTopOf="@+id/profile_setting" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout20"

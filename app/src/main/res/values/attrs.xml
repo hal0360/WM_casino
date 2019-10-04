@@ -15,6 +15,13 @@
         <attr name="number_size" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="AskButton">
+        <attr name="ask_type" format="enum">
+            <enum name="player" value="1"/>
+            <enum name="banker" value="2"/>
+        </attr>
+    </declare-styleable>
+
     <declare-styleable name="ControlButton">
         <attr name="control_type" format="enum">
             <enum name="rebet" value="1"/>

@@ -4,7 +4,7 @@
 
     <ImageView
         android:layout_width="39dp"
-        android:layout_height="30dp"
+        android:layout_height="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -16,6 +16,7 @@
         android:layout_marginBottom="3dp"
         android:text="@string/change_table"
         android:textColor="#fff"
+        android:gravity="center"
         android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
