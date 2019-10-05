@@ -9,10 +9,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import tw.com.atromoby.widgets.CmdView;
 import tw.com.lixin.wm_casino.R;
 
-public class ControlButton extends ConstraintLayout {
-    TextView title;
+public class ControlButton extends ConstraintLayout implements View.OnClickListener{
+
+    private TextView title;
+    private CmdView cmd;
+    private Boolean disabled = true;
+
     public ControlButton(Context context) {
         super(context);
         View.inflate(context, R.layout.control_button, this);
@@ -25,6 +30,8 @@ public class ControlButton extends ConstraintLayout {
         int orientation = getResources().getConfiguration().orientation;
         TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.ControlButton);
         int type = a.getInt(R.styleable.ControlButton_control_type, 3);
+
+        this.setAlpha(0.5f);
 
         if(orientation == Configuration.ORIENTATION_LANDSCAPE){
             setBackgroundResource(R.drawable.table_switch_border);
@@ -50,5 +57,30 @@ public class ControlButton extends ConstraintLayout {
             }
         }
         a.recycle();
+    }
+
+    public void disable(Boolean disabled){
+        this.disabled = disabled;
+        if(disabled){
+            this.setAlpha(0.5f);
+        }else{
+            this.setAlpha(1.0f);
+        }
+    }
+
+    public boolean isDisabled(){
+        return disabled;
+    }
+
+    public void clicked(CmdView cd){
+        setOnClickListener(this);
+        cmd = cd;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(cmd != null && !disabled){
+            cmd.exec(v);
+        }
     }
 }

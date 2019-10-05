@@ -78,7 +78,7 @@ public class GameActivity extends WMActivity implements GameBridge, LobbyBridge 
 
     @Override
     public void tableLogin(boolean logOk) {
-
+        if(logOk) pushActivity(BacActivity.class);
     }
 
 

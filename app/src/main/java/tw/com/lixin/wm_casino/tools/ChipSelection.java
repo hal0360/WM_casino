@@ -9,6 +9,7 @@ import android.view.View;
 import java.util.ArrayList;
 
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.models.Chip;
 import tw.com.lixin.wm_casino.tools.chips.ChipView;
 
 public class ChipSelection extends ConstraintLayout implements View.OnClickListener{
@@ -20,13 +21,13 @@ public class ChipSelection extends ConstraintLayout implements View.OnClickListe
     public ChipSelection(Context context) {
         super(context);
         View.inflate(context, R.layout.chip_selection, this);
-
+        init();
     }
 
     public ChipSelection(Context context, AttributeSet attrs) {
         super(context, attrs);
         View.inflate(context, R.layout.chip_selection, this);
-
+init();
     }
 
 
@@ -35,7 +36,6 @@ public class ChipSelection extends ConstraintLayout implements View.OnClickListe
 
         findViewById(R.id.chip1).setOnClickListener(this);
         findViewById(R.id.chip5).setOnClickListener(this);
-        findViewById(R.id.chip10).setOnClickListener(this);
         findViewById(R.id.chip50).setOnClickListener(this);
         findViewById(R.id.chip100).setOnClickListener(this);
         findViewById(R.id.chip20).setOnClickListener(this);
@@ -44,7 +44,11 @@ public class ChipSelection extends ConstraintLayout implements View.OnClickListe
         findViewById(R.id.chip5000).setOnClickListener(this);
         findViewById(R.id.chip10000).setOnClickListener(this);
 
-        chipViews.add(findViewById(R.id.chip1));
+        selectedChip = findViewById(R.id.chip10);
+        selectedChip.setOnClickListener(this);
+        selectedChip.turnOn();
+        Chip.curChip = selectedChip.getChip();
+        //chipViews.add(findViewById(R.id.chip1));
     }
 
     public void setSelectedChip(int resId){
@@ -54,8 +58,8 @@ public class ChipSelection extends ConstraintLayout implements View.OnClickListe
     @Override
     public void onClick(View v) {
         selectedChip.turnOff();
-        ChipView selChip = (ChipView) v;
-        selChip.turnOn();
-       // selectedChip =
+        selectedChip = (ChipView) v;
+        selectedChip.turnOn();
+        Chip.curChip = selectedChip.getChip();
     }
 }

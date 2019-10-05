@@ -10,12 +10,10 @@ import tw.com.lixin.wm_casino.global.Road;
 public class BacTable extends Table{
 
     public boolean comission = false;
-    public ChipStackData stackLeft, stackRight, stackBTL, stackBTR, stackTop, stackSuper;
-    public String tableRightScore, tableLeftScore, tableTopScore, tableBtlScore, tableBtrScore;
+    public ChipStackData playStack, playPairStack, tieStack, bankStack, bankPairStack, stackSuper;
     public int pokerWin = -1;
     public int maxBetVal;
     public int playerScore, bankerScore;
-
 
     public int bankCount = 0;
     public int playCount = 0;
@@ -54,22 +52,26 @@ public class BacTable extends Table{
     @Override
     public void loginSetup(TableData.Data data) {
         stackSuper = new ChipStackData();
-        stackTop = new ChipStackData();
-        stackBTR = new ChipStackData();
-        stackRight = new ChipStackData();
-        stackBTL = new ChipStackData();
-        stackLeft = new ChipStackData();
-        tableLeftScore = data.dtOdds.get(2);
-        tableRightScore = data.dtOdds.get(1);
-        tableBtlScore = data.dtOdds.get(5);
-        tableBtrScore = data.dtOdds.get(4);
-        tableTopScore = data.dtOdds.get(3);
-        stackLeft.maxValue = data.maxBet02;
-        stackBTL.maxValue = data.maxBet04;
-        stackRight.maxValue = data.maxBet01;
-        stackBTR.maxValue = data.maxBet04;
-        stackTop.maxValue = data.maxBet03;
+        bankPairStack = new ChipStackData();
+        bankStack = new ChipStackData();
+        playPairStack = new ChipStackData();
+        tieStack = new ChipStackData();
+        playStack = new ChipStackData();
+
+        playStack.score = data.dtOdds.get(2);
+        bankStack.score = data.dtOdds.get(1);
+        playPairStack.score = data.dtOdds.get(5);
+        bankPairStack.score = data.dtOdds.get(4);
+        tieStack.score = data.dtOdds.get(3);
+
+        playStack.maxValue = data.maxBet02;
+        tieStack.maxValue = data.maxBet03;
+        playPairStack.maxValue = data.maxBet04;
+        bankStack.maxValue = data.maxBet01;
+        bankPairStack.maxValue = data.maxBet04;
+
         stackSuper.maxValue = data.maxBet04;
+
         maxBetVal = data.maxBet01;
         if(maxBetVal < data.maxBet02) maxBetVal = data.maxBet02;
         if(maxBetVal < data.maxBet03) maxBetVal = data.maxBet03;

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
-        android:id="@+id/imageView26"
+        android:id="@+id/player_poker2"
         android:layout_width="22dp"
         android:layout_height="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -29,7 +29,7 @@
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/setting_btn"
-        app:layout_constraintStart_toEndOf="@+id/imageView26"
+        app:layout_constraintStart_toEndOf="@+id/player_poker2"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
 

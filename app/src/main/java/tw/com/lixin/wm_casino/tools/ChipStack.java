@@ -1,6 +1,7 @@
 package tw.com.lixin.wm_casino.tools;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
@@ -18,7 +19,7 @@ import tw.com.lixin.wm_casino.models.Chip;
 import tw.com.lixin.wm_casino.models.ChipStackData;
 
 
-public class ChipStack extends ConstraintLayout implements Animation.AnimationListener{
+public class ChipStack extends ConstraintLayout implements Animation.AnimationListener, View.OnClickListener {
 
     private ImageView coin1, coin2, coin3, coin4, coin5;
     private Animation animeDwn, animeUp;
@@ -27,19 +28,38 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     private TextView valTxt, title, dtOdds;
     public ChipStackData data;
     private Boolean disabled = true;
+    private int orientation;
 
     public void disable(Boolean disabled){
         this.disabled = disabled;
     }
 
-    public ChipStack(Context context) {
-        super(context);
-        init(context, null);
-    }
-
     public ChipStack(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context, attrs);
+        View.inflate(context, R.layout.chip_stack, this);
+        setOnClickListener(this);
+        orientation = getResources().getConfiguration().orientation;
+        coin1 = findViewById(R.id.coin1);
+        coin2 = findViewById(R.id.coin2);
+        coin3 = findViewById(R.id.coin3);
+        coin4 = findViewById(R.id.coin4);
+        coin5 = findViewById(R.id.coin5);
+        valTxt = findViewById(R.id.bet_value);
+        title = findViewById(R.id.table_title);
+        dtOdds = findViewById(R.id.dtOdds);
+
+        if(orientation == Configuration.ORIENTATION_PORTRAIT){
+            setBackgroundResource(R.drawable.chip_stack_border);
+        }
+
+        TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.ChipStack);
+        title.setTextColor(a.getColor(R.styleable.ChipStack_title_color, 0xFF9EB5AD));
+        title.setText(a.getString(R.styleable.ChipStack_title));
+        a.recycle();
+
+        animeDwn = AnimationUtils.loadAnimation(context, R.anim.coin_anime_down);
+        animeDwn.setAnimationListener(this);
+        animeUp = AnimationUtils.loadAnimation(context, R.anim.coin_anime_up);
     }
 
     public void cancelBet(){
@@ -57,32 +77,8 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         reset();
     }
 
-    private void init(Context context, AttributeSet attrs) {
-        View.inflate(context, R.layout.chip_stack, this);
-      //  setDescendantFocusability(FOCUS_BLOCK_DESCENDANTS);
-       // this.setClipChildren(false);
-      //  this.setClipToPadding(false);
-        coin1 = findViewById(R.id.coin1);
-        coin2 = findViewById(R.id.coin2);
-        coin3 = findViewById(R.id.coin3);
-        coin4 = findViewById(R.id.coin4);
-        coin5 = findViewById(R.id.coin5);
-        valTxt = findViewById(R.id.bet_value);
-        title = findViewById(R.id.table_title);
-        dtOdds = findViewById(R.id.dtOdds);
-        setBackgroundResource(R.drawable.chip_stack_border);
-        //TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ChipStack, 0, 0);
-        TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.ChipStack);
-        title.setTextColor(a.getColor(R.styleable.ChipStack_title_color, 0xFFFFFFFF));
-        title.setText(a.getString(R.styleable.ChipStack_title));
-        a.recycle();
-
-        animeDwn = AnimationUtils.loadAnimation(context, R.anim.coin_anime_down);
-        animeDwn.setAnimationListener(this);
-        animeUp = AnimationUtils.loadAnimation(context, R.anim.coin_anime_up);
-    }
-
     public void setUp(ChipStackData cData){
+        dtOdds.setText(cData.score);
         data = cData;
         for(Chip coin: data.addedCoin) noAnimeAdd(coin);
         for(Chip coin: data.tempAddedCoin) noAnimeAdd(coin);
@@ -103,7 +99,9 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         coin4.setVisibility(View.INVISIBLE);
         coin5.setVisibility(View.INVISIBLE);
         valTxt.setVisibility(View.INVISIBLE);
-        setBackgroundResource(R.drawable.chip_stack_border);
+        if(orientation == Configuration.ORIENTATION_PORTRAIT){
+            setBackgroundResource(R.drawable.chip_stack_border);
+        }
         ids = new ArrayList<>();
     }
 
@@ -145,11 +143,11 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
 
     public void add(Chip coin){
 
-        if(disabled) return;
-        if(!data.add(coin)) return;
-        setBackgroundResource(R.drawable.chip_stack_border_on);
+       // if(disabled) return;
+       // if(!data.add(coin)) return;
+      //  setBackgroundResource(R.drawable.chip_stack_border_on);
         valTxt.setVisibility(View.VISIBLE);
-        valTxt.setText(data.value + "");
+       // valTxt.setText(data.value + "");
         ids.add(coin.image);
         if(hit == 0){
             coin1.setImageResource(coin.image);
@@ -194,4 +192,8 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     @Override
     public void onAnimationStart(Animation animation) {}
 
+    @Override
+    public void onClick(View v) {
+        add(Chip.curChip);
+    }
 }

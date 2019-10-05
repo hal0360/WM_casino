@@ -12,8 +12,9 @@ import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.tools.CasinoGrid;
+import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
-public class BacHolder extends ItemHolder implements TableBridge {
+public class BacHolder extends ItemHolder implements TableBridge{
 
     private BacTable table;
     private TextView countDown, dealing, waiting;
@@ -51,6 +52,12 @@ public class BacHolder extends ItemHolder implements TableBridge {
         gridUpdate();
         statusUpdate();
         table.bind(this);
+
+
+        findViewById(R.id.root).setOnClickListener(v->{
+            GameSource source = GameSource.getInstance();
+            source.tableLogin(table);
+        });
     }
 
     @Override
@@ -133,4 +140,5 @@ public class BacHolder extends ItemHolder implements TableBridge {
     public void betCountdown(int sec) {
         countDown.setText(sec+"");
     }
+
 }

@@ -8,6 +8,7 @@ import tw.com.lixin.wm_casino.dataModels.Client22;
 public class ChipStackData {
     public int value = 0;
     public int maxValue = 999;
+    public String score;
 
     public List<Chip> addedCoin = new ArrayList<>();
     public List<Chip> tempAddedCoin = new ArrayList<>();

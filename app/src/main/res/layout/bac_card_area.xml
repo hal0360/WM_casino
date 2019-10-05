@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="ContentDescription,SpUsage"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/player_poker3"
+        android:layout_width="45dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="18dp"
+        android:rotation="90"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/poker_c7" />
+
+    <ImageView
+        android:id="@+id/player_poker2"
+        android:layout_width="45dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginBottom="9dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/player_poker3"
+        app:layout_constraintStart_toEndOf="@+id/player_poker3"
+        app:srcCompat="@drawable/poker_c3" />
+
+    <ImageView
+        android:id="@+id/player_poker1"
+        android:layout_width="45dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/player_poker2"
+        app:layout_constraintStart_toEndOf="@+id/player_poker2"
+        app:srcCompat="@drawable/poker_c3" />
+
+    <ImageView
+        android:id="@+id/banker_poker3"
+        android:layout_width="45dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginRight="17dp"
+        android:rotation="90"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/poker_c2" />
+
+    <ImageView
+        android:id="@+id/banker_poker2"
+        android:layout_width="45dp"
+        android:layout_height="65dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginBottom="9dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/banker_poker3"
+        app:layout_constraintEnd_toStartOf="@+id/banker_poker3"
+        app:srcCompat="@drawable/poker_c10" />
+
+    <ImageView
+        android:id="@+id/banker_poker1"
+        android:layout_width="45dp"
+        android:layout_height="65dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/banker_poker2"
+        app:layout_constraintEnd_toStartOf="@+id/banker_poker2"
+        app:srcCompat="@drawable/poker_d10" />
+
+</merge>
