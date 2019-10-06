@@ -76,13 +76,15 @@ public class BacTable extends Table{
         if(maxBetVal < data.maxBet02) maxBetVal = data.maxBet02;
         if(maxBetVal < data.maxBet03) maxBetVal = data.maxBet03;
         if(maxBetVal < data.maxBet04) maxBetVal = data.maxBet04;
+        super.loginSetup(data);
     }
 
     @Override
     public void resultUpdate(TableData.Data data) {
-        //pokerWin = Move.divide(data.result);
+        pokerWin = Table.resDivide(data.result);
         playerScore = data.playerScore;
         bankerScore = data.bankerScore;
+        super.resultUpdate(data);
     }
 
     @Override

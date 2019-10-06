@@ -15,7 +15,7 @@ import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
-public class GameActivity extends WMActivity implements GameBridge, LobbyBridge {
+public class GameActivity extends WMActivity implements LobbyBridge {
 
     LobbySource lobbySource;
     GameSource gameSource;
@@ -51,7 +51,7 @@ public class GameActivity extends WMActivity implements GameBridge, LobbyBridge 
         super.onResume();
 
         lobbySource.bind(this);
-        gameSource.bind(this);
+
         if(!lobbySource.isConnected()){
             loading();
             lobbySource.login(User.sid(), data->{
@@ -75,31 +75,12 @@ public class GameActivity extends WMActivity implements GameBridge, LobbyBridge 
 
     }
 
-
-    @Override
-    public void tableLogin(boolean logOk) {
-        if(logOk) pushActivity(BacActivity.class);
-    }
-
-
-    @Override
-    public void balanceUpdate(float value) {
-
-    }
-
     @Override
     public void peopleOnlineUpdate(int gameID, int number) {
 
     }
 
 //not used
-
-    @Override
-    public void cardUpdate(int area, int img) { }
-    @Override
-    public void resultUpadte() {}
-    @Override
-    public void betUpdate(boolean betOK) {}
     @Override
     public void wholeDataUpdated() { }
 }

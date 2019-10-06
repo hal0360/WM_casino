@@ -25,7 +25,7 @@ import tw.com.lixin.wm_casino.tools.ControlButton;
 import tw.com.lixin.wm_casino.tools.ProfileSetting;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
-public class BacActivity extends WMActivity implements GameBridge, TableBridge {
+public class BacActivity extends WMActivity implements TableBridge {
 
     private IjkVideoView video;
     private BacTable table;
@@ -42,7 +42,6 @@ public class BacActivity extends WMActivity implements GameBridge, TableBridge {
         setContentView(R.layout.activity_bac);
         source = GameSource.getInstance();
         table = (BacTable) source.table;
-        source.bind(this);
         table.bind(this);
         cardArea = findViewById(R.id.card_area);
         playerPairStack = findViewById(R.id.player_pair_stack);

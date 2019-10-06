@@ -290,7 +290,7 @@
         app:layout_constraintStart_toStartOf="@+id/main_grid"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout24" />
 
-    <tw.com.atromoby.rtmplayer.IjkVideoView
+    <android.support.constraint.ConstraintLayout
         android:id="@+id/my_player"
         android:layout_width="0dp"
         android:layout_height="190dp"
@@ -338,6 +338,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/card_dealing" />
+
         </android.support.constraint.ConstraintLayout>
 
         <tw.com.lixin.wm_casino.tools.PeopleButton
@@ -367,7 +368,7 @@
             app:layout_constraintBottom_toTopOf="@+id/tableSwitchButton"
             app:layout_constraintEnd_toEndOf="@+id/peopleButton" />
 
-    </tw.com.atromoby.rtmplayer.IjkVideoView>
+    </android.support.constraint.ConstraintLayout>
 
     <tw.com.lixin.wm_casino.tools.RatePanel
         android:id="@+id/constraintLayout23"

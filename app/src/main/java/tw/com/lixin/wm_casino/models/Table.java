@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Handler;
 import android.util.SparseIntArray;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -60,9 +61,21 @@ public abstract class Table {
 
     public abstract void historySetup(List<Integer> histories);
 
-    public abstract void loginSetup(TableData.Data data);
+    public void loginSetup(TableData.Data data){
+        handle(()->bridge.tableLogin(data.bOk));
+    }
 
-    public abstract void resultUpdate(TableData.Data data);
+    public void betUpdate(boolean bOk){
+        handle(()->bridge.betUpdate(bOk));
+    }
+
+    public void balanceUpdate(float balance){
+        handle(()->bridge.balanceUpdate(balance));
+    }
+
+    public void resultUpdate(TableData.Data data){
+        handle(()->bridge.resultUpadte());
+    }
 
     public void update(TableData.Data data){
         round = data.historyArr.size();
@@ -83,6 +96,7 @@ public abstract class Table {
 
     public void cardUpdate(int area, int id){
         pokers.put(area,Poker.NUM(id ));
+        handle(() -> bridge.cardUpdate(area, id));
     }
 
     public void startCountDown(int mille){
@@ -98,8 +112,22 @@ public abstract class Table {
         }, 1000, 1000);
     }
 
-    public void handle(Cmd cmd){
+    private void handle(Cmd cmd){
         if(isBinded) handler.post(()->{ if(isBinded) cmd.exec(); });
     }
 
+    public static int resDivide(int rawVal){
+        List<Integer> powers = new ArrayList<>();
+        for(int i = 8; i >= 0; i-- ){
+            int boss = (int) Math.pow(2,i);
+            if(rawVal >= boss){
+                powers.add(0,boss);
+                rawVal = rawVal - boss;
+                if(rawVal <= 0){
+                    break;
+                }
+            }
+        }
+        return powers.get(0);
+    }
 }

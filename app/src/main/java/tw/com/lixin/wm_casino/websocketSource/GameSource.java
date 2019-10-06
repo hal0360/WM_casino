@@ -75,6 +75,40 @@ public class GameSource extends CasinoSource{
     public void onReceive(String text) {
         TableData tableData = Json.from(text, TableData.class);
         Table tt = findTable(tableData.data.groupID);
+        if(tt == null) return;
+        switch(tableData.protocol) {
+            case 20:
+                tt.statusUpdate(tableData.data.gameStage);
+                break;
+            case 24:
+                tt.cardUpdate(tableData.data.cardArea, tableData.data.cardID);
+                break;
+            case 26:
+                tt.update(tableData.data);
+                break;
+            case 38:
+                tt.startCountDown(tableData.data.timeMillisecond);
+                break;
+            case 25:
+                tt.resultUpdate(tableData.data);
+                break;
+            case 10:
+                tt.loginSetup(tableData.data);
+                break;
+            case 22:
+                tt.betUpdate(tableData.data.bOk);
+                break;
+            case 23:
+                tt.balanceUpdate(tableData.data.balance);
+                break;
+        }
+    }
+
+    /*
+    @Override
+    public void onReceive(String text) {
+        TableData tableData = Json.from(text, TableData.class);
+        Table tt = findTable(tableData.data.groupID);
         if(tableData.protocol == 20){
             if(tt != null)tt.statusUpdate(tableData.data.gameStage);
         }else if(tableData.protocol == 24){
@@ -88,7 +122,6 @@ public class GameSource extends CasinoSource{
             if(tt != null)tt.resultUpdate(tableData.data);
             if(tableData.data.groupID == groupID) handle(() -> bridge.resultUpadte());
         }
-
         if(tableData.data.groupID != groupID) return;
         if(tableData.protocol == 10){
             if(tableData.data.bOk) table.loginSetup(tableData.data);
@@ -100,6 +133,6 @@ public class GameSource extends CasinoSource{
         }else if(tableData.protocol == 31){
 
         }
-    }
+    }*/
 
 }
