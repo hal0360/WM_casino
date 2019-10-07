@@ -33,6 +33,15 @@ public class BacCardArea extends ConstraintLayout {
 
     }
 
+    public void statusCheck(int status){
+        if(status == 1){
+            clean();
+            setVisibility(GONE);
+        }else {
+            setVisibility(VISIBLE);
+        }
+    }
+
     public void update(int area, int img) {
         ImageView pokerImg = pokers.get(area);
         pokerImg.setVisibility(View.VISIBLE);
@@ -48,13 +57,8 @@ public class BacCardArea extends ConstraintLayout {
         pokers.get(6).setVisibility(INVISIBLE);
     }
 
-    public void reset(int status, SparseIntArray dataPokers) {
-        if(status == 2){setVisibility(View.VISIBLE);
-            clean();
-        }else{
-            setVisibility(View.GONE);
-            return;
-        }
+    public void reset(SparseIntArray dataPokers) {
+        clean();
         for(int i = 0; i < dataPokers.size(); i++) {
             int key = dataPokers.keyAt(i);
             update(key, dataPokers.get(key));

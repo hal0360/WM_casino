@@ -15,17 +15,19 @@ import tw.com.atromoby.widgets.ItemsView;
 import tw.com.lixin.wm_casino.dataModels.Client22;
 import tw.com.lixin.wm_casino.holders.BacHolder;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
+import tw.com.lixin.wm_casino.interfaces.StackCallBridge;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.tools.BacCardArea;
+import tw.com.lixin.wm_casino.tools.BetCountdown;
 import tw.com.lixin.wm_casino.tools.CasinoGrid;
 import tw.com.lixin.wm_casino.tools.ChipStack;
 import tw.com.lixin.wm_casino.tools.ControlButton;
 import tw.com.lixin.wm_casino.tools.ProfileSetting;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
-public class BacActivity extends WMActivity implements TableBridge {
+public class BacActivity extends WMActivity implements TableBridge, StackCallBridge {
 
     private IjkVideoView video;
     private BacTable table;
@@ -35,6 +37,7 @@ public class BacActivity extends WMActivity implements TableBridge {
     private CasinoGrid mainGrid, firstGrid, secGrid, thirdGrid, fourthGrid;
     private ProfileSetting profile;
     private ControlButton betBtn, cancelBtn, rebetBtn;
+    private BetCountdown countdown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +61,12 @@ public class BacActivity extends WMActivity implements TableBridge {
         betBtn = findViewById(R.id.confirm_btn);
         cancelBtn = findViewById(R.id.cancel_btn);
         rebetBtn = findViewById(R.id.rebet_btn);
+        countdown = findViewById(R.id.countdown);
 
 
-        playerPairStack.setUp(table.playPairStack);
+        playerPairStack.setUp(table.playPairStack, this);
 
-        cardArea.reset(table.cardStatus, table.pokers);
+        cardArea.reset(table.pokers);
 
         String path = "rtmp://wmvdo.nicejj.cn/live1/stream1";
 
@@ -139,7 +143,9 @@ public class BacActivity extends WMActivity implements TableBridge {
 
     @Override
     public void statusUpdate() {
-        cardArea.setVisibility(View.GONE);
+        cardArea.statusCheck(table.cardStatus);
+        countdown.statusCheck(table.cardStatus);
+
         if (table.cardStatus == 0) {
 
         } else if (table.cardStatus == 1) {
@@ -173,10 +179,11 @@ public class BacActivity extends WMActivity implements TableBridge {
 
     @Override
     public void betCountdown(int sec) {
-
+        countdown.setSecond(sec);
     }
 
-    public void betCalled(View view) {
-        alert("shitty");
+    @Override
+    public void stackBet(ChipStack stack) {
+
     }
 }

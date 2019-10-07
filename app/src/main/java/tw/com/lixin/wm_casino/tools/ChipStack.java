@@ -1,5 +1,6 @@
 package tw.com.lixin.wm_casino.tools;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.interfaces.StackCallBridge;
 import tw.com.lixin.wm_casino.models.Chip;
 import tw.com.lixin.wm_casino.models.ChipStackData;
 
@@ -25,14 +27,11 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     private Animation animeDwn, animeUp;
     private int hit = 0;
     private List<Integer> ids = new ArrayList<>();
-    private TextView valTxt, title, dtOdds;
+    private TextView valTxt;
+    private TextView dtOdds;
     public ChipStackData data;
-    private Boolean disabled = true;
     private int orientation;
-
-    public void disable(Boolean disabled){
-        this.disabled = disabled;
-    }
+    private StackCallBridge bridge;
 
     public ChipStack(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -45,7 +44,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         coin4 = findViewById(R.id.coin4);
         coin5 = findViewById(R.id.coin5);
         valTxt = findViewById(R.id.bet_value);
-        title = findViewById(R.id.table_title);
+        TextView title = findViewById(R.id.table_title);
         dtOdds = findViewById(R.id.dtOdds);
 
         if(orientation == Configuration.ORIENTATION_PORTRAIT){
@@ -77,11 +76,12 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         reset();
     }
 
-    public void setUp(ChipStackData cData){
+    public void setUp(ChipStackData cData, StackCallBridge bridge){
         dtOdds.setText(cData.score);
         data = cData;
         for(Chip coin: data.addedCoin) noAnimeAdd(coin);
         for(Chip coin: data.tempAddedCoin) noAnimeAdd(coin);
+        this.bridge = bridge;
     }
 
     public void refresh(){
@@ -90,6 +90,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         for(Chip coin: data.tempAddedCoin) noAnimeAdd(coin);
     }
 
+    @SuppressLint("SetTextI18n")
     private void reset(){
         hit = 0;
         valTxt.setText(data.value + "");
@@ -105,6 +106,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         ids = new ArrayList<>();
     }
 
+    @SuppressLint("SetTextI18n")
     private void noAnimeAdd(Chip coin){
 
         ids.add(coin.image);
@@ -134,20 +136,18 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         hit++;
         valTxt.setVisibility(View.VISIBLE);
         valTxt.setText(data.value + "");
-
     }
 
     public void win(){
-        setBackgroundResource(R.drawable.chip_stack_border_win);
+      //  setBackgroundResource(R.drawable.chip_stack_border_win);
     }
 
+    @SuppressLint("SetTextI18n")
     public void add(Chip coin){
-
-       // if(disabled) return;
-       // if(!data.add(coin)) return;
-      //  setBackgroundResource(R.drawable.chip_stack_border_on);
+        if(!data.add(coin)) return;
+        //setBackgroundResource(R.drawable.chip_stack_border_on);
         valTxt.setVisibility(View.VISIBLE);
-       // valTxt.setText(data.value + "");
+        valTxt.setText(data.value + "");
         ids.add(coin.image);
         if(hit == 0){
             coin1.setImageResource(coin.image);
@@ -194,6 +194,6 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
 
     @Override
     public void onClick(View v) {
-        add(Chip.curChip);
+        if(bridge != null ) bridge.stackBet(this);
     }
 }

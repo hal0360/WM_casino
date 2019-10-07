@@ -20,10 +20,22 @@ public class BetCountdown extends ConstraintLayout {
     public BetCountdown(Context context, AttributeSet attrs) {
         super(context, attrs);
         View.inflate(context, R.layout.bet_countdown, this);
-        setBackgroundColor(Color.parseColor("#000000"));
+
         setBackgroundResource(R.drawable.countdown_border);
         countdown = findViewById(R.id.count_txt);
         dealImg = findViewById(R.id.dealer_img);
 
+    }
+
+    public void statusCheck(int status){
+        if(status == 1){
+            dealImg.setVisibility(INVISIBLE);
+        }else {
+            dealImg.setVisibility(VISIBLE);
+        }
+    }
+
+    public void setSecond(int sec){
+        countdown.setText(sec+"");
     }
 }
