@@ -1,20 +1,23 @@
 package tw.com.lixin.wm_casino.models;
 
+import android.util.SparseIntArray;
+
 import java.util.ArrayList;
 import java.util.List;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.dataModels.gameData.Group;
+import tw.com.lixin.wm_casino.global.Poker;
 import tw.com.lixin.wm_casino.global.Road;
 
 public class BacTable extends Table{
 
     public boolean comission = false;
-    public ChipStackData playStack, playPairStack, tieStack, bankStack, bankPairStack, stackSuper;
+    public ChipStackData playStack, playPairStack, tieStack, bankStack, bankPairStack;
     public int pokerWin = -1;
     public int maxBetVal;
     public int playerScore, bankerScore;
-
+    public SparseIntArray pokers = new SparseIntArray();
     public int bankCount = 0;
     public int playCount = 0;
     public int tieCount = 0;
@@ -51,7 +54,6 @@ public class BacTable extends Table{
 
     @Override
     public void loginSetup(TableData.Data data) {
-        stackSuper = new ChipStackData();
         bankPairStack = new ChipStackData();
         bankStack = new ChipStackData();
         playPairStack = new ChipStackData();
@@ -70,13 +72,39 @@ public class BacTable extends Table{
         bankStack.maxValue = data.maxBet01;
         bankPairStack.maxValue = data.maxBet04;
 
-        stackSuper.maxValue = data.maxBet04;
-
+       // stackSuper.maxValue = data.maxBet04;
+/*
         maxBetVal = data.maxBet01;
         if(maxBetVal < data.maxBet02) maxBetVal = data.maxBet02;
         if(maxBetVal < data.maxBet03) maxBetVal = data.maxBet03;
         if(maxBetVal < data.maxBet04) maxBetVal = data.maxBet04;
+        */
         super.loginSetup(data);
+    }
+
+    @Override
+    public void statusUpdate(int stage){
+        if (stage == 1) {
+            pokers.clear();
+            bankPairStack.clear();
+            bankStack.clear();
+            playPairStack.clear();
+            tieStack.clear();
+            playStack.clear();
+        }else if(stage == 2){
+            bankPairStack.cancelBet();
+            bankStack.cancelBet();
+            playPairStack.cancelBet();
+            tieStack.cancelBet();
+            playStack.cancelBet();
+        }
+        super.statusUpdate(stage);
+    }
+
+    @Override
+    public void cardUpdate(int area, int id){
+        pokers.put(area,Poker.NUM(id ));
+        super.cardUpdate(area,id);
     }
 
     @Override
@@ -86,6 +114,19 @@ public class BacTable extends Table{
         bankerScore = data.bankerScore;
         super.resultUpdate(data);
     }
+
+    @Override
+    public void betUpdate(boolean bOk){
+        if(bOk){
+            playPairStack.comfirmBet();
+            playStack.comfirmBet();
+            tieStack.comfirmBet();
+            bankStack.comfirmBet();
+            bankPairStack.comfirmBet();
+        }
+        super.betUpdate(bOk);
+    }
+
 
     @Override
     public void update(TableData.Data data){

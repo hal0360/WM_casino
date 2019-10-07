@@ -110,6 +110,7 @@ public class BacHolder extends ItemHolder implements TableBridge{
             secondGrid.drawRoad(table.secGrid);
             thirdGrid.drawRoad(table.thirdGrid);
             fourthGrid.drawRoad(table.fourthGrid);
+
             int bankPer, playPer, tiePer;
             if(table.round == 0){
                 bankPer = 0;

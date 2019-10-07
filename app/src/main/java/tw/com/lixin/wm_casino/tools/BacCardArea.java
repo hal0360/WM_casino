@@ -33,12 +33,16 @@ public class BacCardArea extends ConstraintLayout {
 
     }
 
-    public void statusCheck(int status){
+    public void statusCheck(int status, SparseIntArray dataPokers){
+        clean();
         if(status == 1){
-            clean();
             setVisibility(GONE);
         }else {
             setVisibility(VISIBLE);
+            for(int i = 0; i < dataPokers.size(); i++) {
+                int key = dataPokers.keyAt(i);
+                update(key, dataPokers.get(key));
+            }
         }
     }
 

@@ -1,11 +1,8 @@
 package tw.com.lixin.wm_casino.tools;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
-
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,6 +22,14 @@ public class BetCountdown extends ConstraintLayout {
         countdown = findViewById(R.id.count_txt);
         dealImg = findViewById(R.id.dealer_img);
 
+    }
+
+    public void dealing(){
+        dealImg.setVisibility(INVISIBLE);
+    }
+
+    public void betting(){
+        dealImg.setVisibility(INVISIBLE);
     }
 
     public void statusCheck(int status){

@@ -57,7 +57,7 @@ public class LobbySource extends CasinoSource{
                 handle(()-> bridge.wholeDataUpdated());
                 break;
             case 34:
-                peopleOnline.append(lobbyData.data.gameID,lobbyData.data.onlinePeople);
+                peopleOnline.put(lobbyData.data.gameID,lobbyData.data.onlinePeople);
                 handle(()-> bridge.peopleOnlineUpdate(lobbyData.data.gameID, lobbyData.data.onlinePeople));
                 break;
         }

@@ -3,7 +3,6 @@ package tw.com.lixin.wm_casino.models;
 
 import android.graphics.Bitmap;
 import android.os.Handler;
-import android.util.SparseIntArray;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +12,6 @@ import java.util.TimerTask;
 import tw.com.atromoby.utils.Cmd;
 import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.dataModels.gameData.Group;
-import tw.com.lixin.wm_casino.global.Poker;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
 
 
@@ -35,7 +33,6 @@ public abstract class Table {
     public int round;
     public int groupID;
     public int groupType;
-    public SparseIntArray pokers = new SparseIntArray();
 
     public Table(Group group){
         historySetup(group.historyArr);
@@ -85,9 +82,7 @@ public abstract class Table {
     }
 
     public void statusUpdate(int stage){
-        if (stage == 1) {
-            pokers.clear();
-        } else if (stage == 2) {
+        if (stage == 2) {
             timer.cancel();
         }
         cardStatus = stage;
@@ -95,7 +90,6 @@ public abstract class Table {
     }
 
     public void cardUpdate(int area, int id){
-        pokers.put(area,Poker.NUM(id ));
         handle(() -> bridge.cardUpdate(area, id));
     }
 

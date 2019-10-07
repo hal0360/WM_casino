@@ -5,11 +5,8 @@ import android.view.View;
 
 import tw.com.atromoby.utils.Json;
 import tw.com.lixin.wm_casino.dataModels.Client35;
-import tw.com.lixin.wm_casino.dataModels.gameData.Game;
-import tw.com.lixin.wm_casino.dataModels.gameData.Group;
 import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
-import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.tools.ImageGetTask;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
@@ -111,8 +108,8 @@ alert("data updated");
 
     @Override
     public void peopleOnlineUpdate(int gameID, int number) {
-        if(gameID != 109) return;
-        if(!isPortrait()) setTextView(R.id.online_ppl_txt, number+"");
+        if(!isPortrait()) setTextView(R.id.online_ppl_txt, lobbySource.peopleOnline.get(109) + "");
+
     }
 
     public void dealerImgLoaded(){

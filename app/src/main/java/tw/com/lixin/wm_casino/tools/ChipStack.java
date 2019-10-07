@@ -91,7 +91,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     }
 
     @SuppressLint("SetTextI18n")
-    private void reset(){
+    public void reset(){
         hit = 0;
         valTxt.setText(data.value + "");
         coin1.setVisibility(View.INVISIBLE);
@@ -143,8 +143,8 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     }
 
     @SuppressLint("SetTextI18n")
-    public void add(Chip coin){
-        if(!data.add(coin)) return;
+    public boolean add(Chip coin){
+        if(!data.add(coin)) return false;
         //setBackgroundResource(R.drawable.chip_stack_border_on);
         valTxt.setVisibility(View.VISIBLE);
         valTxt.setText(data.value + "");
@@ -176,7 +176,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
             coin1.startAnimation(animeDwn);
         }
         hit++;
-
+        return true;
     }
 
     @Override

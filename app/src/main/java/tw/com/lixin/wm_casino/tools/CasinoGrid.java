@@ -11,6 +11,8 @@ import android.text.method.PasswordTransformationMethod;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
@@ -23,6 +25,9 @@ public class CasinoGrid extends TableLayout {
     private View[][] viewGrid;
     public int width, height;
     private Context context;
+    private Animation fadeAnime;
+
+    private View predictV;
 
     public CasinoGrid(Context context)
     {
@@ -34,7 +39,7 @@ public class CasinoGrid extends TableLayout {
     {
         super(context, attrs);
         this.context = context;
-       // TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CasinoGrid, 0, 0);
+        fadeAnime = AnimationUtils.loadAnimation(context, R.anim.prediction_fade);
         TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.CasinoGrid);
         int gridX, gridY;
         boolean isDouble = a.getBoolean(R.styleable.CasinoGrid_grid_double,false);
@@ -64,6 +69,20 @@ public class CasinoGrid extends TableLayout {
             for(int y=0; y<6; y++){
                 insertImage(x,y,road.road[x + shift][y]);
             }
+        }
+    }
+
+    public void clearAskViews(){
+        if(predictV == null) return;
+        predictV.clearAnimation();
+        predictV.setBackgroundResource(0);
+    }
+
+    public void askRoad(int posX, int posY, int res) {
+        clearAskViews();
+        if (width > posX) {
+            predictV = insertImage(posX, posY, res);
+            predictV.startAnimation(fadeAnime);
         }
     }
 

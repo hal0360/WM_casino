@@ -1,18 +1,20 @@
 package tw.com.lixin.wm_casino.tools;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.global.User;
 
 public class ProfileSetting extends ConstraintLayout implements View.OnClickListener{
 
     private Context context;
-    private TextView balance;
+    private TextView balance, name;
     private View settingBtn;
 
     public ProfileSetting(Context context) {
@@ -31,6 +33,19 @@ public class ProfileSetting extends ConstraintLayout implements View.OnClickList
         context = con;
         balance = findViewById(R.id.balance_txt);
         settingBtn = findViewById(R.id.setting_btn);
+
+        int orientation = getResources().getConfiguration().orientation;
+        if(orientation == Configuration.ORIENTATION_LANDSCAPE){
+            name = findViewById(R.id.name_txt);
+            if(User.account() != null) name.setText(User.account());
+        }
+
+        balance.setText(User.balance()+"");
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void setBalance(float bal) {
+        balance.setText(bal+"");
     }
 
     @Override

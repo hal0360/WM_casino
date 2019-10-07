@@ -72,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/newsBroadcast2" />
 
     <tw.com.lixin.wm_casino.tools.RatePanel
-        android:id="@+id/ratePanel2"
+        android:id="@+id/panel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -243,6 +243,33 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toStartOf="@+id/chipSelection2"
-        app:layout_constraintTop_toBottomOf="@+id/newsBroadcast2" />
+        app:layout_constraintTop_toBottomOf="@+id/newsBroadcast2" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="30dp"
+            android:id="@+id/bank_score"
+            android:text="0"
+            android:textColor="#FF0000"
+            android:textSize="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="39dp"
+            android:id="@+id/play_score"
+            android:text="0"
+            android:textColor="#0000FF"
+            android:textSize="12dp"
+            app:layout_constraintStart_toStartOf="@+id/bank_score"
+            app:layout_constraintTop_toBottomOf="@+id/bank_score" />
+    </tw.com.lixin.wm_casino.tools.BacCardArea>
 
 </android.support.constraint.ConstraintLayout>

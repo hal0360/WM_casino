@@ -30,8 +30,12 @@ public class ChipStackData {
         tempAddedCoin = new ArrayList<>();
     }
 
-    public boolean isEmpty(){
+    public boolean isTempEmpty(){
         return tempAddedCoin.size() == 0;
+    }
+
+    public boolean isAddEmpty(){
+        return addedCoin.size() == 0;
     }
 
     public boolean add(Chip coin){
