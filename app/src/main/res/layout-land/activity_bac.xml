@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<tw.com.atromoby.rtmplayer.IjkVideoView
     android:id="@+id/my_player"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -272,4 +272,4 @@
             app:layout_constraintTop_toBottomOf="@+id/bank_score" />
     </tw.com.lixin.wm_casino.tools.BacCardArea>
 
-</android.support.constraint.ConstraintLayout>
+</tw.com.atromoby.rtmplayer.IjkVideoView>

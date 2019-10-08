@@ -35,6 +35,11 @@ public class BacTable extends Table{
 
     public BacTable(Group group) {
         super(group);
+        bankPairStack = new ChipStackData();
+        bankStack = new ChipStackData();
+        playPairStack = new ChipStackData();
+        tieStack = new ChipStackData();
+        playStack = new ChipStackData();
     }
 
     @Override
@@ -54,11 +59,11 @@ public class BacTable extends Table{
 
     @Override
     public void loginSetup(TableData.Data data) {
-        bankPairStack = new ChipStackData();
-        bankStack = new ChipStackData();
-        playPairStack = new ChipStackData();
-        tieStack = new ChipStackData();
-        playStack = new ChipStackData();
+        bankPairStack.clear();
+        bankStack.clear();
+        playPairStack.clear();
+        tieStack.clear();
+        playStack.clear();
 
         playStack.score = data.dtOdds.get(2);
         bankStack.score = data.dtOdds.get(1);

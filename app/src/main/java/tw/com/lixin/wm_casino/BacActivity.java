@@ -107,7 +107,7 @@ public class BacActivity extends WMActivity implements TableBridge, StackCallBri
         countdown.statusCheck(table.cardStatus);
         checkStackEmpty();
         panel.setUp(table);
-        panel.percentUpdate(table.round, table.playCount, table.tieCount, table.bankCount);
+        if(!isPortrait()) panel.percentUpdate(table.round, table.playCount, table.tieCount, table.bankCount);
 
         table.bind(this);
     }

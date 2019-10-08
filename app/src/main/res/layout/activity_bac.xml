@@ -43,9 +43,6 @@
         android:layout_width="159dp"
         android:layout_height="67dp"
         android:layout_marginTop="1dp"
-        android:background="#fff"
-        android:divider="@drawable/table_divider"
-        android:showDividers="middle"
         app:grid_x="14"
         app:grid_y="6"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout454"
@@ -57,9 +54,7 @@
         android:layout_height="32.5dp"
         android:layout_marginStart="1dp"
         android:layout_marginLeft="1dp"
-        android:background="#fff"
-        android:divider="@drawable/table_divider"
-        android:showDividers="middle"
+        app:grid_double="true"
         app:grid_x="7"
         app:grid_y="3"
         app:layout_constraintBottom_toBottomOf="@+id/main_grid"
@@ -71,9 +66,7 @@
         android:layout_height="32.5dp"
         android:layout_marginStart="1dp"
         android:layout_marginLeft="1dp"
-        android:background="#fff"
-        android:divider="@drawable/table_divider"
-        android:showDividers="middle"
+        app:grid_double="true"
         app:grid_x="7"
         app:grid_y="3"
         app:layout_constraintBottom_toBottomOf="@+id/main_grid"
@@ -262,9 +255,7 @@
         android:layout_marginLeft="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginBottom="1dp"
-        android:background="#fff"
-        android:divider="@drawable/table_divider"
-        android:showDividers="middle"
+        app:grid_double="true"
         app:grid_x="14"
         app:grid_y="3"
         app:layout_constraintBottom_toTopOf="@+id/third_grid"
@@ -276,16 +267,13 @@
         android:id="@+id/first_grid"
         android:layout_width="0dp"
         android:layout_height="67dp"
-        android:background="#fff"
-        android:divider="@drawable/table_divider"
-        android:showDividers="middle"
         app:grid_x="28"
         app:grid_y="6"
         app:layout_constraintEnd_toEndOf="@+id/fourth_grid"
         app:layout_constraintStart_toStartOf="@+id/main_grid"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout24" />
 
-    <android.support.constraint.ConstraintLayout
+    <tw.com.atromoby.rtmplayer.IjkVideoView
         android:id="@+id/my_player"
         android:layout_width="0dp"
         android:layout_height="190dp"
@@ -332,7 +320,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </android.support.constraint.ConstraintLayout>
+    </tw.com.atromoby.rtmplayer.IjkVideoView>
 
     <tw.com.lixin.wm_casino.tools.RatePanel
         android:id="@+id/panel"
