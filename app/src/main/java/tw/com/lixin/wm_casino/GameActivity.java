@@ -5,7 +5,10 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
 
+import tw.com.atromoby.utils.Kit;
 import tw.com.atromoby.widgets.ItemsView;
+import tw.com.atromoby.widgets.RootActivity;
+import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.holders.BacHolder;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
@@ -15,7 +18,7 @@ import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
-public class GameActivity extends WMActivity implements LobbyBridge {
+public class GameActivity extends WMActivity implements LobbyBridge, GameBridge {
 
     LobbySource lobbySource;
     GameSource gameSource;
@@ -51,6 +54,7 @@ public class GameActivity extends WMActivity implements LobbyBridge {
         super.onResume();
 
         lobbySource.bind(this);
+        gameSource.bind(this);
 
         if(!lobbySource.isConnected()){
             loading();
@@ -74,6 +78,56 @@ public class GameActivity extends WMActivity implements LobbyBridge {
         }
 
     }
+
+    @Override
+    public void tableLogin(TableData.Data data) {
+        if(data.bOk){
+            BacActivity.bacStarted(data);
+            pushActivity(BacActivity.class);
+        }
+        else alert("Cannot login to this table");
+    }
+
+    @Override
+    public void resultUpdate(TableData.Data data) {
+
+    }
+
+    @Override
+    public void balanceUpdate(float value) {
+
+    }
+
+    @Override
+    public void betUpdate(boolean betOK) {
+
+    }
+
+    @Override
+    public void cardUpdate(int area, int img) {
+
+    }
+
+    @Override
+    public void statusUpdate(int stage) {
+
+    }
+
+    @Override
+    public void gridUpdate() {
+
+    }
+
+    @Override
+    public void winLossUpdate(TableData.Data data) {
+
+    }
+
+    @Override
+    public void startCountDown(int milli) {
+
+    }
+
 
     @Override
     public void peopleOnlineUpdate(int gameID, int number) {

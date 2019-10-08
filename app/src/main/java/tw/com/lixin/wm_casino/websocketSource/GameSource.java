@@ -75,6 +75,49 @@ public class GameSource extends CasinoSource{
     public void onReceive(String text) {
         TableData tableData = Json.from(text, TableData.class);
         Table tt = findTable(tableData.data.groupID);
+
+        if(tt == null) return;
+        switch(tableData.protocol) {
+            case 20:
+                tt.statusUpdate(tableData.data.gameStage);
+                if(tableData.data.groupID == groupID) handle(() -> bridge.statusUpdate(tableData.data.gameStage));
+                break;
+            case 24:
+                tt.cardUpdate(tableData.data.cardArea, tableData.data.cardID);
+                if(tableData.data.groupID == groupID) handle(() -> bridge.cardUpdate(tableData.data.cardArea, tableData.data.cardID));
+                break;
+            case 26:
+                tt.update(tableData.data);
+                if(tableData.data.groupID == groupID) handle(() -> bridge.gridUpdate());
+                break;
+            case 38:
+                tt.startCountDown(tableData.data.timeMillisecond);
+                if(tableData.data.groupID == groupID) handle(() -> bridge.startCountDown(tableData.data.timeMillisecond));
+                break;
+            case 25:
+                if(tableData.data.groupID == groupID) handle(() -> bridge.resultUpdate(tableData.data));
+                break;
+            case 10:
+                tt.loginSetup(tableData.data);
+                if(tableData.data.groupID == groupID) handle(() -> bridge.tableLogin(tableData.data));
+                break;
+            case 22:
+                if(tableData.data.groupID == groupID) handle(() -> bridge.betUpdate(tableData.data.bOk));
+                break;
+            case 23:
+                if(tableData.data.groupID == groupID) handle(() -> bridge.balanceUpdate(tableData.data.balance));
+                break;
+            case 31:
+                if(tableData.data.groupID == groupID) handle(() -> bridge.winLossUpdate(tableData.data));
+                break;
+        }
+    }
+
+    /*
+    @Override
+    public void onReceive(String text) {
+        TableData tableData = Json.from(text, TableData.class);
+        Table tt = findTable(tableData.data.groupID);
         if(tt == null) return;
         switch(tableData.protocol) {
             case 20:
@@ -101,8 +144,11 @@ public class GameSource extends CasinoSource{
             case 23:
                 tt.balanceUpdate(tableData.data.balance);
                 break;
+            case 31:
+               // tt.balanceUpdate(tableData.data.balance);
+                break;
         }
-    }
+    }*/
 
     /*
     @Override

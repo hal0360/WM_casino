@@ -41,7 +41,7 @@
     <tw.com.lixin.wm_casino.tools.CasinoGrid
         android:id="@+id/main_grid"
         android:layout_width="159dp"
-        android:layout_height="67dp"
+        android:layout_height="68dp"
         android:layout_marginTop="1dp"
         app:grid_x="14"
         app:grid_y="6"
@@ -51,7 +51,7 @@
     <tw.com.lixin.wm_casino.tools.CasinoGrid
         android:id="@+id/third_grid"
         android:layout_width="79dp"
-        android:layout_height="32.5dp"
+        android:layout_height="33dp"
         android:layout_marginStart="1dp"
         android:layout_marginLeft="1dp"
         app:grid_double="true"
@@ -208,7 +208,7 @@
             android:id="@+id/view"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="1dp"
             android:background="#000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -266,7 +266,7 @@
     <tw.com.lixin.wm_casino.tools.CasinoGrid
         android:id="@+id/first_grid"
         android:layout_width="0dp"
-        android:layout_height="67dp"
+        android:layout_height="68dp"
         app:grid_x="28"
         app:grid_y="6"
         app:layout_constraintEnd_toEndOf="@+id/fourth_grid"

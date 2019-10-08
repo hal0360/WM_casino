@@ -23,7 +23,7 @@ import tw.com.lixin.wm_casino.models.ChipStackData;
 
 public class ChipStack extends ConstraintLayout implements Animation.AnimationListener, View.OnClickListener {
 
-    private ImageView coin1, coin2, coin3, coin4, coin5;
+    private ImageView coin1, coin2, coin3, coin4, coin5, chipCheck;
     private Animation animeDwn, animeUp;
     private int hit = 0;
     private List<Integer> ids = new ArrayList<>();
@@ -47,14 +47,21 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         TextView title = findViewById(R.id.table_title);
         dtOdds = findViewById(R.id.dtOdds);
 
-        if(orientation == Configuration.ORIENTATION_PORTRAIT){
-            setBackgroundResource(R.drawable.chip_stack_border);
-        }
-
         TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.ChipStack);
         title.setTextColor(a.getColor(R.styleable.ChipStack_title_color, 0xFF9EB5AD));
         title.setText(a.getString(R.styleable.ChipStack_title));
+
+        if(orientation == Configuration.ORIENTATION_PORTRAIT){
+            setBackgroundResource(R.drawable.chip_stack_border);
+        }else{
+            View tiltView = findViewById(R.id.text_block);
+            tiltView.setRotation(a.getInt(R.styleable.ChipStack_tilt, 0));
+            chipCheck = findViewById(R.id.chip_check_img);
+        }
+
         a.recycle();
+
+       // setRotation(34);
 
         animeDwn = AnimationUtils.loadAnimation(context, R.anim.coin_anime_down);
         animeDwn.setAnimationListener(this);
@@ -71,13 +78,18 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         refresh();
     }
 
+    public void comfirmBet(){
+        data.comfirmBet();
+        refresh();
+    }
+
     public void clearCoin(){
         data.clear();
         reset();
     }
 
     public void setUp(ChipStackData cData, StackCallBridge bridge){
-        dtOdds.setText(cData.score);
+        dtOdds.setText("1:"+cData.score);
         data = cData;
         for(Chip coin: data.addedCoin) noAnimeAdd(coin);
         for(Chip coin: data.tempAddedCoin) noAnimeAdd(coin);
@@ -88,10 +100,18 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         reset();
         for(Chip coin: data.addedCoin) noAnimeAdd(coin);
         for(Chip coin: data.tempAddedCoin) noAnimeAdd(coin);
+
+        if(orientation == Configuration.ORIENTATION_LANDSCAPE){
+            if(data.addedCoin.size() > 0 && data.tempAddedCoin.size() == 0){
+                chipCheck.setVisibility(VISIBLE);
+                chipCheck.setImageResource(R.drawable.chip_check_on);
+            }
+        }
+
     }
 
     @SuppressLint("SetTextI18n")
-    public void reset(){
+    private void reset(){
         hit = 0;
         valTxt.setText(data.value + "");
         coin1.setVisibility(View.INVISIBLE);
@@ -100,9 +120,14 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         coin4.setVisibility(View.INVISIBLE);
         coin5.setVisibility(View.INVISIBLE);
         valTxt.setVisibility(View.INVISIBLE);
+
         if(orientation == Configuration.ORIENTATION_PORTRAIT){
             setBackgroundResource(R.drawable.chip_stack_border);
+        }else{
+            chipCheck.setVisibility(INVISIBLE);
+            chipCheck.setImageResource(R.drawable.chip_check_off);
         }
+
         ids = new ArrayList<>();
     }
 
@@ -136,6 +161,10 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         hit++;
         valTxt.setVisibility(View.VISIBLE);
         valTxt.setText(data.value + "");
+
+        if(orientation == Configuration.ORIENTATION_LANDSCAPE){
+            chipCheck.setVisibility(VISIBLE);
+        }
     }
 
     public void win(){
@@ -145,8 +174,15 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     @SuppressLint("SetTextI18n")
     public boolean add(Chip coin){
         if(!data.add(coin)) return false;
-        //setBackgroundResource(R.drawable.chip_stack_border_on);
         valTxt.setVisibility(View.VISIBLE);
+
+        if(orientation == Configuration.ORIENTATION_PORTRAIT){
+            setBackgroundResource(R.drawable.chip_stack_border_on);
+        }else{
+            chipCheck.setVisibility(VISIBLE);
+            chipCheck.setImageResource(R.drawable.chip_check_off);
+        }
+
         valTxt.setText(data.value + "");
         ids.add(coin.image);
         if(hit == 0){

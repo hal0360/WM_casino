@@ -83,7 +83,6 @@ public class RatePanel extends ConstraintLayout{
 
             tableName.setText("baccarat" + table.groupID);
 
-
         }else{
             TextView member = findViewById(R.id.member);
             member.setText(User.account());
@@ -92,49 +91,49 @@ public class RatePanel extends ConstraintLayout{
     }
 
     public void percentUpdate(int round, int val1, int val2,int val3){
-        int per1, per2, per3;
-        if(round == 0){
-            per1 = 0;
-            per2 = 0;
-            per3 = 0;
-        }else {
-            per1 = val1*100/round;
-            per2 = val2*100/round;
-            per3 = val3*100/round;
+        if(orientation == Configuration.ORIENTATION_LANDSCAPE){
+            int per1, per2, per3;
+            if(round == 0){
+                per1 = 0;
+                per2 = 0;
+                per3 = 0;
+            }else {
+                per1 = val1*100/round;
+                per2 = val2*100/round;
+                per3 = val3*100/round;
+            }
+            sec1Num.setText(val1+"");
+            sec2Num.setText(val2+"");
+            sec3Num.setText(val3+"");
+            fin1Num.setText(val1+"");
+            fin2Num.setText(val2+"");
+            fin3Num.setText(val3+"");
+
+            sec1Per.setText(per1+"%");
+            sec2Per.setText(per2+"%");
+            sec3Per.setText(per3+"%");
+            fin1Per.setText(per1+"%");
+            fin2Per.setText(per2+"%");
+            fin3Per.setText(per3+"%");
+
+            LinearLayout.LayoutParams param1 = new LinearLayout.LayoutParams(
+                    LayoutParams.WRAP_CONTENT,
+                    LayoutParams.MATCH_PARENT,
+                    val1
+            );
+            sec1.setLayoutParams(param1);
+            LinearLayout.LayoutParams param2 = new LinearLayout.LayoutParams(
+                    LayoutParams.WRAP_CONTENT,
+                    LayoutParams.MATCH_PARENT,
+                    val2
+            );
+            sec2.setLayoutParams(param2);
+            LinearLayout.LayoutParams param3 = new LinearLayout.LayoutParams(
+                    LayoutParams.WRAP_CONTENT,
+                    LayoutParams.MATCH_PARENT,
+                    val3
+            );
+            sec3.setLayoutParams(param3);
         }
-        sec1Num.setText(val1+"");
-        sec2Num.setText(val2+"");
-        sec3Num.setText(val3+"");
-        fin1Num.setText(val1+"");
-        fin2Num.setText(val2+"");
-        fin3Num.setText(val3+"");
-
-        sec1Per.setText(per1+"%");
-        sec2Per.setText(per2+"%");
-        sec3Per.setText(per3+"%");
-        fin1Per.setText(per1+"%");
-        fin2Per.setText(per2+"%");
-        fin3Per.setText(per3+"%");
-
-
-        LinearLayout.LayoutParams param1 = new LinearLayout.LayoutParams(
-                LayoutParams.WRAP_CONTENT,
-                LayoutParams.MATCH_PARENT,
-                val1
-        );
-        sec1.setLayoutParams(param1);
-        LinearLayout.LayoutParams param2 = new LinearLayout.LayoutParams(
-                LayoutParams.WRAP_CONTENT,
-                LayoutParams.MATCH_PARENT,
-                val2
-        );
-        sec2.setLayoutParams(param2);
-        LinearLayout.LayoutParams param3 = new LinearLayout.LayoutParams(
-                LayoutParams.WRAP_CONTENT,
-                LayoutParams.MATCH_PARENT,
-                val3
-        );
-        sec3.setLayoutParams(param3);
     }
-
 }

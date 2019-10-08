@@ -85,7 +85,7 @@
                 android:layout_height="49dp"
                 android:layout_margin="3dp" />
 
-            <tw.com.lixin.wm_casino.tools.chips.Chip1000
+            <tw.com.lixin.wm_casino.tools.chips.Chip10000
                 android:id="@+id/chip10000"
                 android:layout_width="49dp"
                 android:layout_height="49dp"

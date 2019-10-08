@@ -7,10 +7,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import tw.com.atromoby.utils.Kit;
 import tw.com.atromoby.widgets.ItemHolder;
-import tw.com.atromoby.widgets.RootActivity;
-import tw.com.lixin.wm_casino.BacActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
@@ -144,19 +141,4 @@ public class BacHolder extends ItemHolder implements TableBridge{
         countDown.setText(sec+"");
     }
 
-    @Override
-    public void tableLogin(boolean logOk) {
-        RootActivity context = (RootActivity) getContex();
-        if(logOk) context.pushActivity(BacActivity.class);
-        else Kit.alert(context,"Cannot login to this table");
-    }
-
-    @Override
-    public void resultUpadte() { }
-    @Override
-    public void balanceUpdate(float value) { }
-    @Override
-    public void betUpdate(boolean betOK) { }
-    @Override
-    public void cardUpdate(int area, int img) { }
 }

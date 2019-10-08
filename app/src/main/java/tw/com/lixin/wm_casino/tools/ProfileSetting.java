@@ -33,14 +33,14 @@ public class ProfileSetting extends ConstraintLayout implements View.OnClickList
         context = con;
         balance = findViewById(R.id.balance_txt);
         settingBtn = findViewById(R.id.setting_btn);
+    }
 
+    public void setMember(String user) {
         int orientation = getResources().getConfiguration().orientation;
         if(orientation == Configuration.ORIENTATION_LANDSCAPE){
             name = findViewById(R.id.name_txt);
-            if(User.account() != null) name.setText(User.account());
+            name.setText(user);
         }
-
-        balance.setText(User.balance()+"");
     }
 
     @SuppressLint("SetTextI18n")

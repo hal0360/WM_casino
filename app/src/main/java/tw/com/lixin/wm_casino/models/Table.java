@@ -58,21 +58,7 @@ public abstract class Table {
 
     public abstract void historySetup(List<Integer> histories);
 
-    public void loginSetup(TableData.Data data){
-        handle(()->bridge.tableLogin(data.bOk));
-    }
-
-    public void betUpdate(boolean bOk){
-        handle(()->bridge.betUpdate(bOk));
-    }
-
-    public void balanceUpdate(float balance){
-        handle(()->bridge.balanceUpdate(balance));
-    }
-
-    public void resultUpdate(TableData.Data data){
-        handle(()->bridge.resultUpadte());
-    }
+    public abstract void loginSetup(TableData.Data data);
 
     public void update(TableData.Data data){
         round = data.historyArr.size();
@@ -89,9 +75,7 @@ public abstract class Table {
         handle(() -> bridge.statusUpdate());
     }
 
-    public void cardUpdate(int area, int id){
-        handle(() -> bridge.cardUpdate(area, id));
-    }
+    public abstract void cardUpdate(int area, int id);
 
     public void startCountDown(int mille){
         curTime = mille/1000;

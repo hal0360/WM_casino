@@ -12,11 +12,7 @@ import tw.com.lixin.wm_casino.global.Road;
 
 public class BacTable extends Table{
 
-    public boolean comission = false;
-    public ChipStackData playStack, playPairStack, tieStack, bankStack, bankPairStack;
-    public int pokerWin = -1;
-    public int maxBetVal;
-    public int playerScore, bankerScore;
+   // public ChipStackData playStack, playPairStack, tieStack, bankStack, bankPairStack;
     public SparseIntArray pokers = new SparseIntArray();
     public int bankCount = 0;
     public int playCount = 0;
@@ -35,11 +31,6 @@ public class BacTable extends Table{
 
     public BacTable(Group group) {
         super(group);
-        bankPairStack = new ChipStackData();
-        bankStack = new ChipStackData();
-        playPairStack = new ChipStackData();
-        tieStack = new ChipStackData();
-        playStack = new ChipStackData();
     }
 
     @Override
@@ -59,23 +50,6 @@ public class BacTable extends Table{
 
     @Override
     public void loginSetup(TableData.Data data) {
-        bankPairStack.clear();
-        bankStack.clear();
-        playPairStack.clear();
-        tieStack.clear();
-        playStack.clear();
-
-        playStack.score = data.dtOdds.get(2);
-        bankStack.score = data.dtOdds.get(1);
-        playPairStack.score = data.dtOdds.get(5);
-        bankPairStack.score = data.dtOdds.get(4);
-        tieStack.score = data.dtOdds.get(3);
-
-        playStack.maxValue = data.maxBet02;
-        tieStack.maxValue = data.maxBet03;
-        playPairStack.maxValue = data.maxBet04;
-        bankStack.maxValue = data.maxBet01;
-        bankPairStack.maxValue = data.maxBet04;
 
        // stackSuper.maxValue = data.maxBet04;
 /*
@@ -84,24 +58,12 @@ public class BacTable extends Table{
         if(maxBetVal < data.maxBet03) maxBetVal = data.maxBet03;
         if(maxBetVal < data.maxBet04) maxBetVal = data.maxBet04;
         */
-        super.loginSetup(data);
     }
 
     @Override
     public void statusUpdate(int stage){
         if (stage == 1) {
             pokers.clear();
-            bankPairStack.clear();
-            bankStack.clear();
-            playPairStack.clear();
-            tieStack.clear();
-            playStack.clear();
-        }else if(stage == 2){
-            bankPairStack.cancelBet();
-            bankStack.cancelBet();
-            playPairStack.cancelBet();
-            tieStack.cancelBet();
-            playStack.cancelBet();
         }
         super.statusUpdate(stage);
     }
@@ -109,29 +71,16 @@ public class BacTable extends Table{
     @Override
     public void cardUpdate(int area, int id){
         pokers.put(area,Poker.NUM(id ));
-        super.cardUpdate(area,id);
     }
 
+    /*
     @Override
     public void resultUpdate(TableData.Data data) {
         pokerWin = Table.resDivide(data.result);
         playerScore = data.playerScore;
         bankerScore = data.bankerScore;
         super.resultUpdate(data);
-    }
-
-    @Override
-    public void betUpdate(boolean bOk){
-        if(bOk){
-            playPairStack.comfirmBet();
-            playStack.comfirmBet();
-            tieStack.comfirmBet();
-            bankStack.comfirmBet();
-            bankPairStack.comfirmBet();
-        }
-        super.betUpdate(bOk);
-    }
-
+    }*/
 
     @Override
     public void update(TableData.Data data){
@@ -143,8 +92,11 @@ public class BacTable extends Table{
         super.update(data);
     }
 
-    private void divide(int rawVal){
 
+
+
+
+    private void divide(int rawVal){
         List<Integer> powers = new ArrayList<>();
         for(int i = 10; i >= 0; i-- ){
             int boss = (int) Math.pow(2,i);
@@ -157,7 +109,6 @@ public class BacTable extends Table{
                 }
             }
         }
-
     }
 
     private void packRes(List<Integer> twos){
