@@ -1,24 +1,20 @@
-package tw.com.lixin.wm_casino.tools;
+package tw.com.lixin.wm_casino.popups;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
-import android.widget.TextView;
 
 import tw.com.atromoby.widgets.Popup;
 import tw.com.lixin.wm_casino.R;
-import tw.com.lixin.wm_casino.models.Chip;
 import tw.com.lixin.wm_casino.tools.chips.CustomChip;
 
 public class NumberPadDialog extends Popup {
 
     private CustomChip chip;
-    private Context context;
+
 
     public NumberPadDialog(Context context, CustomChip chippy) {
         super(context, R.layout.number_pad);
         chip = chippy;
-        this.context = context;
 
         clicked(R.id.pad0,v-> setText("0"));
 

@@ -8,7 +8,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import tw.com.atromoby.widgets.ItemHolder;
+import tw.com.atromoby.widgets.RootActivity;
+import tw.com.lixin.wm_casino.BacActivity;
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.tools.CasinoGrid;
@@ -139,6 +142,16 @@ public class BacHolder extends ItemHolder implements TableBridge{
     @Override
     public void betCountdown(int sec) {
         countDown.setText(sec+"");
+    }
+
+    @Override
+    public void tableLogin(TableData.Data data) {
+        if(data.bOk){
+            BacActivity.bacStarted(data);
+            RootActivity act = (RootActivity) getContex();
+            act.pushActivity(BacActivity.class);
+        }
+        else alert("Cannot login to this table");
     }
 
 }

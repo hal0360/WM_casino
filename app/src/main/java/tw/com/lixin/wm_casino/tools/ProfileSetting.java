@@ -33,6 +33,15 @@ public class ProfileSetting extends ConstraintLayout implements View.OnClickList
         context = con;
         balance = findViewById(R.id.balance_txt);
         settingBtn = findViewById(R.id.setting_btn);
+
+
+     //   setMember(User.account());
+      //  setBalance(User.balance());
+    }
+
+    public void setAll(){
+           setMember(User.account());
+           setBalance(User.balance());
     }
 
     public void setMember(String user) {

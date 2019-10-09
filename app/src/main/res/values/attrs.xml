@@ -23,6 +23,11 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="TableSwitchSelect">
+        <attr name="game_name" format="string"/>
+        <attr name="game_image" format="reference" />
+    </declare-styleable>
+
     <declare-styleable name="ControlButton">
         <attr name="control_type" format="enum">
             <enum name="rebet" value="1"/>

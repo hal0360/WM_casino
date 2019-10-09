@@ -13,6 +13,7 @@ import tw.com.atromoby.widgets.CustomInput;
 import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.CmdImg;
 import tw.com.lixin.wm_casino.popups.LanguagePopup;
+import tw.com.lixin.wm_casino.popups.TableSwitchPopup;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
 public class LoginActivity extends WMActivity {
@@ -78,7 +79,12 @@ public class LoginActivity extends WMActivity {
             });
         });
 
-        clicked(R.id.lang_btn,v-> popup.show());
+       // clicked(R.id.lang_btn,v-> popup.show());
+
+
+        clicked(R.id.lang_btn,v-> new TableSwitchPopup(this).show());
+
+
     }
 
 

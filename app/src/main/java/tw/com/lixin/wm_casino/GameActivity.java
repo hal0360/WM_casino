@@ -1,6 +1,7 @@
 package tw.com.lixin.wm_casino;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +19,11 @@ import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
-public class GameActivity extends WMActivity implements LobbyBridge, GameBridge {
+public class GameActivity extends WMActivity implements LobbyBridge {
 
-    LobbySource lobbySource;
-    GameSource gameSource;
+    private LobbySource lobbySource;
+    private GameSource gameSource;
+    private ItemsView tableList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +33,14 @@ public class GameActivity extends WMActivity implements LobbyBridge, GameBridge 
         gameSource = GameSource.getInstance();
         lobbySource = LobbySource.getInstance();
 
-        ItemsView tableList = findViewById(R.id.table_list);
+        if(!isPortrait()) setTextView(R.id.total_ppl_txt,lobbySource.peopleOnline.get(gameSource.gameID)+"");
+
+
+        tableList = findViewById(R.id.table_list);
         List<BacHolder> holders = new ArrayList<>();
 
         if(gameSource.gameID == 101){
-//            setTextView(R.id.game_title, getString(R.string.wmbaccarat));
+            if(isPortrait()) setTextView(R.id.game_title, getString(R.string.wmbaccarat));
             for(Table table: gameSource.tables) holders.add(new BacHolder((BacTable) table));
         }else if(gameSource.gameID == 102){
 
@@ -43,18 +48,14 @@ public class GameActivity extends WMActivity implements LobbyBridge, GameBridge 
             alert("error!");
             toActivity(LobbyActivity.class);
         }
-
-
         tableList.add(holders);
     }
-
 
     @Override
     public void onResume() {
         super.onResume();
 
         lobbySource.bind(this);
-        gameSource.bind(this);
 
         if(!lobbySource.isConnected()){
             loading();
@@ -76,62 +77,24 @@ public class GameActivity extends WMActivity implements LobbyBridge, GameBridge 
                 toActivity(LoginActivity.class);
             });
         }
-
     }
 
     @Override
-    public void tableLogin(TableData.Data data) {
-        if(data.bOk){
-            BacActivity.bacStarted(data);
-            pushActivity(BacActivity.class);
-        }
-        else alert("Cannot login to this table");
+    public void onPause() {
+        super.onPause();
+        lobbySource.unbind();
+        tableList.clean();
     }
 
-    @Override
-    public void resultUpdate(TableData.Data data) {
-
-    }
-
-    @Override
-    public void balanceUpdate(float value) {
-
-    }
-
-    @Override
-    public void betUpdate(boolean betOK) {
-
-    }
-
-    @Override
-    public void cardUpdate(int area, int img) {
-
-    }
-
-    @Override
-    public void statusUpdate(int stage) {
-
-    }
-
-    @Override
-    public void gridUpdate() {
-
-    }
-
-    @Override
-    public void winLossUpdate(TableData.Data data) {
-
-    }
-
-    @Override
-    public void startCountDown(int milli) {
-
-    }
 
 
     @Override
     public void peopleOnlineUpdate(int gameID, int number) {
-
+        if(!isPortrait()){
+            if(gameID == gameSource.gameID){
+                setTextView(R.id.total_ppl_txt,number+"");
+            }
+        }
     }
 
 //not used

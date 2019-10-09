@@ -58,7 +58,9 @@ public abstract class Table {
 
     public abstract void historySetup(List<Integer> histories);
 
-    public abstract void loginSetup(TableData.Data data);
+    public void loginSetup(TableData.Data data){
+        handle(() -> bridge.tableLogin(data));
+    }
 
     public void update(TableData.Data data){
         round = data.historyArr.size();

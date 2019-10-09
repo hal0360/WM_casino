@@ -27,8 +27,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     private Animation animeDwn, animeUp;
     private int hit = 0;
     private List<Integer> ids = new ArrayList<>();
-    private TextView valTxt;
-    private TextView dtOdds;
+    private TextView valTxt, title, dtOdds;
     public ChipStackData data;
     private int orientation;
     private StackCallBridge bridge;
@@ -44,7 +43,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         coin4 = findViewById(R.id.coin4);
         coin5 = findViewById(R.id.coin5);
         valTxt = findViewById(R.id.bet_value);
-        TextView title = findViewById(R.id.table_title);
+        title = findViewById(R.id.table_title);
         dtOdds = findViewById(R.id.dtOdds);
 
         TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.ChipStack);
@@ -94,20 +93,31 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         for(Chip coin: data.addedCoin) noAnimeAdd(coin);
         for(Chip coin: data.tempAddedCoin) noAnimeAdd(coin);
         this.bridge = bridge;
+        checkChips();
     }
 
     public void refresh(){
         reset();
         for(Chip coin: data.addedCoin) noAnimeAdd(coin);
         for(Chip coin: data.tempAddedCoin) noAnimeAdd(coin);
+        checkChips();
+    }
 
+    private void checkChips(){
         if(orientation == Configuration.ORIENTATION_LANDSCAPE){
-            if(data.addedCoin.size() > 0 && data.tempAddedCoin.size() == 0){
+            if(data.tempAddedCoin.size() == 0){
+                if(data.addedCoin.size() > 0){
+                    chipCheck.setVisibility(VISIBLE);
+                    chipCheck.setImageResource(R.drawable.chip_check_on);
+                }else{
+                    chipCheck.setVisibility(INVISIBLE);
+                    chipCheck.setImageResource(R.drawable.chip_check_off);
+                }
+            }else{
                 chipCheck.setVisibility(VISIBLE);
-                chipCheck.setImageResource(R.drawable.chip_check_on);
+                chipCheck.setImageResource(R.drawable.chip_check_off);
             }
         }
-
     }
 
     @SuppressLint("SetTextI18n")
@@ -126,6 +136,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         }else{
             chipCheck.setVisibility(INVISIBLE);
             chipCheck.setImageResource(R.drawable.chip_check_off);
+            title.setTextColor(0xFF9EB5AD);
         }
 
         ids = new ArrayList<>();
@@ -161,14 +172,15 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         hit++;
         valTxt.setVisibility(View.VISIBLE);
         valTxt.setText(data.value + "");
-
-        if(orientation == Configuration.ORIENTATION_LANDSCAPE){
-            chipCheck.setVisibility(VISIBLE);
-        }
     }
 
     public void win(){
-      //  setBackgroundResource(R.drawable.chip_stack_border_win);
+        if(orientation == Configuration.ORIENTATION_LANDSCAPE){
+            chipCheck.setVisibility(VISIBLE);
+            title.setTextColor(0xFFFFFFE0);
+        }else {
+            setBackgroundResource(R.drawable.chip_stack_border_win);
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -220,7 +232,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         coin1.setImageResource(ids.get(0));
         coin2.setImageResource(ids.get(1));
         coin3.setImageResource(ids.get(2));
-        coin3.setImageResource(ids.get(3));
+        coin4.setImageResource(ids.get(3));
     }
 
     @Override

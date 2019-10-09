@@ -9,7 +9,6 @@ import tw.com.lixin.wm_casino.dataModels.Client22;
 import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
 import tw.com.lixin.wm_casino.interfaces.StackCallBridge;
-import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.Chip;
 import tw.com.lixin.wm_casino.models.ChipStackData;
@@ -22,7 +21,7 @@ import tw.com.lixin.wm_casino.tools.ChipStack;
 import tw.com.lixin.wm_casino.tools.ControlButton;
 import tw.com.lixin.wm_casino.tools.ProfileSetting;
 import tw.com.lixin.wm_casino.tools.RatePanel;
-import tw.com.lixin.wm_casino.tools.WinLossPopup;
+import tw.com.lixin.wm_casino.popups.WinLossPopup;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
 public class BacActivity extends WMActivity implements GameBridge, StackCallBridge {

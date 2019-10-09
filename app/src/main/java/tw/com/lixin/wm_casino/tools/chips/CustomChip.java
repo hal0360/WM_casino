@@ -1,7 +1,6 @@
 package tw.com.lixin.wm_casino.tools.chips;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.constraint.ConstraintLayout;
@@ -12,7 +11,7 @@ import android.widget.TextView;
 
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.models.Chip;
-import tw.com.lixin.wm_casino.tools.NumberPadDialog;
+import tw.com.lixin.wm_casino.popups.NumberPadDialog;
 
 public class CustomChip extends ConstraintLayout {
 

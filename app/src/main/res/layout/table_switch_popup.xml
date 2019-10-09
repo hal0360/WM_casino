@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#fff"
+    android:layout_width="360dp"
+    android:layout_height="300dp">
+
+    <ScrollView
+        android:layout_width="180dp"
+        android:layout_height="0dp"
+        android:background="#22262D"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <tw.com.lixin.wm_casino.tools.TableSwitchSelect
+                android:id="@+id/baccarat_game"
+                app:game_image="@drawable/game_01"
+                app:game_name="@string/baccarat"
+                android:layout_width="match_parent"
+                android:layout_height="85dp" />
+
+            <tw.com.lixin.wm_casino.tools.TableSwitchSelect
+                android:id="@+id/dragon_tiger_game"
+                app:game_image="@drawable/games_04"
+                app:game_name="@string/dragon_tiger"
+                android:layout_width="match_parent"
+                android:layout_height="85dp" />
+
+            <tw.com.lixin.wm_casino.tools.TableSwitchSelect
+                android:id="@+id/roulette_game"
+                app:game_image="@drawable/games_02"
+                app:game_name="@string/roulette"
+                android:layout_width="match_parent"
+                android:layout_height="85dp" />
+
+            <tw.com.lixin.wm_casino.tools.TableSwitchSelect
+                android:id="@+id/sic_bo_game"
+                app:game_image="@drawable/games_03"
+                app:game_name="@string/sic_bo"
+                android:layout_width="match_parent"
+                android:layout_height="85dp" />
+
+            <tw.com.lixin.wm_casino.tools.TableSwitchSelect
+                android:id="@+id/niuniu_game"
+                app:game_image="@drawable/games_05"
+                app:game_name="@string/niuniu"
+                android:layout_width="match_parent"
+                android:layout_height="85dp" />
+
+            <tw.com.lixin.wm_casino.tools.TableSwitchSelect
+                android:id="@+id/samgong_game"
+                app:game_image="@drawable/games_06"
+                app:game_name="@string/samgong"
+                android:layout_width="match_parent"
+                android:layout_height="85dp" />
+
+            <tw.com.lixin.wm_casino.tools.TableSwitchSelect
+                android:id="@+id/fantan_game"
+                app:game_image="@drawable/games_07"
+                app:game_name="@string/fantan"
+                android:layout_width="match_parent"
+                android:layout_height="85dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>

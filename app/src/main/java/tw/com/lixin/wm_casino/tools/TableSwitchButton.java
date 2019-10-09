@@ -7,10 +7,13 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.popups.TableSwitchPopup;
 
-public class TableSwitchButton extends ConstraintLayout {
+public class TableSwitchButton extends ConstraintLayout implements View.OnClickListener {
 
     private Context context;
+
+    private TableSwitchPopup popup;
 
     public TableSwitchButton(Context context) {
         super(context);
@@ -32,5 +35,13 @@ public class TableSwitchButton extends ConstraintLayout {
         }else {
             setBackgroundResource(R.drawable.video_button_border);
         }
+
+        popup = new TableSwitchPopup(context);
+        setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        popup.show();
     }
 }

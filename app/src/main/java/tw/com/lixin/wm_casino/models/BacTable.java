@@ -12,7 +12,6 @@ import tw.com.lixin.wm_casino.global.Road;
 
 public class BacTable extends Table{
 
-   // public ChipStackData playStack, playPairStack, tieStack, bankStack, bankPairStack;
     public SparseIntArray pokers = new SparseIntArray();
     public int bankCount = 0;
     public int playCount = 0;
@@ -49,18 +48,6 @@ public class BacTable extends Table{
     }
 
     @Override
-    public void loginSetup(TableData.Data data) {
-
-       // stackSuper.maxValue = data.maxBet04;
-/*
-        maxBetVal = data.maxBet01;
-        if(maxBetVal < data.maxBet02) maxBetVal = data.maxBet02;
-        if(maxBetVal < data.maxBet03) maxBetVal = data.maxBet03;
-        if(maxBetVal < data.maxBet04) maxBetVal = data.maxBet04;
-        */
-    }
-
-    @Override
     public void statusUpdate(int stage){
         if (stage == 1) {
             pokers.clear();
@@ -72,15 +59,6 @@ public class BacTable extends Table{
     public void cardUpdate(int area, int id){
         pokers.put(area,Poker.NUM(id ));
     }
-
-    /*
-    @Override
-    public void resultUpdate(TableData.Data data) {
-        pokerWin = Table.resDivide(data.result);
-        playerScore = data.playerScore;
-        bankerScore = data.bankerScore;
-        super.resultUpdate(data);
-    }*/
 
     @Override
     public void update(TableData.Data data){

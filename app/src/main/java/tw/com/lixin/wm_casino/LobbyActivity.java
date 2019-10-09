@@ -8,6 +8,7 @@ import tw.com.lixin.wm_casino.dataModels.Client35;
 import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
 import tw.com.lixin.wm_casino.tools.ImageGetTask;
+import tw.com.lixin.wm_casino.tools.ProfileSetting;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
@@ -23,7 +24,8 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
 
         lobbySource = LobbySource.getInstance();
         if(!isPortrait()) setTextView(R.id.online_ppl_txt, lobbySource.peopleOnline.get(109)+"");
-        if(!isPortrait()) setTextView(R.id.balance_txt, User.balance() +"");
+        ProfileSetting profileSetting = findViewById(R.id.profile_setting);
+        profileSetting.setAll();
 
     }
 
@@ -41,36 +43,6 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
 
     }
 
-
-    /*
-    private void gameSetUp(GameSource source){
-        loading();
-        source.login(User.sid(),data->{
-            Game bacGame = lobbySource.findGame(101);
-            if(bacGame == null) return;
-            source.tables.clear();
-            for(Group tableStage: bacGame.groupArr){
-                if ( tableStage.gameStage != 4){
-                    BacTable table = new BacTable();
-                    table.setUp(tableStage.historyArr);
-                    table.stage = tableStage.gameStage;
-                    table.groupID = tableStage.groupID;
-                    table.groupType = tableStage.groupType;
-                    table.score = tableStage.bankerScore;
-                    table.round = tableStage.gameNoRound;
-                    table.number = tableStage.gameNo;
-                    table.dealerName = tableStage.dealerName;
-                    table.dealerImageUrl = tableStage.dealerImage;
-                    bacSource.tables.add(table);
-                }
-            }
-            new ImageGetTask(this, bacSource.tables).execute();
-
-        }, fail->{
-            unloading();
-            alert("Unable to connect to bac");
-        });
-    }*/
 
     @Override
     public void onResume() {

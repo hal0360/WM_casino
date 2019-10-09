@@ -3,7 +3,7 @@ package tw.com.lixin.wm_casino;
 import android.os.Bundle;
 
 import tw.com.atromoby.widgets.RootActivity;
-import tw.com.lixin.wm_casino.tools.LoadDialog;
+import tw.com.lixin.wm_casino.popups.LoadDialog;
 
 public abstract class WMActivity extends RootActivity {
 
