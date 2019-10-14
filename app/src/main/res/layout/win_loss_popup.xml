@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
+    <!--
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="300dp"
@@ -49,11 +51,17 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
+    -->
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout23"
         android:layout_width="300dp"
         android:layout_height="120dp"
-        android:layout_marginTop="131dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="66dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:background="@drawable/bonus_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -298,5 +306,31 @@
             app:layout_constraintTop_toBottomOf="@+id/banker_pair_win" />
 
     </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/win_loss_border"
+        android:id="@+id/total_win_money"
+        android:text="TextView"
+        android:textColor="#fff"
+        android:textSize="21dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout23"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:gravity="center"
+        android:text="獲得派彩"
+        android:textColor="#f8ce82"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/total_win_money"
+        app:layout_constraintEnd_toEndOf="@+id/total_win_money"
+        app:layout_constraintStart_toStartOf="@+id/total_win_money" />
 
 </android.support.constraint.ConstraintLayout>

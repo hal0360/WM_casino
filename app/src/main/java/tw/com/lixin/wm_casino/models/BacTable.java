@@ -1,5 +1,6 @@
 package tw.com.lixin.wm_casino.models;
 
+import android.util.Log;
 import android.util.SparseIntArray;
 
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class BacTable extends Table{
 
     @Override
     public void cardUpdate(int area, int id){
-        pokers.put(area,Poker.NUM(id ));
+        pokers.put(area,id);
     }
 
     @Override
@@ -69,8 +70,6 @@ public class BacTable extends Table{
         bankPairCount = data.historyData.bankerPairCount;
         super.update(data);
     }
-
-
 
 
 

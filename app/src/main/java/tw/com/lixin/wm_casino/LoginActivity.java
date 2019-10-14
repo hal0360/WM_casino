@@ -57,6 +57,7 @@ public class LoginActivity extends WMActivity {
                 User.memberID(data.memberID);
                 User.sid(data.sid);
                 toActivity(LobbyActivity.class);
+                App.music_on();
             }, fail->{
                 unloading();
                 alert(fail);
@@ -73,6 +74,7 @@ public class LoginActivity extends WMActivity {
                 User.memberID(data.memberID);
                 User.sid(data.sid);
                 toActivity(LobbyActivity.class);
+                App.music_on();
             }, fail->{
                 unloading();
                 alert(fail);

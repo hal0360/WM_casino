@@ -20,7 +20,6 @@ public class TableSwitchPopup extends Popup {
         super(context, R.layout.table_switch_popup);
 
 
-        Kit.alert(context,"nigga");
 
         this.context = context;
 

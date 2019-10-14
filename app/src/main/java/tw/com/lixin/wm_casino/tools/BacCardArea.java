@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 import android.view.View;
@@ -61,12 +62,9 @@ public class BacCardArea extends ConstraintLayout {
         pokers.get(6).setVisibility(INVISIBLE);
     }
 
-    public void reset(SparseIntArray dataPokers) {
+    public void reset() {
         clean();
-        for(int i = 0; i < dataPokers.size(); i++) {
-            int key = dataPokers.keyAt(i);
-            update(key, dataPokers.get(key));
-        }
+        setVisibility(GONE);
     }
 
 }

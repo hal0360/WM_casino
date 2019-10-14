@@ -252,7 +252,7 @@ public class BacActivity extends WMActivity implements GameBridge, StackCallBrid
             bankerPairStack.clearCoin();
             bankerStack.clearCoin();
             countdown.betting();
-            cardArea.setVisibility(View.GONE);
+            cardArea.reset();
         } else if (table.cardStatus == 2) {
             cancellAllbets();
             countdown.dealing();
