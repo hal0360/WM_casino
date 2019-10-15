@@ -36,7 +36,7 @@ public class TableSwitchButton extends ConstraintLayout implements View.OnClickL
             setBackgroundResource(R.drawable.video_button_border);
         }
 
-        popup = new TableSwitchPopup(context);
+      //  popup = new TableSwitchPopup(context);
         setOnClickListener(this);
     }
 
