@@ -2,16 +2,12 @@ package tw.com.lixin.wm_casino;
 
 import android.media.MediaPlayer;
 
-import java.util.List;
-
 import tw.com.atromoby.utils.RegisterApplication;
-import tw.com.lixin.wm_casino.dataModels.gameData.Game;
-import tw.com.lixin.wm_casino.tools.CasinoSocket;
 
 public class App extends RegisterApplication {
 
 
-    public static MediaPlayer player;
+    public static MediaPlayer player, click;
     public static boolean musicOn;
 
     @Override
@@ -21,6 +17,9 @@ public class App extends RegisterApplication {
         player = MediaPlayer.create(this, R.raw.save_me);
         player.setLooping(true);
         musicOn = false;
+
+        click = MediaPlayer.create(this, R.raw.click);
+        click.setLooping(false);
     }
 
     public static void music_on(){
@@ -34,14 +33,11 @@ public class App extends RegisterApplication {
         musicOn = false;
     }
 
-    public static void logout(){
-
-
+    public static void clicking(){
+        click.seekTo(0);
+        click.start();
     }
 
-    public static void cleanSocketCalls(){
-
-    }
 
 
 }

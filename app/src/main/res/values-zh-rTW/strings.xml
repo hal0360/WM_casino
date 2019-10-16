@@ -28,6 +28,8 @@
     <string name="ranking">今日排名</string>
     <string name="rule">遊戲須知</string>
     <string name="follow">關注</string>
+    <string name="language">語言設置</string>
+    <string name="music">音樂設置</string>
     <string name="settings">系統設置</string>
     <string name="quit">退出遊戲</string>
     <!-- Casino page -->
