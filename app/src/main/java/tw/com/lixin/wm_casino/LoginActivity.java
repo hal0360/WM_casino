@@ -13,12 +13,14 @@ import tw.com.atromoby.widgets.CustomInput;
 import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.CmdImg;
 import tw.com.lixin.wm_casino.popups.LanguagePopup;
+import tw.com.lixin.wm_casino.popups.ProfilePopup;
 import tw.com.lixin.wm_casino.popups.TableSwitchPopup;
+import tw.com.lixin.wm_casino.tools.buttons.ClickConstraint;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
 public class LoginActivity extends WMActivity {
 
-    private LanguagePopup popup;
+   // private LanguagePopup popup;
     private Map<Locale, CmdImg> LangSwitch = new HashMap<>();
 
     @Override
@@ -26,7 +28,7 @@ public class LoginActivity extends WMActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        popup = new LanguagePopup(this);
+       // popup = new LanguagePopup(this);
         LobbySource source = LobbySource.getInstance();
 
         LangSwitch.put(Locale.US, f->{
@@ -84,7 +86,11 @@ public class LoginActivity extends WMActivity {
        // clicked(R.id.lang_btn,v-> popup.show());
 
 
-        clicked(R.id.lang_btn,v-> new TableSwitchPopup(this).show());
+        clicked(R.id.lang_btn,v-> {
+            ProfilePopup profilePopup = new ProfilePopup();
+            profilePopup.show(this);
+        });
+
 
 
     }
@@ -107,7 +113,7 @@ public class LoginActivity extends WMActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        popup.dismiss();
+      //  popup.dismiss();
     }
 
 }

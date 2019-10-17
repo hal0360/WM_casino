@@ -1,6 +1,8 @@
 package tw.com.lixin.wm_casino;
 
+import android.content.Context;
 import android.media.MediaPlayer;
+import android.util.DisplayMetrics;
 
 import tw.com.atromoby.utils.RegisterApplication;
 
@@ -8,7 +10,7 @@ public class App extends RegisterApplication {
 
 
     public static MediaPlayer player, click;
-    public static boolean musicOn;
+    public static boolean musicOn, effectOn;
 
     @Override
     public void onCreate() {
@@ -17,6 +19,7 @@ public class App extends RegisterApplication {
         player = MediaPlayer.create(this, R.raw.save_me);
         player.setLooping(true);
         musicOn = false;
+        effectOn = true;
 
         click = MediaPlayer.create(this, R.raw.click);
         click.setLooping(false);
@@ -34,10 +37,14 @@ public class App extends RegisterApplication {
     }
 
     public static void clicking(){
-        click.seekTo(0);
-        click.start();
+        if(effectOn){
+            click.seekTo(0);
+            click.start();
+        }
     }
 
-
+    public static int dpToPixel(float dp, Context context){
+        return (int) dp * (context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT);
+    }
 
 }

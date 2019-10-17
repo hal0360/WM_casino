@@ -32,6 +32,8 @@
     <string name="music">音乐设置</string>
     <string name="settings">系统设置</string>
     <string name="quit">退出游戏</string>
+    <string name="background_music">背景乐</string>
+    <string name="sound_effect">音效</string>
     <!-- Casino page -->
     <string name="player">闲</string>
     <string name="banker">庄</string>

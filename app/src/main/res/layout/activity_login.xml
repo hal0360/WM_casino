@@ -157,7 +157,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_btn" />
 
-    <ImageView
+    <tw.com.lixin.wm_casino.tools.buttons.ClickImage
         android:id="@+id/lang_btn"
         android:layout_width="35dp"
         android:layout_height="35dp"
@@ -170,6 +170,7 @@
         app:srcCompat="@drawable/lang_us" />
 
     <tw.com.lixin.wm_casino.tools.buttons.VideoButton
+        android:id="@+id/niiga_btn"
         android:layout_width="61dp"
         android:layout_height="57dp"
         android:layout_marginStart="20dp"

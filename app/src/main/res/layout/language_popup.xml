@@ -2,19 +2,24 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="170dp"
+    android:layout_width="220dp"
+    android:background="#fff"
     tools:ignore="ContentDescription,SpUsage"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:orientation="vertical" android:layout_width="match_parent"
-        android:background="#000"
         android:layout_height="wrap_content">
 
-        <android.support.constraint.ConstraintLayout
+        <tw.com.lixin.wm_casino.tools.buttons.ClickConstraint
             android:id="@+id/chinese_sim_btn"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
-            android:layout_height="45dp">
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp">
 
             <ImageView
                 android:id="@+id/imageView9"
@@ -31,28 +36,27 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginLeft="25dp"
                 android:textSize="15dp"
                 android:gravity="center"
-                android:textColor="#fff"
+                android:textColor="#000"
                 android:text="简体中文"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView9"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="HardcodedText" />
 
-        </android.support.constraint.ConstraintLayout>
+        </tw.com.lixin.wm_casino.tools.buttons.ClickConstraint>
 
-        <View
-            android:layout_width="match_parent"
-            android:background="#fff"
-            android:layout_height="0.5dp" />
-
-        <android.support.constraint.ConstraintLayout
+        <tw.com.lixin.wm_casino.tools.buttons.ClickConstraint
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
             android:id="@+id/chinese_tra_btn"
             android:layout_width="match_parent"
-            android:layout_height="45dp">
+            android:layout_height="50dp">
 
             <ImageView
                 android:id="@+id/imageViewh9"
@@ -69,28 +73,27 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginLeft="25dp"
                 android:textSize="15dp"
                 android:gravity="center"
-                android:textColor="#fff"
+                android:textColor="#000"
                 android:text="繁體中文"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageViewh9"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="HardcodedText" />
 
-        </android.support.constraint.ConstraintLayout>
+        </tw.com.lixin.wm_casino.tools.buttons.ClickConstraint>
 
-        <View
-            android:layout_width="match_parent"
-            android:background="#fff"
-            android:layout_height="0.5dp" />
-
-        <android.support.constraint.ConstraintLayout
+        <tw.com.lixin.wm_casino.tools.buttons.ClickConstraint
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
             android:id="@+id/english_btn"
             android:layout_width="match_parent"
-            android:layout_height="45dp">
+            android:layout_height="50dp">
 
             <ImageView
                 android:id="@+id/imageViewip"
@@ -107,19 +110,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginLeft="25dp"
                 android:gravity="center"
                 android:text="English"
-                android:textColor="#fff"
+                android:textColor="#000"
                 android:textSize="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageViewip"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="HardcodedText" />
 
-        </android.support.constraint.ConstraintLayout>
-
+        </tw.com.lixin.wm_casino.tools.buttons.ClickConstraint>
 
     </LinearLayout>
 
