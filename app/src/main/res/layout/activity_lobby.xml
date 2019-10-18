@@ -8,41 +8,18 @@
     android:background="#000"
     tools:context=".LobbyActivity">
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout454"
+    <tw.com.lixin.wm_casino.tools.gameComponents.ProfileBar
+        android:id="@+id/profileBar"
         android:layout_width="360dp"
-        android:layout_height="45dp"
+        app:title="WM CASINO"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="WM CASINO"
-            android:textColor="#fff"
-            android:textSize="17dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="HardcodedText" />
-
-        <tw.com.lixin.wm_casino.tools.ProfileSetting
-            android:id="@+id/profile_setting"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </android.support.constraint.ConstraintLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="360dp"
         android:layout_height="0dp"
-        android:layout_marginTop="5dp"
         android:background="@drawable/oragin_bg"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -54,660 +31,105 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <android.support.constraint.ConstraintLayout
+            <tw.com.lixin.wm_casino.tools.buttons.GameButton
                 android:id="@+id/dragon_tiger_game"
                 android:layout_width="100dp"
-                android:layout_height="105dp"
-                android:onClick="enterGame"
-                android:tag="102"
+                android:layout_height="100dp"
+                app:game_image="@drawable/games_04"
+                app:game_name="@string/dragon_tiger"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.050000012">
+                app:layout_constraintVertical_bias="0.050000012" />
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="90dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/games_04" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="7dp"
-                    android:gravity="center"
-                    android:text="@string/dragon_tiger"
-                    android:textColor="#ffe38c"
-                    android:textSize="15dp"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/constraintLayout4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-
-                    <ImageView
-                        android:id="@+id/imageView6"
-                        android:layout_width="10dp"
-                        android:layout_height="0dp"
-                        android:paddingTop="1dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/people_02" />
-
-                    <TextView
-                        android:id="@+id/dragon_tiger_ppl"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="@string/zero"
-                        android:textColor="#ffe38c"
-                        android:textSize="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView6"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </android.support.constraint.ConstraintLayout>
-
-            </android.support.constraint.ConstraintLayout>
-
-            <android.support.constraint.ConstraintLayout
+            <tw.com.lixin.wm_casino.tools.buttons.GameButton
                 android:id="@+id/baccarat_game"
                 android:layout_width="100dp"
-                android:layout_height="105dp"
+                android:layout_height="100dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginRight="15dp"
-                android:onClick="enterGame"
-                android:tag="101"
+                app:game_image="@drawable/game_01"
+                app:game_name="@string/baccarat"
                 app:layout_constraintEnd_toStartOf="@+id/dragon_tiger_game"
-                app:layout_constraintTop_toTopOf="@+id/dragon_tiger_game">
+                app:layout_constraintTop_toTopOf="@+id/dragon_tiger_game" />
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="90dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/game_01" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="7dp"
-                    android:gravity="center"
-                    android:text="@string/baccarat"
-                    android:textColor="#ffe38c"
-                    android:textSize="15dp"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/constraintLayout5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-
-                    <ImageView
-                        android:id="@+id/imageView7"
-                        android:layout_width="10dp"
-                        android:layout_height="0dp"
-                        android:paddingTop="1dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/people_02" />
-
-                    <TextView
-                        android:id="@+id/niuniu_ppl"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="@string/zero"
-                        android:textColor="#ffe38c"
-                        android:textSize="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView7"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </android.support.constraint.ConstraintLayout>
-
-            </android.support.constraint.ConstraintLayout>
-
-            <android.support.constraint.ConstraintLayout
+            <tw.com.lixin.wm_casino.tools.buttons.GameButton
                 android:id="@+id/niuniu_game"
                 android:layout_width="100dp"
-                android:layout_height="105dp"
+                android:layout_height="100dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginLeft="15dp"
-                android:onClick="enterGame"
-                android:tag="105"
+                app:game_image="@drawable/games_05"
+                app:game_name="@string/niuniu"
                 app:layout_constraintStart_toEndOf="@+id/dragon_tiger_game"
-                app:layout_constraintTop_toTopOf="@+id/dragon_tiger_game">
+                app:layout_constraintTop_toTopOf="@+id/dragon_tiger_game"/>
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="90dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/games_05" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="7dp"
-                    android:gravity="center"
-                    android:text="@string/niuniu"
-                    android:textColor="#ffe38c"
-                    android:textSize="15dp"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout6"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/constraintLayout6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-
-                    <ImageView
-                        android:id="@+id/imageView8"
-                        android:layout_width="10dp"
-                        android:layout_height="0dp"
-                        android:paddingTop="1dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/people_02" />
-
-                    <TextView
-                        android:id="@+id/baccarat_ppl"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="@string/zero"
-                        android:textColor="#ffe38c"
-                        android:textSize="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView8"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </android.support.constraint.ConstraintLayout>
-
-            </android.support.constraint.ConstraintLayout>
-
-            <android.support.constraint.ConstraintLayout
+            <tw.com.lixin.wm_casino.tools.buttons.GameButton
                 android:id="@+id/golden_flower_game"
                 android:layout_width="100dp"
-                android:layout_height="105dp"
+                android:layout_height="100dp"
                 android:layout_marginTop="25dp"
-                android:onClick="enterGame"
-                android:tag="111"
+                app:game_image="@drawable/games_09"
+                app:game_name="@string/golden_flower"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dragon_tiger_game">
+                app:layout_constraintTop_toBottomOf="@+id/dragon_tiger_game"/>
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="90dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/games_09" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="7dp"
-                    android:gravity="center"
-                    android:text="@string/golden_flower"
-                    android:textColor="#ffe38c"
-                    android:textSize="15dp"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout7"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/constraintLayout7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-
-                    <ImageView
-                        android:id="@+id/imageView9"
-                        android:layout_width="10dp"
-                        android:layout_height="0dp"
-                        android:paddingTop="1dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/people_02" />
-
-                    <TextView
-                        android:id="@+id/golden_flower_ppl"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="@string/zero"
-                        android:textColor="#ffe38c"
-                        android:textSize="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView9"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </android.support.constraint.ConstraintLayout>
-
-            </android.support.constraint.ConstraintLayout>
-
-            <android.support.constraint.ConstraintLayout
+            <tw.com.lixin.wm_casino.tools.buttons.GameButton
                 android:id="@+id/samgong_game"
                 android:layout_width="100dp"
-                android:layout_height="105dp"
+                android:layout_height="100dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginRight="15dp"
-                android:onClick="enterGame"
-                android:tag="106"
+                app:game_image="@drawable/games_06"
+                app:game_name="@string/samgong"
                 app:layout_constraintEnd_toStartOf="@+id/golden_flower_game"
-                app:layout_constraintTop_toTopOf="@+id/golden_flower_game">
+                app:layout_constraintTop_toTopOf="@+id/golden_flower_game" />
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="90dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/games_06" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="7dp"
-                    android:gravity="center"
-                    android:text="@string/samgong"
-                    android:textColor="#ffe38c"
-                    android:textSize="15dp"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout8"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/constraintLayout8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-
-                    <ImageView
-                        android:id="@+id/imageView2"
-                        android:layout_width="10dp"
-                        android:layout_height="0dp"
-                        android:paddingTop="1dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/people_02" />
-
-                    <TextView
-                        android:id="@+id/samgong_ppl"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="@string/zero"
-                        android:textColor="#ffe38c"
-                        android:textSize="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView2"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </android.support.constraint.ConstraintLayout>
-
-            </android.support.constraint.ConstraintLayout>
-
-            <android.support.constraint.ConstraintLayout
+            <tw.com.lixin.wm_casino.tools.buttons.GameButton
                 android:id="@+id/roulette_game"
                 android:layout_width="100dp"
-                android:layout_height="105dp"
+                android:layout_height="100dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginLeft="15dp"
-                android:onClick="enterGame"
-                android:tag="103"
+                app:game_image="@drawable/games_02"
+                app:game_name="@string/roulette"
                 app:layout_constraintStart_toEndOf="@+id/golden_flower_game"
-                app:layout_constraintTop_toTopOf="@+id/golden_flower_game">
+                app:layout_constraintTop_toTopOf="@+id/golden_flower_game"/>
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="90dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/games_02" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="7dp"
-                    android:gravity="center"
-                    android:text="@string/roulette"
-                    android:textColor="#ffe38c"
-                    android:textSize="15dp"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout9"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/constraintLayout9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-
-                    <ImageView
-                        android:id="@+id/imageView3"
-                        android:layout_width="10dp"
-                        android:layout_height="0dp"
-                        android:paddingTop="1dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/people_02" />
-
-                    <TextView
-                        android:id="@+id/roulette_ppl"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="@string/zero"
-                        android:textColor="#ffe38c"
-                        android:textSize="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView3"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </android.support.constraint.ConstraintLayout>
-
-            </android.support.constraint.ConstraintLayout>
-
-            <android.support.constraint.ConstraintLayout
+            <tw.com.lixin.wm_casino.tools.buttons.GameButton
                 android:id="@+id/fantan_game"
                 android:layout_width="100dp"
-                android:layout_height="105dp"
+                android:layout_height="100dp"
                 android:layout_marginTop="25dp"
-                android:onClick="enterGame"
-                android:tag="107"
+                app:game_image="@drawable/games_07"
+                app:game_name="@string/fantan"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/golden_flower_game">
+                app:layout_constraintTop_toBottomOf="@+id/golden_flower_game"/>
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="90dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/games_07" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="7dp"
-                    android:gravity="center"
-                    android:text="@string/fantan"
-                    android:textColor="#ffe38c"
-                    android:textSize="15dp"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout10"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/constraintLayout10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-
-                    <ImageView
-                        android:id="@+id/imageView10"
-                        android:layout_width="10dp"
-                        android:layout_height="0dp"
-                        android:paddingTop="1dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/people_02" />
-
-                    <TextView
-                        android:id="@+id/fantan_ppl"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="@string/zero"
-                        android:textColor="#ffe38c"
-                        android:textSize="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView10"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </android.support.constraint.ConstraintLayout>
-
-            </android.support.constraint.ConstraintLayout>
-
-            <android.support.constraint.ConstraintLayout
+            <tw.com.lixin.wm_casino.tools.buttons.GameButton
                 android:id="@+id/sic_bo_game"
                 android:layout_width="100dp"
-                android:layout_height="105dp"
+                android:layout_height="100dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginRight="15dp"
-                android:onClick="enterGame"
-                android:tag="104"
+                app:game_image="@drawable/games_03"
+                app:game_name="@string/sic_bo"
                 app:layout_constraintEnd_toStartOf="@+id/fantan_game"
-                app:layout_constraintTop_toTopOf="@+id/fantan_game">
+                app:layout_constraintTop_toTopOf="@+id/fantan_game"/>
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="90dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/games_03" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="7dp"
-                    android:gravity="center"
-                    android:text="@string/sic_bo"
-                    android:textColor="#ffe38c"
-                    android:textSize="15dp"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout11"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/constraintLayout11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-
-                    <ImageView
-                        android:id="@+id/imageView11"
-                        android:layout_width="10dp"
-                        android:layout_height="0dp"
-                        android:paddingTop="1dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/people_02" />
-
-                    <TextView
-                        android:id="@+id/sic_bo_ppl"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="@string/zero"
-                        android:textColor="#ffe38c"
-                        android:textSize="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView11"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </android.support.constraint.ConstraintLayout>
-
-            </android.support.constraint.ConstraintLayout>
-
-            <android.support.constraint.ConstraintLayout
+            <tw.com.lixin.wm_casino.tools.buttons.GameButton
                 android:id="@+id/fish_prawn_game"
                 android:layout_width="100dp"
-                android:layout_height="105dp"
+                android:layout_height="100dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginLeft="15dp"
-                android:onClick="enterGame"
-                android:tag="110"
+                app:game_image="@drawable/games_10"
+                app:game_name="@string/fish_prawn_crab"
                 app:layout_constraintStart_toEndOf="@+id/fantan_game"
-                app:layout_constraintTop_toTopOf="@+id/fantan_game">
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="90dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/games_10" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="7dp"
-                    android:gravity="center"
-                    android:text="@string/fish_prawn_crab"
-                    android:textColor="#ffe38c"
-                    android:textSize="15dp"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout12"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/constraintLayout12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-
-                    <ImageView
-                        android:id="@+id/imageView12"
-                        android:layout_width="10dp"
-                        android:layout_height="0dp"
-                        android:paddingTop="1dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/people_02" />
-
-                    <TextView
-                        android:id="@+id/fish_prawn_ppl"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="@string/zero"
-                        android:textColor="#ffe38c"
-                        android:textSize="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView12"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </android.support.constraint.ConstraintLayout>
-
-            </android.support.constraint.ConstraintLayout>
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/multiply_game"
-                android:layout_width="100dp"
-                android:layout_height="105dp"
-                android:layout_marginTop="25dp"
-                app:layout_constraintStart_toStartOf="@+id/sic_bo_game"
-                app:layout_constraintTop_toBottomOf="@+id/sic_bo_game">
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="90dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/games_08" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="7dp"
-                    android:gravity="center"
-                    android:text="@string/multiply"
-                    android:textColor="#ffe38c"
-                    android:textSize="15dp"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout13"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/constraintLayout13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-
-                    <ImageView
-                        android:id="@+id/imageView13"
-                        android:layout_width="10dp"
-                        android:layout_height="0dp"
-                        android:paddingTop="1dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/people_02" />
-
-                    <TextView
-                        android:id="@+id/multiply_ppl"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="@string/zero"
-                        android:textColor="#ffe38c"
-                        android:textSize="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView13"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </android.support.constraint.ConstraintLayout>
-
-            </android.support.constraint.ConstraintLayout>
+                app:layout_constraintTop_toTopOf="@+id/fantan_game"/>
 
         </android.support.constraint.ConstraintLayout>
 
@@ -720,11 +142,11 @@
         android:background="@drawable/lobby_banner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout454"/>
+        app:layout_constraintTop_toBottomOf="@+id/profileBar"/>
 
     <tw.com.lixin.wm_casino.tools.NewsBroadcast
         android:id="@+id/constraintLayout21"
-        android:layout_width="370dp"
+        android:layout_width="360dp"
         android:layout_height="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

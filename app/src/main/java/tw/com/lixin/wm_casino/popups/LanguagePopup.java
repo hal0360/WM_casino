@@ -42,16 +42,14 @@ public class LanguagePopup extends PopupFragment {
     }
 
     private void setSelected(ClickConstraint btn){
-        btn.setRadius(25);
-        btn.setStroke(1, 0xff1E90FF);
+        btn.setBackgroundResource(R.drawable.language_select_border);
         selected = btn;
     }
 
     private void resetSelected(ClickConstraint btn, Locale loc){
         activity.switchLocale(loc);
-        btn.setRadius(25);
-        btn.setStroke(1, 0xff1E90FF);
-        selected.setStroke(0,0x00000000);
+        btn.setBackgroundResource(R.drawable.language_select_border);
+        selected.setBackgroundResource(0);
         selected = btn;
     }
 }

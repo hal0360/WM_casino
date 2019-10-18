@@ -4,7 +4,7 @@
     tools:ignore="ContentDescription,SpUsage"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
+    <tw.com.lixin.wm_casino.tools.buttons.ClickImage
         android:id="@+id/back_btn"
         android:layout_width="35dp"
         android:layout_height="35dp"
@@ -28,7 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <tw.com.lixin.wm_casino.tools.buttons.ClickImage
         android:id="@+id/setting_btn"
         android:layout_width="35dp"
         android:layout_height="35dp"

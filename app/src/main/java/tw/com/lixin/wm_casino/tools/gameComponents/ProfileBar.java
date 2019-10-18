@@ -27,7 +27,7 @@ public class ProfileBar extends ConstraintLayout implements View.OnClickListener
         settingBtn = findViewById(R.id.setting_btn);
         backBtn = findViewById(R.id.back_btn);
         balanceImg = findViewById(R.id.balance_img);
-
+        setBackgroundColor(0xff191919);
         TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.ProfileBar);
         title.setText(a.getString(R.styleable.ProfileBar_title));
         boolean showBal = a.getBoolean(R.styleable.ProfileBar_show_balance, false);
@@ -39,6 +39,10 @@ public class ProfileBar extends ConstraintLayout implements View.OnClickListener
 
         //   setMember(User.account());
         //  setBalance(User.balance());
+        backBtn.setOnClickListener(v->{
+           RootActivity activity = (RootActivity) getContext();
+            activity.finish();
+        });
     }
 
 

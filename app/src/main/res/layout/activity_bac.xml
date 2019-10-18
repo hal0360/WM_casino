@@ -9,7 +9,7 @@
     tools:context=".BacActivity">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout454"
+        android:id="@+id/profileBar"
         android:layout_width="360dp"
         android:layout_height="45dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +45,7 @@
         android:layout_marginTop="1dp"
         app:grid_x="14"
         app:grid_y="6"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayout454"
+        app:layout_constraintStart_toStartOf="@+id/profileBar"
         app:layout_constraintTop_toBottomOf="@+id/first_grid" />
 
     <tw.com.lixin.wm_casino.tools.CasinoGrid
@@ -80,7 +80,7 @@
         android:layout_marginLeft="0.5dp"
         android:background="#fff"
         app:layout_constraintBottom_toBottomOf="@+id/main_grid"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayout454"
+        app:layout_constraintEnd_toEndOf="@+id/profileBar"
         app:layout_constraintStart_toEndOf="@+id/fourth_grid"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout24">
 
@@ -278,10 +278,10 @@
         android:layout_width="0dp"
         android:layout_height="190dp"
         android:background="#fff"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayout454"
+        app:layout_constraintEnd_toEndOf="@+id/profileBar"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayout454"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout454">
+        app:layout_constraintStart_toStartOf="@+id/profileBar"
+        app:layout_constraintTop_toBottomOf="@+id/profileBar">
 
         <tw.com.lixin.wm_casino.tools.PeopleButton
             android:id="@+id/peopleButton"

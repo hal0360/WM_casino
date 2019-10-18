@@ -9,7 +9,7 @@
     tools:context=".GameActivity">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout454"
+        android:id="@+id/profileBar"
         android:layout_width="360dp"
         android:layout_height="45dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +47,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout454" />
+        app:layout_constraintTop_toBottomOf="@+id/profileBar" />
 
 
 </android.support.constraint.ConstraintLayout>
