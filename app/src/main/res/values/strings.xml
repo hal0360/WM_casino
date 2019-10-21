@@ -66,4 +66,5 @@
     <string name="table_limit">Table limit</string>
     <string name="table">Table</string>
     <string name="dealer">Dealer</string>
+    <string name="bid_me">BidMe</string>
 </resources>

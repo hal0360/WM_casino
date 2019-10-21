@@ -171,7 +171,7 @@
         app:layout_constraintStart_toEndOf="@+id/third_grid"
         app:layout_constraintTop_toTopOf="@+id/third_grid" />
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="510dp"
         android:layout_height="78dp"
         android:background="@drawable/bac_tables_pattern"
@@ -232,7 +232,7 @@
             app:layout_constraintStart_toEndOf="@+id/player_stack"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <tw.com.lixin.wm_casino.tools.BacCardArea
         android:id="@+id/card_area"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,8 +8,8 @@
     android:background="#000"
     tools:context=".BacActivity">
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/profileBar"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pro_bar"
         android:layout_width="360dp"
         android:layout_height="45dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +36,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <tw.com.lixin.wm_casino.tools.CasinoGrid
         android:id="@+id/main_grid"
@@ -45,7 +45,7 @@
         android:layout_marginTop="1dp"
         app:grid_x="14"
         app:grid_y="6"
-        app:layout_constraintStart_toStartOf="@+id/profileBar"
+        app:layout_constraintStart_toStartOf="@+id/pro_bar"
         app:layout_constraintTop_toBottomOf="@+id/first_grid" />
 
     <tw.com.lixin.wm_casino.tools.CasinoGrid
@@ -72,7 +72,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/main_grid"
         app:layout_constraintStart_toEndOf="@+id/third_grid" />
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout22"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -80,7 +80,7 @@
         android:layout_marginLeft="0.5dp"
         android:background="#fff"
         app:layout_constraintBottom_toBottomOf="@+id/main_grid"
-        app:layout_constraintEnd_toEndOf="@+id/profileBar"
+        app:layout_constraintEnd_toEndOf="@+id/pro_bar"
         app:layout_constraintStart_toEndOf="@+id/fourth_grid"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout24">
 
@@ -245,7 +245,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view4" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <tw.com.lixin.wm_casino.tools.CasinoGrid
         android:id="@+id/second_grid"
@@ -278,10 +278,10 @@
         android:layout_width="0dp"
         android:layout_height="190dp"
         android:background="#fff"
-        app:layout_constraintEnd_toEndOf="@+id/profileBar"
+        app:layout_constraintEnd_toEndOf="@+id/pro_bar"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/profileBar"
-        app:layout_constraintTop_toBottomOf="@+id/profileBar">
+        app:layout_constraintStart_toStartOf="@+id/pro_bar"
+        app:layout_constraintTop_toBottomOf="@+id/pro_bar">
 
         <tw.com.lixin.wm_casino.tools.PeopleButton
             android:id="@+id/peopleButton"
@@ -331,7 +331,7 @@
         app:layout_constraintStart_toStartOf="@+id/my_player"
         app:layout_constraintTop_toBottomOf="@+id/my_player" />
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout24"
         android:layout_width="0dp"
         android:layout_height="85dp"
@@ -419,7 +419,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -503,4 +503,4 @@
 
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

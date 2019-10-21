@@ -1,15 +1,12 @@
 package tw.com.lixin.wm_casino.tools;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
-import android.text.InputType;
-import android.text.method.PasswordTransformationMethod;
+
+import androidx.core.content.ContextCompat;
+
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;

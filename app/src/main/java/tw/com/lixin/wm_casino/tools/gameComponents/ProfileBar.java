@@ -2,9 +2,8 @@ package tw.com.lixin.wm_casino.tools.gameComponents;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.content.res.TypedArray;
-import android.support.constraint.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 
 import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.R;
-import tw.com.lixin.wm_casino.global.User;
 
 public class ProfileBar extends ConstraintLayout implements View.OnClickListener{
 
@@ -45,7 +43,9 @@ public class ProfileBar extends ConstraintLayout implements View.OnClickListener
         });
     }
 
-
+    public void setTitile(String txt){
+        title.setText(txt);
+    }
 
     @SuppressLint("SetTextI18n")
     public void setBalance(float bal) {

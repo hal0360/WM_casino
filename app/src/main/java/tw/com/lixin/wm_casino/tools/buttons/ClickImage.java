@@ -7,7 +7,7 @@ import android.view.View;
 import tw.com.atromoby.widgets.CmdView;
 import tw.com.lixin.wm_casino.App;
 
-public class ClickImage extends android.support.v7.widget.AppCompatImageView implements View.OnClickListener{
+public class ClickImage extends androidx.appcompat.widget.AppCompatImageView implements View.OnClickListener{
 
     private CmdView cmd;
 

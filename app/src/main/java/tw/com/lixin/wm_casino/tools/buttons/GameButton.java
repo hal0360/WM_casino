@@ -1,5 +1,6 @@
 package tw.com.lixin.wm_casino.tools.buttons;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -23,7 +24,8 @@ public class GameButton extends ClickConstraint {
         a.recycle();
     }
 
+    @SuppressLint("SetTextI18n")
     public void setPeopleNumber(int number){
-        pplnum.setText(number);
+        pplnum.setText(number+"");
     }
 }

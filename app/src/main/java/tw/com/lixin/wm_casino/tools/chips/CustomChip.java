@@ -3,7 +3,7 @@ package tw.com.lixin.wm_casino.tools.chips;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.constraint.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;

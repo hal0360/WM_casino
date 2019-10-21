@@ -16,6 +16,7 @@ import tw.com.lixin.wm_casino.interfaces.GameBridge;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.Table;
+import tw.com.lixin.wm_casino.tools.gameComponents.ProfileBar;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
@@ -32,15 +33,12 @@ public class GameActivity extends WMActivity implements LobbyBridge {
 
         gameSource = GameSource.getInstance();
         lobbySource = LobbySource.getInstance();
-
-        if(!isPortrait()) setTextView(R.id.total_ppl_txt,lobbySource.peopleOnline.get(gameSource.gameID)+"");
-
-
         tableList = findViewById(R.id.table_list);
         List<BacHolder> holders = new ArrayList<>();
+        ProfileBar bar = findViewById(R.id.pro_bar);
 
         if(gameSource.gameID == 101){
-            if(isPortrait()) setTextView(R.id.game_title, getString(R.string.wmbaccarat));
+            bar.setTitile(getString(R.string.wmbaccarat));
             for(Table table: gameSource.tables) holders.add(new BacHolder((BacTable) table));
         }else if(gameSource.gameID == 102){
 
@@ -90,11 +88,7 @@ public class GameActivity extends WMActivity implements LobbyBridge {
 
     @Override
     public void peopleOnlineUpdate(int gameID, int number) {
-        if(!isPortrait()){
-            if(gameID == gameSource.gameID){
-                setTextView(R.id.total_ppl_txt,number+"");
-            }
-        }
+
     }
 
 //not used

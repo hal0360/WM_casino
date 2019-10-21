@@ -2,14 +2,13 @@ package tw.com.lixin.wm_casino.tools;
 
 import android.content.Context;
 import android.os.Handler;
-import android.support.constraint.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Timer;
-import java.util.TimerTask;
 
 import tw.com.lixin.wm_casino.R;
 

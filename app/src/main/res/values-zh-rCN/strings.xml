@@ -66,4 +66,5 @@
     <string name="table_limit">台红</string>
     <string name="table">房间号</string>
     <string name="dealer">荷官</string>
+    <string name="bid_me">咪牌</string>
 </resources>

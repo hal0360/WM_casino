@@ -105,7 +105,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/arrow_down" />
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/custom_chip"
         android:layout_width="67dp"
         android:layout_height="52dp"
@@ -132,6 +132,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.26999998" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </merge>

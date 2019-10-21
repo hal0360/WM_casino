@@ -43,7 +43,7 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
 
 
         gameButtons.get(101).clicked(v-> enterGame(101));
-        peopleOnlineUpdate(2,2);
+       // peopleOnlineUpdate(2,2);
     }
 
     public void enterGame(int gameid){
@@ -91,7 +91,8 @@ alert("data updated");
 
     @Override
     public void peopleOnlineUpdate(int gameID, int number) {
-        gameButtons.get(gameID).setPeopleNumber(number);
+        GameButton button = gameButtons.get(gameID);
+        if(button != null) button.setPeopleNumber(number);
     }
 
     public void dealerImgLoaded(){

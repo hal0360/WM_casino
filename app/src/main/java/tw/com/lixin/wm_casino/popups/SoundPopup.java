@@ -1,7 +1,7 @@
 package tw.com.lixin.wm_casino.popups;
 
 import android.app.Dialog;
-import android.support.v7.widget.SwitchCompat;
+import androidx.appcompat.widget.SwitchCompat;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import tw.com.atromoby.widgets.PopupFragment;

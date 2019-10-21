@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,7 +8,7 @@
     tools:ignore="ContentDescription,SpUsage"
     tools:context=".BaccaratActivity">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="360dp"
         android:layout_height="109dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,5 +76,5 @@
             app:layout_constraintBottom_toBottomOf="@+id/imageView26"
             app:layout_constraintStart_toEndOf="@+id/imageView26"
             app:layout_constraintTop_toTopOf="@+id/imageView26" />
-    </android.support.constraint.ConstraintLayout>
-</android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
