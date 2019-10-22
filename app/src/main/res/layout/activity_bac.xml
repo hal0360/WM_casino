@@ -224,7 +224,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
-        <tw.com.lixin.wm_casino.tools.AskButton
+        <tw.com.lixin.wm_casino.tools.buttons.AskButton
             android:id="@+id/ask_bank_btn"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -234,7 +234,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
-        <tw.com.lixin.wm_casino.tools.AskButton
+        <tw.com.lixin.wm_casino.tools.buttons.AskButton
             android:id="@+id/ask_play_btn"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -431,7 +431,7 @@
         app:layout_constraintStart_toStartOf="@+id/my_player"
         app:layout_constraintTop_toBottomOf="@+id/panel">
 
-        <tw.com.lixin.wm_casino.tools.ChipStack
+        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
             android:id="@+id/player_pair_stack"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -439,7 +439,7 @@
             app:title="@string/player_pair"
             app:title_color="#0000FF" />
 
-        <tw.com.lixin.wm_casino.tools.ChipStack
+        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
             android:id="@+id/player_stack"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -460,9 +460,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-        </tw.com.lixin.wm_casino.tools.ChipStack>
+        </tw.com.lixin.wm_casino.tools.gameComponents.ChipStack>
 
-        <tw.com.lixin.wm_casino.tools.ChipStack
+        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
             android:id="@+id/tie_stack"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -470,7 +470,7 @@
             app:title="@string/tie"
             app:title_color="#7CFC00" />
 
-        <tw.com.lixin.wm_casino.tools.ChipStack
+        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
             android:id="@+id/bank_stack"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -491,9 +491,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-        </tw.com.lixin.wm_casino.tools.ChipStack>
+        </tw.com.lixin.wm_casino.tools.gameComponents.ChipStack>
 
-        <tw.com.lixin.wm_casino.tools.ChipStack
+        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
             android:id="@+id/bank_pair_stack"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

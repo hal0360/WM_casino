@@ -3,6 +3,7 @@ package tw.com.lixin.wm_casino.tools.chips;
 import android.content.Context;
 import android.util.AttributeSet;
 
+import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.models.Chip;
 
 public class ChipView extends androidx.appcompat.widget.AppCompatImageView{
@@ -31,12 +32,13 @@ public class ChipView extends androidx.appcompat.widget.AppCompatImageView{
     }
 
     public void turnOn() {
+        setBackgroundResource(R.drawable.chip_light);
         setImageResource(imageOn);
     }
 
     public void turnOff() {
+        setBackgroundResource(0);
         setImageResource(imageOff);
     }
-
 
 }

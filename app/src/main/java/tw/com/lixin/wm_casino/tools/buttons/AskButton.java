@@ -1,4 +1,4 @@
-package tw.com.lixin.wm_casino.tools;
+package tw.com.lixin.wm_casino.tools.buttons;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -14,7 +14,6 @@ import tw.com.lixin.wm_casino.models.BacTable;
 
 public class AskButton extends ConstraintLayout {
 
-    private Context context;
     private ImageView secSym, thirdSym, fourthSym;
 
     public AskButton(Context context) {
@@ -28,19 +27,16 @@ public class AskButton extends ConstraintLayout {
     }
 
     private void init(Context context, AttributeSet attrs){
-        this.context = context;
         View.inflate(context, R.layout.ask_button, this);
-        int orientation = getResources().getConfiguration().orientation;
         TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.AskButton);
         int type = a.getInt(R.styleable.AskButton_ask_type, 1);
         TextView title = findViewById(R.id.title);
         if(type == 1){
             title.setText(context.getString(R.string.next_p));
-            if(orientation == Configuration.ORIENTATION_LANDSCAPE) setBackgroundResource(R.drawable.blue_next);
         }else {
             title.setText(context.getString(R.string.next_b));
-            if(orientation == Configuration.ORIENTATION_LANDSCAPE) setBackgroundResource(R.drawable.red_next);
         }
+        setBackgroundColor(0xffffffff);
         a.recycle();
         thirdSym = findViewById(R.id.third_sym);
         secSym = findViewById(R.id.second_sym);

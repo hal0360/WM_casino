@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<tw.com.atromoby.rtmplayer.IjkVideoView
+<androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/my_player"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -79,7 +79,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_setting" />
 
-    <tw.com.lixin.wm_casino.tools.AskButton
+    <tw.com.lixin.wm_casino.tools.buttons.AskButton
         android:id="@+id/ask_bank_btn"
         android:layout_width="47dp"
         android:layout_height="25dp"
@@ -89,7 +89,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/change_table_btn" />
 
-    <tw.com.lixin.wm_casino.tools.AskButton
+    <tw.com.lixin.wm_casino.tools.buttons.AskButton
         android:id="@+id/ask_play_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -99,11 +99,12 @@
         app:layout_constraintTop_toTopOf="@+id/change_table_btn" />
 
     <tw.com.lixin.wm_casino.tools.CasinoGrid
-        android:id="@+id/first_grid"
+
         android:layout_width="153dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
         android:layout_marginLeft="1dp"
+        android:id="@+id/first_grid"
         app:grid_x="18"
         app:grid_y="6"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -111,11 +112,11 @@
         app:layout_constraintTop_toTopOf="@+id/ask_play_btn" />
 
     <tw.com.lixin.wm_casino.tools.CasinoGrid
-        android:id="@+id/main_grid"
         android:layout_width="113dp"
         android:layout_height="0dp"
         android:layout_marginStart="0.5dp"
         android:layout_marginLeft="0.5dp"
+        android:id="@+id/main_grid"
         app:grid_x="13"
         app:grid_y="6"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -133,11 +134,12 @@
         app:layout_constraintTop_toTopOf="@+id/main_grid" />
 
     <tw.com.lixin.wm_casino.tools.CasinoGrid
-        android:id="@+id/second_grid"
+
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="0.5dp"
         android:layout_marginLeft="0.5dp"
+        android:id="@+id/second_grid"
         app:grid_x="14"
         app:grid_y="3"
         app:grid_double="true"
@@ -180,7 +182,7 @@
         app:layout_constraintHorizontal_bias="0.694"
         app:layout_constraintStart_toStartOf="parent">
 
-        <tw.com.lixin.wm_casino.tools.ChipStack
+        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
             android:id="@+id/player_pair_stack"
             android:layout_width="101dp"
             android:layout_height="57dp"
@@ -191,7 +193,7 @@
             app:title="@string/player_pair"
             app:title_color="#9EB5AD" />
 
-        <tw.com.lixin.wm_casino.tools.ChipStack
+        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
             android:id="@+id/player_stack"
             android:layout_width="89dp"
             android:layout_height="46dp"
@@ -201,7 +203,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:title="@string/player" />
 
-        <tw.com.lixin.wm_casino.tools.ChipStack
+        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
             android:id="@+id/bank_pair_stack"
             android:layout_width="101dp"
             android:layout_height="57dp"
@@ -212,7 +214,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <tw.com.lixin.wm_casino.tools.ChipStack
+        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
             android:id="@+id/bank_stack"
             android:layout_width="89dp"
             android:layout_height="47dp"
@@ -222,7 +224,7 @@
             app:layout_constraintEnd_toStartOf="@+id/bank_pair_stack"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <tw.com.lixin.wm_casino.tools.ChipStack
+        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
             android:id="@+id/tie_stack"
             android:layout_width="0dp"
             android:layout_height="45dp"
@@ -281,4 +283,4 @@
         app:layout_constraintStart_toEndOf="@+id/panel"
         app:layout_constraintTop_toTopOf="@+id/panel" />
 
-</tw.com.atromoby.rtmplayer.IjkVideoView>
+</androidx.constraintlayout.widget.ConstraintLayout>

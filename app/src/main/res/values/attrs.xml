@@ -25,7 +25,9 @@
     <declare-styleable name="ChipStack">
         <attr name="title_color" format="color" />
         <attr name="title" />
-        <attr name="tilt" format="integer" />
+        <attr name="bet_color" format="color" />
+        <attr name="normal_color" format="color" />
+        <attr name="border_color" format="color" />
     </declare-styleable>
 
     <declare-styleable name="CustomChip">
