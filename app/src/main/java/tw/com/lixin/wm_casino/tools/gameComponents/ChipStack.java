@@ -5,7 +5,10 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import androidx.constraintlayout.widget.ConstraintLayout;
+
+import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -56,6 +59,7 @@ public class ChipStack extends RonConstraintLayout implements Animation.Animatio
         int borderColor = a.getColor(R.styleable.ChipStack_border_color, 0xFF4AC283);
         setColor(normalColor);
         setStroke(1,borderColor);
+        setRadius(3);
         a.recycle();
 
         animeDwn = AnimationUtils.loadAnimation(context, R.anim.coin_anime_down);
@@ -75,7 +79,6 @@ public class ChipStack extends RonConstraintLayout implements Animation.Animatio
 
     public void comfirmBet(){
         data.comfirmBet();
-        refresh();
     }
 
     public void clearCoin(){
@@ -88,6 +91,7 @@ public class ChipStack extends RonConstraintLayout implements Animation.Animatio
         data = cData;
         for(Chip coin: data.addedCoin) noAnimeAdd(coin);
         for(Chip coin: data.tempAddedCoin) noAnimeAdd(coin);
+        if(!data.isAddEmpty() || !data.isTempEmpty()) setColor(betColor);
         this.bridge = bridge;
     }
 
@@ -95,6 +99,7 @@ public class ChipStack extends RonConstraintLayout implements Animation.Animatio
         reset();
         for(Chip coin: data.addedCoin) noAnimeAdd(coin);
         for(Chip coin: data.tempAddedCoin) noAnimeAdd(coin);
+        if(!data.isAddEmpty() || !data.isTempEmpty()) setColor(betColor);
     }
 
 
@@ -144,16 +149,12 @@ public class ChipStack extends RonConstraintLayout implements Animation.Animatio
         valTxt.setText(data.value + "");
     }
 
-    private void checkChip(){
-
-    }
-
     @SuppressLint("SetTextI18n")
     public boolean add(Chip coin){
         if(!data.add(coin)) return false;
         valTxt.setVisibility(View.VISIBLE);
 
-
+        setColor(betColor);
 
         valTxt.setText(data.value + "");
         ids.add(coin.image);

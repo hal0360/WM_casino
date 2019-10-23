@@ -27,7 +27,7 @@ public class SignalButton extends ConstraintLayout {
         View.inflate(context, R.layout.signal_button, this);
         int orientation = getResources().getConfiguration().orientation;
         if(orientation == Configuration.ORIENTATION_LANDSCAPE){
-            setBackgroundResource(R.drawable.signal4);
+            setBackgroundResource(R.drawable.signal);
         }
     }
 }

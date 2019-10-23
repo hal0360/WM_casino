@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.global.User;
 
 public class ProfileBar extends ConstraintLayout implements View.OnClickListener{
 
@@ -35,8 +36,7 @@ public class ProfileBar extends ConstraintLayout implements View.OnClickListener
         }
         a.recycle();
 
-        //   setMember(User.account());
-        //  setBalance(User.balance());
+        post(()-> setBalance(User.balance()));
         backBtn.setOnClickListener(v->{
            RootActivity activity = (RootActivity) getContext();
             activity.finish();

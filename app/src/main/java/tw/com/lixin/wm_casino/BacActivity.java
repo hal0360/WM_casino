@@ -18,9 +18,9 @@ import tw.com.lixin.wm_casino.tools.BacCardArea;
 import tw.com.lixin.wm_casino.tools.BetCountdown;
 import tw.com.lixin.wm_casino.tools.CasinoGrid;
 import tw.com.lixin.wm_casino.tools.gameComponents.ChipStack;
-import tw.com.lixin.wm_casino.tools.ControlButton;
+import tw.com.lixin.wm_casino.tools.buttons.ControlButton;
 import tw.com.lixin.wm_casino.tools.ProfileSetting;
-import tw.com.lixin.wm_casino.tools.RatePanel;
+import tw.com.lixin.wm_casino.tools.gameComponents.RatePanel;
 import tw.com.lixin.wm_casino.popups.WinLossPopup;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
@@ -134,8 +134,7 @@ public class BacActivity extends WMActivity implements GameBridge, StackCallBrid
         cardArea.statusCheck(table.cardStatus, table.pokers);
         countdown.statusCheck(table.cardStatus);
         checkStackEmpty();
-        panel.setUp(table);
-        panel.percentUpdate(table.round, table.playCount, table.tieCount, table.bankCount);
+
         gridUpdate();
         countdown.startCountDown(table.curTime);
 
@@ -280,7 +279,7 @@ public class BacActivity extends WMActivity implements GameBridge, StackCallBrid
                 posY = y;
             }
         }
-        panel.percentUpdate(table.round, table.playCount, table.tieCount, table.bankCount);
+
     }
 
     @Override

@@ -55,8 +55,7 @@ public class ChipStackData {
     }
 
     public void repeatBet(){
-        List<Chip> repeatCoin = new ArrayList<>(tempAddedCoin);
-        for(Chip coin: repeatCoin){
+        for(Chip coin: addedCoin){
             add(coin);
         }
     }

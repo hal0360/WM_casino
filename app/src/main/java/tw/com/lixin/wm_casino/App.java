@@ -8,8 +8,7 @@ import tw.com.atromoby.utils.RegisterApplication;
 
 public class App extends RegisterApplication {
 
-
-    public static MediaPlayer player, click;
+    public static MediaPlayer player, click, bet, control;
     public static boolean musicOn, effectOn;
 
     @Override
@@ -23,6 +22,13 @@ public class App extends RegisterApplication {
 
         click = MediaPlayer.create(this, R.raw.click);
         click.setLooping(false);
+
+        bet = MediaPlayer.create(this, R.raw.bet);
+        bet.setLooping(false);
+
+        control = MediaPlayer.create(this, R.raw.control);
+        control.setLooping(false);
+
     }
 
     public static void music_on(){
@@ -40,6 +46,20 @@ public class App extends RegisterApplication {
         if(effectOn){
             click.seekTo(0);
             click.start();
+        }
+    }
+
+    public static void betting(){
+        if(effectOn){
+            bet.seekTo(0);
+            bet.start();
+        }
+    }
+
+    public static void controlling(){
+        if(effectOn){
+            control.seekTo(0);
+            control.start();
         }
     }
 
