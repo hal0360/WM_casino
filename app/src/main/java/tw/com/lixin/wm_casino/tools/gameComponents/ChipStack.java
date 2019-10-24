@@ -7,6 +7,7 @@ import android.content.res.TypedArray;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -25,7 +26,7 @@ import tw.com.lixin.wm_casino.models.Chip;
 import tw.com.lixin.wm_casino.models.ChipStackData;
 
 
-public class ChipStack extends RonConstraintLayout implements Animation.AnimationListener, View.OnClickListener {
+public class ChipStack extends ConstraintLayout implements Animation.AnimationListener, View.OnClickListener {
 
     private ImageView coin1, coin2, coin3, coin4, coin5;
     private Animation animeDwn, animeUp;
@@ -33,16 +34,14 @@ public class ChipStack extends RonConstraintLayout implements Animation.Animatio
     private List<Integer> ids = new ArrayList<>();
     private TextView valTxt, title, dtOdds;
     public ChipStackData data;
-
     private int betColor, normalColor;
-
+    private GradientDrawable shape;
     private StackCallBridge bridge;
 
     public ChipStack(Context context, AttributeSet attrs) {
         super(context, attrs);
         View.inflate(context, R.layout.chip_stack, this);
         setOnClickListener(this);
-
         coin1 = findViewById(R.id.coin1);
         coin2 = findViewById(R.id.coin2);
         coin3 = findViewById(R.id.coin3);
@@ -52,16 +51,16 @@ public class ChipStack extends RonConstraintLayout implements Animation.Animatio
         title = findViewById(R.id.table_title);
         dtOdds = findViewById(R.id.dtOdds);
         TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.ChipStack);
-        title.setTextColor(a.getColor(R.styleable.ChipStack_title_color, 0xFF9EB5AD));
+        title.setTextColor(a.getColor(R.styleable.ChipStack_title_color, 0xFFFFFFFF));
         title.setText(a.getString(R.styleable.ChipStack_title));
         betColor = a.getColor(R.styleable.ChipStack_bet_color, 0xFFA9DB8D);
         normalColor = a.getColor(R.styleable.ChipStack_normal_color, 0xFF369762);
-        int borderColor = a.getColor(R.styleable.ChipStack_border_color, 0xFF4AC283);
-        setColor(normalColor);
-        setStroke(1,borderColor);
-        setRadius(3);
+        shape = new GradientDrawable();
+        shape.setColor(normalColor);
+        shape.setStroke(2, a.getColor(R.styleable.ChipStack_border_color, 0xFF4AC283));
+        shape.setCornerRadius(7);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) setBackground(shape);
         a.recycle();
-
         animeDwn = AnimationUtils.loadAnimation(context, R.anim.coin_anime_down);
         animeDwn.setAnimationListener(this);
         animeUp = AnimationUtils.loadAnimation(context, R.anim.coin_anime_up);
@@ -91,7 +90,7 @@ public class ChipStack extends RonConstraintLayout implements Animation.Animatio
         data = cData;
         for(Chip coin: data.addedCoin) noAnimeAdd(coin);
         for(Chip coin: data.tempAddedCoin) noAnimeAdd(coin);
-        if(!data.isAddEmpty() || !data.isTempEmpty()) setColor(betColor);
+        if(!data.isAddEmpty() || !data.isTempEmpty()) shape.setColor(betColor);
         this.bridge = bridge;
     }
 
@@ -99,7 +98,7 @@ public class ChipStack extends RonConstraintLayout implements Animation.Animatio
         reset();
         for(Chip coin: data.addedCoin) noAnimeAdd(coin);
         for(Chip coin: data.tempAddedCoin) noAnimeAdd(coin);
-        if(!data.isAddEmpty() || !data.isTempEmpty()) setColor(betColor);
+        if(!data.isAddEmpty() || !data.isTempEmpty()) shape.setColor(betColor);
     }
 
 
@@ -113,7 +112,7 @@ public class ChipStack extends RonConstraintLayout implements Animation.Animatio
         coin4.setVisibility(View.INVISIBLE);
         coin5.setVisibility(View.INVISIBLE);
         valTxt.setVisibility(View.INVISIBLE);
-        setColor(normalColor);
+        shape.setColor(normalColor);
         ids = new ArrayList<>();
     }
 
@@ -154,7 +153,7 @@ public class ChipStack extends RonConstraintLayout implements Animation.Animatio
         if(!data.add(coin)) return false;
         valTxt.setVisibility(View.VISIBLE);
 
-        setColor(betColor);
+        shape.setColor(betColor);
 
         valTxt.setText(data.value + "");
         ids.add(coin.image);

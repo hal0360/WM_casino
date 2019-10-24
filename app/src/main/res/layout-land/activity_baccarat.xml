@@ -11,9 +11,9 @@
     tools:context=".BaccaratActivity">
 
     <tw.com.lixin.wm_casino.tools.gameComponents.ProfileBar
-        android:id="@+id/profileBar"
+        android:id="@+id/profile"
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,14 +27,28 @@
         app:layout_constraintBottom_toTopOf="@+id/first_grid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileBar">
+        app:layout_constraintTop_toBottomOf="@+id/profile">
+
+        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
+            android:id="@+id/bank_pair_stack"
+            android:layout_width="70dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginBottom="3dp"
+            app:bet_color="#e60000"
+            app:border_color="#ff3333"
+            app:layout_constraintBottom_toTopOf="@+id/ratePanel2"
+            app:layout_constraintStart_toEndOf="@+id/bank_stack"
+            app:normal_color="#800000" />
 
         <tw.com.lixin.wm_casino.tools.gameComponents.RatePanel
+            android:id="@+id/ratePanel2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" >
+            app:layout_constraintStart_toStartOf="parent">
 
             <tw.com.lixin.wm_casino.tools.buttons.ControlButton
                 android:id="@+id/cancel_btn"
@@ -71,13 +85,99 @@
         </tw.com.lixin.wm_casino.tools.gameComponents.RatePanel>
 
         <tw.com.lixin.wm_casino.tools.buttons.VideoButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
+            android:id="@+id/mss_btn"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            app:button_type="message"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
+            android:id="@+id/tie_stack"
+            android:layout_width="70dp"
+            android:layout_height="58dp"
+            android:layout_marginBottom="3dp"
+            app:bet_color="#009933"
+            app:border_color="#33cc33"
+            app:layout_constraintBottom_toTopOf="@+id/ratePanel2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:normal_color="#003300" />
+
+        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
+            android:id="@+id/bank_stack"
+            android:layout_width="70dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginBottom="3dp"
+            app:bet_color="#e60000"
+            app:border_color="#ff3333"
+            app:layout_constraintBottom_toTopOf="@+id/ratePanel2"
+            app:layout_constraintStart_toEndOf="@+id/tie_stack"
+            app:normal_color="#800000" />
+
+        <tw.com.lixin.wm_casino.tools.buttons.VideoButton
+            android:id="@+id/signal_btn"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            app:button_type="signal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mss_btn" />
+
+        <tw.com.lixin.wm_casino.tools.buttons.VideoButton
+            android:id="@+id/change_btn"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="5dp"
+            app:button_type="change"
+            android:layout_marginRight="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signal_btn" />
+
+        <tw.com.lixin.wm_casino.tools.buttons.VideoButton
+            android:id="@+id/people_btn"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/change_btn" />
+
+        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
+            android:id="@+id/player_stack"
+            android:layout_width="70dp"
+            android:layout_height="58dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginBottom="3dp"
+            app:bet_color="#1a1aff"
+            app:border_color="#3385ff"
+            app:layout_constraintBottom_toTopOf="@+id/ratePanel2"
+            app:layout_constraintEnd_toStartOf="@+id/tie_stack"
+            app:normal_color="#000080" />
+
+        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
+            android:id="@+id/player_pair_stack"
+            android:layout_width="70dp"
+            android:layout_height="58dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginBottom="3dp"
+            app:bet_color="#1a1aff"
+            app:border_color="#3385ff"
+            app:layout_constraintBottom_toTopOf="@+id/ratePanel2"
+            app:layout_constraintEnd_toStartOf="@+id/player_stack"
+            app:normal_color="#000080"
+            app:title="@string/player_pair" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -92,20 +192,21 @@
         app:layout_constraintTop_toTopOf="@+id/constraintLayout4" />
 
     <tw.com.lixin.wm_casino.tools.buttons.AskButton
-        android:id="@+id/askButton"
+        android:id="@+id/ask_play_btn"
         android:layout_width="50dp"
         android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <tw.com.lixin.wm_casino.tools.buttons.AskButton
-        android:id="@+id/askButton3"
+        android:id="@+id/ask_bank_btn"
         android:layout_width="0dp"
         android:layout_height="30dp"
+        app:ask_type="banker"
         android:layout_marginBottom="0.5dp"
-        app:layout_constraintBottom_toTopOf="@+id/askButton"
+        app:layout_constraintBottom_toTopOf="@+id/ask_play_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/askButton" />
+        app:layout_constraintStart_toStartOf="@+id/ask_play_btn" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
@@ -115,8 +216,8 @@
         android:layout_marginRight="0.5dp"
         android:background="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/askButton"
-        app:layout_constraintTop_toTopOf="@+id/askButton3">
+        app:layout_constraintEnd_toStartOf="@+id/ask_play_btn"
+        app:layout_constraintTop_toTopOf="@+id/ask_bank_btn">
 
         <TextView
             android:id="@+id/textView13"
@@ -240,15 +341,15 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <tw.com.lixin.wm_casino.tools.ChipSelection
+    <tw.com.lixin.wm_casino.tools.gameComponents.ChipSelection
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="7dp"
         android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/askButton3"
+        app:layout_constraintBottom_toTopOf="@+id/ask_bank_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
-        app:layout_constraintTop_toBottomOf="@+id/profileBar" />
+        app:layout_constraintTop_toBottomOf="@+id/profile" />
 
     <tw.com.lixin.wm_casino.tools.CasinoGrid
         android:id="@+id/main_grid"
@@ -306,5 +407,14 @@
         app:layout_constraintEnd_toStartOf="@+id/constraintLayout4"
         app:layout_constraintStart_toEndOf="@+id/third_grid"
         app:layout_constraintTop_toTopOf="@+id/third_grid"/>
+
+    <tw.com.lixin.wm_casino.tools.gameComponents.BacCardArea
+        android:id="@+id/card_area"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

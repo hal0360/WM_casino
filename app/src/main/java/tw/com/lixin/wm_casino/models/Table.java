@@ -110,4 +110,6 @@ public abstract class Table {
         }
         return powers.get(0);
     }
+
+   // protected abstract void statusUpdate();
 }

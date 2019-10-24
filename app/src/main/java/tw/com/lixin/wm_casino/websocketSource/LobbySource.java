@@ -1,13 +1,16 @@
 package tw.com.lixin.wm_casino.websocketSource;
 
+import android.util.SparseArray;
 import android.util.SparseIntArray;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import tw.com.atromoby.utils.Json;
 import tw.com.lixin.wm_casino.dataModels.LobbyData;
 import tw.com.lixin.wm_casino.dataModels.gameData.Game;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
+import tw.com.lixin.wm_casino.models.Table;
 
 
 public class LobbySource extends CasinoSource{
@@ -28,6 +31,7 @@ public class LobbySource extends CasinoSource{
     public ArrayList<Game> games;
     public SparseIntArray peopleOnline = new SparseIntArray();
 
+    private final SparseArray<List<Table>> tableGroups = new SparseArray<>();
 
     public Game findGame(int id){
         for(Game game: games){
@@ -54,6 +58,11 @@ public class LobbySource extends CasinoSource{
         switch(lobbyData.protocol) {
             case 35:
                 games.addAll(lobbyData.data.gameArr);
+
+                for(Game tGame: games){
+                  // tGame.
+                }
+
                 handle(()-> bridge.wholeDataUpdated());
                 break;
             case 34:

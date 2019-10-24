@@ -37,6 +37,10 @@ public abstract class CasinoSource extends WebSocketListener{
         isBinded = bid;
     }
 
+    public Handler getGenHandler(){
+        return genHandler;
+    }
+
     @Override
     public void onOpen(WebSocket webSocket, Response response) {
         send(loginDataStr);
@@ -144,10 +148,10 @@ public abstract class CasinoSource extends WebSocketListener{
     public void close(){
         Log.e("onclose", "caleed");
         connected = false;
-        cleanCallbacks();
         if(webSocket == null) return;
         webSocket.close(1000,null);
         webSocket = null;
+        cleanCallbacks();
     }
 
     @Override

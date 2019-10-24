@@ -17,8 +17,8 @@
 
     <tw.com.lixin.wm_casino.tools.buttons.ClickImage
         android:id="@+id/setting_btn"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginEnd="2dp"
         android:layout_marginRight="2dp"
         android:padding="5dp"
@@ -29,11 +29,11 @@
 
     <ImageView
         android:id="@+id/balance_img"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="3dp"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="2dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,8 +46,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
         android:layout_marginLeft="3dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginRight="2dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginBottom="2dp"
         android:singleLine="true"
         android:text="@string/zero"

@@ -1,4 +1,4 @@
-package tw.com.lixin.wm_casino.tools;
+package tw.com.lixin.wm_casino.tools.gameComponents;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -21,7 +21,7 @@ public class BacCardArea extends ConstraintLayout {
     public BacCardArea(Context context, AttributeSet attrs) {
         super(context, attrs);
         View.inflate(context, R.layout.bac_card_area, this);
-        setBackgroundColor(Color.parseColor("#000000"));
+        setBackgroundColor(0xBF000000);
 
         pokers = new SparseArray<>();
         pokers.put(1,findViewById(R.id.player_poker1));

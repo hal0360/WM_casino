@@ -13,7 +13,7 @@
     <tw.com.lixin.wm_casino.tools.gameComponents.ProfileBar
         android:id="@+id/pro_bar"
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,12 +29,14 @@
         app:layout_constraintTop_toBottomOf="@+id/pro_bar"
         app:srcCompat="@drawable/lobby_banner" />
 
-    <tw.com.lixin.wm_casino.tools.NewsBroadcast
-        android:id="@+id/newsBroadcast"
+    <tw.com.lixin.wm_casino.tools.gameComponents.NewsBroadcast
+        android:id="@+id/broadcast"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView25" />
@@ -46,7 +48,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newsBroadcast">
+        app:layout_constraintTop_toBottomOf="@+id/broadcast">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
@@ -58,7 +60,7 @@
                 android:layout_height="85dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="2dp"
                 app:game_image="@drawable/game_01"
                 app:game_name="@string/baccarat"
                 app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +84,7 @@
                 android:layout_height="85dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="2dp"
                 app:game_image="@drawable/games_02"
                 app:game_name="@string/roulette"
                 app:layout_constraintStart_toEndOf="@+id/baccarat_game"
@@ -94,7 +96,7 @@
                 android:layout_height="85dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="2dp"
                 app:game_image="@drawable/games_03"
                 app:game_name="@string/sic_bo"
                 app:layout_constraintStart_toEndOf="@+id/roulette_game"
@@ -106,7 +108,7 @@
                 android:layout_height="85dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="2dp"
                 app:game_image="@drawable/games_05"
                 app:game_name="@string/niuniu"
                 app:layout_constraintStart_toEndOf="@+id/sic_bo_game"
@@ -118,7 +120,7 @@
                 android:layout_height="85dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="2dp"
                 app:game_image="@drawable/games_07"
                 app:game_name="@string/fantan"
                 app:layout_constraintStart_toEndOf="@+id/niuniu_game"

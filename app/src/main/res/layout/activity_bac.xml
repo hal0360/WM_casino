@@ -310,7 +310,7 @@
             app:layout_constraintBottom_toTopOf="@+id/tableSwitchButton"
             app:layout_constraintEnd_toEndOf="@+id/peopleButton" />
 
-        <tw.com.lixin.wm_casino.tools.BetCountdown
+        <tw.com.lixin.wm_casino.tools.gameComponents.BetCountdown
             android:id="@+id/countdown"
             android:layout_width="55dp"
             android:layout_height="55dp"
@@ -390,7 +390,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/textView20"
             app:layout_constraintStart_toEndOf="@+id/textView20" />
 
-        <tw.com.lixin.wm_casino.tools.ChipSelection
+        <tw.com.lixin.wm_casino.tools.gameComponents.ChipSelection
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="3dp"
@@ -410,14 +410,15 @@
             app:layout_constraintEnd_toStartOf="@+id/cancel_btn"
             app:layout_constraintTop_toTopOf="@+id/cancel_btn" />
 
-        <tw.com.lixin.wm_casino.tools.BacCardArea
+        <!--
+        <tw.com.lixin.wm_casino.tools.gameComponents.BacCardArea
             android:id="@+id/card_area"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

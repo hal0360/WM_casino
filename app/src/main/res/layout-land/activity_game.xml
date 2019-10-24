@@ -13,25 +13,24 @@
     <tw.com.lixin.wm_casino.tools.gameComponents.ProfileBar
         android:id="@+id/pro_bar"
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <tw.com.atromoby.widgets.ItemsView
         android:id="@+id/table_list"
-        android:layout_width="570dp"
+        android:layout_width="568dp"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.414"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newsBroadcast3" />
+        app:layout_constraintTop_toBottomOf="@+id/broadcast"
+        app:spanCount="2" />
 
-    <tw.com.lixin.wm_casino.tools.NewsBroadcast
-        android:id="@+id/newsBroadcast3"
+    <tw.com.lixin.wm_casino.tools.gameComponents.NewsBroadcast
+        android:id="@+id/broadcast"
         android:layout_width="584dp"
         android:layout_height="30dp"
         app:layout_constraintEnd_toEndOf="parent"

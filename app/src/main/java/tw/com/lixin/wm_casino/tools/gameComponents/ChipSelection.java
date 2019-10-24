@@ -1,4 +1,4 @@
-package tw.com.lixin.wm_casino.tools;
+package tw.com.lixin.wm_casino.tools.gameComponents;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
