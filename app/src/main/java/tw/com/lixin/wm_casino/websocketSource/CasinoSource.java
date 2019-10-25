@@ -181,7 +181,7 @@ public abstract class CasinoSource extends WebSocketListener{
         });
     }
 
-    public void cleanCallbacks(){
+    private void cleanCallbacks(){
         cmdLogOpen = null;
         cmdLogFail = null;
         genHandler.removeCallbacksAndMessages(null);

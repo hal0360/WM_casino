@@ -37,6 +37,13 @@ public class TableData {
         public float moneyWin;
         public int memberID;
         public Map<Integer, String> dtMoneyWin;
+
+
+        public int dealerID;
+        public int gameNo;
+        public int gameNoRound;
+        public String dealerImage;
+        public String dealerName;
     }
 
     public class HisData{

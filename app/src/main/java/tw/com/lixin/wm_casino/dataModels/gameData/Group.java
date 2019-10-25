@@ -3,8 +3,6 @@ package tw.com.lixin.wm_casino.dataModels.gameData;
 import java.util.List;
 
 public class Group {
-    public int bankerScore;
-    public int betMilliSecond;
     public int dealerID;
     public int gameNo;
     public int gameNoRound;

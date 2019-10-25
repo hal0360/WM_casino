@@ -49,27 +49,31 @@ public class BacTable extends Table{
     }
 
     @Override
-    public void statusUpdate(int stage){
-        if (stage == 1) {
-            pokers.clear();
-        }
-        super.statusUpdate(stage);
-    }
-
-    @Override
     public void cardUpdate(int area, int id){
         pokers.put(area,id);
     }
 
     @Override
-    public void update(TableData.Data data){
+    public void statusUpdate() {
+        if (stage == 1) {
+            pokers.clear();
+        }
+    }
+
+    @Override
+    public void historyUpdate(TableData.Data data) {
         playCount = data.historyData.playerCount;
         bankCount = data.historyData.bankerCount;
         tieCount = data.historyData.tieCount;
         playPairCount = data.historyData.playerPairCount;
         bankPairCount = data.historyData.bankerPairCount;
-        super.update(data);
     }
+
+    @Override
+    public void resultUpdate(TableData.Data data) {
+
+    }
+
 
 
 

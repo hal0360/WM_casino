@@ -78,26 +78,26 @@ public class GameSource extends CasinoSource{
         if(tt == null) return;
         switch(tableData.protocol) {
             case 20:
-                tt.statusUpdate(tableData.data.gameStage);
+              //  tt.statusUpdate(tableData.data.gameStage);
                 if(tableData.data.groupID == groupID) handle(() -> bridge.statusUpdate(tableData.data.gameStage));
                 break;
             case 24:
-                tt.cardUpdate(tableData.data.cardArea, tableData.data.cardID);
+              //  tt.cardUpdate(tableData.data.cardArea, tableData.data.cardID);
                 if(tableData.data.groupID == groupID) handle(() -> bridge.cardUpdate(tableData.data.cardArea, tableData.data.cardID));
                 break;
             case 26:
-                tt.update(tableData.data);
+               // tt.update(tableData.data);
                 if(tableData.data.groupID == groupID) handle(() -> bridge.gridUpdate());
                 break;
             case 38:
-                tt.startCountDown(tableData.data.timeMillisecond);
+               // tt.startCountDown(tableData.data.timeMillisecond);
                 if(tableData.data.groupID == groupID) handle(() -> bridge.startCountDown(tableData.data.timeMillisecond));
                 break;
             case 25:
-                if(tableData.data.groupID == groupID) handle(() -> bridge.resultUpdate(tableData.data));
+               // if(tableData.data.groupID == groupID) handle(() -> bridge.resultUpdate(tableData.data));
                 break;
             case 10:
-                tt.loginSetup(tableData.data);
+               // tt.loginSetup(tableData.data);
                 if(tableData.data.groupID == groupID) handle(() -> bridge.tableLogin(tableData.data));
                 break;
             case 22:

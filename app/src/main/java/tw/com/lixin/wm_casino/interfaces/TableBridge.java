@@ -7,4 +7,6 @@ public interface TableBridge {
     void gridUpdate();
     void betCountdown(int sec);
     void tableLogin(TableData.Data data);
+    void resultUpdate();
+    void cardUpdate(int area, int img);
 }
