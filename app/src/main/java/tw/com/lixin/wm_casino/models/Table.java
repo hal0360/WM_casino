@@ -32,7 +32,7 @@ public abstract class Table {
     public int number;
     public int stage;
     public int round;
-    public int groupID;
+    public int groupID, gameID;
     public int groupType;
     public int dealerID;
 
@@ -59,8 +59,6 @@ public abstract class Table {
         isBinded  = false;
     }
 
-    public abstract void historySetup(List<Integer> histories);
-
     public void loginSetup(TableData.Data data){
         handle(() -> bridge.tableLogin(data));
     }
@@ -79,8 +77,6 @@ public abstract class Table {
         cardStatus = stage;
         handle(() -> bridge.statusUpdate());
     }
-
-    public abstract void cardUpdate(int area, int id);
 
     public void startCountDown(int mille){
         curTime = mille/1000;
@@ -117,7 +113,8 @@ public abstract class Table {
         return powers.get(0);
     }
 
-
+    public abstract void historySetup(List<Integer> histories);
+    public abstract void cardUpdate(int area, int id);
     public abstract void statusUpdate();
     public abstract void historyUpdate(TableData.Data data);
     public abstract void resultUpdate(TableData.Data data);

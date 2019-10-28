@@ -31,6 +31,7 @@ public class BacTable extends Table{
 
     public BacTable(Group group) {
         super(group);
+        gameID = 101;
     }
 
     @Override

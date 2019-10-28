@@ -104,4 +104,14 @@ public class BacHolder extends ItemHolder implements TableBridge{
         else alert("Cannot login to this table");
     }
 
+    @Override
+    public void resultUpdate() {
+
+    }
+
+    @Override
+    public void cardUpdate(int area, int img) {
+
+    }
+
 }

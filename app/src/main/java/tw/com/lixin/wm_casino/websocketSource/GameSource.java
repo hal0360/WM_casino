@@ -1,14 +1,22 @@
 package tw.com.lixin.wm_casino.websocketSource;
 
+import android.os.Handler;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import tw.com.atromoby.utils.Json;
+import tw.com.lixin.wm_casino.dataModels.CheckData;
 import tw.com.lixin.wm_casino.dataModels.Client10;
 import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.dataModels.gameData.Game;
 import tw.com.lixin.wm_casino.dataModels.gameData.Group;
+import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.CmdLog;
 import tw.com.lixin.wm_casino.interfaces.CmdStr;
+import tw.com.lixin.wm_casino.interfaces.CmdTableLog;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.Table;
@@ -28,6 +36,9 @@ public class GameSource extends CasinoSource{
     public Table table;
     public List<Table> tables = new ArrayList<>();
     private GameBridge bridge;
+
+    private Handler tableHandler = new Handler();
+    private CmdTableLog cmdTableLog;
 
     public void addTables(int gameid){
         Game bacGame = LobbySource.getInstance().findGame(gameid);
@@ -60,6 +71,34 @@ public class GameSource extends CasinoSource{
         this.bridge = null;
         binded(false);
     }
+
+
+
+    public final void tableLogin(Table table, CmdLog logOK, CmdStr logFail){
+        defineURL("ws://gameserver.a45.me:15" + table.gameID);
+        login(User.sid(),User.sid(),data->{
+            Client10 client = new Client10(table.groupID);
+            send(Json.to(client));
+        }, fail->{
+
+        });
+
+        /*
+        close();
+        cmdLogOpen = logOK;
+        cmdLogFail = logFail;
+        logHandler.postDelayed(()-> {
+            cmdLogOpen = null;
+            if(cmdLogFail != null) cmdLogFail.exec("Websocket login timeout");
+            cmdLogFail = null;
+            close();
+        },6000);
+        loginDataStr = Json.to(new CheckData(sid));
+        OkHttpClient client = new OkHttpClient();
+        webSocket = client.newWebSocket(new Request.Builder().url(webUrl).build(), this);
+        client.dispatcher().executorService().shutdown();*/
+    }
+
 
     public void tableLogin(Table table){
         this.table = table;

@@ -23,7 +23,7 @@ public abstract class CasinoSource extends WebSocketListener{
     private WebSocket webSocket = null;
     private Handler genHandler = new Handler();
 
-    private Handler logHandler = new Handler();
+    public Handler logHandler = new Handler();
 
     private boolean connected = false;
     private String loginDataStr;

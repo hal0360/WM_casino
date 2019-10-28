@@ -6,11 +6,16 @@ import android.util.SparseIntArray;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import tw.com.atromoby.utils.Json;
+import tw.com.lixin.wm_casino.dataModels.CheckData;
 import tw.com.lixin.wm_casino.dataModels.LobbyData;
 import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.dataModels.gameData.Game;
 import tw.com.lixin.wm_casino.dataModels.gameData.Group;
+import tw.com.lixin.wm_casino.interfaces.CmdLog;
+import tw.com.lixin.wm_casino.interfaces.CmdStr;
 import tw.com.lixin.wm_casino.interfaces.CmdTable;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
@@ -59,7 +64,6 @@ public class LobbySource extends CasinoSource{
         binded(false);
     }
 
-
     @Override
     public void onReceive(String text) {
         TableData tableData = Json.from(text, TableData.class);
@@ -74,17 +78,19 @@ public class LobbySource extends CasinoSource{
             case 21:
                 if(table == null && tableGroup != null){
                     if(data.gameStage != 4 && !data.dealerImage.equals("") && !data.dealerName.equals("")){
+                        CmdTable cmdTable = tableProvider.get(data.gameID);
+                        if(cmdTable == null) return;
                         Group group = new Group();
                         group.dealerID = data.dealerID;
                         group.gameNo = data.gameNo;
                         group.dealerName = data.dealerName;
                         group.dealerImage = data.dealerImage;
                         group.gameNoRound = data.gameNoRound;
-                        group.gameStage = data.gameStage;
+                        group.gameStage = 5;
                         group.groupID = data.groupID;
                         group.groupType = data.groupType;
                         group.historyArr = new ArrayList<>();
-                      //  tableGroup.put(data.groupID, cmdTable.exec(tableStage) );
+                        tableGroup.put(data.groupID, cmdTable.exec(group) );
                     }
                 }else {
                     if(table != null) table.receive21(data);
