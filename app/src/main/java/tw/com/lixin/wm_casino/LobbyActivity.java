@@ -40,10 +40,10 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
         gameButtons.put(107,findViewById(R.id.fantan_game));
         gameButtons.put(109,findViewById(R.id.golden_flower_game));
         gameButtons.put(110,findViewById(R.id.fish_prawn_game));
-
-
-        gameButtons.get(101).clicked(v-> enterGame(101));
-       // peopleOnlineUpdate(2,2);
+        for(int i = 0; i < gameButtons.size(); i++) {
+            int key = gameButtons.keyAt(i);
+            gameButtons.get(key).clicked(v-> enterGame(key));
+        }
     }
 
     public void enterGame(int gameid){

@@ -33,31 +33,20 @@ public class LobbySource extends CasinoSource{
 
     private LobbySource() {
         defineURL("ws://gameserver.a45.me:15109");
-        games = new ArrayList<>();
-
         tableProvider.put(101, BacTable::new);
     }
 
     private LobbyBridge bridge;
-    public ArrayList<Game> games;
+    public int curGameID;
     public SparseIntArray peopleOnline = new SparseIntArray();
-
     public SparseArray<SparseArray<Table>> tables;
     private SparseArray<CmdTable> tableProvider = new SparseArray<>();
 
-
-    public Game findGame(int id){
-        for(Game game: games){
-            if (game.gameID == id) return game;
-        }
-        return null;
-    }
 
     public void bind(LobbyBridge bridge){
         this.bridge = bridge;
         binded(true);
     }
-
 
     public void unbind(){
         bridge = null;
@@ -116,8 +105,6 @@ public class LobbySource extends CasinoSource{
         LobbyData lobbyData = Json.from(text, LobbyData.class);
         switch(lobbyData.protocol) {
             case 35:
-                games.addAll(lobbyData.data.gameArr);
-
                 tables = new SparseArray<>();
                 for(Game game: lobbyData.data.gameArr){
                     CmdTable cmdTable = tableProvider.get(game.gameID);
