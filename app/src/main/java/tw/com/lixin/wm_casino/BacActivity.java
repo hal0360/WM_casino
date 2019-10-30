@@ -24,7 +24,7 @@ import tw.com.lixin.wm_casino.tools.gameComponents.RatePanel;
 import tw.com.lixin.wm_casino.popups.WinLossPopup;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
-public class BacActivity extends WMActivity implements GameBridge, StackCallBridge {
+public class BacActivity extends WMActivity {
 
     private static boolean comission = false;
     public static ChipStackData playStackData, playPairStackData, tieStackData, bankStackData, bankPairStackData;
@@ -135,10 +135,10 @@ public class BacActivity extends WMActivity implements GameBridge, StackCallBrid
         countdown.statusCheck(table.cardStatus);
         checkStackEmpty();
 
-        gridUpdate();
+       // gridUpdate();
         countdown.startCountDown(table.curTime);
 
-        source.bind(this);
+       // source.bind(this);
     }
 
     @Override
@@ -229,16 +229,8 @@ public class BacActivity extends WMActivity implements GameBridge, StackCallBrid
         }else{ alert("bet fail!"); }
     }
 
-    @Override
-    public void tableLogin(TableData.Data data) {
 
-    }
-
-    @Override
-    public void cardUpdate(int area, int img) {
-        cardArea.update(area, img);
-    }
-
+    /*
     @Override
     public void statusUpdate(int stage) {
         if (table.cardStatus == 0) {
@@ -261,8 +253,9 @@ public class BacActivity extends WMActivity implements GameBridge, StackCallBrid
         } else {
 
         }
-    }
+    }*/
 
+    /*
     @Override
     public void gridUpdate() {
         int indexx = 0;

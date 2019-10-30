@@ -3,17 +3,11 @@ package tw.com.lixin.wm_casino;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.SparseArray;
-import android.view.View;
-import android.widget.ImageView;
 
-import tw.com.atromoby.utils.Json;
-import tw.com.lixin.wm_casino.dataModels.Client35;
-import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
+import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.tools.ImageGetTask;
-import tw.com.lixin.wm_casino.tools.ProfileSetting;
 import tw.com.lixin.wm_casino.tools.buttons.GameButton;
-import tw.com.lixin.wm_casino.websocketSource.GameSource;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
 public class LobbyActivity extends WMActivity implements LobbyBridge {
@@ -40,6 +34,7 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
         gameButtons.put(107,findViewById(R.id.fantan_game));
         gameButtons.put(109,findViewById(R.id.golden_flower_game));
         gameButtons.put(110,findViewById(R.id.fish_prawn_game));
+
         for(int i = 0; i < gameButtons.size(); i++) {
             int key = gameButtons.keyAt(i);
             gameButtons.get(key).clicked(v-> enterGame(key));
@@ -48,32 +43,18 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
 
     public void enterGame(int gameid){
         loading();
-        GameSource gameSource = GameSource.getInstance();
-        gameSource.addTables(gameid);
-        gameSource.gameLogin(gameid,User.sid(),data->{
-            new ImageGetTask(this, gameSource.tables).execute();
-        }, fail->{
-            unloading();
-            alert("Unable to connect to game server");
-        });
+        SparseArray<Table> tables = lobbySource.allTables.get(gameid);
+        new ImageGetTask(this, tables).execute();
+        lobbySource.curGameID = gameid;
     }
-
 
     @Override
     public void onResume() {
         super.onResume();
-        loading();
         lobbySource.bind(this);
-        if(lobbySource.isConnected()){
-            lobbySource.send(Json.to(new Client35()));
-        }else{
-            lobbySource.login(User.sid(),data->{
-                unloading();
-            }, fail->{
-                alert("Connection lost");
-                unloading();
-                toActivity(LoginActivity.class);
-            });
+        if(!lobbySource.isConnected()){
+            alert("Connection lost");
+            toActivity(LoginActivity.class);
         }
     }
 
@@ -84,10 +65,7 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
     }
 
     @Override
-    public void wholeDataUpdated() {
-        unloading();
-alert("data updated");
-    }
+    public void wholeDataUpdated() { }
 
     @Override
     public void peopleOnlineUpdate(int gameID, int number) {

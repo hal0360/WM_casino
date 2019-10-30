@@ -9,19 +9,23 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
+import tw.com.atromoby.utils.Json;
 import tw.com.atromoby.widgets.CustomInput;
+import tw.com.lixin.wm_casino.dataModels.Client35;
 import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.CmdImg;
+import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
 import tw.com.lixin.wm_casino.popups.LanguagePopup;
 import tw.com.lixin.wm_casino.popups.ProfilePopup;
 import tw.com.lixin.wm_casino.popups.TableSwitchPopup;
 import tw.com.lixin.wm_casino.tools.buttons.ClickConstraint;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
-public class LoginActivity extends WMActivity {
+public class LoginActivity extends WMActivity implements LobbyBridge {
 
    // private LanguagePopup popup;
     private Map<Locale, CmdImg> LangSwitch = new HashMap<>();
+    private LobbySource source;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +33,7 @@ public class LoginActivity extends WMActivity {
         setContentView(R.layout.activity_login);
 
        // popup = new LanguagePopup(this);
-        LobbySource source = LobbySource.getInstance();
+        source = LobbySource.getInstance();
 
         LangSwitch.put(Locale.US, f->{
             f.setImageResource(R.drawable.lang_us);
@@ -44,22 +48,21 @@ public class LoginActivity extends WMActivity {
             setLangTxt("简体中文");
         });
 
+        source.bind(this);
+
         clicked(R.id.login_btn,v ->{
             CustomInput userIn = findViewById(R.id.user_input);
             CustomInput passIn = findViewById(R.id.pass_input);
             String user = userIn.getRawText();
             String pass = passIn.getRawText();
-
             loading();
             source.login(user,pass,data->{
-                unloading();
                 User.account(data.account);
                 User.gameID(data.gameID);
                 User.userName(data.userName);
                 User.memberID(data.memberID);
                 User.sid(data.sid);
-                toActivity(LobbyActivity.class);
-                App.music_on();
+                source.send(Json.to(new Client35()));
             }, fail->{
                 unloading();
                 alert(fail);
@@ -69,14 +72,12 @@ public class LoginActivity extends WMActivity {
         clicked(R.id.demo_btn, v->{
             loading();
             source.login("ANONYMOUS","1234",data->{
-                unloading();
                 User.account(data.account);
                 User.gameID(data.gameID);
                 User.userName(data.userName);
                 User.memberID(data.memberID);
                 User.sid(data.sid);
-                toActivity(LobbyActivity.class);
-                App.music_on();
+                source.send(Json.to(new Client35()));
             }, fail->{
                 unloading();
                 alert(fail);
@@ -111,9 +112,26 @@ public class LoginActivity extends WMActivity {
     }
 
     @Override
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
-      //  popup.dismiss();
+        source.unbind();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        source.bind(this);
+    }
+
+    @Override
+    public void wholeDataUpdated() {
+        App.music_on();
+        unloading();
+        toActivity(LobbyActivity.class);
+    }
+
+    @Override
+    public void peopleOnlineUpdate(int gameID, int number) {
+
+    }
 }

@@ -1,19 +1,15 @@
 package tw.com.lixin.wm_casino.models;
 
-import android.util.Log;
-import android.util.SparseIntArray;
-
 import java.util.ArrayList;
 import java.util.List;
+
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.dataModels.gameData.Group;
-import tw.com.lixin.wm_casino.global.Poker;
 import tw.com.lixin.wm_casino.global.Road;
 
 public class BacTable extends Table{
 
-    public SparseIntArray pokers = new SparseIntArray();
     public int bankCount = 0;
     public int playCount = 0;
     public int tieCount = 0;
@@ -28,6 +24,8 @@ public class BacTable extends Table{
     private List<Integer> tempRoad;
     private int preWin = 0;
     private int preRes = 0;
+
+    public int playerScore, bankerScore, pokerWin = -1;
 
     public BacTable(Group group) {
         super(group);
@@ -50,18 +48,6 @@ public class BacTable extends Table{
     }
 
     @Override
-    public void cardUpdate(int area, int id){
-        pokers.put(area,id);
-    }
-
-    @Override
-    public void statusUpdate() {
-        if (stage == 1) {
-            pokers.clear();
-        }
-    }
-
-    @Override
     public void historyUpdate(TableData.Data data) {
         playCount = data.historyData.playerCount;
         bankCount = data.historyData.bankerCount;
@@ -72,7 +58,9 @@ public class BacTable extends Table{
 
     @Override
     public void resultUpdate(TableData.Data data) {
-
+        pokerWin = Table.resDivide(data.result);
+        playerScore = data.playerScore;
+        bankerScore = data.bankerScore;
     }
 
 

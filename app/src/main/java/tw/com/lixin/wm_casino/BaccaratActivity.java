@@ -7,6 +7,7 @@ import tw.com.lixin.wm_casino.dataModels.Client22;
 import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
 import tw.com.lixin.wm_casino.interfaces.StackCallBridge;
+import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.Chip;
 import tw.com.lixin.wm_casino.models.ChipStackData;
@@ -25,11 +26,10 @@ import tw.com.lixin.wm_casino.websocketSource.GameSource;
 import android.os.Bundle;
 import android.view.View;
 
-public class BaccaratActivity extends WMActivity implements GameBridge, StackCallBridge {
+public class BaccaratActivity extends WMActivity implements GameBridge, TableBridge, StackCallBridge {
 
     private static boolean comission = false;
     public static ChipStackData playStackData, playPairStackData, tieStackData, bankStackData, bankPairStackData;
-    private static int playerScore, bankerScore, pokerWin = -1;
 
     private int posX, posY;
     private IjkVideoView video;
@@ -189,59 +189,7 @@ public class BaccaratActivity extends WMActivity implements GameBridge, StackCal
     }
 
     @Override
-    public void resultUpdate(TableData.Data data) {
-        pokerWin = Table.resDivide(data.result);
-        playerScore = data.playerScore;
-        bankerScore = data.bankerScore;
-        if (pokerWin == 1) {
-
-        } else if (pokerWin == 2) {
-
-        } else if (pokerWin == 4) {
-
-        }
-        if(pokerWin == -1){
-            setTextView(R.id.bank_score,"");
-            setTextView(R.id.play_score,"");
-        }else{
-            setTextView(R.id.bank_score,""+bankerScore);
-            setTextView(R.id.play_score,""+playerScore);
-        }
-    }
-
-    @Override
-    public void balanceUpdate(float value) {
-        ProfileSetting profile = findViewById(R.id.profile_setting);
-        profile.setBalance(value);
-    }
-
-    @Override
-    public void betUpdate(boolean betOK) {
-        if(betOK){
-            alert("bet succ!");
-            cancelBtn.disable(true);
-            rebetBtn.disable(true);
-            betBtn.disable(true);
-            playPairStackData.comfirmBet();
-            playStackData.comfirmBet();
-            bankStackData.comfirmBet();
-            bankPairStackData.comfirmBet();
-            tieStackData.comfirmBet();
-        }else{ alert("bet fail!"); }
-    }
-
-    @Override
-    public void tableLogin(TableData.Data data) {
-
-    }
-
-    @Override
-    public void cardUpdate(int area, int img) {
-        cardArea.update(area, img);
-    }
-
-    @Override
-    public void statusUpdate(int stage) {
+    public void statusUpdate() {
         if (table.cardStatus == 0) {
 
         } else if (table.cardStatus == 1) {
@@ -280,37 +228,15 @@ public class BaccaratActivity extends WMActivity implements GameBridge, StackCal
                 posY = y;
             }
         }
+    }
+
+    @Override
+    public void betCountdown(int sec) {
 
     }
 
     @Override
-    public void winLossUpdate(TableData.Data data) {
-        winPopup.setUp(data);
-        winPopup.show();
-    }
-
-    @Override
-    public void startCountDown(int milli) {
-        countdown.startCountDown(milli/1000);
-    }
-
-    @Override
-    public void stackBet(ChipStack stack) {
-        if(table.cardStatus != 1) {
-            alert("Please wait!!");
-            return;
-        }
-        if(stack.add(Chip.curChip)){
-            betBtn.disable(false);
-            cancelBtn.disable(false);
-            rebetBtn.disable(false);
-        }else{ alert("max value exceeded"); }
-    }
-
-
-    /*
-    @Override
-    public void resultUpadte() {
+    public void resultUpdate() {
         if (table.pokerWin == 1) {
 
         } else if (table.pokerWin == 2) {
@@ -328,6 +254,11 @@ public class BaccaratActivity extends WMActivity implements GameBridge, StackCal
     }
 
     @Override
+    public void cardUpdate(int area, int img) {
+        cardArea.update(area, img);
+    }
+
+    @Override
     public void balanceUpdate(float value) {
         ProfileSetting profile = findViewById(R.id.profile_setting);
         profile.setBalance(value);
@@ -340,58 +271,18 @@ public class BaccaratActivity extends WMActivity implements GameBridge, StackCal
             cancelBtn.disable(true);
             rebetBtn.disable(true);
             betBtn.disable(true);
-        }else{ alert("fail!"); }
+            playPairStackData.comfirmBet();
+            playStackData.comfirmBet();
+            bankStackData.comfirmBet();
+            bankPairStackData.comfirmBet();
+            tieStackData.comfirmBet();
+        }else{ alert("bet fail!"); }
     }
 
     @Override
-    public void cardUpdate(int area, int img) {
-        cardArea.update(area, img);
-    }
-
-    @Override
-    public void statusUpdate() {
-        if (table.cardStatus == 0) {
-
-        } else if (table.cardStatus == 1) {
-            playerStack.reset();
-            playerPairStack.reset();
-            tieStack.reset();
-            bankerPairStack.reset();
-            bankerStack.reset();
-            countdown.betting();
-            cardArea.setVisibility(View.GONE);
-        } else if (table.cardStatus == 2) {
-            cancellAllbets();
-            countdown.dealing();
-            cardArea.setVisibility(View.VISIBLE);
-        } else if (table.cardStatus == 3) {
-
-        } else {
-
-        }
-    }
-
-    @Override
-    public void gridUpdate() {
-        int indexx = 0;
-        firstGrid.drawRoad(table.firstGrid);
-        secGrid.drawRoad(table.secGrid);
-        thirdGrid.drawRoad(table.thirdGrid);
-        fourthGrid.drawRoad(table.fourthGrid);
-        for (int x = 0; x < mainGrid.width; x++) {
-            for (int y = 0; y < mainGrid.height; y++) {
-                if (indexx >= table.mainRoad.size()) return;
-                mainGrid.insertImage(x, y, table.mainRoad.get(indexx));
-                indexx++;
-                posX = x;
-                posY = y;
-            }
-        }
-    }
-
-    @Override
-    public void betCountdown(int sec) {
-        countdown.setSecond(sec);
+    public void winLossUpdate(TableData.Data data) {
+        winPopup.setUp(data);
+        winPopup.show();
     }
 
     @Override
@@ -400,7 +291,13 @@ public class BaccaratActivity extends WMActivity implements GameBridge, StackCal
             alert("Please wait!!");
             return;
         }
-        if(stack.add(Chip.curChip)){ checkStackEmpty();
+        if(stack.add(Chip.curChip)){
+            betBtn.disable(false);
+            cancelBtn.disable(false);
+            rebetBtn.disable(false);
         }else{ alert("max value exceeded"); }
-    }*/
+    }
+
+
+
 }

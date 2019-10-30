@@ -50,7 +50,11 @@ public class BacHolder extends ItemHolder implements TableBridge{
 
         findViewById(R.id.root).setOnClickListener(v->{
             GameSource source = GameSource.getInstance();
-            source.tableLogin(table);
+            source.tableLogin(table,data -> {
+               // BacActivity.bacStarted(data);
+                RootActivity act = (RootActivity) getContex();
+                act.pushActivity(BacActivity.class);
+            }, this::alert);
         });
     }
 
@@ -94,15 +98,6 @@ public class BacHolder extends ItemHolder implements TableBridge{
         countDown.setText(sec+"");
     }
 
-    @Override
-    public void tableLogin(TableData.Data data) {
-        if(data.bOk){
-            BacActivity.bacStarted(data);
-            RootActivity act = (RootActivity) getContex();
-            act.pushActivity(BacActivity.class);
-        }
-        else alert("Cannot login to this table");
-    }
 
     @Override
     public void resultUpdate() {

@@ -39,7 +39,7 @@ public class LobbySource extends CasinoSource{
     private LobbyBridge bridge;
     public int curGameID;
     public SparseIntArray peopleOnline = new SparseIntArray();
-    public SparseArray<SparseArray<Table>> tables;
+    public SparseArray<SparseArray<Table>> allTables;
     private SparseArray<CmdTable> tableProvider = new SparseArray<>();
 
 
@@ -57,7 +57,7 @@ public class LobbySource extends CasinoSource{
     public void onReceive(String text) {
         TableData tableData = Json.from(text, TableData.class);
         TableData.Data data = tableData.data;
-        SparseArray<Table> tableGroup = tables.get(data.gameID);
+        SparseArray<Table> tableGroup = allTables.get(data.gameID);
         Table table = null;
         if(tableGroup != null) table = tableGroup.get(data.groupID);
         switch(tableData.protocol) {
@@ -105,7 +105,7 @@ public class LobbySource extends CasinoSource{
         LobbyData lobbyData = Json.from(text, LobbyData.class);
         switch(lobbyData.protocol) {
             case 35:
-                tables = new SparseArray<>();
+                allTables = new SparseArray<>();
                 for(Game game: lobbyData.data.gameArr){
                     CmdTable cmdTable = tableProvider.get(game.gameID);
                     if(cmdTable != null){
@@ -115,7 +115,7 @@ public class LobbySource extends CasinoSource{
                                 tableGroup.put(tableStage.groupID,cmdTable.exec(tableStage));
                             }
                         }
-                        tables.put(game.gameID, tableGroup);
+                        allTables.put(game.gameID, tableGroup);
                     }
                 }
 

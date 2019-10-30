@@ -3,6 +3,7 @@ package tw.com.lixin.wm_casino.models;
 
 import android.graphics.Bitmap;
 import android.os.Handler;
+import android.util.SparseIntArray;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import tw.com.atromoby.utils.Cmd;
-import tw.com.lixin.wm_casino.LobbyActivity;
 import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.dataModels.gameData.Group;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
@@ -36,6 +36,8 @@ public abstract class Table {
     public int groupType;
     public int dealerID;
 
+    public SparseIntArray pokers = new SparseIntArray();
+
     public Table(Group group){
         historySetup(group.historyArr);
         dealerID = group.dealerID;
@@ -59,41 +61,6 @@ public abstract class Table {
         isBinded  = false;
     }
 
-    public void loginSetup(TableData.Data data){
-        handle(() -> bridge.tableLogin(data));
-    }
-
-    public void update(TableData.Data data){
-        round = data.historyArr.size();
-        historySetup(data.historyArr);
-        groupType = data.groupType;
-        handle(() -> bridge.gridUpdate());
-    }
-
-    public void statusUpdate(int stage){
-        if (stage == 2) {
-            timer.cancel();
-        }
-        cardStatus = stage;
-        handle(() -> bridge.statusUpdate());
-    }
-
-    public void startCountDown(int mille){
-        curTime = mille/1000;
-
-        handle(() -> bridge.betCountdown(curTime));
-
-        timer.cancel();
-        timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                if(curTime > 0) curTime--;
-                handle(() -> bridge.betCountdown(curTime));
-            }
-        }, 1000, 1000);
-    }
-
     private void handle(Cmd cmd){
         if(isBinded) handler.post(()->{ if(isBinded) cmd.exec(); });
     }
@@ -114,8 +81,6 @@ public abstract class Table {
     }
 
     public abstract void historySetup(List<Integer> histories);
-    public abstract void cardUpdate(int area, int id);
-    public abstract void statusUpdate();
     public abstract void historyUpdate(TableData.Data data);
     public abstract void resultUpdate(TableData.Data data);
 
@@ -123,13 +88,15 @@ public abstract class Table {
         if (stage == 2) {
             timer.cancel();
         }
+        if (stage == 1) {
+            pokers.clear();
+        }
         cardStatus = stage;
-        statusUpdate();
         handle(() -> bridge.statusUpdate());
     }
 
     public void receive24(int area, int id) {
-        cardUpdate(area, id);
+        pokers.put(area,id);
         handle(() -> bridge.cardUpdate(area, id));
     }
 
@@ -146,9 +113,7 @@ public abstract class Table {
 
     public void receive38(int mille) {
         curTime = mille/1000;
-
         handle(() -> bridge.betCountdown(curTime));
-
         timer.cancel();
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {

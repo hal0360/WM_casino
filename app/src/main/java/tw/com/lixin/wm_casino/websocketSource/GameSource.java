@@ -30,7 +30,7 @@ public class GameSource extends CasinoSource{
         binded(true);
     }
 
-    public void unbind(){
+    private void unbind(){
         this.bridge = null;
         binded(false);
     }
@@ -43,7 +43,7 @@ public class GameSource extends CasinoSource{
         login(table.gameID,User.sid(),data->{
             Client10 client = new Client10(table.groupID);
             send(Json.to(client));
-        }, fail-> cmdTableFail.exec("connection failed"));
+        }, fail-> cmdTableFail.exec(fail));
     }
 
     public void tableLogout( ){
@@ -64,7 +64,10 @@ public class GameSource extends CasinoSource{
                             cmdTableLog.exec(tableLogData.data);
                             tableLogged = true;
                         }
-                        else cmdTableFail.exec("login failed");
+                        else{
+                            tableLogout( );
+                            cmdTableFail.exec("login failed");
+                        }
                     }
                 }
                 break;

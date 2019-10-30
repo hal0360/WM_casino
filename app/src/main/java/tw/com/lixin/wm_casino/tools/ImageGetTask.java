@@ -3,20 +3,19 @@ package tw.com.lixin.wm_casino.tools;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.util.SparseArray;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import tw.com.lixin.wm_casino.LobbyActivity;
 import tw.com.lixin.wm_casino.models.Table;
 
 public class ImageGetTask extends AsyncTask<Void, Void, Boolean> {
-    List<Table> tables;
+    private SparseArray<Table> tables;
      LobbyActivity activity;
 
-    public ImageGetTask(LobbyActivity activity, List<Table> tables) {
+    public ImageGetTask(LobbyActivity activity, SparseArray<Table> tables) {
         this.tables =  tables;
         this.activity = activity;
     }
@@ -24,7 +23,8 @@ public class ImageGetTask extends AsyncTask<Void, Void, Boolean> {
     @Override
     protected Boolean doInBackground(Void... voids) {
 
-        for(Table table: tables){
+        for(int i = 0; i < tables.size(); i++) {
+            Table table = tables.valueAt(i);
             try {
                 InputStream in = new java.net.URL(table.dealerImageUrl).openStream();
                 table.dealerImage = BitmapFactory.decodeStream(in);
