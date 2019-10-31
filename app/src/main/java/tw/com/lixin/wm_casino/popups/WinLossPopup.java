@@ -4,7 +4,6 @@ import android.content.Context;
 import android.widget.TextView;
 
 import tw.com.atromoby.widgets.Popup;
-import tw.com.lixin.wm_casino.BacActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.dataModels.TableData;
 
@@ -31,11 +30,6 @@ public class WinLossPopup extends Popup {
 
     public void setUp(TableData.Data data){
 
-        player_bet.setText(BacActivity.playStackData.value + "");
-        banker_bet.setText(BacActivity.bankStackData.value + "");
-        player_pair_bet.setText(BacActivity.playPairStackData.value + "");
-        banker_pair_bet.setText(BacActivity.bankPairStackData.value + "");
-        tie_bet.setText(BacActivity.tieStackData.value + "");
 
         if (data.dtMoneyWin.get(2) == null) {
             player_win.setText("");

@@ -5,6 +5,7 @@ import tw.com.atromoby.rtmplayer.IjkVideoView;
 import tw.com.atromoby.utils.Json;
 import tw.com.lixin.wm_casino.dataModels.Client22;
 import tw.com.lixin.wm_casino.dataModels.TableData;
+import tw.com.lixin.wm_casino.dataModels.TableLogData;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
 import tw.com.lixin.wm_casino.interfaces.StackCallBridge;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
@@ -20,6 +21,7 @@ import tw.com.lixin.wm_casino.tools.buttons.ControlButton;
 import tw.com.lixin.wm_casino.tools.gameComponents.BacCardArea;
 import tw.com.lixin.wm_casino.tools.gameComponents.BetCountdown;
 import tw.com.lixin.wm_casino.tools.gameComponents.ChipStack;
+import tw.com.lixin.wm_casino.tools.gameComponents.ProfileBar;
 import tw.com.lixin.wm_casino.tools.gameComponents.RatePanel;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
@@ -43,8 +45,9 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
     private AskButton askBank, askPlay;
     private RatePanel panel;
     private WinLossPopup winPopup;
+    private ProfileBar profile;
 
-    public static void bacStarted(TableData.Data data){
+    public static void bacStarted(TableLogData.Data data){
         bankPairStackData = new ChipStackData();
         bankStackData = new ChipStackData();
         playPairStackData = new ChipStackData();
@@ -65,7 +68,7 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bac);
+        setContentView(R.layout.activity_baccarat);
         source = GameSource.getInstance();
         table = (BacTable) source.table;
         cardArea = findViewById(R.id.card_area);
@@ -85,8 +88,9 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
         countdown = findViewById(R.id.countdown);
         askBank = findViewById(R.id.ask_bank_btn);
         askPlay = findViewById(R.id.ask_play_btn);
-        video = findViewById(R.id.my_player);
+        video = findViewById(R.id.video);
         panel = findViewById(R.id.panel);
+        profile = findViewById(R.id.profile);
         winPopup =  new WinLossPopup(this);
 
         betBtn.clicked(v -> {
@@ -127,6 +131,7 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
         if(!source.isConnected()) finish();
         video.setVideoPath("rtmp://wmvdo.nicejj.cn/live" + table.groupID + "/stream1");
         video.start();
+
         playerPairStack.setUp(playPairStackData, this);
         bankerPairStack.setUp(bankPairStackData, this);
         playerStack.setUp(playStackData, this);
@@ -232,7 +237,7 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
 
     @Override
     public void betCountdown(int sec) {
-
+        countdown.setSecond(sec);
     }
 
     @Override
@@ -245,11 +250,11 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
 
         }
         if(table.pokerWin == -1){
-            setTextView(R.id.bank_score,"");
-            setTextView(R.id.play_score,"");
+          //  setTextView(R.id.bank_score,"");
+          //  setTextView(R.id.play_score,"");
         }else{
-            setTextView(R.id.bank_score,""+table.bankerScore);
-            setTextView(R.id.play_score,""+table.playerScore);
+           //setTextView(R.id.bank_score,""+table.bankerScore);
+           // setTextView(R.id.play_score,""+table.playerScore);
         }
     }
 
@@ -260,7 +265,6 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
 
     @Override
     public void balanceUpdate(float value) {
-        ProfileSetting profile = findViewById(R.id.profile_setting);
         profile.setBalance(value);
     }
 

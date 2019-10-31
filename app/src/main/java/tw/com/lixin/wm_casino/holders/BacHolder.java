@@ -8,9 +8,8 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import tw.com.atromoby.widgets.ItemHolder;
 import tw.com.atromoby.widgets.RootActivity;
-import tw.com.lixin.wm_casino.BacActivity;
+import tw.com.lixin.wm_casino.BaccaratActivity;
 import tw.com.lixin.wm_casino.R;
-import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.tools.CasinoGrid;
@@ -51,9 +50,9 @@ public class BacHolder extends ItemHolder implements TableBridge{
         findViewById(R.id.root).setOnClickListener(v->{
             GameSource source = GameSource.getInstance();
             source.tableLogin(table,data -> {
-               // BacActivity.bacStarted(data);
+                BaccaratActivity.bacStarted(data);
                 RootActivity act = (RootActivity) getContex();
-                act.pushActivity(BacActivity.class);
+                act.pushActivity(BaccaratActivity.class);
             }, this::alert);
         });
     }
@@ -82,7 +81,6 @@ public class BacHolder extends ItemHolder implements TableBridge{
             block.setVisibility(View.VISIBLE);
         }
     }
-
 
     @Override
     public void gridUpdate() {

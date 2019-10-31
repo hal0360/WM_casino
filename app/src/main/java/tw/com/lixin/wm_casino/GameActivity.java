@@ -29,7 +29,6 @@ public class GameActivity extends WMActivity {
         ProfileBar bar = findViewById(R.id.pro_bar);
 
 
-
         if(source.curGameID == 101){
             bar.setTitile(getString(R.string.wmbaccarat));
             SparseArray<Table> tables = source.allTables.get(101);

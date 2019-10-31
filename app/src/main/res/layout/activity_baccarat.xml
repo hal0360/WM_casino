@@ -25,11 +25,55 @@
         app:layout_constraintTop_toBottomOf="@+id/profile">
 
         <tw.com.lixin.wm_casino.tools.gameComponents.RatePanel
+            android:id="@+id/panel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <tw.com.lixin.wm_casino.tools.gameComponents.BetCountdown
+            android:id="@+id/countdown"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginRight="64dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <tw.com.lixin.wm_casino.tools.buttons.VideoButton
+            android:id="@+id/mss_btn"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <tw.com.lixin.wm_casino.tools.buttons.VideoButton
+            android:id="@+id/signal_btn"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="@+id/mss_btn"
+            app:layout_constraintTop_toBottomOf="@+id/mss_btn" />
+
+        <tw.com.lixin.wm_casino.tools.buttons.VideoButton
+            android:id="@+id/videoButton4"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="@+id/signal_btn"
+            app:layout_constraintTop_toBottomOf="@+id/signal_btn" />
+
+        <tw.com.lixin.wm_casino.tools.buttons.VideoButton
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="@+id/videoButton4"
+            app:layout_constraintTop_toBottomOf="@+id/videoButton4" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
