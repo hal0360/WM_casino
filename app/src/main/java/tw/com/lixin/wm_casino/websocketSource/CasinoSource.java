@@ -38,7 +38,7 @@ public abstract class CasinoSource extends WebSocketListener{
     }
 
     public Handler getGenHandler(){
-        return genHandler;
+        return logHandler;
     }
 
     @Override

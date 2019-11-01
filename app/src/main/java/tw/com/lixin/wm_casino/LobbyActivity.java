@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.util.SparseArray;
 
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
-import tw.com.lixin.wm_casino.models.Table;
-import tw.com.lixin.wm_casino.tools.ImageGetTask;
 import tw.com.lixin.wm_casino.tools.buttons.GameButton;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
@@ -42,10 +40,8 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
     }
 
     public void enterGame(int gameid){
-        loading();
-        SparseArray<Table> tables = lobbySource.allTables.get(gameid);
-        new ImageGetTask(this, tables).execute();
         lobbySource.curGameID = gameid;
+        toActivity(GameActivity.class);
     }
 
     @Override
@@ -71,10 +67,5 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
     public void peopleOnlineUpdate(int gameID, int number) {
         GameButton button = gameButtons.get(gameID);
         if(button != null) button.setPeopleNumber(number);
-    }
-
-    public void dealerImgLoaded(){
-        unloading();
-        toActivity(GameActivity.class);
     }
 }

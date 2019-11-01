@@ -46,6 +46,7 @@
     <string name="player_pair_abb">PP:</string>
     <string name="banker_pair_abb">BP:</string>
     <string name="tie_abb">T:</string>
+    <string name="payout">Payout</string>
     <!-- game page -->
     <string name="wmbaccarat">WMBaccarat</string>
     <string name="baccarat_fast">Bac(fast)</string>

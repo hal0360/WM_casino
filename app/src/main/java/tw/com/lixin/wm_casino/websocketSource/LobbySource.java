@@ -1,5 +1,6 @@
 package tw.com.lixin.wm_casino.websocketSource;
 
+import android.util.Log;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 
@@ -33,6 +34,8 @@ public class LobbySource extends CasinoSource{
 
     private LobbySource() {
         defineURL("ws://gameserver.a45.me:15109");
+        allTables = new SparseArray<>();
+        tableProvider = new SparseArray<>();
         tableProvider.put(101, BacTable::new);
     }
 
@@ -40,7 +43,7 @@ public class LobbySource extends CasinoSource{
     public int curGameID;
     public SparseIntArray peopleOnline = new SparseIntArray();
     public SparseArray<SparseArray<Table>> allTables;
-    private SparseArray<CmdTable> tableProvider = new SparseArray<>();
+    private SparseArray<CmdTable> tableProvider;
 
 
     public void bind(LobbyBridge bridge){
@@ -57,15 +60,23 @@ public class LobbySource extends CasinoSource{
     public void onReceive(String text) {
         TableData tableData = Json.from(text, TableData.class);
         TableData.Data data = tableData.data;
+
         SparseArray<Table> tableGroup = allTables.get(data.gameID);
+
         Table table = null;
         if(tableGroup != null) table = tableGroup.get(data.groupID);
+
+
+
         switch(tableData.protocol) {
             case 20:
-                if(table != null) table.receive20(data.gameStage);
+                if(table != null){
+                    table.receive20(data.gameStage);
+                    if(data.gameStage == 4) tableGroup.remove(data.groupID);
+                }
                 return;
             case 21:
-                if(table == null && tableGroup != null){
+                if(table == null){
                     if(data.gameStage != 4 && !data.dealerImage.equals("") && !data.dealerName.equals("")){
                         CmdTable cmdTable = tableProvider.get(data.gameID);
                         if(cmdTable == null) return;
@@ -79,10 +90,10 @@ public class LobbySource extends CasinoSource{
                         group.groupID = data.groupID;
                         group.groupType = data.groupType;
                         group.historyArr = new ArrayList<>();
-                        tableGroup.put(data.groupID, cmdTable.exec(group) );
+                        if(tableGroup != null) tableGroup.put(data.groupID, cmdTable.exec(group) );
                     }
                 }else {
-                    if(table != null) table.receive21(data);
+                    table.receive21(data);
                 }
                 return;
             case 24:

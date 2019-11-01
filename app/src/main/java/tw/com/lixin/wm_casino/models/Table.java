@@ -2,9 +2,13 @@ package tw.com.lixin.wm_casino.models;
 
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Handler;
+import android.util.Log;
 import android.util.SparseIntArray;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -20,14 +24,12 @@ import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 public abstract class Table {
 
     private TableBridge bridge;
-    public int cardStatus = 0;
     private Handler handler;
     private Timer timer = new Timer();
     public int curTime;
     private boolean isBinded = false;
 
     public Bitmap dealerImage;
-    public String dealerImageUrl;
     public String dealerName;
     public int number;
     public int stage;
@@ -47,8 +49,14 @@ public abstract class Table {
         round = group.gameNoRound;
         number = group.gameNo;
         dealerName = group.dealerName;
-        dealerImageUrl = group.dealerImage;
         handler = LobbySource.getInstance().getGenHandler();
+
+        try {
+            InputStream in = new java.net.URL(group.dealerImage).openStream();
+            dealerImage = BitmapFactory.decodeStream(in);
+        }catch(IOException e) {
+            Log.e(dealerName + " BitError", e.getMessage());
+        }
     }
 
     public void bind(TableBridge bridge){
@@ -65,7 +73,7 @@ public abstract class Table {
         if(isBinded) handler.post(()->{ if(isBinded) cmd.exec(); });
     }
 
-    public static int resDivide(int rawVal){
+    static int resDivide(int rawVal){
         List<Integer> powers = new ArrayList<>();
         for(int i = 8; i >= 0; i-- ){
             int boss = (int) Math.pow(2,i);
@@ -91,8 +99,9 @@ public abstract class Table {
         if (stage == 1) {
             pokers.clear();
         }
-        cardStatus = stage;
+        this.stage = stage;
         handle(() -> bridge.statusUpdate());
+        if(stage == 4) unBind();
     }
 
     public void receive24(int area, int id) {
@@ -113,7 +122,7 @@ public abstract class Table {
 
     public void receive38(int mille) {
         curTime = mille/1000;
-        handle(() -> bridge.betCountdown(curTime));
+
         timer.cancel();
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
@@ -122,7 +131,7 @@ public abstract class Table {
                 if(curTime > 0) curTime--;
                 handle(() -> bridge.betCountdown(curTime));
             }
-        }, 1000, 1000);
+        }, 0, 1000);
     }
 
     public void receive25(TableData.Data data) {

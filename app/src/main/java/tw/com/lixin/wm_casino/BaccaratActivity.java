@@ -91,7 +91,7 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
         video = findViewById(R.id.video);
         panel = findViewById(R.id.panel);
         profile = findViewById(R.id.profile);
-        winPopup =  new WinLossPopup(this);
+        winPopup =  new WinLossPopup();
 
         betBtn.clicked(v -> {
             Client22 client22 = new Client22();
@@ -137,8 +137,8 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
         playerStack.setUp(playStackData, this);
         bankerStack.setUp(bankStackData, this);
         tieStack.setUp(tieStackData, this);
-        cardArea.statusCheck(table.cardStatus, table.pokers);
-        countdown.statusCheck(table.cardStatus);
+        cardArea.statusCheck(table.stage, table.pokers);
+        countdown.statusCheck(table.stage);
         checkStackEmpty();
 
         gridUpdate();
@@ -195,9 +195,7 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
 
     @Override
     public void statusUpdate() {
-        if (table.cardStatus == 0) {
-
-        } else if (table.cardStatus == 1) {
+         if (table.stage == 1) {
             winPopup.dismiss();
             playerStack.clearCoin();
             playerPairStack.clearCoin();
@@ -206,13 +204,11 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
             bankerStack.clearCoin();
             countdown.betting();
             cardArea.reset();
-        } else if (table.cardStatus == 2) {
+        } else if (table.stage == 2) {
             cancellAllbets();
             countdown.dealing();
             cardArea.setVisibility(View.VISIBLE);
-        } else if (table.cardStatus == 3) {
-
-        } else {
+        } else if (table.stage == 4) {
 
         }
     }
@@ -285,13 +281,13 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
 
     @Override
     public void winLossUpdate(TableData.Data data) {
-        winPopup.setUp(data);
-        winPopup.show();
+        winPopup.setPay(data.moneyWin);
+        winPopup.show(this);
     }
 
     @Override
     public void stackBet(ChipStack stack) {
-        if(table.cardStatus != 1) {
+        if(table.stage != 1) {
             alert("Please wait!!");
             return;
         }

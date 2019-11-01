@@ -13,11 +13,11 @@ import tw.com.lixin.wm_casino.models.Table;
 
 public class ImageGetTask extends AsyncTask<Void, Void, Boolean> {
     private SparseArray<Table> tables;
-     LobbyActivity activity;
 
-    public ImageGetTask(LobbyActivity activity, SparseArray<Table> tables) {
+
+    public ImageGetTask(SparseArray<Table> tables) {
         this.tables =  tables;
-        this.activity = activity;
+
     }
 
     @Override
@@ -26,7 +26,7 @@ public class ImageGetTask extends AsyncTask<Void, Void, Boolean> {
         for(int i = 0; i < tables.size(); i++) {
             Table table = tables.valueAt(i);
             try {
-                InputStream in = new java.net.URL(table.dealerImageUrl).openStream();
+                InputStream in = new java.net.URL("bad").openStream();
                 table.dealerImage = BitmapFactory.decodeStream(in);
             }catch(IOException e) {
                 Log.e(table.dealerName + " BitError", e.getMessage());
@@ -37,7 +37,6 @@ public class ImageGetTask extends AsyncTask<Void, Void, Boolean> {
     }
 
     protected void onPostExecute(Boolean result) {
-        activity.dealerImgLoaded();
-        activity = null;
+
     }
 }

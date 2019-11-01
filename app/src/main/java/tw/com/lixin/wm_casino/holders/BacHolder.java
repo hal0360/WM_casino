@@ -65,12 +65,12 @@ public class BacHolder extends ItemHolder implements TableBridge{
     @SuppressLint("SetTextI18n")
     @Override
     public void statusUpdate() {
-        if(table.cardStatus == 1){
+        if(table.stage == 1){
             countDown.setVisibility(View.VISIBLE);
             countDown.setText(table.curTime + "");
             block.setVisibility(View.INVISIBLE);
         }else {
-            if(table.cardStatus == 2){
+            if(table.stage == 2){
                 setTextView(R.id.status_txt, getContex().getString(R.string.dealing));
                 cardImg.setImageResource(R.drawable.card_dealing);
             }else{
