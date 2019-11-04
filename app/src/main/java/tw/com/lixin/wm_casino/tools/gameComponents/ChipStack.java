@@ -2,24 +2,18 @@ package tw.com.lixin.wm_casino.tools.gameComponents;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.content.res.TypedArray;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import tw.com.atromoby.widgets.RonConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.interfaces.StackCallBridge;
 import tw.com.lixin.wm_casino.models.Chip;
@@ -32,7 +26,8 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     private Animation animeDwn, animeUp;
     private int hit = 0;
     private List<Integer> ids = new ArrayList<>();
-    private TextView valTxt, title, dtOdds;
+    private TextView valTxt;
+    private TextView dtOdds;
     public ChipStackData data;
     private int betColor, normalColor;
     private GradientDrawable shape;
@@ -48,7 +43,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         coin4 = findViewById(R.id.coin4);
         coin5 = findViewById(R.id.coin5);
         valTxt = findViewById(R.id.bet_value);
-        title = findViewById(R.id.table_title);
+        TextView title = findViewById(R.id.table_title);
         dtOdds = findViewById(R.id.dtOdds);
         TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.ChipStack);
         title.setTextColor(a.getColor(R.styleable.ChipStack_title_color, 0xFFFFFFFF));
@@ -85,12 +80,13 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         reset();
     }
 
+    @SuppressLint("SetTextI18n")
     public void setUp(ChipStackData cData, StackCallBridge bridge){
         dtOdds.setText("1:"+cData.score);
         data = cData;
-        for(Chip coin: data.addedCoin) noAnimeAdd(coin);
-        for(Chip coin: data.tempAddedCoin) noAnimeAdd(coin);
-        if(!data.isAddEmpty() || !data.isTempEmpty()) shape.setColor(betColor);
+        //for(Chip coin: data.addedCoin) noAnimeAdd(coin);
+       // for(Chip coin: data.tempAddedCoin) noAnimeAdd(coin);
+        //if(!data.isAddEmpty() || !data.isTempEmpty()) shape.setColor(betColor);
         this.bridge = bridge;
     }
 

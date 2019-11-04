@@ -28,6 +28,7 @@ public abstract class Table {
     private Timer timer = new Timer();
     public int curTime;
     private boolean isBinded = false;
+    private boolean isGameBinded = false;
 
     public Bitmap dealerImage;
     public String dealerName;
@@ -37,6 +38,7 @@ public abstract class Table {
     public int groupID, gameID;
     public int groupType;
     public int dealerID;
+
 
     public SparseIntArray pokers = new SparseIntArray();
 
@@ -64,9 +66,20 @@ public abstract class Table {
         isBinded  = true;
     }
 
+    public void bindGame(TableBridge bridge){
+        this.bridge = bridge;
+        isBinded  = true;
+        isGameBinded = true;
+    }
+
+    public boolean gameBinded(){
+        return isGameBinded;
+    }
+
     public void unBind(){
         bridge = null;
         isBinded  = false;
+        isGameBinded = false;
     }
 
     private void handle(Cmd cmd){
@@ -91,6 +104,7 @@ public abstract class Table {
     public abstract void historySetup(List<Integer> histories);
     public abstract void historyUpdate(TableData.Data data);
     public abstract void resultUpdate(TableData.Data data);
+    public abstract void stageUpdate();
 
     public void receive20(int stage) {
         if (stage == 2) {
@@ -100,7 +114,8 @@ public abstract class Table {
             pokers.clear();
         }
         this.stage = stage;
-        handle(() -> bridge.statusUpdate());
+        stageUpdate();
+        handle(() -> bridge.stageUpdate());
         if(stage == 4) unBind();
     }
 

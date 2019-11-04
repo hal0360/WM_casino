@@ -5,10 +5,32 @@ import java.util.List;
 
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.dataModels.TableData;
+import tw.com.lixin.wm_casino.dataModels.TableLogData;
 import tw.com.lixin.wm_casino.dataModels.gameData.Group;
 import tw.com.lixin.wm_casino.global.Road;
 
 public class BacTable extends Table{
+
+    public static ChipStackData playStackData, playPairStackData, tieStackData, bankStackData, bankPairStackData;
+    public static boolean comission;
+    public static void bacStarted(TableLogData.Data data){
+        bankPairStackData = new ChipStackData();
+        bankStackData = new ChipStackData();
+        playPairStackData = new ChipStackData();
+        tieStackData = new ChipStackData();
+        playStackData = new ChipStackData();
+        playStackData.score = data.dtOdds.get(2);
+        bankStackData.score = data.dtOdds.get(1);
+        playPairStackData.score = data.dtOdds.get(5);
+        bankPairStackData.score = data.dtOdds.get(4);
+        tieStackData.score = data.dtOdds.get(3);
+        playStackData.maxValue = data.maxBet02;
+        tieStackData.maxValue = data.maxBet03;
+        playPairStackData.maxValue = data.maxBet04;
+        bankStackData.maxValue = data.maxBet01;
+        bankPairStackData.maxValue = data.maxBet04;
+        comission = false;
+    }
 
     public int bankCount = 0;
     public int playCount = 0;
@@ -24,12 +46,36 @@ public class BacTable extends Table{
     private List<Integer> tempRoad;
     private int preWin = 0;
     private int preRes = 0;
-
     public int playerScore, bankerScore, pokerWin = -1;
+
 
     public BacTable(Group group) {
         super(group);
         gameID = 101;
+    }
+
+    public void cancelBets(){
+        playPairStackData.cancelBet();
+        playStackData.cancelBet();
+        bankPairStackData.cancelBet();
+        tieStackData.cancelBet();
+        bankStackData.cancelBet();
+    }
+
+    public void rebetBets(){
+        playPairStackData.repeatBet();
+        playStackData.repeatBet();
+        bankPairStackData.repeatBet();
+        tieStackData.repeatBet();
+        bankStackData.repeatBet();
+    }
+
+    public void confirmBets(){
+        playPairStackData.comfirmBet();
+        playStackData.comfirmBet();
+        bankPairStackData.comfirmBet();
+        tieStackData.comfirmBet();
+        bankStackData.comfirmBet();
     }
 
     @Override
@@ -62,6 +108,34 @@ public class BacTable extends Table{
         playerScore = data.playerScore;
         bankerScore = data.bankerScore;
     }
+
+    @Override
+    public void stageUpdate() {
+        if(!gameBinded()) return;
+        if(stage == 1){
+            playPairStackData.clear();
+            playStackData.clear();
+            bankPairStackData.clear();
+            tieStackData.clear();
+            bankStackData.clear();
+        }else if(stage == 2){
+            playPairStackData.cancelBet();
+            playStackData.cancelBet();
+            bankPairStackData.cancelBet();
+            tieStackData.cancelBet();
+            bankStackData.cancelBet();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 
 
 
