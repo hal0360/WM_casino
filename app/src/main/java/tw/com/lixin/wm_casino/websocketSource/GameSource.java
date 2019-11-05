@@ -30,7 +30,7 @@ public class GameSource extends CasinoSource{
         binded(true);
     }
 
-    private void unbind(){
+    public void unbind(){
         this.bridge = null;
         binded(false);
     }

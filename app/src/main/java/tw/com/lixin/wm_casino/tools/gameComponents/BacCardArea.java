@@ -2,26 +2,32 @@ package tw.com.lixin.wm_casino.tools.gameComponents;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Color;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.global.Poker;
 
 public class BacCardArea extends ConstraintLayout {
 
     private SparseArray<ImageView> pokers;
+    private TextView playerScore, playerTxt, bankerScore, bankerTxt;
 
     @SuppressLint("FindViewByIdCast")
     public BacCardArea(Context context, AttributeSet attrs) {
         super(context, attrs);
         View.inflate(context, R.layout.bac_card_area, this);
         setBackgroundColor(0xBF000000);
+
+        playerScore = findViewById(R.id.player_score);
+        playerTxt = findViewById(R.id.player_txt);
+        bankerScore = findViewById(R.id.banker_score);
+        bankerTxt = findViewById(R.id.banker_txt);
 
         pokers = new SparseArray<>();
         pokers.put(1,findViewById(R.id.player_poker1));
@@ -33,17 +39,22 @@ public class BacCardArea extends ConstraintLayout {
 
     }
 
-    public void statusCheck(int status, SparseIntArray dataPokers){
+    public void setUp(SparseIntArray dataPokers){
         clean();
-        if(status == 1){
-            setVisibility(GONE);
-        }else {
-            setVisibility(VISIBLE);
-            for(int i = 0; i < dataPokers.size(); i++) {
-                int key = dataPokers.keyAt(i);
-                update(key, dataPokers.get(key));
-            }
+        for(int i = 0; i < dataPokers.size(); i++) {
+            int key = dataPokers.keyAt(i);
+            update(key, dataPokers.get(key));
         }
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void showScore(int play, int bank){
+        playerScore.setText(play+"");
+        bankerScore.setText(bank+"");
+        playerScore.setVisibility(VISIBLE);
+        playerTxt.setVisibility(VISIBLE);
+        bankerScore.setVisibility(VISIBLE);
+        bankerTxt.setVisibility(VISIBLE);
     }
 
     public void update(int area, int img) {
@@ -63,6 +74,10 @@ public class BacCardArea extends ConstraintLayout {
 
     public void reset() {
         clean();
+        playerScore.setVisibility(INVISIBLE);
+        playerTxt.setVisibility(INVISIBLE);
+        bankerScore.setVisibility(INVISIBLE);
+        bankerTxt.setVisibility(INVISIBLE);
         setVisibility(GONE);
     }
 

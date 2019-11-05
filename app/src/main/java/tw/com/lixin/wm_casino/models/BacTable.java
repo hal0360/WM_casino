@@ -113,6 +113,7 @@ public class BacTable extends Table{
     public void stageUpdate() {
         if(!gameBinded()) return;
         if(stage == 1){
+            pokerWin = -1;
             playPairStackData.clear();
             playStackData.clear();
             bankPairStackData.clear();
@@ -126,15 +127,6 @@ public class BacTable extends Table{
             bankStackData.cancelBet();
         }
     }
-
-
-
-
-
-
-
-
-
 
 
 

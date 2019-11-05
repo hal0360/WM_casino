@@ -44,13 +44,13 @@ public class BacHolder extends ItemHolder implements TableBridge{
         if(table.groupID == 3) bidMe.setVisibility(View.VISIBLE);
         else bidMe.setVisibility(View.INVISIBLE);
         gridUpdate();
-        statusUpdate();
+        stageUpdate();
         table.bind(this);
 
         findViewById(R.id.root).setOnClickListener(v->{
             GameSource source = GameSource.getInstance();
             source.tableLogin(table,data -> {
-                BaccaratActivity.bacStarted(data);
+                BacTable.bacStarted(data);
                 RootActivity act = (RootActivity) getContex();
                 act.pushActivity(BaccaratActivity.class);
             }, this::alert);
@@ -64,7 +64,7 @@ public class BacHolder extends ItemHolder implements TableBridge{
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void statusUpdate() {
+    public void stageUpdate() {
         if(table.stage == 1){
             countDown.setVisibility(View.VISIBLE);
             countDown.setText(table.curTime + "");

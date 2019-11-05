@@ -50,7 +50,6 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
     private WinLossPopup winPopup;
     private ProfileBar profile;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +78,8 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
         profile = findViewById(R.id.profile);
         winPopup =  new WinLossPopup();
 
+        video.setVideoPath("rtmp://wmvdo.nicejj.cn/live" + table.groupID + "/stream1");
+
         betBtn.clicked(v -> {
             Client22 client22 = new Client22();
             bankPairStackData.addCoinToClient(client22, 4);
@@ -90,14 +91,14 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
             else alert("You haven't put any money!");
         });
 
-        cancelBtn.clicked(v -> cancellAllbets());
+        cancelBtn.clicked(v -> {
+            table.cancelBets();
+            checkStack();
+        });
 
         rebetBtn.clicked(v -> {
-            playerStack.repeatBet();
-            playerPairStack.repeatBet();
-            bankerStack.repeatBet();
-            bankerPairStack.repeatBet();
-            tieStack.repeatBet();
+            table.rebetBets();
+            checkStack();
         });
 
         clicked(askBank, v -> {
@@ -116,24 +117,26 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
         super.onResume();
         if(!source.isConnected()) finish();
         table.bindGame(this);
-
-        video.setVideoPath("rtmp://wmvdo.nicejj.cn/live" + table.groupID + "/stream1");
-        video.start();
-
+        source.bind(this);
         playerPairStack.setUp(playPairStackData, this);
         bankerPairStack.setUp(bankPairStackData, this);
         playerStack.setUp(playStackData, this);
         bankerStack.setUp(bankStackData, this);
         tieStack.setUp(tieStackData, this);
+        cardArea.setUp(table.pokers);
 
-        cardArea.statusCheck(table.stage, table.pokers);
-        countdown.statusCheck(table.stage);
+        if(table.stage == 1){
+            cardArea.setVisibility(View.INVISIBLE);
+            countdown.betting();
+        }else {
+            cardArea.setVisibility(View.VISIBLE);
+            if(table.pokerWin != -1) cardArea.showScore(table.playerScore, table.bankerScore);
+            countdown.dealing();
+        }
         checkStack();
-
         gridUpdate();
-        countdown.startCountDown(table.curTime);
 
-        source.bind(this);
+        video.start();
     }
 
     @Override
@@ -141,8 +144,7 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
         super.onPause();
         video.stopPlayback();
         table.unBind();
-        countdown.stopCountdown();
-        winPopup.dismiss();
+        source.unbind();
     }
 
     private void askRoad(int win) {
@@ -159,6 +161,8 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
         }
     }
 
+
+
     private void checkStack() {
         if (playStackData.isTempEmpty() && playPairStackData.isTempEmpty() && bankPairStackData.isTempEmpty() && bankStackData.isTempEmpty() && tieStackData.isTempEmpty()) {
             cancelBtn.disable(true);
@@ -169,8 +173,8 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
         }
         playerStack.refresh();
         playerPairStack.refresh();
-        bankerStack.refresh();
         bankerPairStack.refresh();
+        bankerStack.refresh();
         tieStack.refresh();
         if (playStackData.isAddEmpty() && playPairStackData.isAddEmpty() && bankPairStackData.isAddEmpty() && bankStackData.isAddEmpty() && tieStackData.isAddEmpty()) {
             rebetBtn.disable(true);
@@ -179,27 +183,17 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
         }
     }
 
-    private void cancellAllbets(){
-        playerStack.cancelBet();
-        playerPairStack.cancelBet();
-        bankerStack.cancelBet();
-        bankerPairStack.cancelBet();
-        tieStack.cancelBet();
-        betBtn.disable(true);
-        cancelBtn.disable(true);
-        rebetBtn.disable(true);
-    }
-
     @Override
     public void stageUpdate() {
-         if (table.stage == 1) {
+        if (table.stage == 1) {
             winPopup.dismiss();
             countdown.betting();
             cardArea.reset();
+            checkStack();
         } else if (table.stage == 2) {
-            cancellAllbets();
             countdown.dealing();
             cardArea.setVisibility(View.VISIBLE);
+            checkStack();
         } else if (table.stage == 4) {
 
         }
@@ -239,12 +233,8 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
         } else if (table.pokerWin == 4) {
 
         }
-        if(table.pokerWin == -1){
-          //  setTextView(R.id.bank_score,"");
-          //  setTextView(R.id.play_score,"");
-        }else{
-           //setTextView(R.id.bank_score,""+table.bankerScore);
-           // setTextView(R.id.play_score,""+table.playerScore);
+        if(table.pokerWin != -1){
+            cardArea.showScore(table.playerScore, table.bankerScore);
         }
     }
 
