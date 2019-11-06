@@ -70,14 +70,14 @@ public class BacCardArea extends ConstraintLayout {
         pokers.get(4).setVisibility(INVISIBLE);
         pokers.get(5).setVisibility(INVISIBLE);
         pokers.get(6).setVisibility(INVISIBLE);
-    }
-
-    public void reset() {
-        clean();
         playerScore.setVisibility(INVISIBLE);
         playerTxt.setVisibility(INVISIBLE);
         bankerScore.setVisibility(INVISIBLE);
         bankerTxt.setVisibility(INVISIBLE);
+    }
+
+    public void reset() {
+        clean();
         setVisibility(GONE);
     }
 

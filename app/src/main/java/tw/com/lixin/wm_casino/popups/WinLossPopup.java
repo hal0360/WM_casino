@@ -19,7 +19,7 @@ public class WinLossPopup extends PopupFragment {
 
     @Override
     public void dialogCreated(Dialog dialog) {
+        dialog.setContentView(R.layout.win_loss_popup);
         pay = findViewById(R.id.pay_txt);
-
     }
 }

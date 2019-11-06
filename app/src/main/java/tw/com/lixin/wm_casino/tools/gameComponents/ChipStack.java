@@ -90,11 +90,16 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         this.bridge = bridge;
     }
 
+    @SuppressLint("SetTextI18n")
     public void refresh(){
         reset();
         for(Chip coin: data.addedCoin) noAnimeAdd(coin);
         for(Chip coin: data.tempAddedCoin) noAnimeAdd(coin);
-        if(!data.isAddEmpty() || !data.isTempEmpty()) shape.setColor(betColor);
+        if(!data.isAddEmpty() || !data.isTempEmpty()){
+            shape.setColor(betColor);
+            valTxt.setVisibility(View.VISIBLE);
+            valTxt.setText(data.value + "");
+        }
     }
 
 
@@ -140,8 +145,6 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
             coin3.setImageResource(ids.get(3));
         }
         hit++;
-        valTxt.setVisibility(View.VISIBLE);
-        valTxt.setText(data.value + "");
     }
 
     @SuppressLint("SetTextI18n")

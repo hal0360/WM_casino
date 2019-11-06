@@ -79,6 +79,7 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
         winPopup =  new WinLossPopup();
 
         video.setVideoPath("rtmp://wmvdo.nicejj.cn/live" + table.groupID + "/stream1");
+        video.start();
 
         betBtn.clicked(v -> {
             Client22 client22 = new Client22();
@@ -93,12 +94,16 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
 
         cancelBtn.clicked(v -> {
             table.cancelBets();
-            checkStack();
+            refreshStack();
+            betBtn.disable(true);
+            cancelBtn.disable(true);
         });
 
         rebetBtn.clicked(v -> {
             table.rebetBets();
-            checkStack();
+            refreshStack();
+            betBtn.disable(false);
+            cancelBtn.disable(false);
         });
 
         clicked(askBank, v -> {
@@ -134,9 +139,10 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
             countdown.dealing();
         }
         checkStack();
+        refreshStack();
         gridUpdate();
 
-        video.start();
+
     }
 
     @Override
@@ -161,7 +167,13 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
         }
     }
 
-
+    private void refreshStack(){
+        playerStack.refresh();
+        playerPairStack.refresh();
+        bankerPairStack.refresh();
+        bankerStack.refresh();
+        tieStack.refresh();
+    }
 
     private void checkStack() {
         if (playStackData.isTempEmpty() && playPairStackData.isTempEmpty() && bankPairStackData.isTempEmpty() && bankStackData.isTempEmpty() && tieStackData.isTempEmpty()) {
@@ -171,16 +183,9 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
             cancelBtn.disable(false);
             betBtn.disable(false);
         }
-        playerStack.refresh();
-        playerPairStack.refresh();
-        bankerPairStack.refresh();
-        bankerStack.refresh();
-        tieStack.refresh();
-        if (playStackData.isAddEmpty() && playPairStackData.isAddEmpty() && bankPairStackData.isAddEmpty() && bankStackData.isAddEmpty() && tieStackData.isAddEmpty()) {
+        if (playStackData.isAddEmpty() && playPairStackData.isAddEmpty() && bankPairStackData.isAddEmpty() && bankStackData.isAddEmpty() && tieStackData.isAddEmpty() && table.stage != 1) {
             rebetBtn.disable(true);
-        }else{
-            rebetBtn.disable(false);
-        }
+        }else rebetBtn.disable(false);
     }
 
     @Override
@@ -189,15 +194,17 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
             winPopup.dismiss();
             countdown.betting();
             cardArea.reset();
-            checkStack();
+            refreshStack();
         } else if (table.stage == 2) {
             countdown.dealing();
             cardArea.setVisibility(View.VISIBLE);
-            checkStack();
+            refreshStack();
+            cancelBtn.disable(true);
+            rebetBtn.disable(true);
+            betBtn.disable(true);
         } else if (table.stage == 4) {
 
         }
-
 
     }
 
@@ -253,13 +260,10 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
         if(betOK){
             alert("bet succ!");
             cancelBtn.disable(true);
-            rebetBtn.disable(true);
+            rebetBtn.disable(false);
             betBtn.disable(true);
-            playPairStackData.comfirmBet();
-            playStackData.comfirmBet();
-            bankStackData.comfirmBet();
-            bankPairStackData.comfirmBet();
-            tieStackData.comfirmBet();
+            table.confirmBets();
+            refreshStack();
         }else{ alert("bet fail!"); }
     }
 
@@ -278,7 +282,6 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
         if(stack.add(Chip.curChip)){
             betBtn.disable(false);
             cancelBtn.disable(false);
-            rebetBtn.disable(false);
         }else{ alert("max value exceeded"); }
     }
 

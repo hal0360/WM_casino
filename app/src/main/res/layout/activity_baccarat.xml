@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <tw.com.atromoby.rtmplayer.IjkVideoView
         android:id="@+id/video"
         android:layout_width="360dp"
         android:layout_height="220dp"
@@ -38,7 +38,6 @@
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="64dp"
-            android:layout_marginRight="64dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,7 +47,7 @@
             android:layout_height="42dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
-            android:layout_marginRight="5dp"
+            app:button_type="message"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,24 +56,28 @@
             android:layout_width="42dp"
             android:layout_height="42dp"
             android:layout_marginTop="4dp"
+            app:button_type="signal"
             app:layout_constraintEnd_toEndOf="@+id/mss_btn"
             app:layout_constraintTop_toBottomOf="@+id/mss_btn" />
 
         <tw.com.lixin.wm_casino.tools.buttons.VideoButton
-            android:id="@+id/videoButton4"
+            android:id="@+id/change_btn"
             android:layout_width="42dp"
             android:layout_height="42dp"
             android:layout_marginTop="4dp"
+            app:button_type="change"
             app:layout_constraintEnd_toEndOf="@+id/signal_btn"
             app:layout_constraintTop_toBottomOf="@+id/signal_btn" />
 
         <tw.com.lixin.wm_casino.tools.buttons.VideoButton
+            android:id="@+id/people_btn"
             android:layout_width="42dp"
             android:layout_height="42dp"
             android:layout_marginTop="4dp"
-            app:layout_constraintEnd_toEndOf="@+id/videoButton4"
-            app:layout_constraintTop_toBottomOf="@+id/videoButton4" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintEnd_toEndOf="@+id/change_btn"
+            app:layout_constraintTop_toBottomOf="@+id/change_btn" />
+
+    </tw.com.atromoby.rtmplayer.IjkVideoView>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -149,7 +152,6 @@
             android:layout_width="70dp"
             android:layout_height="25dp"
             android:layout_marginEnd="2dp"
-            android:layout_marginRight="2dp"
             app:layout_constraintBottom_toBottomOf="@+id/confirm_btn"
             app:layout_constraintEnd_toStartOf="@+id/confirm_btn" />
 
@@ -167,7 +169,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
             android:layout_marginBottom="1dp"
             android:text="@string/bet"
             android:textColor="#fff"
@@ -180,7 +181,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
-            android:layout_marginLeft="3dp"
             android:layout_marginTop="1dp"
             android:text="@string/zero"
             android:textColor="#FF0000"
@@ -194,7 +194,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="3dp"
-            android:layout_marginRight="3dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -204,7 +203,6 @@
             android:layout_width="70dp"
             android:layout_height="0dp"
             android:layout_marginEnd="2dp"
-            android:layout_marginRight="2dp"
             app:control_type="rebet"
             app:layout_constraintBottom_toTopOf="@+id/view9"
             app:layout_constraintEnd_toStartOf="@+id/cancel_btn"
@@ -236,7 +234,6 @@
         android:layout_width="79dp"
         android:layout_height="33dp"
         android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
         app:grid_double="true"
         app:grid_x="7"
         app:grid_y="3"
@@ -248,7 +245,6 @@
         android:layout_width="79dp"
         android:layout_height="33dp"
         android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
         app:grid_double="true"
         app:grid_x="7"
         app:grid_y="3"
@@ -260,7 +256,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="0.5dp"
-        android:layout_marginLeft="0.5dp"
         android:background="#fff"
         app:layout_constraintBottom_toBottomOf="@+id/main_grid"
         app:layout_constraintEnd_toEndOf="@+id/profile"
@@ -272,7 +267,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
-            android:layout_marginLeft="1dp"
             android:text="@string/banker_abb"
             android:textColor="#000"
             android:textSize="12dp"
@@ -284,7 +278,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
-            android:layout_marginLeft="1dp"
             android:text="@string/player_abb"
             android:textColor="#000"
             android:textSize="12dp"
@@ -296,7 +289,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
-            android:layout_marginLeft="1dp"
             android:text="@string/tie_abb"
             android:textColor="#000"
             android:textSize="12dp"
@@ -308,7 +300,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
-            android:layout_marginLeft="1dp"
             android:text="@string/banker_pair_abb"
             android:textColor="#000"
             android:textSize="12dp"
@@ -320,7 +311,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
-            android:layout_marginLeft="1dp"
             android:text="@string/player_pair_abb"
             android:textColor="#000"
             android:textSize="12dp"
@@ -332,7 +322,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
-            android:layout_marginLeft="1dp"
             android:text="@string/zero"
             android:textColor="#000"
             android:textSize="12dp"
@@ -344,7 +333,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
-            android:layout_marginLeft="1dp"
             android:text="@string/zero"
             android:textColor="#000"
             android:textSize="12dp"
@@ -356,7 +344,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
-            android:layout_marginLeft="1dp"
             android:text="@string/zero"
             android:textColor="#000"
             android:textSize="12dp"
@@ -368,7 +355,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
-            android:layout_marginLeft="1dp"
             android:text="@string/zero"
             android:textColor="#000"
             android:textSize="12dp"
@@ -380,7 +366,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
-            android:layout_marginLeft="1dp"
             android:text="@string/zero"
             android:textColor="#000"
             android:textSize="12dp"
@@ -435,7 +420,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginBottom="1dp"
         app:grid_double="true"
@@ -455,6 +439,5 @@
         app:layout_constraintEnd_toEndOf="@+id/fourth_grid"
         app:layout_constraintStart_toStartOf="@+id/main_grid"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout24" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
