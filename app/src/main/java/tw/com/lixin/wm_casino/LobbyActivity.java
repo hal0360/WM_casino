@@ -4,11 +4,12 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.SparseArray;
 
+import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
 import tw.com.lixin.wm_casino.tools.buttons.GameButton;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
-public class LobbyActivity extends WMActivity implements LobbyBridge {
+public class LobbyActivity extends RootActivity implements LobbyBridge {
 
     private LobbySource lobbySource;
 

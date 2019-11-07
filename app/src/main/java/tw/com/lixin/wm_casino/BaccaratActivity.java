@@ -1,21 +1,17 @@
 package tw.com.lixin.wm_casino;
 
-import androidx.appcompat.app.AppCompatActivity;
 import tw.com.atromoby.rtmplayer.IjkVideoView;
 import tw.com.atromoby.utils.Json;
+import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.dataModels.Client22;
 import tw.com.lixin.wm_casino.dataModels.TableData;
-import tw.com.lixin.wm_casino.dataModels.TableLogData;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
 import tw.com.lixin.wm_casino.interfaces.StackCallBridge;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.Chip;
-import tw.com.lixin.wm_casino.models.ChipStackData;
-import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.popups.WinLossPopup;
 import tw.com.lixin.wm_casino.tools.CasinoGrid;
-import tw.com.lixin.wm_casino.tools.ProfileSetting;
 import tw.com.lixin.wm_casino.tools.buttons.AskButton;
 import tw.com.lixin.wm_casino.tools.buttons.ControlButton;
 import tw.com.lixin.wm_casino.tools.gameComponents.BacCardArea;
@@ -34,7 +30,7 @@ import static tw.com.lixin.wm_casino.models.BacTable.playPairStackData;
 import static tw.com.lixin.wm_casino.models.BacTable.playStackData;
 import static tw.com.lixin.wm_casino.models.BacTable.tieStackData;
 
-public class BaccaratActivity extends WMActivity implements GameBridge, TableBridge, StackCallBridge {
+public class BaccaratActivity extends RootActivity implements GameBridge, TableBridge, StackCallBridge {
 
     private int posX, posY;
     private IjkVideoView video;
@@ -77,6 +73,7 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
         panel = findViewById(R.id.panel);
         profile = findViewById(R.id.profile);
         winPopup =  new WinLossPopup();
+        winPopup.initiate(this);
 
         video.setVideoPath("rtmp://wmvdo.nicejj.cn/live" + table.groupID + "/stream1");
         video.start();
@@ -270,7 +267,7 @@ public class BaccaratActivity extends WMActivity implements GameBridge, TableBri
     @Override
     public void winLossUpdate(TableData.Data data) {
         winPopup.setPay(data.moneyWin);
-        winPopup.show(this);
+       // winPopup.show(this);
     }
 
     @Override

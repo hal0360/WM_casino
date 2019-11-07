@@ -9,7 +9,6 @@
         android:layout_width="37dp"
         android:layout_height="50dp"
         android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
         android:layout_marginTop="13dp"
         android:rotation="90"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,7 +21,6 @@
         android:layout_width="37dp"
         android:layout_height="50dp"
         android:layout_marginStart="11dp"
-        android:layout_marginLeft="11dp"
         android:layout_marginBottom="7dp"
         app:layout_constraintBottom_toBottomOf="@+id/player_poker3"
         app:layout_constraintStart_toEndOf="@+id/player_poker3"
@@ -33,7 +31,6 @@
         android:layout_width="37dp"
         android:layout_height="50dp"
         android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/player_poker2"
         app:layout_constraintStart_toEndOf="@+id/player_poker2"
         app:srcCompat="@drawable/poker_c3" />
@@ -44,7 +41,6 @@
         android:layout_height="50dp"
         android:layout_marginTop="13dp"
         android:layout_marginEnd="100dp"
-        android:layout_marginRight="100dp"
         android:rotation="90"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -57,7 +53,6 @@
         android:layout_width="37dp"
         android:layout_height="50dp"
         android:layout_marginEnd="11dp"
-        android:layout_marginRight="11dp"
         android:layout_marginBottom="7dp"
         app:layout_constraintBottom_toBottomOf="@+id/banker_poker3"
         app:layout_constraintEnd_toStartOf="@+id/banker_poker3"
@@ -68,14 +63,12 @@
         android:layout_width="37dp"
         android:layout_height="50dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/banker_poker2"
         app:layout_constraintEnd_toStartOf="@+id/banker_poker2"
         app:srcCompat="@drawable/poker_d10" />
 
     <tw.com.atromoby.widgets.RonTextView
         android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
         android:layout_marginTop="5dp"
         android:id="@+id/player_score"
         android:layout_width="18dp"
@@ -113,7 +106,6 @@
         app:first_color="#FF1493"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
         app:layout_constraintEnd_toStartOf="@+id/banker_poker1"
         app:layout_constraintTop_toTopOf="@+id/banker_poker1" />
 

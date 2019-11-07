@@ -1,11 +1,11 @@
 package tw.com.lixin.wm_casino.popups;
 
-import android.app.Dialog;
 import android.view.Gravity;
 import android.view.ViewGroup;
 
 import java.util.Locale;
 
+import tw.com.atromoby.widgets.FragDialog;
 import tw.com.atromoby.widgets.PopupFragment;
 import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.R;
@@ -13,16 +13,14 @@ import tw.com.lixin.wm_casino.tools.buttons.ClickConstraint;
 
 public class LanguagePopup extends PopupFragment {
 
-    private RootActivity activity;
     private ClickConstraint selected, english, chineseSim, chineseTra;
 
     @Override
-    public void dialogCreated(Dialog dialog) {
+    public void dialogCreated(FragDialog dialog) {
         dialog.setContentView(R.layout.language_popup);
-        setGravity(Gravity.TOP|Gravity.END);
-        setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        dialog.setGravity(Gravity.TOP|Gravity.END);
+        dialog.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
-        activity = (RootActivity) getContext();
         english = dialog.findViewById(R.id.english_btn);
         chineseSim = dialog.findViewById(R.id.chinese_sim_btn);
         chineseTra = dialog.findViewById(R.id.chinese_tra_btn);
@@ -47,7 +45,7 @@ public class LanguagePopup extends PopupFragment {
     }
 
     private void resetSelected(ClickConstraint btn, Locale loc){
-        activity.switchLocale(loc);
+        getRoot().switchLocale(loc);
         btn.setBackgroundResource(R.drawable.language_select_border);
         selected.setBackgroundResource(0);
         selected = btn;

@@ -1,9 +1,9 @@
 package tw.com.lixin.wm_casino.popups;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.widget.TextView;
 
+import tw.com.atromoby.widgets.FragDialog;
 import tw.com.atromoby.widgets.PopupFragment;
 import tw.com.lixin.wm_casino.R;
 
@@ -18,8 +18,8 @@ public class WinLossPopup extends PopupFragment {
     }
 
     @Override
-    public void dialogCreated(Dialog dialog) {
+    public void dialogCreated(FragDialog dialog) {
         dialog.setContentView(R.layout.win_loss_popup);
-        pay = findViewById(R.id.pay_txt);
+        pay = dialog.findViewById(R.id.pay_txt);
     }
 }

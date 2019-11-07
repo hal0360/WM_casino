@@ -7,13 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tw.com.atromoby.widgets.ItemsView;
+import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.holders.BacHolder;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.tools.gameComponents.ProfileBar;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
-public class GameActivity extends WMActivity {
+public class GameActivity extends RootActivity {
 
     private LobbySource source;
     private ItemsView tableList;
@@ -50,7 +51,6 @@ public class GameActivity extends WMActivity {
         super.onResume();
         if(!source.isConnected()){
             alert("connection lost");
-            unloading();
             toActivity(LoginActivity.class);
         }
     }

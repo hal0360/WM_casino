@@ -9,13 +9,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.global.User;
+import tw.com.lixin.wm_casino.popups.ProfilePopup;
 
 public class ProfileBar extends ConstraintLayout implements View.OnClickListener{
 
     private TextView balance, title;
     private ImageView balanceImg, settingBtn;
+    private ProfilePopup popup = new ProfilePopup();
 
     public ProfileBar(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -34,7 +37,11 @@ public class ProfileBar extends ConstraintLayout implements View.OnClickListener
         }
         a.recycle();
 
-        post(()-> setBalance(User.balance()));
+        post(()->{
+            setBalance(User.balance());
+            RootActivity activity = (RootActivity) getContext();
+            popup.initiate(activity);
+        });
     }
 
     public void setTitile(String txt){

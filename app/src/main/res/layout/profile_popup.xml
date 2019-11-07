@@ -49,7 +49,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
             android:layout_marginBottom="1dp"
             android:singleLine="true"
             android:text="Visitor"
@@ -85,7 +84,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
             android:layout_marginBottom="1dp"
             android:singleLine="true"
             android:text="@string/zero"
@@ -120,7 +118,6 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.22"
@@ -132,7 +129,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginLeft="12dp"
             android:layout_marginBottom="1dp"
             android:singleLine="true"
             android:text="@string/rule"
@@ -141,7 +137,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/imageView39"
             app:layout_constraintStart_toEndOf="@+id/imageView39"
             app:layout_constraintTop_toTopOf="@+id/imageView39" />
-
 
     </tw.com.lixin.wm_casino.tools.buttons.ClickConstraint>
 
@@ -167,7 +162,6 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.22"
@@ -179,7 +173,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginLeft="12dp"
             android:layout_marginBottom="1dp"
             android:singleLine="true"
             android:text="@string/language"
@@ -188,7 +181,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/imageView31"
             app:layout_constraintStart_toEndOf="@+id/imageView31"
             app:layout_constraintTop_toTopOf="@+id/imageView31" />
-
 
     </tw.com.lixin.wm_casino.tools.buttons.ClickConstraint>
 
@@ -214,7 +206,6 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.22"
@@ -226,7 +217,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginLeft="12dp"
             android:layout_marginBottom="1dp"
             android:singleLine="true"
             android:text="@string/music"
