@@ -73,7 +73,7 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
         panel = findViewById(R.id.panel);
         profile = findViewById(R.id.profile);
         winPopup =  new WinLossPopup();
-        winPopup.initiate(this);
+
 
         video.setVideoPath("rtmp://wmvdo.nicejj.cn/live" + table.groupID + "/stream1");
         video.start();

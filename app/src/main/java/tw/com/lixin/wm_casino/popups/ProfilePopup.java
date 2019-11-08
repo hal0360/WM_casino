@@ -5,6 +5,7 @@ import android.view.ViewGroup;
 
 import tw.com.atromoby.widgets.FragDialog;
 import tw.com.atromoby.widgets.PopupFragment;
+import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.tools.buttons.ClickConstraint;
 
@@ -18,17 +19,26 @@ public class ProfilePopup extends PopupFragment {
         dialog.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
         SoundPopup soundPopup = new SoundPopup();
-        soundPopup.initiate(getRoot());
         LanguagePopup languagePopup = new LanguagePopup();
-        languagePopup.initiate(getRoot());
         RulePopup rulePopup = new RulePopup();
-        rulePopup.initiate(getRoot());
 
-        ((ClickConstraint) dialog.findViewById(R.id.music_btn)).clicked(v-> soundPopup.show());
+        ((ClickConstraint) dialog.findViewById(R.id.music_btn)).clicked(v->{
+            RootActivity activity =(RootActivity) getContext();
+            assert activity != null;
+            activity.showPopup(soundPopup);
+        });
 
-        ((ClickConstraint) dialog.findViewById(R.id.language_btn)).clicked(v-> languagePopup.show());
+        ((ClickConstraint) dialog.findViewById(R.id.language_btn)).clicked(v-> {
+            RootActivity activity =(RootActivity) getContext();
+            assert activity != null;
+            activity.showPopup(languagePopup);
+        });
 
-        ((ClickConstraint) dialog.findViewById(R.id.rule_btn)).clicked(v-> rulePopup.show());
+        ((ClickConstraint) dialog.findViewById(R.id.rule_btn)).clicked(v->{
+            RootActivity activity =(RootActivity) getContext();
+            assert activity != null;
+            activity.showPopup(rulePopup);
+        });
     }
 
 }

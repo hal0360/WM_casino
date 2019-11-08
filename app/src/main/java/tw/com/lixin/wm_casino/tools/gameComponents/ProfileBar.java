@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import tw.com.atromoby.widgets.RootActivity;
+import tw.com.lixin.wm_casino.App;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.popups.ProfilePopup;
@@ -17,7 +18,6 @@ import tw.com.lixin.wm_casino.popups.ProfilePopup;
 public class ProfileBar extends ConstraintLayout implements View.OnClickListener{
 
     private TextView balance, title;
-    private ImageView balanceImg, settingBtn;
     private ProfilePopup popup = new ProfilePopup();
 
     public ProfileBar(Context context, AttributeSet attrs) {
@@ -25,8 +25,8 @@ public class ProfileBar extends ConstraintLayout implements View.OnClickListener
         View.inflate(context, R.layout.profile_bar, this);
         balance = findViewById(R.id.balance_txt);
         title = findViewById(R.id.title);
-        settingBtn = findViewById(R.id.setting_btn);
-        balanceImg = findViewById(R.id.balance_img);
+        ImageView settingBtn = findViewById(R.id.setting_btn);
+        ImageView balanceImg = findViewById(R.id.balance_img);
         setBackgroundColor(0xff0d0d0d);
         TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.ProfileBar);
         title.setText(a.getString(R.styleable.ProfileBar_title));
@@ -36,12 +36,8 @@ public class ProfileBar extends ConstraintLayout implements View.OnClickListener
             balanceImg.setVisibility(VISIBLE);
         }
         a.recycle();
-
-        post(()->{
-            setBalance(User.balance());
-            RootActivity activity = (RootActivity) getContext();
-            popup.initiate(activity);
-        });
+        post(()-> setBalance(User.balance()));
+        settingBtn.setOnClickListener(this);
     }
 
     public void setTitile(String txt){
@@ -55,6 +51,8 @@ public class ProfileBar extends ConstraintLayout implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-
+        App.clicking();
+        RootActivity activity = (RootActivity) getContext();
+        activity.showPopup(popup);
     }
 }

@@ -45,7 +45,9 @@ public class LanguagePopup extends PopupFragment {
     }
 
     private void resetSelected(ClickConstraint btn, Locale loc){
-        getRoot().switchLocale(loc);
+        RootActivity activity = (RootActivity) getContext();
+        assert activity != null;
+        activity.switchLocale(loc);
         btn.setBackgroundResource(R.drawable.language_select_border);
         selected.setBackgroundResource(0);
         selected = btn;
