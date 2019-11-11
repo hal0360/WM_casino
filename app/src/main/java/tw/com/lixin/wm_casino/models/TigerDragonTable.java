@@ -4,10 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.dataModels.TableData;
+import tw.com.lixin.wm_casino.dataModels.gameData.Group;
 import tw.com.lixin.wm_casino.global.Road;
 
-public class TigerDragonTable {
+public class TigerDragonTable extends Table{
 
+    public int tigerCount = 0;
+    public int dragonCount = 0;
+    public int tieCount = 0;
     public List<List<Integer>> sortedRoad;
     public List<Integer> mainRoad;
     public GridRoad firstGrid;
@@ -16,26 +21,29 @@ public class TigerDragonTable {
     public GridRoad fourthGrid;
     private List<Integer> tempRoad;
     private int preWin = 0;
-    private int preRes = 0;
+    public int tigerScore, dragonScore, pokerWin = -1;
 
 
+    public TigerDragonTable(Group group) {
+        super(group);
+        gameID = 102;
+    }
 
     private void packRes(int curWin){
 
-        int curRes;
-
+        int curRes = 0;
         int curBigRes;
 
         if(curWin == 1){
             curRes = Road.Bank;
-            curBigRes = R.drawable.casino_roadbank;
+            curBigRes = R.drawable.dragon_dragon;
             mainRoad.add(curBigRes);
         }else if(curWin == 2){
             curRes = Road.Play;
-            curBigRes = R.drawable.casino_roadplay;
+            curBigRes = R.drawable.dragon_tiger;
             mainRoad.add(curBigRes);
         }else{
-            curBigRes = R.drawable.casino_roadtie;
+            curBigRes = R.drawable.dragon_tie;
             mainRoad.add(curBigRes);
             switch(preWin) {
                 case 0:
@@ -53,9 +61,90 @@ public class TigerDragonTable {
             tempRoad = new ArrayList<>();
             sortedRoad.add(tempRoad);
         }
-      //  tempRoad.add(curRes);
-       // preRes = curRes;
+        tempRoad.add(curRes);
         preWin = curWin;
     }
 
+    public void askRoadFirst(int askWin){
+        if(askWin == 1){
+            firstGrid.drawRealAskFirst(preWin, askWin, Road.Bank);
+        }else{
+            firstGrid.drawRealAskFirst(preWin, askWin, Road.Play);
+        }
+
+    }
+
+    public void askRoadSec(int askWin){
+        if(sortedRoad.size()>1){
+            if(askWin ==  preWin) {
+                if(secGrid.blueWillWin){
+                    secGrid.drawRealAsk(Road.Play);
+                }else{
+                    secGrid.drawRealAsk(Road.Bank);
+                }
+            }else{
+                if(secGrid.blueWillWin){
+                    secGrid.drawRealAsk(Road.Bank);
+                }else{
+                    secGrid.drawRealAsk(Road.Play);
+                }
+            }
+        }
+    }
+
+    public void askRoadThird(int askWin){
+        if(sortedRoad.size()>2){
+            if(askWin ==  preWin) {
+                if(thirdGrid.blueWillWin){
+                    thirdGrid.drawRealAsk(Road.Play_S);
+                }else{
+                    thirdGrid.drawRealAsk(Road.Bank_S);
+                }
+            }else{
+                if(thirdGrid.blueWillWin){
+                    thirdGrid.drawRealAsk(Road.Bank_S);
+                }else{
+                    thirdGrid.drawRealAsk(Road.Play_S);
+                }
+            }
+        }
+    }
+
+    public void askRoadFourth(int askWin){
+        if(sortedRoad.size()>3){
+            if(askWin ==  preWin) {
+                if(fourthGrid.blueWillWin){
+                    fourthGrid.drawRealAsk(Road.Play_I);
+                }else{
+                    fourthGrid.drawRealAsk(Road.Bank_I);
+                }
+            }else{
+                if(fourthGrid.blueWillWin){
+                    fourthGrid.drawRealAsk(Road.Bank_I);
+                }else{
+                    fourthGrid.drawRealAsk(Road.Play_I);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void historySetup(List<Integer> histories) {
+
+    }
+
+    @Override
+    public void historyUpdate(TableData.Data data) {
+
+    }
+
+    @Override
+    public void resultUpdate(TableData.Data data) {
+
+    }
+
+    @Override
+    public void stageUpdate() {
+
+    }
 }

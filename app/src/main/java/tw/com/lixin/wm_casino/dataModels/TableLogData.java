@@ -9,6 +9,7 @@ public class TableLogData {
 
 
     public class Data {
+        public int memberID;
         public int gameID = -99;
         public int groupID = -99;
         public Boolean bOk;

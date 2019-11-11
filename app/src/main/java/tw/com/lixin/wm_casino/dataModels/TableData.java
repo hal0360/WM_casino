@@ -1,7 +1,6 @@
 package tw.com.lixin.wm_casino.dataModels;
 
 import java.util.List;
-import java.util.Map;
 
 public class TableData {
     public int protocol;
@@ -11,8 +10,7 @@ public class TableData {
         public int gameID = -99;
         public int groupID = -99;
         public Boolean bOk;
-        public int areaID;
-        public int areaType;
+
         public float balance;
         public int gameStage;
         public int cardArea;
@@ -24,20 +22,6 @@ public class TableData {
         public HisData historyData;
         public int groupType;
         public int timeMillisecond;
-        public Map<Integer, String> dtOdds;
-        public int maxBet01;
-        public int maxBet02;
-        public int maxBet03;
-        public int maxBet04;
-        public int minBet01;
-        public int minBet02;
-        public int minBet03;
-        public int minBet04;
-        public float moneyWinLoss;
-        public float moneyWin;
-        public int memberID;
-        public Map<Integer, String> dtMoneyWin;
-
 
         public int dealerID;
         public int gameNo;
@@ -51,6 +35,8 @@ public class TableData {
         public int playerCount;
         public int bankerPairCount;
         public int playerPairCount;
+        public int dragonCount;
+        public int tigerCount;
         public int tieCount;
     }
 }
