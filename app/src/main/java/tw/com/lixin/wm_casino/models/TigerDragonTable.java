@@ -130,17 +130,31 @@ public class TigerDragonTable extends Table{
 
     @Override
     public void historySetup(List<Integer> histories) {
-
+        mainRoad = new ArrayList<>();
+        sortedRoad = new ArrayList<>();
+        for(int val: histories) packRes(val);
+        firstGrid = new GridRoad();
+        firstGrid.setFirst(sortedRoad);
+        secGrid = new GridRoad();
+        secGrid.setSec(sortedRoad);
+        thirdGrid = new GridRoad();
+        thirdGrid.setThird(sortedRoad);
+        fourthGrid = new GridRoad();
+        fourthGrid.setFourth(sortedRoad);
     }
 
     @Override
     public void historyUpdate(TableData.Data data) {
-
+        tigerCount = data.historyData.tigerCount;
+        dragonCount = data.historyData.dragonCount;
+        tieCount = data.historyData.tieCount;
     }
 
     @Override
     public void resultUpdate(TableData.Data data) {
-
+        pokerWin = Table.resDivide(data.result);
+        tigerScore = data.playerScore;
+        dragonScore = data.bankerScore;
     }
 
     @Override

@@ -9,9 +9,7 @@ public class TableData {
     public class Data {
         public int gameID = -99;
         public int groupID = -99;
-        public Boolean bOk;
 
-        public float balance;
         public int gameStage;
         public int cardArea;
         public int cardID;

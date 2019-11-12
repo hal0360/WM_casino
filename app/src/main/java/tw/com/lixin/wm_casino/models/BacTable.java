@@ -46,7 +46,7 @@ public class BacTable extends Table{
     private List<Integer> tempRoad;
     private int preWin = 0;
     private int preRes = 0;
-    public int playerScore, bankerScore, pokerWin = -1;
+    public int playerScore, bankerScore;
 
 
     public BacTable(Group group) {
@@ -104,7 +104,6 @@ public class BacTable extends Table{
 
     @Override
     public void resultUpdate(TableData.Data data) {
-        pokerWin = Table.resDivide(data.result);
         playerScore = data.playerScore;
         bankerScore = data.bankerScore;
     }
@@ -113,7 +112,6 @@ public class BacTable extends Table{
     public void stageUpdate() {
         if(!gameBinded()) return;
         if(stage == 1){
-            pokerWin = -1;
             playPairStackData.clear();
             playStackData.clear();
             bankPairStackData.clear();

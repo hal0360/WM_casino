@@ -265,8 +265,8 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
     }
 
     @Override
-    public void winLossUpdate(TableData.Data data) {
-        winPopup.setPay(data.moneyWin);
+    public void winLossUpdate(float moneyWin) {
+        winPopup.setPay(moneyWin);
        // winPopup.show(this);
     }
 

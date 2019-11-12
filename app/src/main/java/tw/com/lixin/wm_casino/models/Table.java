@@ -38,7 +38,7 @@ public abstract class Table {
     public int groupID, gameID;
     public int groupType;
     public int dealerID;
-
+    public int result = -99;
 
     public SparseIntArray pokers = new SparseIntArray();
 
@@ -62,13 +62,13 @@ public abstract class Table {
     }
 
     public void bind(TableBridge bridge){
-      this.bridge = bridge;
+        this.bridge = bridge;
         isBinded  = true;
     }
 
     public void bindGame(TableBridge bridge){
         this.bridge = bridge;
-        isBinded  = true;
+        isBinded = true;
         isGameBinded = true;
     }
 
@@ -111,6 +111,7 @@ public abstract class Table {
             timer.cancel();
         }
         if (stage == 1) {
+            result = -99;
             pokers.clear();
         }
         this.stage = stage;
@@ -125,6 +126,7 @@ public abstract class Table {
     }
 
     public void receive21(TableData.Data data) {
+
     }
 
     public void receive26(TableData.Data data) {
@@ -150,6 +152,7 @@ public abstract class Table {
     }
 
     public void receive25(TableData.Data data) {
+        result = data.result;
         resultUpdate(data);
         handle(() -> bridge.resultUpdate());
     }

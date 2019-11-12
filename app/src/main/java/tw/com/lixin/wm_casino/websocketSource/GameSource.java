@@ -2,8 +2,10 @@ package tw.com.lixin.wm_casino.websocketSource;
 
 import tw.com.atromoby.utils.Json;
 import tw.com.lixin.wm_casino.dataModels.Client10;
+import tw.com.lixin.wm_casino.dataModels.GameData;
 import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.dataModels.TableLogData;
+import tw.com.lixin.wm_casino.dataModels.gameData.Game;
 import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.CmdStr;
 import tw.com.lixin.wm_casino.interfaces.CmdTableLog;
@@ -54,12 +56,12 @@ public class GameSource extends CasinoSource{
 
     @Override
     public void onReceive(String text) {
-        TableData tableData = Json.from(text, TableData.class);
-        switch(tableData.protocol) {
+        GameData gameData = Json.from(text, GameData.class);
+        switch(gameData.protocol) {
             case 10:
                 if(!tableLogged){
                     TableLogData tableLogData = Json.from(text, TableLogData.class);
-                    if(tableLogData.data.gameID == table.gameID && tableLogData.data.groupID == table.groupID){
+                    if(tableLogData.data.gameID == table.gameID && tableLogData.data.groupID == table.groupID && tableLogData.data.memberID == User.memberID()){
                         if(tableLogData.data.bOk){
                             cmdTableLog.exec(tableLogData.data);
                             tableLogged = true;
@@ -72,13 +74,13 @@ public class GameSource extends CasinoSource{
                 }
                 break;
             case 22:
-                if(tableData.data.groupID == table.groupID) handle(() -> bridge.betUpdate(tableData.data.bOk));
+                if(gameData.data.groupID == table.groupID) handle(() -> bridge.betUpdate(gameData.data.bOk));
                 break;
             case 23:
-                if(tableData.data.groupID == table.groupID) handle(() -> bridge.balanceUpdate(tableData.data.balance));
+                if(gameData.data.groupID == table.groupID && gameData.data.memberID == User.memberID()) handle(() -> bridge.balanceUpdate(gameData.data.balance));
                 break;
             case 31:
-                if(tableData.data.groupID == table.groupID) handle(() -> bridge.winLossUpdate(tableData.data));
+                if(gameData.data.groupID == table.groupID && gameData.data.memberID == User.memberID()) handle(() -> bridge.winLossUpdate(gameData.data.moneyWin));
                 break;
         }
     }
