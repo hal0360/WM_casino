@@ -4,12 +4,13 @@ import tw.com.atromoby.rtmplayer.IjkVideoView;
 import tw.com.atromoby.utils.Json;
 import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.dataModels.Client22;
-import tw.com.lixin.wm_casino.dataModels.TableData;
+import tw.com.lixin.wm_casino.dataModels.TableLogData;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
 import tw.com.lixin.wm_casino.interfaces.StackCallBridge;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.Chip;
+import tw.com.lixin.wm_casino.models.ChipStackData;
 import tw.com.lixin.wm_casino.popups.WinLossPopup;
 import tw.com.lixin.wm_casino.tools.CasinoGrid;
 import tw.com.lixin.wm_casino.tools.buttons.AskButton;
@@ -24,11 +25,6 @@ import tw.com.lixin.wm_casino.websocketSource.GameSource;
 import android.os.Bundle;
 import android.view.View;
 
-import static tw.com.lixin.wm_casino.models.BacTable.bankPairStackData;
-import static tw.com.lixin.wm_casino.models.BacTable.bankStackData;
-import static tw.com.lixin.wm_casino.models.BacTable.playPairStackData;
-import static tw.com.lixin.wm_casino.models.BacTable.playStackData;
-import static tw.com.lixin.wm_casino.models.BacTable.tieStackData;
 
 public class BaccaratActivity extends RootActivity implements GameBridge, TableBridge, StackCallBridge {
 
@@ -45,6 +41,29 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
     private RatePanel panel;
     private WinLossPopup winPopup;
     private ProfileBar profile;
+
+    private static int thisStage = 1;
+    public static ChipStackData playStackData, playPairStackData, tieStackData, bankStackData, bankPairStackData;
+    public static boolean comission;
+    public static void bacStarted(TableLogData.Data data){
+        bankPairStackData = new ChipStackData();
+        bankStackData = new ChipStackData();
+        playPairStackData = new ChipStackData();
+        tieStackData = new ChipStackData();
+        playStackData = new ChipStackData();
+        playStackData.score = data.dtOdds.get(2);
+        bankStackData.score = data.dtOdds.get(1);
+        playPairStackData.score = data.dtOdds.get(5);
+        bankPairStackData.score = data.dtOdds.get(4);
+        tieStackData.score = data.dtOdds.get(3);
+        playStackData.maxValue = data.maxBet02;
+        tieStackData.maxValue = data.maxBet03;
+        playPairStackData.maxValue = data.maxBet04;
+        bankStackData.maxValue = data.maxBet01;
+        bankPairStackData.maxValue = data.maxBet04;
+        comission = false;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,8 +109,11 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
         });
 
         cancelBtn.clicked(v -> {
-            table.cancelBets();
-            refreshStack();
+            playerPairStack.cancelBet();
+            playerStack.cancelBet();
+            bankerPairStack.cancelBet();
+            tieStack.cancelBet();
+            bankerStack.cancelBet();
             betBtn.disable(true);
             cancelBtn.disable(true);
         });
@@ -120,11 +142,31 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
         if(!source.isConnected()) finish();
         table.bindGame(this);
         source.bind(this);
+
         playerPairStack.setUp(playPairStackData, this);
         bankerPairStack.setUp(bankPairStackData, this);
         playerStack.setUp(playStackData, this);
         bankerStack.setUp(bankStackData, this);
         tieStack.setUp(tieStackData, this);
+
+        if(table.stage != thisStage){
+            if(table.stage == 1){
+                playerPairStack.clearCoin();
+                playerStack.clearCoin();
+                bankerPairStack.clearCoin();
+                tieStack.clearCoin();
+                bankerStack.clearCoin();
+            }
+            if(table.stage == 2){
+                playerPairStack.cancelBet();
+                playerStack.cancelBet();
+                bankerPairStack.cancelBet();
+                tieStack.cancelBet();
+                bankerStack.cancelBet();
+            }
+        }
+        thisStage = table.stage;
+
         cardArea.setUp(table.pokers);
 
         if(table.stage == 1){
@@ -132,7 +174,7 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
             countdown.betting();
         }else {
             cardArea.setVisibility(View.VISIBLE);
-            if(table.pokerWin != -1) cardArea.showScore(table.playerScore, table.bankerScore);
+            if(table.result != -99) cardArea.showScore(table.playerScore, table.bankerScore);
             countdown.dealing();
         }
         checkStack();
@@ -140,6 +182,30 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
         gridUpdate();
 
 
+    }
+
+    private void cancelBets(){
+        playerPairStack.cancelBet();
+        playerStack.cancelBet();
+        bankerPairStack.cancelBet();
+        tieStack.cancelBet();
+        bankerStack.cancelBet();
+    }
+
+    private void rebetBets(){
+        playerPairStack.repeatBet();
+        playerStack.repeatBet();
+        bankerPairStack.repeatBet();
+        tieStack.repeatBet();
+        bankerStack.repeatBet();
+    }
+
+    private void confirmBets(){
+        playerPairStack.comfirmBet();
+        playerStack.comfirmBet();
+        bankerPairStack.comfirmBet();
+        tieStack.comfirmBet();
+        bankerStack.comfirmBet();
     }
 
     @Override
@@ -151,10 +217,12 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
     }
 
     private void askRoad(int win) {
+
         firstGrid.askRoad(table.firstGrid.posXX, table.firstGrid.posYY, table.firstGrid.resX);
         secGrid.askRoad(table.secGrid.posXX, table.secGrid.posYY, table.secGrid.resX);
         thirdGrid.askRoad(table.thirdGrid.posXX, table.thirdGrid.posYY, table.thirdGrid.resX);
         fourthGrid.askRoad(table.fourthGrid.posXX, table.fourthGrid.posYY, table.fourthGrid.resX);
+
         if(win == 1){
             if(posY < 5) mainGrid.askRoad(posX, posY + 1, R.drawable.casino_roadbank);
             else mainGrid.askRoad(posX+1, 0, R.drawable.casino_roadbank);
@@ -173,6 +241,7 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
     }
 
     private void checkStack() {
+
         if (playStackData.isTempEmpty() && playPairStackData.isTempEmpty() && bankPairStackData.isTempEmpty() && bankStackData.isTempEmpty() && tieStackData.isTempEmpty()) {
             cancelBtn.disable(true);
             betBtn.disable(true);
@@ -187,15 +256,27 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
 
     @Override
     public void stageUpdate() {
+        thisStage = table.stage;
         if (table.stage == 1) {
             winPopup.dismiss();
             countdown.betting();
             cardArea.reset();
-            refreshStack();
+
+            playerPairStack.clearCoin();
+            playerStack.clearCoin();
+            bankerPairStack.clearCoin();
+            tieStack.clearCoin();
+            bankerStack.clearCoin();
         } else if (table.stage == 2) {
             countdown.dealing();
             cardArea.setVisibility(View.VISIBLE);
-            refreshStack();
+
+            playerPairStack.cancelBet();
+            playerStack.cancelBet();
+            bankerPairStack.cancelBet();
+            tieStack.cancelBet();
+            bankerStack.cancelBet();
+
             cancelBtn.disable(true);
             rebetBtn.disable(true);
             betBtn.disable(true);
@@ -230,14 +311,15 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
 
     @Override
     public void resultUpdate() {
-        if (table.pokerWin == 1) {
 
-        } else if (table.pokerWin == 2) {
+        if (table.result == 1) {
 
-        } else if (table.pokerWin == 4) {
+        } else if (table.result == 2) {
+
+        } else if (table.result == 4) {
 
         }
-        if(table.pokerWin != -1){
+        if(table.result != -1){
             cardArea.showScore(table.playerScore, table.bankerScore);
         }
     }
@@ -256,6 +338,13 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
     public void betUpdate(boolean betOK) {
         if(betOK){
             alert("bet succ!");
+
+            playerPairStack.comfirmBet();
+            playerStack.comfirmBet();
+            bankerPairStack.comfirmBet();
+            tieStack.comfirmBet();
+            bankerStack.comfirmBet();
+
             cancelBtn.disable(true);
             rebetBtn.disable(false);
             betBtn.disable(true);

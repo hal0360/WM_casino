@@ -54,7 +54,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         shape.setColor(normalColor);
         shape.setStroke(2, a.getColor(R.styleable.ChipStack_border_color, 0xFF4AC283));
         shape.setCornerRadius(7);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) setBackground(shape);
+        setBackground(shape);
         a.recycle();
         animeDwn = AnimationUtils.loadAnimation(context, R.anim.coin_anime_down);
         animeDwn.setAnimationListener(this);
@@ -73,6 +73,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
 
     public void comfirmBet(){
         data.comfirmBet();
+        refresh();
     }
 
     public void clearCoin(){
@@ -84,9 +85,13 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     public void setUp(ChipStackData cData, StackCallBridge bridge){
         dtOdds.setText("1:"+cData.score);
         data = cData;
-        //for(Chip coin: data.addedCoin) noAnimeAdd(coin);
-       // for(Chip coin: data.tempAddedCoin) noAnimeAdd(coin);
-        //if(!data.isAddEmpty() || !data.isTempEmpty()) shape.setColor(betColor);
+        for(Chip coin: data.addedCoin) noAnimeAdd(coin);
+        for(Chip coin: data.tempAddedCoin) noAnimeAdd(coin);
+        if(!data.isAddEmpty() || !data.isTempEmpty()){
+            shape.setColor(betColor);
+            valTxt.setVisibility(View.VISIBLE);
+            valTxt.setText(data.value + "");
+        }
         this.bridge = bridge;
     }
 
