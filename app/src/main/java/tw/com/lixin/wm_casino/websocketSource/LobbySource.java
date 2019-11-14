@@ -1,22 +1,15 @@
 package tw.com.lixin.wm_casino.websocketSource;
 
-import android.util.Log;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import tw.com.atromoby.utils.Json;
-import tw.com.lixin.wm_casino.dataModels.CheckData;
 import tw.com.lixin.wm_casino.dataModels.LobbyData;
 import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.dataModels.gameData.Game;
 import tw.com.lixin.wm_casino.dataModels.gameData.Group;
-import tw.com.lixin.wm_casino.interfaces.CmdLog;
-import tw.com.lixin.wm_casino.interfaces.CmdStr;
 import tw.com.lixin.wm_casino.interfaces.CmdTable;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
@@ -65,7 +58,6 @@ public class LobbySource extends CasinoSource{
 
         Table table = null;
         if(tableGroup != null) table = tableGroup.get(data.groupID);
-
 
 
         switch(tableData.protocol) {

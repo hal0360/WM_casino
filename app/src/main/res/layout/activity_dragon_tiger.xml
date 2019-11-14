@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#000"
     tools:ignore="ContentDescription,SpUsage"
-    tools:context=".BaccaratActivity">
+    tools:context=".DragonTigerActivity">
 
     <tw.com.lixin.wm_casino.tools.gameComponents.ProfileBar
         android:id="@+id/profile"

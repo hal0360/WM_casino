@@ -263,7 +263,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
         <TextView
-            android:id="@+id/banker_num"
+            android:id="@+id/banker_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -274,7 +274,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/player_num"
+            android:id="@+id/player_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -282,10 +282,10 @@
             android:textColor="#000"
             android:textSize="9dp"
             app:layout_constraintStart_toEndOf="@+id/textView15"
-            app:layout_constraintTop_toBottomOf="@+id/banker_num" />
+            app:layout_constraintTop_toBottomOf="@+id/banker_count" />
 
         <TextView
-            android:id="@+id/tie_num"
+            android:id="@+id/tie_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -293,10 +293,10 @@
             android:textColor="#000"
             android:textSize="9dp"
             app:layout_constraintStart_toEndOf="@+id/textView17"
-            app:layout_constraintTop_toBottomOf="@+id/player_num" />
+            app:layout_constraintTop_toBottomOf="@+id/player_count" />
 
         <TextView
-            android:id="@+id/banker_pair_num"
+            android:id="@+id/banker_pair_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -304,10 +304,10 @@
             android:textColor="#000"
             android:textSize="9dp"
             app:layout_constraintStart_toEndOf="@+id/textView18"
-            app:layout_constraintTop_toBottomOf="@+id/tie_num" />
+            app:layout_constraintTop_toBottomOf="@+id/tie_count" />
 
         <TextView
-            android:id="@+id/player_pair_num"
+            android:id="@+id/player_pair_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -315,7 +315,7 @@
             android:textColor="#000"
             android:textSize="9dp"
             app:layout_constraintStart_toEndOf="@+id/textView19"
-            app:layout_constraintTop_toBottomOf="@+id/banker_pair_num" />
+            app:layout_constraintTop_toBottomOf="@+id/banker_pair_count" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

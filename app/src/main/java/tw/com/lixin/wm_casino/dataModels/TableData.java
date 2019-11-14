@@ -6,6 +6,11 @@ public class TableData {
     public int protocol;
     public Data data;
 
+    public TableData(){
+        data = new Data();
+        data.historyData = new HisData();
+    }
+
     public class Data {
         public int gameID = -99;
         public int groupID = -99;
