@@ -36,7 +36,6 @@ public class BacCardArea extends ConstraintLayout {
         pokers.put(2,findViewById(R.id.banker_poker1));
         pokers.put(4,findViewById(R.id.banker_poker2));
         pokers.put(6,findViewById(R.id.banker_poker3));
-
     }
 
     public void setUp(SparseIntArray dataPokers){

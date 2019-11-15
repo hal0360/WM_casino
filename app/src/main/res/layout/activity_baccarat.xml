@@ -82,7 +82,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         android:background="#34754D"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@+id/video"

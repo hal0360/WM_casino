@@ -38,6 +38,8 @@
         <attr name="ask_type" format="enum">
             <enum name="player" value="1"/>
             <enum name="banker" value="2"/>
+            <enum name="tiger" value="3"/>
+            <enum name="dragon" value="4"/>
         </attr>
     </declare-styleable>
 

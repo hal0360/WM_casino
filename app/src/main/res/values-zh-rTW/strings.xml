@@ -43,10 +43,16 @@
     <string name="banker_pair">莊對</string>
     <string name="player_abb">閒:</string>
     <string name="banker_abb">莊:</string>
+    <string name="tiger_abb">虎:</string>
+    <string name="dragon_abb">龍:</string>
     <string name="player_pair_abb">閒對:</string>
     <string name="banker_pair_abb">莊對:</string>
     <string name="tie_abb">和:</string>
     <string name="payout">派彩</string>
+    <string name="dragon">龍</string>
+    <string name="tiger">虎</string>
+    <string name="next_t">虎問路</string>
+    <string name="next_d">龍問路</string>
     <!-- game page -->
     <string name="wmbaccarat">WM百家樂</string>
     <string name="baccarat_fast">快速百家樂</string>

@@ -33,8 +33,14 @@ public class AskButton extends ConstraintLayout {
         TextView title = findViewById(R.id.title);
         if(type == 1){
             title.setText(context.getString(R.string.next_p));
-        }else {
+        }else if(type == 2){
             title.setText(context.getString(R.string.next_b));
+        }
+        else if(type == 3){
+            title.setText(context.getString(R.string.next_t));
+        }
+        else {
+            title.setText(context.getString(R.string.next_d));
         }
         setBackgroundColor(0xffffffff);
         a.recycle();
@@ -43,7 +49,7 @@ public class AskButton extends ConstraintLayout {
         fourthSym = findViewById(R.id.fourth_sym);
     }
 
-    public void ask(BacTable table, int win){
+    public void askBac(BacTable table, int win){
         table.askRoadThird(win);
         table.askRoadSec(win);
         table.askRoadFirst(win);

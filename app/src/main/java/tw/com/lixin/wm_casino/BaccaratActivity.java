@@ -136,12 +136,12 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
         });
 
         clicked(askBank, v -> {
-            askBank.ask(table,1);
+            askBank.askBac(table,1);
             askRoad(1);
         });
 
         clicked(askPlay, v -> {
-            askPlay.ask(table,2);
+            askPlay.askBac(table,2);
             askRoad(2);
         });
     }

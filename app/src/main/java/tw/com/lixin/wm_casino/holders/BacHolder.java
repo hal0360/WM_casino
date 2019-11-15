@@ -50,7 +50,7 @@ public class BacHolder extends ItemHolder implements TableBridge{
         findViewById(R.id.root).setOnClickListener(v->{
             GameSource source = GameSource.getInstance();
             source.tableLogin(table,data -> {
-                BacTable.bacStarted(data);
+                BaccaratActivity.bacStarted(data);
                 RootActivity act = (RootActivity) getContex();
                 act.pushActivity(BaccaratActivity.class);
             }, this::alert);
