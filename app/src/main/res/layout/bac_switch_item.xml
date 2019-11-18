@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root"
-    android:layout_width="360dp"
+    android:layout_width="247dp"
     android:layout_height="160dp"
     android:background="#000"
     tools:ignore="SpUsage,HardcodedText">
@@ -38,13 +38,13 @@
 
         <TextView
             android:id="@+id/countdown_txt"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginEnd="4dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="3dp"
             android:background="@drawable/red_circle"
             android:gravity="center"
             android:textColor="#fff"
-            android:textSize="18dp"
+            android:textSize="16dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +54,7 @@
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="230dp"
+            android:layout_marginEnd="200dp"
             android:text="@string/banker_abb"
             android:textColor="#fff"
             android:textSize="18dp"
@@ -130,8 +130,8 @@
 
         <tw.com.atromoby.widgets.RonTextView
             android:id="@+id/bidme_txt"
-            android:layout_width="70dp"
-            android:layout_height="28dp"
+            android:layout_width="60dp"
+            android:layout_height="25dp"
             android:layout_marginEnd="5dp"
             android:gravity="center"
             android:text="@string/bid_me"
@@ -147,29 +147,17 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/dealer_img"
-        android:layout_width="70dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="2dp"
-        android:scaleType="fitXY"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
-        app:srcCompat="@drawable/hamster"
-        tools:ignore="ContentDescription" />
-
     <tw.com.lixin.wm_casino.tools.CasinoGrid
         android:id="@+id/first_grid"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="3dp"
         app:grid_x="13"
         app:grid_y="6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/dealer_img"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
 <!--
@@ -212,18 +200,5 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 -->
-    <TextView
-        android:id="@+id/dealername_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="1dp"
-        android:text="CHRISTINA"
-        android:textColor="#fff"
-        android:textSize="17dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/dealer_img"
-        app:layout_constraintStart_toStartOf="@+id/dealer_img"
-        tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
