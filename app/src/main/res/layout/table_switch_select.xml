@@ -6,8 +6,8 @@
 
     <ImageView
         android:id="@+id/game_img"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
         android:layout_marginStart="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -15,8 +15,8 @@
 
     <TextView
         android:id="@+id/game_name"
-        android:layout_width="80dp"
-        android:layout_height="55dp"
+        android:layout_width="55dp"
+        android:layout_height="60dp"
         android:layout_marginStart="4dp"
         android:layout_marginBottom="2dp"
         android:gravity="center"
@@ -28,9 +28,9 @@
 
     <ImageView
         android:id="@+id/game_arrow"
-        android:layout_width="13dp"
-        android:layout_height="13dp"
-        android:layout_marginStart="7dp"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_marginStart="4dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/game_img"
         app:layout_constraintStart_toEndOf="@+id/game_name"

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:ignore="ContentDescription,SpUsage"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ContentDescription,SpUsage">
 
     <TextView
         android:id="@+id/dtOdds"
@@ -13,15 +13,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/table_title"
+        app:layout_constraintVertical_bias="0.35000002" />
 
     <TextView
         android:id="@+id/table_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
         android:text="@string/player_pair"
-        android:textSize="12dp"
+        android:textSize="16dp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -83,7 +84,7 @@
 
     <TextView
         android:id="@+id/bet_value"
-        android:layout_width="45dp"
+        android:layout_width="50dp"
         android:layout_height="19dp"
         android:layout_marginBottom="2dp"
         android:background="@drawable/table_stack_val_border"

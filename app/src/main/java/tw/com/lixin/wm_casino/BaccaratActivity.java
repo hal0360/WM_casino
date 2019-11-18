@@ -95,8 +95,8 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
         panel = findViewById(R.id.panel);
         profile = findViewById(R.id.profile);
         winPopup =  new WinLossPopup();
-        bankerCount = findViewById(R.id.banker_count);
-        playerCount = findViewById(R.id.player_count);
+        bankerCount = findViewById(R.id.tiger_count);
+        playerCount = findViewById(R.id.dragon_count);
         tieCount = findViewById(R.id.tie_count);
         bankPairCount = findViewById(R.id.banker_pair_count);
         playPairCount = findViewById(R.id.player_pair_count);

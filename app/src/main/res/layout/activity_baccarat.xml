@@ -318,7 +318,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
         <TextView
-            android:id="@+id/banker_count"
+            android:id="@+id/tiger_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -329,7 +329,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/player_count"
+            android:id="@+id/dragon_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -337,7 +337,7 @@
             android:textColor="#000"
             android:textSize="12dp"
             app:layout_constraintStart_toEndOf="@+id/textView15"
-            app:layout_constraintTop_toBottomOf="@+id/banker_count" />
+            app:layout_constraintTop_toBottomOf="@+id/tiger_count" />
 
         <TextView
             android:id="@+id/tie_count"
@@ -348,7 +348,7 @@
             android:textColor="#000"
             android:textSize="12dp"
             app:layout_constraintStart_toEndOf="@+id/textView17"
-            app:layout_constraintTop_toBottomOf="@+id/player_count" />
+            app:layout_constraintTop_toBottomOf="@+id/dragon_count" />
 
         <TextView
             android:id="@+id/banker_pair_count"
