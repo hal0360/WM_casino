@@ -23,7 +23,6 @@ public class GameSource extends CasinoSource{
     private GameBridge bridge;
     private CmdTableLog cmdTableLog;
     private CmdStr cmdTableFail;
-    private boolean tableLogged = false;
 
     public void bind(GameBridge bridge){
         this.bridge = bridge;
@@ -40,14 +39,13 @@ public class GameSource extends CasinoSource{
         this.table = table;
         cmdTableLog = logOK;
         cmdTableFail = logFail;
-        login(table.gameID,User.sid(),data->{
+        login(User.sid(),data->{
             Client10 client = new Client10(table.groupID);
             send(Json.to(client));
         }, fail-> cmdTableFail.exec(fail));
     }
 
     public void tableLogout( ){
-        tableLogged = false;
         unbind();
         close();
     }
@@ -57,17 +55,14 @@ public class GameSource extends CasinoSource{
         GameData gameData = Json.from(text, GameData.class);
         switch(gameData.protocol) {
             case 10:
-                if(!tableLogged){
-                    TableLogData tableLogData = Json.from(text, TableLogData.class);
-                    if(tableLogData.data.gameID == table.gameID && tableLogData.data.groupID == table.groupID && tableLogData.data.memberID == User.memberID()){
-                        if(tableLogData.data.bOk){
-                            cmdTableLog.exec(tableLogData.data);
-                            tableLogged = true;
-                        }
-                        else{
-                            tableLogout( );
-                            cmdTableFail.exec("login failed");
-                        }
+                TableLogData tableLogData = Json.from(text, TableLogData.class);
+                if(tableLogData.data.gameID == table.gameID && tableLogData.data.groupID == table.groupID && tableLogData.data.memberID == User.memberID()){
+                    if(tableLogData.data.bOk){
+                        cmdTableLog.exec(tableLogData.data);
+                    }
+                    else{
+                        tableLogout( );
+                        cmdTableFail.exec("login failed");
                     }
                 }
                 break;
