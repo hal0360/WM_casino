@@ -33,9 +33,7 @@ public class MessageSource extends CasinoSource{
         login(User.sid(),data->{
             Client11 client = new Client11(gameid, groupid);
             send(Json.to(client));
-        }, fail-> {
-            area.failedToConnect();
-        });
+        }, fail-> handle(() -> area.failedToConnect()));
     }
 
     @Override
@@ -52,7 +50,7 @@ public class MessageSource extends CasinoSource{
                 }
                 break;
             case 102:
-                handle(() -> area.mssBoxUpdated(mdata.data));
+                handle(() -> area.mssBoxUpdated(mdata.data.messageBoxArr));
                 break;
             case 101:
                 handle(() -> area.mssReceived(mdata.data));
