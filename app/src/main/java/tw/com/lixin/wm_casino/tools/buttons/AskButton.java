@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.models.BacTable;
+import tw.com.lixin.wm_casino.models.TigerDragonTable;
 
 public class AskButton extends ConstraintLayout {
 
@@ -50,6 +51,16 @@ public class AskButton extends ConstraintLayout {
     }
 
     public void askBac(BacTable table, int win){
+        table.askRoadThird(win);
+        table.askRoadSec(win);
+        table.askRoadFirst(win);
+        table.askRoadFourth(win);
+        secSym.setImageResource(table.secGrid.resX);
+        thirdSym.setImageResource(table.thirdGrid.resX);
+        fourthSym.setImageResource(table.fourthGrid.resX);
+    }
+
+    public void askTigerDragon(TigerDragonTable table, int win){
         table.askRoadThird(win);
         table.askRoadSec(win);
         table.askRoadFirst(win);

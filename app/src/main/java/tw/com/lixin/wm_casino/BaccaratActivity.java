@@ -100,9 +100,7 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
         tieCount = findViewById(R.id.tie_count);
         bankPairCount = findViewById(R.id.banker_pair_count);
         playPairCount = findViewById(R.id.player_pair_count);
-
         video.setVideoPath("rtmp://wmvdo.nicejj.cn/live" + table.groupID + "/stream1");
-        video.start();
 
         betBtn.clicked(v -> {
             Client22 client22 = new Client22();
@@ -149,7 +147,12 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
     @Override
     public void onResume() {
         super.onResume();
-        if(!source.isConnected()) finish();
+        if(!source.isConnected()){
+            alert("connection lost");
+            finish();
+            return;
+        }
+        video.start();
         table.bind(this);
         source.bind(this);
 
@@ -261,10 +264,9 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
         }
         bankPairCount.setText(table.bankPairCount+"");
         bankerCount.setText(table.bankCount+"");
-        playerCount.setText(table.playCount);
-        tieCount.setText(table.tieCount);
-        bankPairCount.setText(table.bankPairCount);
-        playPairCount.setText(table.playPairCount);
+        playerCount.setText(table.playCount+"");
+        tieCount.setText(table.tieCount+"");
+        playPairCount.setText(table.playPairCount+"");
     }
 
     @Override
