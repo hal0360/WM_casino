@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000"
+    tools:ignore="ContentDescription,SpUsage"
+    tools:context=".RouletteActivity">
+
+    <tw.com.lixin.wm_casino.tools.gameComponents.ProfileBar
+        android:id="@+id/profile"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <tw.com.atromoby.rtmplayer.IjkVideoView
+        android:id="@+id/video"
+        android:layout_width="360dp"
+        android:layout_height="220dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile">
+
+        <tw.com.lixin.wm_casino.tools.gameComponents.RatePanel
+            android:id="@+id/panel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <tw.com.lixin.wm_casino.tools.gameComponents.BetCountdown
+            android:id="@+id/countdown"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="64dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <tw.com.lixin.wm_casino.tools.buttons.VideoButton
+            android:id="@+id/mss_btn"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            app:button_type="message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <tw.com.lixin.wm_casino.tools.buttons.VideoButton
+            android:id="@+id/signal_btn"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="4dp"
+            app:button_type="signal"
+            app:layout_constraintEnd_toEndOf="@+id/mss_btn"
+            app:layout_constraintTop_toBottomOf="@+id/mss_btn" />
+
+        <tw.com.lixin.wm_casino.tools.buttons.VideoButton
+            android:id="@+id/change_btn"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="4dp"
+            app:button_type="change"
+            app:layout_constraintEnd_toEndOf="@+id/signal_btn"
+            app:layout_constraintTop_toBottomOf="@+id/signal_btn" />
+
+        <tw.com.lixin.wm_casino.tools.buttons.VideoButton
+            android:id="@+id/people_btn"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="@+id/change_btn"
+            app:layout_constraintTop_toBottomOf="@+id/change_btn" />
+
+    </tw.com.atromoby.rtmplayer.IjkVideoView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

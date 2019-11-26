@@ -7,10 +7,12 @@ import android.view.View;
 import androidx.appcompat.widget.AppCompatTextView;
 import tw.com.atromoby.widgets.CmdView;
 import tw.com.lixin.wm_casino.App;
+import tw.com.lixin.wm_casino.interfaces.CmdTable;
+import tw.com.lixin.wm_casino.interfaces.CmdText;
 
 public class ClickText extends AppCompatTextView implements View.OnClickListener{
 
-    private CmdView cmd;
+    private CmdText cmd;
 
     public ClickText(Context context) {super(context);}
 
@@ -19,7 +21,11 @@ public class ClickText extends AppCompatTextView implements View.OnClickListener
         setOnClickListener(this);
     }
 
-    public void clicked(CmdView cd){
+    public String getRawText(){
+        return getText().toString();
+    }
+
+    public void clicked(CmdText cd){
         cmd = cd;
     }
 
@@ -27,7 +33,7 @@ public class ClickText extends AppCompatTextView implements View.OnClickListener
     public void onClick(View v) {
         App.clicking();
         if(cmd != null){
-            cmd.exec(v);
+            cmd.exec(this);
         }
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import tw.com.atromoby.widgets.ItemsView;
 import tw.com.lixin.wm_casino.dataModels.MessageData;
+import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.holders.MessageHolder;
 import tw.com.lixin.wm_casino.websocketSource.MessageSource;
 
@@ -26,6 +27,14 @@ public class MessageArea extends ItemsView {
     public void logout(){
         source.unbind();
         source.close();
+    }
+
+    public void sendMessage(String mss){
+        add(new MessageHolder(User.account(),mss,0));
+    }
+
+    public void sendEmoji(int imgRes, int arg){
+        add(new MessageHolder(User.account(),"",imgRes));
     }
 
     public void failedToConnect(){

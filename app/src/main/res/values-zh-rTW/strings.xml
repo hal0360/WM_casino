@@ -74,4 +74,15 @@
     <string name="table">房間號</string>
     <string name="dealer">荷官</string>
     <string name="bid_me">咪牌</string>
+
+
+    <!-- message -->
+    <string name="mss_1">小美眉，給我個飛吻吧〜</string>
+    <string name="mss_2">美女，你叫什麼名字？</string>
+    <string name="mss_3">小妞，揮揮手～</string>
+    <string name="mss_4">今天手氣不好，美女幫我打打氣～</string>
+    <string name="mss_5">贏錢好容易，小妞好給力</string>
+    <string name="mss_6">贏要衝，輸要縮～</string>
+    <string name="mss_7">師父說拿AK不賭是棒槌～</string>
+    <string name="mss_8">這麼多人買閒家，我買莊家，我是個倔梆子</string>
 </resources>
