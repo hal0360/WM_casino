@@ -27,10 +27,28 @@
         <tw.com.lixin.wm_casino.tools.gameComponents.RatePanel
             android:id="@+id/panel"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" >
+
+            <RadioButton
+                android:id="@+id/comm_btn"
+                android:layout_width="85dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="67dp"
+                android:layout_marginLeft="67dp"
+                android:buttonTint="#00BFFF"
+                android:scaleX="0.8"
+                android:scaleY="0.8"
+                android:text="@string/no_comm"
+                android:textColor="#fff"
+                android:textSize="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </tw.com.lixin.wm_casino.tools.gameComponents.RatePanel>
 
         <tw.com.lixin.wm_casino.tools.gameComponents.BetCountdown
             android:id="@+id/countdown"
@@ -143,6 +161,7 @@
             android:id="@+id/confirm_btn"
             android:layout_width="70dp"
             android:layout_height="25dp"
+            android:textSize="11dp"
             app:control_type="confirm"
             app:layout_constraintBottom_toTopOf="@+id/view9"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -150,6 +169,7 @@
         <tw.com.lixin.wm_casino.tools.buttons.ControlButton
             android:id="@+id/cancel_btn"
             android:layout_width="70dp"
+            android:textSize="11dp"
             android:layout_height="25dp"
             android:layout_marginEnd="2dp"
             app:layout_constraintBottom_toBottomOf="@+id/confirm_btn"
@@ -204,6 +224,7 @@
             android:layout_height="0dp"
             android:layout_marginEnd="2dp"
             app:control_type="rebet"
+            android:textSize="11dp"
             app:layout_constraintBottom_toTopOf="@+id/view9"
             app:layout_constraintEnd_toStartOf="@+id/cancel_btn"
             app:layout_constraintTop_toTopOf="@+id/cancel_btn" />

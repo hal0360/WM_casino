@@ -7,9 +7,9 @@
 
     <tw.com.lixin.wm_casino.tools.buttons.ClickText
         android:id="@+id/limit_btn"
-        android:layout_width="55dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="3dp"
+        android:layout_width="50dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="5dp"
         android:background="@drawable/limit_button_border"
         android:gravity="center"
         android:text="@string/limit"
@@ -21,10 +21,11 @@
 
     <TextView
         android:id="@+id/gyu_shu"
-        android:layout_width="wrap_content"
+        android:layout_width="77dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
         android:singleLine="true"
-        android:text="00000000-00"
+        android:text="000000000-000"
         android:textColor="#fff"
         android:textSize="9dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -35,55 +36,36 @@
         android:id="@+id/textView36"
         android:layout_width="20dp"
         android:layout_height="15dp"
-        android:layout_marginStart="60dp"
         android:background="#fff"
         android:gravity="center"
         android:text="No."
         android:textColor="#000"
         android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/comm_btn"
+        app:layout_constraintStart_toEndOf="@+id/member"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/banker_poker3"
         android:layout_width="11dp"
         android:layout_height="11dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/comm_btn"
+        app:layout_constraintStart_toEndOf="@+id/limit_btn"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.444"
         app:srcCompat="@drawable/blueuser" />
 
     <TextView
         android:id="@+id/member"
-        android:layout_width="0dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
-        android:layout_marginEnd="1dp"
+        android:singleLine="true"
         android:text="Mariko"
         android:textColor="#fff"
         android:textSize="9dp"
-        android:singleLine="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView36"
         app:layout_constraintStart_toEndOf="@+id/banker_poker3"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <RadioButton
-        android:id="@+id/comm_btn"
-        android:layout_width="65dp"
-        android:layout_height="25dp"
-        android:buttonTint="#00BFFF"
-        android:scaleX="0.7"
-        android:scaleY="0.7"
-        android:text="@string/no_comm"
-        android:textColor="#fff"
-        android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/limit_btn"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="UnusedAttribute" />
 
 </merge>

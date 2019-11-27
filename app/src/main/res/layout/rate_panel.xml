@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<merge
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="360dp"
-    android:layout_height="80dp"
-    android:background="#000"
-    tools:ignore="ContentDescription,SpUsage">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="SpUsage,HardcodedText,ContentDescription"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <tw.com.lixin.wm_casino.tools.buttons.ClickText
         android:id="@+id/limit_btn"
         android:layout_width="60dp"
         android:layout_height="20dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="5dp"
         android:background="@drawable/limit_button_border"
         android:gravity="center"
         android:text="@string/limit"
@@ -23,7 +21,7 @@
 
     <TextView
         android:id="@+id/gyu_shu"
-        android:layout_width="80dp"
+        android:layout_width="83dp"
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:text="000000000-000"
@@ -51,7 +49,7 @@
         android:id="@+id/banker_poker3"
         android:layout_width="13dp"
         android:layout_height="13dp"
-        android:layout_marginEnd="75dp"
+        android:layout_marginEnd="90dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView36"
         app:layout_constraintTop_toTopOf="parent"
@@ -91,4 +89,4 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="UnusedAttribute" /> -->
 
-</androidx.constraintlayout.widget.ConstraintLayout >
+</merge>
