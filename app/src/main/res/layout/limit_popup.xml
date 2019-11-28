@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="360dp"
+    android:background="#2E5590"
+    tools:ignore="ContentDescription,SpUsage"
+    android:layout_height="360dp">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/text_box"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="57dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#222222"
+        android:fillViewport="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickText
+                android:id="@+id/mss_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="1dp"
+                android:padding="5dp"
+                android:background="@drawable/message_border"
+                android:text="@string/mss_1"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickText
+                android:id="@+id/mss_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="1dp"
+                android:padding="5dp"
+                android:background="@drawable/message_border"
+                android:text="@string/mss_2"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mss_1" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickText
+                android:id="@+id/mss_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="1dp"
+                android:padding="5dp"
+                android:background="@drawable/message_border"
+                android:text="@string/mss_3"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mss_2" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickText
+                android:id="@+id/mss_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="1dp"
+                android:padding="5dp"
+                android:background="@drawable/message_border"
+                android:text="@string/mss_4"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mss_3" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickText
+                android:id="@+id/mss_5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="1dp"
+                android:padding="5dp"
+                android:background="@drawable/message_border"
+                android:text="@string/mss_5"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mss_4" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickText
+                android:id="@+id/mss_6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:padding="5dp"
+                android:background="@drawable/message_border"
+                android:text="@string/mss_6"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mss_5" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickText
+                android:id="@+id/mss_7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:padding="5dp"
+                android:background="@drawable/message_border"
+                android:text="@string/mss_7"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mss_6" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickText
+                android:id="@+id/mss_8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:padding="5dp"
+                android:background="@drawable/message_border"
+                android:text="@string/mss_8"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mss_7" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/emo_box"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="57dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#222222"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickImage
+                android:id="@+id/emo_1"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/emo1" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickImage
+                android:id="@+id/emo_2"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="13dp"
+                app:layout_constraintStart_toEndOf="@+id/emo_1"
+                app:layout_constraintTop_toTopOf="@+id/emo_1"
+                app:srcCompat="@drawable/emo2" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickImage
+                android:id="@+id/clickImage2"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="13dp"
+                app:layout_constraintStart_toEndOf="@+id/emo_2"
+                app:layout_constraintTop_toTopOf="@+id/emo_2"
+                app:srcCompat="@drawable/emo11" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickImage
+                android:id="@+id/emo_3"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="13dp"
+                app:layout_constraintStart_toEndOf="@+id/clickImage2"
+                app:layout_constraintTop_toTopOf="@+id/clickImage2"
+                app:srcCompat="@drawable/emo3" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickImage
+                android:id="@+id/emo_4"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="13dp"
+                app:layout_constraintStart_toStartOf="@+id/emo_1"
+                app:layout_constraintTop_toBottomOf="@+id/emo_1"
+                app:srcCompat="@drawable/emo4" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickImage
+                android:id="@+id/emo_5"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="13dp"
+                app:layout_constraintStart_toEndOf="@+id/emo_4"
+                app:layout_constraintTop_toTopOf="@+id/emo_4"
+                app:srcCompat="@drawable/emo5" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickImage
+                android:id="@+id/emo_6"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="13dp"
+                app:layout_constraintStart_toEndOf="@+id/emo_5"
+                app:layout_constraintTop_toTopOf="@+id/emo_5"
+                app:srcCompat="@drawable/emo6" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickImage
+                android:id="@+id/emo_7"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="13dp"
+                app:layout_constraintStart_toEndOf="@+id/emo_6"
+                app:layout_constraintTop_toTopOf="@+id/emo_6"
+                app:srcCompat="@drawable/emo7" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickImage
+                android:id="@+id/emo_8"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="13dp"
+                app:layout_constraintStart_toStartOf="@+id/emo_4"
+                app:layout_constraintTop_toBottomOf="@+id/emo_4"
+                app:srcCompat="@drawable/emo8" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickImage
+                android:id="@+id/emo_9"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="13dp"
+                app:layout_constraintStart_toEndOf="@+id/emo_8"
+                app:layout_constraintTop_toTopOf="@+id/emo_8"
+                app:srcCompat="@drawable/emo9" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickImage
+                android:id="@+id/emo_10"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="13dp"
+                app:layout_constraintStart_toEndOf="@+id/emo_9"
+                app:layout_constraintTop_toTopOf="@+id/emo_9"
+                app:srcCompat="@drawable/emo10" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickImage
+                android:id="@+id/emo_11"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="13dp"
+                app:layout_constraintStart_toEndOf="@+id/emo_10"
+                app:layout_constraintTop_toTopOf="@+id/emo_10"
+                app:srcCompat="@drawable/emo11" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickImage
+                android:id="@+id/emo_12"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="13dp"
+                app:layout_constraintStart_toStartOf="@+id/emo_8"
+                app:layout_constraintTop_toBottomOf="@+id/emo_8"
+                app:srcCompat="@drawable/emo12" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickImage
+                android:id="@+id/emo_13"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="13dp"
+                app:layout_constraintStart_toEndOf="@+id/emo_12"
+                app:layout_constraintTop_toTopOf="@+id/emo_12"
+                app:srcCompat="@drawable/emo13" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickImage
+                android:id="@+id/emo_14"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="13dp"
+                app:layout_constraintStart_toEndOf="@+id/emo_13"
+                app:layout_constraintTop_toTopOf="@+id/emo_13"
+                app:srcCompat="@drawable/emo14" />
+
+            <tw.com.lixin.wm_casino.tools.buttons.ClickImage
+                android:id="@+id/emo_15"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="13dp"
+                app:layout_constraintStart_toEndOf="@+id/emo_14"
+                app:layout_constraintTop_toTopOf="@+id/emo_14"
+                app:srcCompat="@drawable/emo15" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <tw.com.lixin.wm_casino.tools.buttons.ClickText
+        android:id="@+id/limit_btn"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/message_butt_border"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="#fff"
+        android:text="@string/limit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <tw.com.lixin.wm_casino.tools.buttons.ClickImage
+        android:id="@+id/speaker_btn"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="50dp"
+        android:padding="7dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/loud" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
