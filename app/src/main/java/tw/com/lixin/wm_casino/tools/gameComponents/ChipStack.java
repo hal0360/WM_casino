@@ -19,7 +19,6 @@ import tw.com.lixin.wm_casino.interfaces.StackCallBridge;
 import tw.com.lixin.wm_casino.models.Chip;
 import tw.com.lixin.wm_casino.models.ChipStackData;
 
-
 public class ChipStack extends ConstraintLayout implements Animation.AnimationListener, View.OnClickListener {
 
     private ImageView coin1, coin2, coin3, coin4, coin5;
@@ -35,6 +34,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
 
     public ChipStack(Context context, AttributeSet attrs) {
         super(context, attrs);
+
         View.inflate(context, R.layout.chip_stack, this);
         setOnClickListener(this);
         coin1 = findViewById(R.id.coin1);
@@ -47,6 +47,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         dtOdds = findViewById(R.id.dtOdds);
         TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.ChipStack);
         title.setTextColor(a.getColor(R.styleable.ChipStack_title_color, 0xFFFFFFFF));
+
         title.setText(a.getString(R.styleable.ChipStack_title));
         betColor = a.getColor(R.styleable.ChipStack_bet_color, 0xFFA9DB8D);
         normalColor = a.getColor(R.styleable.ChipStack_normal_color, 0xFF369762);
@@ -106,7 +107,6 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
             valTxt.setText(data.value + "");
         }
     }
-
 
     @SuppressLint("SetTextI18n")
     private void reset(){
