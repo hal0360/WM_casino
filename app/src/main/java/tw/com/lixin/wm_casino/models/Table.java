@@ -116,7 +116,8 @@ public abstract class Table {
     }
 
     public void receive21(TableData.Data data) {
-
+        round = data.gameNoRound;
+        number = data.gameNo;
     }
 
     public void receive26(TableData.Data data) {

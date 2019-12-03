@@ -16,6 +16,8 @@ public class MessagePopup extends PopupFragment {
 
     @Override
     public void dialogCreated(FragDialog dialog) {
+        dialog.setContentView(R.layout.message_popup);
+
         ((ClickImage) dialog.findViewById(R.id.emo_1)).clicked(v-> area.sendEmoji(R.drawable.emo1, 1));
         ((ClickImage) dialog.findViewById(R.id.emo_2)).clicked(v-> area.sendEmoji(R.drawable.emo2, 2));
         ((ClickImage) dialog.findViewById(R.id.emo_3)).clicked(v-> area.sendEmoji(R.drawable.emo3, 3));

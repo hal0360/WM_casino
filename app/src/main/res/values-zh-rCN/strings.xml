@@ -74,7 +74,12 @@
     <string name="table">房间号</string>
     <string name="dealer">荷官</string>
     <string name="bid_me">咪牌</string>
-
+    <string name="signal">讯号</string>
+    <string name="player_num">本桌人数</string>
+    <string name="name">名称</string>
+    <string name="odds">赔率</string>
+    <string name="minimum">最小投注</string>
+    <string name="maximum">最大投注</string>
 
     <!-- message -->
     <string name="mss_1">小美眉，给我个飞吻吧〜</string>

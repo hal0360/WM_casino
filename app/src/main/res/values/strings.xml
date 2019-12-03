@@ -74,7 +74,12 @@
     <string name="table">Table</string>
     <string name="dealer">Dealer</string>
     <string name="bid_me">BidMe</string>
-
+    <string name="signal">Signal</string>
+    <string name="player_num">Players</string>
+    <string name="name">Name</string>
+    <string name="odds">Odds</string>
+    <string name="minimum">Minimum</string>
+    <string name="maximum">Maximum</string>
 
     <!-- message -->
     <string name="mss_1">Give me a kiss ~</string>

@@ -19,7 +19,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/this_table_ppl"
         android:padding="5dp"
         tools:ignore="ContentDescription" />
 
@@ -27,8 +26,7 @@
         android:id="@+id/num_txt"
         android:layout_width="wrap_content"
         android:layout_height="12dp"
-        android:background="@drawable/light_blue_ball"
-        android:text="@string/zero"
+        android:visibility="gone"
         android:paddingRight="3dp"
         android:paddingLeft="3dp"
         android:paddingStart="3dp"
