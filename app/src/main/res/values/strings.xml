@@ -80,6 +80,7 @@
     <string name="odds">Odds</string>
     <string name="minimum">Minimum</string>
     <string name="maximum">Maximum</string>
+    <string name="wins">Wins</string>
 
     <!-- message -->
     <string name="mss_1">Give me a kiss ~</string>

@@ -295,6 +295,11 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
     }
 
     @Override
+    public void tableUpdate() {
+
+    }
+
+    @Override
     public void balanceUpdate(float value) {
         profile.setBalance(value);
     }

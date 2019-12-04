@@ -118,11 +118,10 @@ public abstract class Table {
     public void receive21(TableData.Data data) {
         round = data.gameNoRound;
         number = data.gameNo;
+        groupType = data.groupType;
     }
 
     public void receive26(TableData.Data data) {
-        round = data.historyArr.size();
-        groupType = data.groupType;
         historyUpdate(data);
         handle(() -> bridge.gridUpdate());
     }

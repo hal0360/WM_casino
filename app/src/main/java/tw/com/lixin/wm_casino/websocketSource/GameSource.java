@@ -9,6 +9,7 @@ import tw.com.lixin.wm_casino.interfaces.CmdStr;
 import tw.com.lixin.wm_casino.interfaces.CmdTableLog;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
 import tw.com.lixin.wm_casino.models.Table;
+import tw.com.lixin.wm_casino.tools.buttons.PeopleButton;
 
 public class GameSource extends CasinoSource{
 
@@ -24,6 +25,8 @@ public class GameSource extends CasinoSource{
     private CmdTableLog cmdTableLog;
     private CmdStr cmdTableFail;
 
+    private PeopleButton button;
+
     public void bind(GameBridge bridge){
         this.bridge = bridge;
         binded(true);
@@ -32,6 +35,14 @@ public class GameSource extends CasinoSource{
     public void unbind(){
         this.bridge = null;
         binded(false);
+    }
+
+    public void bindPeople(PeopleButton button){
+        this.button = button;
+    }
+
+    public void unbindPeple(){
+        this.button = null;
     }
 
     public final void tableLogin(Table table, CmdTableLog logOK, CmdStr logFail){
@@ -74,6 +85,12 @@ public class GameSource extends CasinoSource{
                 break;
             case 31:
                 if(gameData.data.groupID == table.groupID && gameData.data.memberID == User.memberID()) handle(() -> bridge.winLossUpdate(gameData.data.moneyWin));
+                break;
+            case 28:
+                if(button != null && gameData.data.groupID == table.groupID) handleSimple(()-> button.peopleIn(gameData.data.memberID, gameData.data.userName, gameData.data.winRate));
+                break;
+            case 29:
+                if(button != null && gameData.data.groupID == table.groupID) handleSimple(()-> button.peopleOut(gameData.data.memberID));
                 break;
         }
     }

@@ -6,10 +6,22 @@ import android.view.ViewGroup;
 import tw.com.atromoby.widgets.FragDialog;
 import tw.com.atromoby.widgets.PopupFragment;
 import tw.com.atromoby.widgets.RootActivity;
+import tw.com.lixin.wm_casino.GameActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.tools.buttons.ClickConstraint;
 
 public class ProfilePopup extends PopupFragment {
+
+    private static GameActivity activity;
+
+    private static ProfilePopup single_instance = null;
+    public static ProfilePopup getInstance()
+    {
+        activity = new GameActivity();
+
+        if (single_instance == null) single_instance = new ProfilePopup();
+        return single_instance;
+    }
 
     @Override
     public void dialogCreated(FragDialog dialog) {

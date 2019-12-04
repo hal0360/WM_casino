@@ -12,5 +12,7 @@ public class GameData {
         public float moneyWin;
         public float balance;
 
+        public String userName;
+        public int winRate;
     }
 }

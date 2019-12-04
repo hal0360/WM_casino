@@ -9,14 +9,16 @@ import android.widget.TextView;
 
 import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.popups.PeoplePopup;
 import tw.com.lixin.wm_casino.popups.SignalPopup;
 
-public class peopleButton extends ClickConstraint {
+public class PeopleButton extends ClickConstraint{
 
-    private SignalPopup popup;
+    private PeoplePopup popup;
+
 
     @SuppressLint("SetTextI18n")
-    public peopleButton(Context context, AttributeSet attrs) {
+    public PeopleButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         View.inflate(context, R.layout.video_button, this);
         ImageView btnImg = findViewById(R.id.btn_img);
@@ -27,7 +29,7 @@ public class peopleButton extends ClickConstraint {
         numberTxt.setText(1+"");
         btnImg.setImageResource(R.drawable.this_table_ppl);
 
-        post(()-> popup = new SignalPopup());
+        popup = new PeoplePopup();
 
         clicked(v->{
             RootActivity activity = (RootActivity) getContext();
@@ -36,6 +38,11 @@ public class peopleButton extends ClickConstraint {
 
     }
 
+    public void peopleIn(int memID, String name, int winRate){
+
+    }
+
+    public void peopleOut(int memID){
+
+    }
 }
-
-

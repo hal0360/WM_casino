@@ -80,6 +80,7 @@
     <string name="odds">賠率</string>
     <string name="minimum">最小投注</string>
     <string name="maximum">最大投注</string>
+    <string name="wins">勝率</string>
 
     <!-- message -->
     <string name="mss_1">小美眉，給我個飛吻吧〜</string>
