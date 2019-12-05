@@ -14,5 +14,6 @@ public class GameData {
 
         public String userName;
         public int winRate;
+        public int userCount;
     }
 }

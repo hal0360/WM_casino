@@ -38,7 +38,6 @@ public class LobbySource extends CasinoSource{
     public SparseArray<SparseArray<Table>> allTables;
     private SparseArray<CmdTable> tableProvider;
 
-
     public void bind(LobbyBridge bridge){
         this.bridge = bridge;
         binded(true);
@@ -58,7 +57,6 @@ public class LobbySource extends CasinoSource{
 
         Table table = null;
         if(tableGroup != null) table = tableGroup.get(data.groupID);
-
 
         switch(tableData.protocol) {
             case 20:

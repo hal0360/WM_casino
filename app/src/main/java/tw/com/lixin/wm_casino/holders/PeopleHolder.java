@@ -9,11 +9,12 @@ import tw.com.lixin.wm_casino.R;
 public class PeopleHolder extends ItemHolder {
 
     private String name;
-    private int winRate;
+    private int winRate, memberID;
 
-    public PeopleHolder(String name, int winRate) {
+    public PeopleHolder(int memberID, String name, int winRate) {
         super(R.layout.people_item);
 
+        this.memberID = memberID;
         this.winRate = winRate;
         this.name = name;
     }

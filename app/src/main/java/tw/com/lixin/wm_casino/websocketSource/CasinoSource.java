@@ -78,7 +78,6 @@ public abstract class CasinoSource extends WebSocketListener{
         client.dispatcher().executorService().shutdown();
     }
 
-
     public final void login(int gameNum, String sid, CmdLog logOK, CmdStr logFail){
         close();
         webUrl = "ws://gameserver.a45.me:15" + gameNum;

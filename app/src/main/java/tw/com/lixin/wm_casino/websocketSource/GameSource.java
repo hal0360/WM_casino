@@ -1,15 +1,19 @@
 package tw.com.lixin.wm_casino.websocketSource;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import tw.com.atromoby.utils.Json;
 import tw.com.lixin.wm_casino.dataModels.Client10;
 import tw.com.lixin.wm_casino.dataModels.GameData;
 import tw.com.lixin.wm_casino.dataModels.TableLogData;
 import tw.com.lixin.wm_casino.global.User;
+import tw.com.lixin.wm_casino.holders.PeopleHolder;
 import tw.com.lixin.wm_casino.interfaces.CmdStr;
 import tw.com.lixin.wm_casino.interfaces.CmdTableLog;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
 import tw.com.lixin.wm_casino.models.Table;
-import tw.com.lixin.wm_casino.tools.buttons.PeopleButton;
+import tw.com.lixin.wm_casino.popups.PeoplePopup;
 
 public class GameSource extends CasinoSource{
 
@@ -25,7 +29,9 @@ public class GameSource extends CasinoSource{
     private CmdTableLog cmdTableLog;
     private CmdStr cmdTableFail;
 
-    private PeopleButton button;
+    private PeoplePopup popup;
+    public int peopleOnline;
+    public List<PeopleHolder> peopleHolders;
 
     public void bind(GameBridge bridge){
         this.bridge = bridge;
@@ -34,15 +40,16 @@ public class GameSource extends CasinoSource{
 
     public void unbind(){
         this.bridge = null;
+        unbindPeple();
         binded(false);
     }
 
-    public void bindPeople(PeopleButton button){
-        this.button = button;
+    public void bindPeople(PeoplePopup popup){
+        this.popup = popup;
     }
 
     public void unbindPeple(){
-        this.button = null;
+        this.popup = null;
     }
 
     public final void tableLogin(Table table, CmdTableLog logOK, CmdStr logFail){
@@ -51,12 +58,16 @@ public class GameSource extends CasinoSource{
         cmdTableLog = logOK;
         cmdTableFail = logFail;
         login(User.sid(),data->{
+            peopleHolders = new ArrayList<>();
             Client10 client = new Client10(table.groupID);
             send(Json.to(client));
         }, fail-> cmdTableFail.exec(fail));
     }
 
     public void tableLogout( ){
+        cmdTableLog = null;
+        cmdTableFail = null;
+        peopleHolders = null;
         unbind();
         close();
     }
@@ -87,10 +98,16 @@ public class GameSource extends CasinoSource{
                 if(gameData.data.groupID == table.groupID && gameData.data.memberID == User.memberID()) handle(() -> bridge.winLossUpdate(gameData.data.moneyWin));
                 break;
             case 28:
-                if(button != null && gameData.data.groupID == table.groupID) handleSimple(()-> button.peopleIn(gameData.data.memberID, gameData.data.userName, gameData.data.winRate));
+                if(gameData.data.groupID == table.groupID){
+                    PeopleHolder holder = new PeopleHolder(gameData.data.memberID, gameData.data.userName, gameData.data.winRate);
+                    peopleHolders.add(holder);
+                    if(popup != null) handleSimple(()-> popup.peopleIn(holder, gameData.data.userCount));
+                }
+
+               // if(popup != null && gameData.data.groupID == table.groupID) handleSimple(()-> popup.peopleIn(gameData.data.memberID, gameData.data.userName, gameData.data.winRate));
                 break;
             case 29:
-                if(button != null && gameData.data.groupID == table.groupID) handleSimple(()-> button.peopleOut(gameData.data.memberID));
+              // if(popup != null && gameData.data.groupID == table.groupID) handleSimple(()-> popup.peopleOut(gameData.data.memberID));
                 break;
         }
     }
