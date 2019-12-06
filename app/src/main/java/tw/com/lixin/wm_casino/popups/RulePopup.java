@@ -9,4 +9,9 @@ public class RulePopup extends PopupFragment {
     public void dialogCreated(FragDialog dialog) {
         dialog.setContentView(R.layout.rule_popup);
     }
+
+    @Override
+    public void dialogClosed(FragDialog dialog) {
+
+    }
 }

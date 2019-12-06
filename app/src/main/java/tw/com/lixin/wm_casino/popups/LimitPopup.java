@@ -18,6 +18,11 @@ public class LimitPopup extends PopupFragment {
 
     }
 
+    @Override
+    public void dialogClosed(FragDialog dialog) {
+
+    }
+
     public void addLimit(String name, String odds, String max, String min){
         limitView.add(new LimitHolder(name,odds,max,min));
     }

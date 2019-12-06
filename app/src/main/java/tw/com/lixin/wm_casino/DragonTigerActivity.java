@@ -252,4 +252,9 @@ public class DragonTigerActivity extends RootActivity implements GameBridge, Tab
     public void cardUpdate(int area, int img) {
         cardArea.update(area, img);
     }
+
+    @Override
+    public void tableUpdate() {
+
+    }
 }

@@ -22,4 +22,9 @@ public class WinLossPopup extends PopupFragment {
         dialog.setContentView(R.layout.win_loss_popup);
         pay = dialog.findViewById(R.id.pay_txt);
     }
+
+    @Override
+    public void dialogClosed(FragDialog dialog) {
+
+    }
 }

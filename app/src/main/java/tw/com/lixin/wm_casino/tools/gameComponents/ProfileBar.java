@@ -18,7 +18,6 @@ import tw.com.lixin.wm_casino.popups.ProfilePopup;
 public class ProfileBar extends ConstraintLayout implements View.OnClickListener{
 
     private TextView balance, title;
-    private ProfilePopup popup = new ProfilePopup();
 
     public ProfileBar(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -53,6 +52,7 @@ public class ProfileBar extends ConstraintLayout implements View.OnClickListener
     public void onClick(View v) {
         App.clicking();
         RootActivity activity = (RootActivity) getContext();
+        ProfilePopup popup = new ProfilePopup();
         activity.showPopup(popup);
     }
 }

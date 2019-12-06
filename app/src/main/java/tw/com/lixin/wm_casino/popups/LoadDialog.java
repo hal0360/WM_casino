@@ -11,4 +11,9 @@ public class LoadDialog extends PopupFragment {
     public void dialogCreated(FragDialog dialog) {
         dialog.setContentView(R.layout.load_dialog_layout);
     }
+
+    @Override
+    public void dialogClosed(FragDialog dialog) {
+
+    }
 }

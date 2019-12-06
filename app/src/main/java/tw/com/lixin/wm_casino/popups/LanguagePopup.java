@@ -39,6 +39,11 @@ public class LanguagePopup extends PopupFragment {
 
     }
 
+    @Override
+    public void dialogClosed(FragDialog dialog) {
+
+    }
+
     private void setSelected(ClickConstraint btn){
         btn.setBackgroundResource(R.drawable.language_select_border);
         selected = btn;

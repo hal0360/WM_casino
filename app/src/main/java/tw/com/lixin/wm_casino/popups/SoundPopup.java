@@ -31,4 +31,9 @@ public class SoundPopup extends PopupFragment {
         efffect.setOnCheckedChangeListener((buttonView, isChecked) -> App.effectOn = isChecked);
     }
 
+    @Override
+    public void dialogClosed(FragDialog dialog) {
+
+    }
+
 }

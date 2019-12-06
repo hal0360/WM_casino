@@ -30,6 +30,10 @@ public class PeoplePopup extends PopupFragment {
         source.bindPeople(this);
     }
 
+    @Override
+    public void dialogClosed(FragDialog dialog) {
+
+    }
 
     public void peopleIn(PeopleHolder holder, int pplOnline){
         peopleView.add(holder);

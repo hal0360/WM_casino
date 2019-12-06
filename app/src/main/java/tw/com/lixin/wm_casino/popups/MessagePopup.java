@@ -55,6 +55,11 @@ public class MessagePopup extends PopupFragment {
         });
     }
 
+    @Override
+    public void dialogClosed(FragDialog dialog) {
+
+    }
+
     public void connectMessage(MessageArea area){
         this.area = area;
     }

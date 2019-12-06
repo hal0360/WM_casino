@@ -29,6 +29,11 @@ public class TableSwitchPopup extends PopupFragment {
         switchChannel(dialog, R.id.fantan_game,107);
     }
 
+    @Override
+    public void dialogClosed(FragDialog dialog) {
+
+    }
+
     private void switchChannel(FragDialog dialog, int rid, int gameId){
         TableSwitchSelect tView = dialog.findViewById(rid);
         tView.setOnClickListener(v->{

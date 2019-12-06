@@ -12,5 +12,10 @@ public class SignalPopup extends PopupFragment {
 
     }
 
+    @Override
+    public void dialogClosed(FragDialog dialog) {
+
+    }
+
 }
 
