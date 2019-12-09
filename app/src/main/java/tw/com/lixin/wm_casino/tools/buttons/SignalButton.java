@@ -10,11 +10,9 @@ import android.widget.TextView;
 import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.popups.SignalPopup;
-import tw.com.lixin.wm_casino.popups.TableSwitchPopup;
 
 public class SignalButton extends ClickConstraint {
 
-    private SignalPopup popup;
 
     @SuppressLint("SetTextI18n")
     public SignalButton(Context context, AttributeSet attrs) {
@@ -28,11 +26,9 @@ public class SignalButton extends ClickConstraint {
         numberTxt.setText(1+"");
         btnImg.setImageResource(R.drawable.signal);
 
-        post(()-> popup = new SignalPopup());
-
         clicked(v->{
             RootActivity activity = (RootActivity) getContext();
-            activity.showPopup(popup);
+            activity.showPopup(new SignalPopup());
         });
 
     }

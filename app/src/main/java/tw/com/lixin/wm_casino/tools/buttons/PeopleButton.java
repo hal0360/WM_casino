@@ -10,11 +10,8 @@ import android.widget.TextView;
 import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.popups.PeoplePopup;
-import tw.com.lixin.wm_casino.popups.SignalPopup;
 
 public class PeopleButton extends ClickConstraint{
-
-    private PeoplePopup popup;
 
 
     @SuppressLint("SetTextI18n")
@@ -26,14 +23,12 @@ public class PeopleButton extends ClickConstraint{
         TextView numberTxt = findViewById(R.id.num_txt);
         numberTxt.setVisibility(VISIBLE);
         numberTxt.setBackgroundResource(R.drawable.light_blue_ball);
-        numberTxt.setText(1+"");
+        numberTxt.setText(0+"");
         btnImg.setImageResource(R.drawable.this_table_ppl);
-
-        popup = new PeoplePopup();
 
         clicked(v->{
             RootActivity activity = (RootActivity) getContext();
-            activity.showPopup(popup);
+            activity.showPopup(new PeoplePopup());
         });
 
     }

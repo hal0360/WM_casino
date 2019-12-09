@@ -105,7 +105,6 @@ public abstract class Table {
             pokers.clear();
         }
         this.stage = stage;
-       // stageUpdate();
         handle(() -> bridge.stageUpdate());
         if(stage == 4) unBind();
     }
@@ -119,6 +118,7 @@ public abstract class Table {
         round = data.gameNoRound;
         number = data.gameNo;
         groupType = data.groupType;
+
     }
 
     public void receive26(TableData.Data data) {

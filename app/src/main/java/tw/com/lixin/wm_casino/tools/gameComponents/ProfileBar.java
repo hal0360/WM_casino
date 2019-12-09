@@ -35,7 +35,7 @@ public class ProfileBar extends ConstraintLayout implements View.OnClickListener
             balanceImg.setVisibility(VISIBLE);
         }
         a.recycle();
-        post(()-> setBalance(User.balance()));
+        post(this::updateBalance);
         settingBtn.setOnClickListener(this);
     }
 
@@ -47,6 +47,12 @@ public class ProfileBar extends ConstraintLayout implements View.OnClickListener
     public void setBalance(float bal) {
         balance.setText(bal+"");
     }
+
+    @SuppressLint("SetTextI18n")
+    public void updateBalance() {
+        balance.setText(User.balance()+"");
+    }
+
 
     @Override
     public void onClick(View v) {

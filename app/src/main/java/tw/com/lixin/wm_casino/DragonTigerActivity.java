@@ -55,7 +55,6 @@ public class DragonTigerActivity extends RootActivity implements GameBridge, Tab
     private BetCountdown countdown;
     private AskButton askTiger, askDragon;
     private RatePanel panel;
-    private WinLossPopup winPopup;
     private ProfileBar profile;
     private TextView tigerCount, dragonCount, tieCount;
 
@@ -84,7 +83,6 @@ public class DragonTigerActivity extends RootActivity implements GameBridge, Tab
         video = findViewById(R.id.video);
         panel = findViewById(R.id.panel);
         profile = findViewById(R.id.profile);
-        winPopup =  new WinLossPopup();
         tigerCount = findViewById(R.id.tiger_count);
         dragonCount = findViewById(R.id.dragon_count);
         tieCount = findViewById(R.id.tie_count);
@@ -148,10 +146,6 @@ public class DragonTigerActivity extends RootActivity implements GameBridge, Tab
         source.unbind();
     }
 
-    @Override
-    public void balanceUpdate(float value) {
-        profile.setBalance(value);
-    }
 
     @Override
     public void betUpdate(boolean betOK) {
@@ -166,10 +160,6 @@ public class DragonTigerActivity extends RootActivity implements GameBridge, Tab
         }else{ alert("bet fail!"); }
     }
 
-    @Override
-    public void winLossUpdate(float moneyWin) {
-        winPopup.setPay(moneyWin);
-    }
 
     @Override
     public void stackBet(ChipStack stack) {
@@ -187,7 +177,6 @@ public class DragonTigerActivity extends RootActivity implements GameBridge, Tab
     public void stageUpdate() {
         thisStage = table.stage;
         if (table.stage == 1) {
-            winPopup.dismiss();
             countdown.betting();
             cardArea.reset();
             tigerStack.clearCoin();
@@ -253,8 +242,4 @@ public class DragonTigerActivity extends RootActivity implements GameBridge, Tab
         cardArea.update(area, img);
     }
 
-    @Override
-    public void tableUpdate() {
-
-    }
 }

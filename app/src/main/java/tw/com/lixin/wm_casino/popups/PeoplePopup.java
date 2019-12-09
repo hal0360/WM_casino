@@ -4,8 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.widget.TextView;
 
-import java.util.List;
-
 import tw.com.atromoby.widgets.FragDialog;
 import tw.com.atromoby.widgets.ItemsView;
 import tw.com.atromoby.widgets.PopupFragment;
@@ -50,7 +48,7 @@ public class PeoplePopup extends PopupFragment {
         super.onDismiss(dialog);
 
         GameSource source = GameSource.getInstance();
-        source.unbindPeple();
+       // source.unbindPeple();
     }
 
    // public void addPeople(PeopleHo){

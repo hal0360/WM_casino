@@ -23,7 +23,7 @@ public abstract class CasinoSource extends WebSocketListener{
     private WebSocket webSocket = null;
     private Handler genHandler = new Handler();
 
-    public Handler logHandler = new Handler();
+    private Handler logHandler = new Handler();
 
     private boolean connected = false;
     private String loginDataStr;
@@ -33,7 +33,7 @@ public abstract class CasinoSource extends WebSocketListener{
 
     private boolean isBinded = false;
 
-    public void binded(boolean bid){
+    void binded(boolean bid){
         isBinded = bid;
     }
 
@@ -62,7 +62,7 @@ public abstract class CasinoSource extends WebSocketListener{
         client.dispatcher().executorService().shutdown();
     }
 
-    public final void login(String sid, CmdLog logOK, CmdStr logFail){
+    final void login(String sid, CmdLog logOK, CmdStr logFail){
         close();
         cmdLogOpen = logOK;
         cmdLogFail = logFail;
@@ -97,7 +97,7 @@ public abstract class CasinoSource extends WebSocketListener{
 
 
 
-    public void defineURL(String url){
+    void defineURL(String url){
         webUrl = url;
     }
 
@@ -132,11 +132,11 @@ public abstract class CasinoSource extends WebSocketListener{
         }
     }
 
-    public void handle(Cmd cmd){
+    void handle(Cmd cmd){
         if(isBinded) genHandler.post(()->{ if(isBinded) cmd.exec(); });
     }
 
-    public void handleSimple(Cmd cmd){
+    void handleSimple(Cmd cmd){
         genHandler.post(cmd::exec);
     }
 

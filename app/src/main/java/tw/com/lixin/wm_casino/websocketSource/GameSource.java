@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tw.com.atromoby.utils.Json;
+import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.dataModels.Client10;
 import tw.com.lixin.wm_casino.dataModels.GameData;
 import tw.com.lixin.wm_casino.dataModels.TableLogData;
@@ -14,6 +15,7 @@ import tw.com.lixin.wm_casino.interfaces.CmdTableLog;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.popups.PeoplePopup;
+import tw.com.lixin.wm_casino.popups.WinLossPopup;
 
 public class GameSource extends CasinoSource{
 
@@ -40,16 +42,12 @@ public class GameSource extends CasinoSource{
 
     public void unbind(){
         this.bridge = null;
-        unbindPeple();
+        this.popup = null;
         binded(false);
     }
 
     public void bindPeople(PeoplePopup popup){
         this.popup = popup;
-    }
-
-    public void unbindPeple(){
-        this.popup = null;
     }
 
     public final void tableLogin(Table table, CmdTableLog logOK, CmdStr logFail){
@@ -92,10 +90,17 @@ public class GameSource extends CasinoSource{
                 if(gameData.data.groupID == table.groupID) handle(() -> bridge.betUpdate(gameData.data.bOk));
                 break;
             case 23:
-                if(gameData.data.groupID == table.groupID && gameData.data.memberID == User.memberID()) handle(() -> bridge.balanceUpdate(gameData.data.balance));
+                if(gameData.data.groupID == table.groupID && gameData.data.memberID == User.memberID()){
+                    User.balance(gameData.data.balance);
+                }
                 break;
             case 31:
-                if(gameData.data.groupID == table.groupID && gameData.data.memberID == User.memberID()) handle(() -> bridge.winLossUpdate(gameData.data.moneyWin));
+                if(gameData.data.groupID == table.groupID && gameData.data.memberID == User.memberID()){
+                    RootActivity activity = (RootActivity) bridge;
+                    WinLossPopup popup = new WinLossPopup();
+                    popup.setPay(gameData.data.moneyWin);
+                    activity.showPopup(new WinLossPopup());
+                }
                 break;
             case 28:
                 if(gameData.data.groupID == table.groupID){

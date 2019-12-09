@@ -7,5 +7,4 @@ public interface TableBridge {
     void betCountdown(int sec);
     void resultUpdate();
     void cardUpdate(int area, int img);
-    void tableUpdate();
 }

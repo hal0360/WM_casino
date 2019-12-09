@@ -27,6 +27,10 @@ public class MessageSource extends CasinoSource{
         binded(false);
     }
 
+    public MessageArea getArea(){
+        return area;
+    }
+
     public final void mssLogin(int gameid, int groupid){
         defineURL("ws://gameserver.a45.me:15801");
 

@@ -11,7 +11,6 @@ import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.Chip;
 import tw.com.lixin.wm_casino.models.ChipStackData;
-import tw.com.lixin.wm_casino.popups.WinLossPopup;
 import tw.com.lixin.wm_casino.tools.CasinoGrid;
 import tw.com.lixin.wm_casino.tools.buttons.AskButton;
 import tw.com.lixin.wm_casino.tools.buttons.ControlButton;
@@ -64,7 +63,6 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
     private BetCountdown countdown;
     private AskButton askBank, askPlay;
     private RatePanel panel;
-    private WinLossPopup winPopup;
     private ProfileBar profile;
     private TextView bankerCount, playerCount, tieCount, bankPairCount, playPairCount;
 
@@ -94,7 +92,6 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
         video = findViewById(R.id.video);
         panel = findViewById(R.id.panel);
         profile = findViewById(R.id.profile);
-        winPopup =  new WinLossPopup();
         bankerCount = findViewById(R.id.tiger_count);
         playerCount = findViewById(R.id.dragon_count);
         tieCount = findViewById(R.id.tie_count);
@@ -152,6 +149,8 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
             finish();
             return;
         }
+        panel.setGyuShu(table.number,table.round);
+        profile.updateBalance();
         video.start();
         table.bind(this);
         source.bind(this);
@@ -193,6 +192,12 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
     }
 
     @Override
+    public void onBackPressed() {
+        source.tableLogout();
+        finish();
+    }
+
+    @Override
     public void onPause() {
         super.onPause();
         video.stopPlayback();
@@ -220,7 +225,8 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
     public void stageUpdate() {
         thisStage = table.stage;
         if (table.stage == 1) {
-            winPopup.dismiss();
+            panel.setGyuShu(table.number,table.round);
+            profile.updateBalance();
             countdown.betting();
             cardArea.reset();
             playerPairStack.clearCoin();
@@ -295,16 +301,6 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
     }
 
     @Override
-    public void tableUpdate() {
-
-    }
-
-    @Override
-    public void balanceUpdate(float value) {
-        profile.setBalance(value);
-    }
-
-    @Override
     public void betUpdate(boolean betOK) {
         if(betOK){
             alert("bet succ!");
@@ -320,12 +316,6 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
     }
 
     @Override
-    public void winLossUpdate(float moneyWin) {
-        winPopup.setPay(moneyWin);
-       // winPopup.show(this);
-    }
-
-    @Override
     public void stackBet(ChipStack stack) {
         if(table.stage != 1) {
             alert("Please wait!!");
@@ -336,7 +326,6 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
             cancelBtn.disable(false);
         }else{ alert("max value exceeded"); }
     }
-
 
 
 }

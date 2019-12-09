@@ -107,9 +107,5 @@ public class BacHolder extends ItemHolder implements TableBridge{
 
     }
 
-    @Override
-    public void tableUpdate() {
-
-    }
 
 }

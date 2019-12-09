@@ -11,8 +11,6 @@ import tw.com.lixin.wm_casino.popups.TableSwitchPopup;
 
 public class TableSwitchButton extends ClickConstraint {
 
-    private TableSwitchPopup popup;
-
 
     public TableSwitchButton(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -20,11 +18,9 @@ public class TableSwitchButton extends ClickConstraint {
         ImageView btnImg = findViewById(R.id.btn_img);
         btnImg.setImageResource(R.drawable.changetable);
 
-        post(()-> popup = new TableSwitchPopup());
-
         clicked(v->{
             RootActivity activity = (RootActivity) getContext();
-            activity.showPopup(popup);
+            activity.showPopup(new TableSwitchPopup());
         });
 
     }

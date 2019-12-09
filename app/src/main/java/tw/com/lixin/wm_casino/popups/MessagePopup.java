@@ -9,14 +9,19 @@ import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.tools.buttons.ClickImage;
 import tw.com.lixin.wm_casino.tools.buttons.ClickText;
 import tw.com.lixin.wm_casino.tools.gameComponents.MessageArea;
+import tw.com.lixin.wm_casino.websocketSource.MessageSource;
 
 public class MessagePopup extends PopupFragment {
 
-    private MessageArea area;
 
     @Override
     public void dialogCreated(FragDialog dialog) {
         dialog.setContentView(R.layout.message_popup);
+
+        MessageSource source = MessageSource.getInstance();
+        MessageArea area = source.getArea();
+
+        if (area == null) return;
 
         ((ClickImage) dialog.findViewById(R.id.emo_1)).clicked(v-> area.sendEmoji(R.drawable.emo1, 1));
         ((ClickImage) dialog.findViewById(R.id.emo_2)).clicked(v-> area.sendEmoji(R.drawable.emo2, 2));
@@ -60,7 +65,4 @@ public class MessagePopup extends PopupFragment {
 
     }
 
-    public void connectMessage(MessageArea area){
-        this.area = area;
-    }
 }

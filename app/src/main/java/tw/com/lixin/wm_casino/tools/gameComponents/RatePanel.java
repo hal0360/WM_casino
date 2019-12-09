@@ -1,5 +1,6 @@
 package tw.com.lixin.wm_casino.tools.gameComponents;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.popups.LimitPopup;
 import tw.com.lixin.wm_casino.tools.buttons.ClickText;
 
@@ -22,7 +24,7 @@ public class RatePanel extends ConstraintLayout{
         setBackgroundColor(0x80000000);
 
         TextView member = findViewById(R.id.member);
-        TextView gyuShu = findViewById(R.id.gyu_shu);
+        gyuShu = findViewById(R.id.gyu_shu);
 
         popup = new LimitPopup();
 
@@ -31,10 +33,13 @@ public class RatePanel extends ConstraintLayout{
             RootActivity activity = (RootActivity) getContext();
             activity.showPopup(popup);
         });
+
+        post(()-> member.setText(User.userName()));
     }
 
 
-    public void setGyuShu(){
-
+    @SuppressLint("SetTextI18n")
+    public void setGyuShu(int num, int round){
+        gyuShu.setText(num + "/" + round);
     }
 }
