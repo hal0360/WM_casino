@@ -37,7 +37,6 @@
                 android:layout_width="85dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="67dp"
-                android:layout_marginLeft="67dp"
                 android:buttonTint="#00BFFF"
                 android:scaleX="0.8"
                 android:scaleY="0.8"
@@ -240,7 +239,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <tw.com.lixin.wm_casino.tools.CasinoGrid
+    <tw.com.lixin.wm_casino.tools.BacMainGrid
         android:id="@+id/main_grid"
         android:layout_width="159dp"
         android:layout_height="68dp"

@@ -53,6 +53,12 @@
     <string name="tiger">虎</string>
     <string name="next_t">虎問路</string>
     <string name="next_d">龍問路</string>
+
+    <string name="player_road">閒</string>
+    <string name="banker_road">莊</string>
+    <string name="tiger_road">虎</string>
+    <string name="dragon_road">龍</string>
+    <string name="tie_road">和</string>
     <!-- game page -->
     <string name="wmbaccarat">WM百家樂</string>
     <string name="baccarat_fast">快速百家樂</string>

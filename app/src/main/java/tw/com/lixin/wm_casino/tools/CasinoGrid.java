@@ -182,6 +182,7 @@ public class CasinoGrid extends TableLayout {
                 view.setLayoutParams(new TableRow.LayoutParams(0, LayoutParams.MATCH_PARENT, 1.0f));
                 row.addView(view);
                 viewGrid[j][i] = view;
+
             }
             this.addView(row);
         }

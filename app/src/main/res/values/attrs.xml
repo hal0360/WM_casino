@@ -3,11 +3,18 @@
     <attr name="title" format="string" />
     <attr name="game_name" format="string"/>
     <attr name="game_image" format="reference" />
+    <attr name="grid_y" format="integer" />
+    <attr name="grid_x" format="integer" />
 
     <declare-styleable name="CasinoGrid">
-        <attr name="grid_y" format="integer" />
-        <attr name="grid_x" format="integer" />
+        <attr name="grid_y" />
+        <attr name="grid_x" />
         <attr name="grid_double" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="BacMainGrid">
+        <attr name="grid_y" />
+        <attr name="grid_x" />
     </declare-styleable>
 
     <declare-styleable name="ClickConstraint">

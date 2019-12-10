@@ -6,10 +6,10 @@
 
     <ImageView
         android:id="@+id/third_sym"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
+        android:layout_width="11dp"
+        android:layout_height="11dp"
         android:scaleType="fitXY"
-        android:layout_marginBottom="1dp"
+        android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,20 +18,20 @@
 
     <ImageView
         android:id="@+id/second_sym"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
+        android:layout_width="11dp"
+        android:layout_height="11dp"
         android:scaleType="fitXY"
-        android:layout_marginBottom="1dp"
+        android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/third_sym"
         app:srcCompat="@drawable/bank_1" />
 
     <ImageView
         android:id="@+id/fourth_sym"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
+        android:layout_width="11dp"
+        android:layout_height="11dp"
         android:scaleType="fitXY"
-        android:layout_marginBottom="1dp"
+        android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/third_sym"
         app:srcCompat="@drawable/bank_i" />
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:text="@string/next_p"
         android:textColor="#000"
-        android:textSize="10dp"
+        android:textSize="11dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
