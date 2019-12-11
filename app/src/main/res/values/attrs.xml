@@ -9,10 +9,9 @@
     <declare-styleable name="CasinoGrid">
         <attr name="grid_y" />
         <attr name="grid_x" />
-        <attr name="grid_double" format="boolean" />
     </declare-styleable>
 
-    <declare-styleable name="BacMainGrid">
+    <declare-styleable name="CasinoDoubleGrid">
         <attr name="grid_y" />
         <attr name="grid_x" />
     </declare-styleable>

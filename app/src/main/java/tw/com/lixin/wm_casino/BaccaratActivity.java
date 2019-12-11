@@ -11,7 +11,7 @@ import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.Chip;
 import tw.com.lixin.wm_casino.models.ChipStackData;
-import tw.com.lixin.wm_casino.tools.CasinoGrid;
+import tw.com.lixin.wm_casino.tools.grids.CasinoGrid;
 import tw.com.lixin.wm_casino.tools.buttons.AskButton;
 import tw.com.lixin.wm_casino.tools.buttons.ControlButton;
 import tw.com.lixin.wm_casino.tools.gameComponents.BacCardArea;

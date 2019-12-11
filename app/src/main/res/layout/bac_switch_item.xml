@@ -130,7 +130,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <tw.com.lixin.wm_casino.tools.CasinoGrid
+    <tw.com.lixin.wm_casino.tools.grids.CasinoGrid
         android:id="@+id/first_grid"
         android:layout_width="0dp"
         android:layout_height="0dp"

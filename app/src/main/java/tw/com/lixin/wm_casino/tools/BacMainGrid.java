@@ -1,7 +1,6 @@
 package tw.com.lixin.wm_casino.tools;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
@@ -14,11 +13,13 @@ import java.util.List;
 
 import androidx.core.content.ContextCompat;
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.tools.grids.CellView.BacRoadView;
 
 public class BacMainGrid extends TableLayout {
 
     private BacRoadView[][] viewGrid;
-    public int width, height;
+    public int posX = 0;
+    private int posY = 0;
     private Context context;
     private Animation fadeAnime;
 
@@ -35,67 +36,12 @@ public class BacMainGrid extends TableLayout {
         super(context, attrs);
         this.context = context;
         fadeAnime = AnimationUtils.loadAnimation(context, R.anim.prediction_fade);
-        TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.BacMainGrid);
-        int gridX, gridY;
-        gridY = a.getInt(R.styleable.BacMainGrid_grid_y,1);
-        gridX = a.getInt(R.styleable.BacMainGrid_grid_x, 1);
+
         setDividerDrawable(ContextCompat.getDrawable(context, R.drawable.table_divider));
         setShowDividers(TableRow.SHOW_DIVIDER_MIDDLE);
         setBackgroundColor(Color.parseColor("#ffffff"));
-        a.recycle();
-        iniGrid(gridX, gridY);
-    }
 
-    public void clearAskViews(){
-        if(predictV == null) return;
-        predictV.clearAnimation();
-        predictV.setBackgroundResource(0);
-    }
-
-    public void askRoad(int posX, int posY, int res) {
-        clearAskViews();
-        if (width > posX) {
-            predictV = insertImage(posX, posY, res);
-            predictV.startAnimation(fadeAnime);
-        }
-    }
-
-    public View insertImage(int x, int y, int image_res){
-        viewGrid[x][y].setBackgroundResource(image_res);
-        return viewGrid[x][y];
-    }
-
-    public View setRoad(int x, int y, int ref){
-        viewGrid[x][y].setRoad(ref);
-        return viewGrid[x][y];
-    }
-
-    public void clear(){
-        for(int i=0; i<height; i++){
-            for(int j=0; j<width; j++)
-                viewGrid[j][i].setBackgroundResource(0);
-        }
-    }
-
-    public void drawRoad(List<Integer> big){
-        int x = 0;
-        int y = 0;
-
-        for(int ref: big){
-            if(y > 5) {
-                y = 0;
-                x++;
-            }
-            viewGrid[x][y].setRoad(ref);
-            y++;
-        }
-
-    }
-
-    private void iniGrid(int x, int y){
-        width = x;
-        height = y;
-        viewGrid = new BacRoadView[x][y];
+        viewGrid = new BacRoadView[14][6];
         BacRoadView view;
 
         for(int i=0; i<6; i++){
@@ -115,11 +61,47 @@ public class BacMainGrid extends TableLayout {
             }
             this.addView(row);
         }
+
+
     }
 
-    public void setGrid(int x, int y){
-        this.removeAllViews();
-        iniGrid(x,y);
+    public void clearAskViews(){
+        if(predictV == null) return;
+        predictV.clearAnimation();
+        predictV.setBackgroundResource(0);
+    }
+
+    public void askRoad(int ref) {
+        clearAskViews();
+        if (posY > 5) {
+            predictV = viewGrid[posX+1][0];
+        }else{
+            predictV = viewGrid[posX][posY+1];
+        }
+     //   predictV.set
+    }
+
+    public void setRoad(int x, int y, int ref){
+        viewGrid[x][y].setRoad(ref);
+    }
+
+    public void clear(){
+        for(int i=0; i<6; i++){
+            for(int j=0; j<14; j++)
+                viewGrid[j][i].setBackgroundResource(0);
+        }
+    }
+
+    public void drawRoad(List<Integer> big){
+        for(int ref: big){
+            if(posY > 5) {
+                posY = 0;
+                posX++;
+            }
+            viewGrid[posX][posY].setRoad(ref);
+            posY++;
+        }
+        posY--;
     }
 
 

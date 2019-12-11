@@ -12,7 +12,7 @@ import tw.com.lixin.wm_casino.BaccaratActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
-import tw.com.lixin.wm_casino.tools.CasinoGrid;
+import tw.com.lixin.wm_casino.tools.grids.CasinoGrid;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
 public class BacHolder extends ItemHolder implements TableBridge{
