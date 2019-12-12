@@ -1,4 +1,4 @@
-package tw.com.lixin.wm_casino.tools;
+package tw.com.lixin.wm_casino.tools.grids;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -78,7 +78,7 @@ public class BacMainGrid extends TableLayout {
         }else{
             predictV = viewGrid[posX][posY+1];
         }
-     //   predictV.set
+        predictV.startAnimation(fadeAnime);
     }
 
     public void setRoad(int x, int y, int ref){
@@ -88,7 +88,7 @@ public class BacMainGrid extends TableLayout {
     public void clear(){
         for(int i=0; i<6; i++){
             for(int j=0; j<14; j++)
-                viewGrid[j][i].setBackgroundResource(0);
+                viewGrid[j][i].clear();
         }
     }
 

@@ -21,6 +21,13 @@ public class BacRoadView extends ConstraintLayout{
         blueDot = findViewById(R.id.blue_dot);
     }
 
+    public void clear(){
+        redDot.setVisibility(INVISIBLE);
+        blueDot.setVisibility(INVISIBLE);
+        roadTxt.setText("");
+        setBackgroundResource(0);
+    }
+
 
     public void setRoad(int ref){
         switch(ref) {
