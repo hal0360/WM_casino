@@ -3,7 +3,6 @@ package tw.com.lixin.wm_casino.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.dataModels.gameData.Group;
 import tw.com.lixin.wm_casino.global.Road;
@@ -16,7 +15,7 @@ public class BacTable extends Table{
     public int bankPairCount = 0;
     public int playPairCount = 0;
     public List<List<Integer>> sortedRoad;
-    public List<Integer> mainRoad;
+  //  public List<Integer> mainRoad;
     public GridRoad firstGrid;
     public GridRoad secGrid;
     public GridRoad thirdGrid;
@@ -35,7 +34,7 @@ public class BacTable extends Table{
 
     @Override
     public void historyUpdate(TableData.Data data) {
-        mainRoad = new ArrayList<>();
+       // mainRoad = new ArrayList<>();
         bigRoad = new ArrayList<>();
         sortedRoad = new ArrayList<>();
         for(int val: data.historyArr) divide(val);
@@ -80,69 +79,72 @@ public class BacTable extends Table{
 
         int curRes;
         Integer curWin = twos.get(0);
-        int curBigRes;
+       // int curBigRes;
 
         int curBig;
 
         if(curWin == 1){
             curRes = Road.Bank;
-            curBigRes = R.drawable.casino_roadbank;
+          //  curBigRes = R.drawable.casino_roadbank;
             curBig = 1;
             if(twos.size() > 1){
                 if(twos.get(1) == 8){
                     curRes = Road.Bank_B;
-                    curBigRes = R.drawable.casino_roadbank_1;
+               //     curBigRes = R.drawable.casino_roadbank_1;
                     curBig =  2;
                     if(twos.size() > 2 && twos.get(2) == 16){
                         curRes = Road.Bank_P_B;
-                        curBigRes = R.drawable.casino_roadbank_3;
+                     //   curBigRes = R.drawable.casino_roadbank_3;
                         curBig = 4;
                     }
                 }else if(twos.get(1) == 16){
                     curRes = Road.Bank_P;
-                    curBigRes = R.drawable.casino_roadbank_2;
+                 //   curBigRes = R.drawable.casino_roadbank_2;
                     curBig = 3;
                 }
             }
-            mainRoad.add(curBigRes);
+         //   mainRoad.add(curBigRes);
+            bigRoad.add(curBig);
         }else if(curWin == 2){
             curRes = Road.Play;
-            curBigRes = R.drawable.casino_roadplay;
+           // curBigRes = R.drawable.casino_roadplay;
             curBig = 5;
             if(twos.size() > 1){
                 if(twos.get(1) == 8){
                     curRes = Road.Play_B;
-                    curBigRes = R.drawable.casino_roadplay_1;
+                   // curBigRes = R.drawable.casino_roadplay_1;
                     curBig = 6;
                     if(twos.size() > 2 && twos.get(2) == 16) {
                         curRes = Road.Play_P_B;
-                        curBigRes = R.drawable.casino_roadplay_3;
+                     //   curBigRes = R.drawable.casino_roadplay_3;
                         curBig = 8;
                     }
                 }else if(twos.get(1) == 16){
                     curRes = Road.Play_P;
-                    curBigRes = R.drawable.casino_roadplay_2;
+                  //  curBigRes = R.drawable.casino_roadplay_2;
                     curBig = 7;
                 }
             }
-            mainRoad.add(curBigRes);
+       //     mainRoad.add(curBigRes);
+            bigRoad.add(curBig);
         }else{
-            curBigRes = R.drawable.casino_roadtie;
+          //  curBigRes = R.drawable.casino_roadtie;
             curBig = 9;
             if(twos.size() > 1){
                 if(twos.get(1) == 8){
-                    curBigRes = R.drawable.casino_roadtie_1;
+                  //  curBigRes = R.drawable.casino_roadtie_1;
                     curBig = 10;
                     if(twos.size() > 2 && twos.get(2) == 16){
-                        curBigRes = R.drawable.casino_roadtie_3;
+                     //   curBigRes = R.drawable.casino_roadtie_3;
                         curBig = 12;
                     }
                 }else if(twos.get(1) == 16){
-                    curBigRes = R.drawable.casino_roadtie_2;
+                 //   curBigRes = R.drawable.casino_roadtie_2;
                     curBig = 11;
                 }
             }
-            mainRoad.add(curBigRes);
+         //   mainRoad.add(curBigRes);
+            bigRoad.add(curBig);
 
             if(preWin == 0) return;
 

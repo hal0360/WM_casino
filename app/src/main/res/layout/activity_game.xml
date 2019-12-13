@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <tw.com.atromoby.widgets.ItemsView
+    <tw.com.atromoby.widgets.CollectionsView
         android:id="@+id/table_list"
         android:layout_width="360dp"
         android:layout_height="0dp"

@@ -6,9 +6,9 @@ import android.util.SparseArray;
 import java.util.ArrayList;
 import java.util.List;
 
-import tw.com.atromoby.widgets.ItemsView;
+import tw.com.atromoby.widgets.CollectionsView;
 import tw.com.atromoby.widgets.RootActivity;
-import tw.com.lixin.wm_casino.holders.BacHolder;
+import tw.com.lixin.wm_casino.collections.BacCollection;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.tools.gameComponents.ProfileBar;
@@ -17,7 +17,7 @@ import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 public class GameActivity extends RootActivity {
 
     private LobbySource source;
-    private ItemsView tableList;
+    private CollectionsView tableList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class GameActivity extends RootActivity {
 
         source = LobbySource.getInstance();
         tableList = findViewById(R.id.table_list);
-        List<BacHolder> holders = new ArrayList<>();
+        List<BacCollection> collections = new ArrayList<>();
         ProfileBar bar = findViewById(R.id.pro_bar);
 
 
@@ -35,7 +35,7 @@ public class GameActivity extends RootActivity {
             SparseArray<Table> tables = source.allTables.get(101);
             for(int i = 0; i < tables.size(); i++) {
                 Table table = tables.valueAt(i);
-                holders.add(new BacHolder((BacTable) table));
+                collections.add(new BacCollection((BacTable) table));
             }
         }else if(source.curGameID == 102){
 
@@ -43,7 +43,7 @@ public class GameActivity extends RootActivity {
             alert("error!");
             toActivity(LobbyActivity.class);
         }
-        tableList.add(holders);
+        tableList.add(collections);
     }
 
     @Override
@@ -58,7 +58,7 @@ public class GameActivity extends RootActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        tableList.clean();
+      //  tableList.clean();
     }
 
 

@@ -5,11 +5,11 @@ import java.util.List;
 
 import tw.com.atromoby.utils.Json;
 import tw.com.atromoby.widgets.RootActivity;
+import tw.com.lixin.wm_casino.collections.PeopleCollection;
 import tw.com.lixin.wm_casino.dataModels.Client10;
 import tw.com.lixin.wm_casino.dataModels.GameData;
 import tw.com.lixin.wm_casino.dataModels.TableLogData;
 import tw.com.lixin.wm_casino.global.User;
-import tw.com.lixin.wm_casino.holders.PeopleHolder;
 import tw.com.lixin.wm_casino.interfaces.CmdStr;
 import tw.com.lixin.wm_casino.interfaces.CmdTableLog;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
@@ -33,7 +33,7 @@ public class GameSource extends CasinoSource{
 
     private PeoplePopup popup;
     public int peopleOnline;
-    public List<PeopleHolder> peopleHolders;
+    public List<PeopleCollection> peopleCollections;
 
     public void bind(GameBridge bridge){
         this.bridge = bridge;
@@ -56,7 +56,7 @@ public class GameSource extends CasinoSource{
         cmdTableLog = logOK;
         cmdTableFail = logFail;
         login(User.sid(),data->{
-            peopleHolders = new ArrayList<>();
+            peopleCollections = new ArrayList<>();
             Client10 client = new Client10(table.groupID);
             send(Json.to(client));
         }, fail-> cmdTableFail.exec(fail));
@@ -65,7 +65,7 @@ public class GameSource extends CasinoSource{
     public void tableLogout( ){
         cmdTableLog = null;
         cmdTableFail = null;
-        peopleHolders = null;
+        peopleCollections = null;
         unbind();
         close();
     }
@@ -104,9 +104,9 @@ public class GameSource extends CasinoSource{
                 break;
             case 28:
                 if(gameData.data.groupID == table.groupID){
-                    PeopleHolder holder = new PeopleHolder(gameData.data.memberID, gameData.data.userName, gameData.data.winRate);
-                    peopleHolders.add(holder);
-                    if(popup != null) handleSimple(()-> popup.peopleIn(holder, gameData.data.userCount));
+                    PeopleCollection collection = new PeopleCollection(gameData.data.memberID, gameData.data.userName, gameData.data.winRate);
+                    peopleCollections.add(collection);
+                    if(popup != null) handleSimple(()-> popup.peopleIn(collection, gameData.data.userCount));
                 }
 
                // if(popup != null && gameData.data.groupID == table.groupID) handleSimple(()-> popup.peopleIn(gameData.data.memberID, gameData.data.userName, gameData.data.winRate));

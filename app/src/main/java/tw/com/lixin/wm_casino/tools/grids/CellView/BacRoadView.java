@@ -28,7 +28,6 @@ public class BacRoadView extends ConstraintLayout{
         setBackgroundResource(0);
     }
 
-
     public void setRoad(int ref){
         switch(ref) {
             case 1 :

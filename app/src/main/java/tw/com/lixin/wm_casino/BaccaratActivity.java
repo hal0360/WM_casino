@@ -11,6 +11,8 @@ import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.Chip;
 import tw.com.lixin.wm_casino.models.ChipStackData;
+import tw.com.lixin.wm_casino.tools.grids.BacMainGrid;
+import tw.com.lixin.wm_casino.tools.grids.CasinoDoubleGrid;
 import tw.com.lixin.wm_casino.tools.grids.CasinoGrid;
 import tw.com.lixin.wm_casino.tools.buttons.AskButton;
 import tw.com.lixin.wm_casino.tools.buttons.ControlButton;
@@ -52,13 +54,14 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
         thisStage = 1;
     }
 
-    private int posX, posY;
     private IjkVideoView video;
     private BacTable table;
     private GameSource source;
     private ChipStack playerPairStack, playerStack, tieStack, bankerStack, bankerPairStack;
     private BacCardArea cardArea;
-    private CasinoGrid mainGrid, firstGrid, secGrid, thirdGrid, fourthGrid;
+    private CasinoGrid firstGrid;
+    private BacMainGrid mainGrid;
+    private CasinoDoubleGrid secGrid, thirdGrid, fourthGrid;
     private ControlButton betBtn, cancelBtn, rebetBtn;
     private BetCountdown countdown;
     private AskButton askBank, askPlay;
@@ -206,19 +209,12 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
     }
 
     private void askRoad(int win) {
-
         firstGrid.askRoad(table.firstGrid.posXX, table.firstGrid.posYY, table.firstGrid.resX);
         secGrid.askRoad(table.secGrid.posXX, table.secGrid.posYY, table.secGrid.resX);
         thirdGrid.askRoad(table.thirdGrid.posXX, table.thirdGrid.posYY, table.thirdGrid.resX);
         fourthGrid.askRoad(table.fourthGrid.posXX, table.fourthGrid.posYY, table.fourthGrid.resX);
-
-        if(win == 1){
-            if(posY < 5) mainGrid.askRoad(posX, posY + 1, R.drawable.casino_roadbank);
-            else mainGrid.askRoad(posX+1, 0, R.drawable.casino_roadbank);
-        }else{
-            if(posY < 5) mainGrid.askRoad(posX, posY + 1, R.drawable.casino_roadplay);
-            else mainGrid.askRoad(posX+1, 0, R.drawable.casino_roadplay);
-        }
+        if(win == 1){ mainGrid.askRoad(1);
+        }else{ mainGrid.askRoad(5); }
     }
 
     @Override
@@ -254,20 +250,11 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
     @SuppressLint("SetTextI18n")
     @Override
     public void gridUpdate() {
-        int indexx = 0;
         firstGrid.drawRoad(table.firstGrid);
         secGrid.drawRoad(table.secGrid);
         thirdGrid.drawRoad(table.thirdGrid);
         fourthGrid.drawRoad(table.fourthGrid);
-        for (int x = 0; x < mainGrid.width; x++) {
-            for (int y = 0; y < mainGrid.height; y++) {
-                if (indexx >= table.mainRoad.size()) return;
-                mainGrid.insertImage(x, y, table.mainRoad.get(indexx));
-                indexx++;
-                posX = x;
-                posY = y;
-            }
-        }
+        mainGrid.drawRoad(table.bigRoad);
         bankPairCount.setText(table.bankPairCount+"");
         bankerCount.setText(table.bankCount+"");
         playerCount.setText(table.playCount+"");

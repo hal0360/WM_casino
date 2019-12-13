@@ -1,4 +1,4 @@
-package tw.com.lixin.wm_casino.holders;
+package tw.com.lixin.wm_casino.collections;
 
 import android.annotation.SuppressLint;
 import android.view.View;
@@ -6,7 +6,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
-import tw.com.atromoby.widgets.ItemHolder;
+import tw.com.atromoby.widgets.Collection;
+import tw.com.atromoby.widgets.CollectionHolder;
 import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.BaccaratActivity;
 import tw.com.lixin.wm_casino.R;
@@ -15,50 +16,58 @@ import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.tools.grids.CasinoGrid;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
-public class BacHolder extends ItemHolder implements TableBridge{
+public class BacCollection extends Collection implements TableBridge {
 
     private BacTable table;
-    private TextView countDown;
+    private TextView countDown, statusTxt, bankRate, playRate, tieRate;
     private ConstraintLayout block;
     private ImageView cardImg;
     private CasinoGrid firstGrid;
+    private RootActivity activity;
 
-    public BacHolder(BacTable table) {
-        super(R.layout.bac_item);
+    public BacCollection(BacTable table) {
+        super(R.layout.bac_collection);
         this.table = table;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
-    public void onBind() {
-        firstGrid = findViewById(R.id.first_grid);
-        block = findViewById(R.id.road_grid_block);
-        cardImg = findViewById(R.id.card_img);
-        TextView bidMe = findViewById(R.id.bidme_txt);
-        countDown = findViewById(R.id.countdown_txt);
-        ImageView dealerImg = findViewById(R.id.dealer_img);
-        setTextView(R.id.dealername_txt, table.dealerName);
+    public void onBind(CollectionHolder holder) {
+        activity = (RootActivity) holder.getContex();
+        firstGrid = holder.findViewById(R.id.first_grid);
+        block = holder.findViewById(R.id.road_grid_block);
+        bankRate = holder.findViewById(R.id.bank_rate);
+        playRate = holder.findViewById(R.id.play_rate);
+        tieRate = holder.findViewById(R.id.tie_rate);
+        cardImg = holder.findViewById(R.id.card_img);
+        statusTxt = holder.findViewById(R.id.status_txt);
+        TextView bidMe = holder.findViewById(R.id.bidme_txt);
+        countDown = holder.findViewById(R.id.countdown_txt);
+        ImageView dealerImg = holder.findViewById(R.id.dealer_img);
+        TextView dealername = holder.findViewById(R.id.dealername_txt);
+        dealername.setText(table.dealerName);
         if(table.dealerImage != null) dealerImg.setImageBitmap(table.dealerImage);
         else dealerImg.setImageResource(R.drawable.hamster);
-        if(table.groupType == 5) setTextView(R.id.table_name_txt, getContex().getString(R.string.baccarat_fast) + table.groupID);
-        else setTextView(R.id.table_name_txt, getContex().getString(R.string.baccarat) + table.groupID);
+        TextView tablename = holder.findViewById(R.id.table_name_txt);
+        if(table.groupType == 5) tablename.setText(activity.getString(R.string.baccarat_fast) + table.groupID);
+        else tablename.setText(activity.getString(R.string.baccarat) + table.groupID);
         if(table.groupID == 3) bidMe.setVisibility(View.VISIBLE);
         else bidMe.setVisibility(View.INVISIBLE);
         gridUpdate();
         stageUpdate();
         table.bind(this);
 
-        findViewById(R.id.root).setOnClickListener(v->{
+        holder.clicked(R.id.root,v->{
             GameSource source = GameSource.getInstance();
             source.tableLogin(table,data -> {
                 BaccaratActivity.bacStarted(data);
-                RootActivity act = (RootActivity) getContex();
-                act.pushActivity(BaccaratActivity.class);
-            }, this::alert);
+                activity.pushActivity(BaccaratActivity.class);
+            }, activity::alert);
         });
     }
 
     @Override
-    public void onRecycle() {
+    public void onRecycle(CollectionHolder holder) {
         table.unBind();
     }
 
@@ -71,10 +80,10 @@ public class BacHolder extends ItemHolder implements TableBridge{
             block.setVisibility(View.INVISIBLE);
         }else {
             if(table.stage == 2){
-                setTextView(R.id.status_txt, getContex().getString(R.string.dealing));
+                statusTxt.setText(activity.getString(R.string.dealing));
                 cardImg.setImageResource(R.drawable.card_dealing);
             }else{
-                setTextView(R.id.status_txt, getContex().getString(R.string.waiting));
+                statusTxt.setText(activity.getString(R.string.waiting));
                 cardImg.setImageResource(R.drawable.card_waiting);
             }
             countDown.setVisibility(View.INVISIBLE);
@@ -82,12 +91,13 @@ public class BacHolder extends ItemHolder implements TableBridge{
         }
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void gridUpdate() {
         firstGrid.drawRoad(table.firstGrid);
-        setTextView(R.id.bank_rate, table.bankCount + "");
-        setTextView(R.id.play_rate, table.playCount + "");
-        setTextView(R.id.tie_rate, table.tieCount + "");
+        bankRate.setText(table.bankCount + "");
+        playRate.setText(table.playCount + "");
+        tieRate.setText(table.tieCount + "");
     }
 
     @SuppressLint("SetTextI18n")
@@ -96,16 +106,8 @@ public class BacHolder extends ItemHolder implements TableBridge{
         countDown.setText(sec+"");
     }
 
-
     @Override
-    public void resultUpdate() {
-
-    }
-
+    public void resultUpdate() { }
     @Override
-    public void cardUpdate(int area, int img) {
-
-    }
-
-
+    public void cardUpdate(int area, int img) { }
 }

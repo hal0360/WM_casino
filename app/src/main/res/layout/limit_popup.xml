@@ -233,7 +233,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <tw.com.atromoby.widgets.ItemsView
+        <tw.com.atromoby.widgets.CollectionsView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:id="@+id/limit_items_view"

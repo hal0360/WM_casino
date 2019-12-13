@@ -39,7 +39,7 @@
             app:layout_constraintTop_toTopOf="@+id/textView2"
             tools:ignore="HardcodedText" />
 
-        <tw.com.atromoby.widgets.ItemsView
+        <tw.com.atromoby.widgets.CollectionsView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
