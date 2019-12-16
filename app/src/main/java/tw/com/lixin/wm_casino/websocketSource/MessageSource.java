@@ -4,7 +4,7 @@ import tw.com.atromoby.utils.Json;
 import tw.com.lixin.wm_casino.dataModels.Client11;
 import tw.com.lixin.wm_casino.dataModels.MessageData;
 import tw.com.lixin.wm_casino.global.User;
-import tw.com.lixin.wm_casino.tools.gameComponents.MessageArea;
+import tw.com.lixin.wm_casino.tools.MessageArea;
 
 public class MessageSource extends CasinoSource{
 

@@ -8,7 +8,7 @@
     tools:ignore="ContentDescription,SpUsage"
     tools:context=".BaccaratActivity">
 
-    <tw.com.lixin.wm_casino.tools.gameComponents.ProfileBar
+    <tw.com.lixin.wm_casino.tools.ProfileBar
         android:id="@+id/profile"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile">
 
-        <tw.com.lixin.wm_casino.tools.gameComponents.RatePanel
+        <tw.com.lixin.wm_casino.tools.RatePanel
             android:id="@+id/panel"
             android:layout_width="0dp"
             android:layout_height="30dp"
@@ -47,9 +47,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-        </tw.com.lixin.wm_casino.tools.gameComponents.RatePanel>
+        </tw.com.lixin.wm_casino.tools.RatePanel>
 
-        <tw.com.lixin.wm_casino.tools.gameComponents.BetCountdown
+        <tw.com.lixin.wm_casino.tools.BetCountdown
             android:id="@+id/countdown"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -106,7 +106,7 @@
         app:layout_constraintStart_toStartOf="@+id/video"
         app:layout_constraintTop_toBottomOf="@+id/video">
 
-        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
+        <tw.com.lixin.wm_casino.tools.ChipStack
             android:id="@+id/player_pair_stack"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -114,7 +114,7 @@
             app:title="@string/player_pair"
             app:title_color="#0000FF" />
 
-        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
+        <tw.com.lixin.wm_casino.tools.ChipStack
             android:id="@+id/player_stack"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -122,7 +122,7 @@
             app:title="@string/player"
             app:title_color="#0000FF" />
 
-        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
+        <tw.com.lixin.wm_casino.tools.ChipStack
             android:id="@+id/tie_stack"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -130,7 +130,7 @@
             app:title="@string/tie"
             app:title_color="#7CFC00" />
 
-        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
+        <tw.com.lixin.wm_casino.tools.ChipStack
             android:id="@+id/bank_stack"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -138,7 +138,7 @@
             app:title="@string/banker"
             app:title_color="#FF0000" />
 
-        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
+        <tw.com.lixin.wm_casino.tools.ChipStack
             android:id="@+id/bank_pair_stack"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -208,7 +208,7 @@
             app:layout_constraintStart_toEndOf="@+id/textView20"
             app:layout_constraintTop_toTopOf="@+id/textView20" />
 
-        <tw.com.lixin.wm_casino.tools.gameComponents.ChipSelection
+        <tw.com.lixin.wm_casino.tools.ChipSelection
             android:id="@+id/chipSelection"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -228,7 +228,7 @@
             app:layout_constraintEnd_toStartOf="@+id/cancel_btn"
             app:layout_constraintTop_toTopOf="@+id/cancel_btn" />
 
-        <tw.com.lixin.wm_casino.tools.gameComponents.BacCardArea
+        <tw.com.lixin.wm_casino.tools.BacCardArea
             android:id="@+id/card_area"
             android:layout_width="0dp"
             android:layout_height="0dp"

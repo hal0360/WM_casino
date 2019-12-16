@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.popups.MessagePopup;
-import tw.com.lixin.wm_casino.tools.gameComponents.MessageArea;
 
 public class MessageButton extends ClickConstraint {
 

@@ -11,7 +11,7 @@ import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.collections.BacCollection;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.Table;
-import tw.com.lixin.wm_casino.tools.gameComponents.ProfileBar;
+import tw.com.lixin.wm_casino.tools.ProfileBar;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
 public class GameActivity extends RootActivity {

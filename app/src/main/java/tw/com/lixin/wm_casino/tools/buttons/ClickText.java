@@ -5,9 +5,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import androidx.appcompat.widget.AppCompatTextView;
-import tw.com.atromoby.widgets.CmdView;
 import tw.com.lixin.wm_casino.App;
-import tw.com.lixin.wm_casino.interfaces.CmdTable;
 import tw.com.lixin.wm_casino.interfaces.CmdText;
 
 public class ClickText extends AppCompatTextView implements View.OnClickListener{

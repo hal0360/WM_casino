@@ -15,10 +15,10 @@ import tw.com.lixin.wm_casino.tools.grids.CasinoGrid;
 import tw.com.lixin.wm_casino.tools.DragonTigerCardArea;
 import tw.com.lixin.wm_casino.tools.buttons.AskButton;
 import tw.com.lixin.wm_casino.tools.buttons.ControlButton;
-import tw.com.lixin.wm_casino.tools.gameComponents.BetCountdown;
-import tw.com.lixin.wm_casino.tools.gameComponents.ChipStack;
-import tw.com.lixin.wm_casino.tools.gameComponents.ProfileBar;
-import tw.com.lixin.wm_casino.tools.gameComponents.RatePanel;
+import tw.com.lixin.wm_casino.tools.BetCountdown;
+import tw.com.lixin.wm_casino.tools.ChipStack;
+import tw.com.lixin.wm_casino.tools.ProfileBar;
+import tw.com.lixin.wm_casino.tools.RatePanel;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
 import android.os.Bundle;

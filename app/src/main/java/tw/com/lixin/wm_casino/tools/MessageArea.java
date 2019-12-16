@@ -1,4 +1,4 @@
-package tw.com.lixin.wm_casino.tools.gameComponents;
+package tw.com.lixin.wm_casino.tools;
 
 import android.content.Context;
 import android.util.AttributeSet;

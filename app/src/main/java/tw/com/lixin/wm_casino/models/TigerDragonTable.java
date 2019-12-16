@@ -3,7 +3,6 @@ package tw.com.lixin.wm_casino.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.dataModels.gameData.Group;
 import tw.com.lixin.wm_casino.global.Road;
@@ -32,19 +31,13 @@ public class TigerDragonTable extends Table{
     private void packRes(int curWin){
 
         int curRes = 0;
-        int curBigRes;
+        mainRoad.add(curWin);
 
         if(curWin == 1){
             curRes = Road.Bank;
-            curBigRes = R.drawable.dragon_dragon;
-            mainRoad.add(curBigRes);
         }else if(curWin == 2){
             curRes = Road.Play;
-            curBigRes = R.drawable.dragon_tiger;
-            mainRoad.add(curBigRes);
         }else{
-            curBigRes = R.drawable.dragon_tie;
-            mainRoad.add(curBigRes);
             switch(preWin) {
                 case 0:
                     return;

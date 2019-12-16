@@ -10,7 +10,7 @@
     tools:ignore="ContentDescription,SpUsage"
     tools:context=".DragonTigerActivity">
 
-    <tw.com.lixin.wm_casino.tools.gameComponents.ProfileBar
+    <tw.com.lixin.wm_casino.tools.ProfileBar
         android:id="@+id/profile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile">
 
-        <tw.com.lixin.wm_casino.tools.gameComponents.RatePanel
+        <tw.com.lixin.wm_casino.tools.RatePanel
             android:id="@+id/panel"
             android:layout_width="0dp"
             android:layout_height="23dp"
@@ -68,7 +68,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/rebet_btn"
                 app:layout_constraintTop_toTopOf="parent" />
 
-        </tw.com.lixin.wm_casino.tools.gameComponents.RatePanel>
+        </tw.com.lixin.wm_casino.tools.RatePanel>
 
         <tw.com.lixin.wm_casino.tools.buttons.VideoButton
             android:id="@+id/mss_btn"
@@ -80,7 +80,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
+        <tw.com.lixin.wm_casino.tools.ChipStack
             android:id="@+id/tie_stack"
             android:layout_width="100dp"
             android:layout_height="60dp"
@@ -91,7 +91,7 @@
             app:title="@string/tie"
             app:title_color="#7CFC00" />
 
-        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
+        <tw.com.lixin.wm_casino.tools.ChipStack
             android:id="@+id/tiger_stack"
             android:layout_width="100dp"
             android:layout_height="60dp"
@@ -131,7 +131,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/change_btn" />
 
-        <tw.com.lixin.wm_casino.tools.gameComponents.ChipStack
+        <tw.com.lixin.wm_casino.tools.ChipStack
             android:id="@+id/dragon_stack"
             android:layout_width="100dp"
             android:layout_height="60dp"
@@ -246,7 +246,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <tw.com.lixin.wm_casino.tools.gameComponents.ChipSelection
+    <tw.com.lixin.wm_casino.tools.ChipSelection
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="7dp"
@@ -319,7 +319,7 @@
         app:layout_constraintStart_toStartOf="@+id/second_grid"
         app:layout_constraintTop_toBottomOf="@+id/second_grid" />
     <!--
-    <tw.com.lixin.wm_casino.tools.gameComponents.BacCardArea
+    <tw.com.lixin.wm_casino.tools.BacCardArea
         android:id="@+id/card_area"
         android:layout_width="0dp"
         android:layout_height="0dp"

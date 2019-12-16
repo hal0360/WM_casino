@@ -10,7 +10,7 @@
     tools:ignore="ContentDescription,SpUsage"
     tools:context=".GameActivity">
 
-    <tw.com.lixin.wm_casino.tools.gameComponents.ProfileBar
+    <tw.com.lixin.wm_casino.tools.ProfileBar
         android:id="@+id/pro_bar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/broadcast"
         app:spanCount="2" />
 
-    <tw.com.lixin.wm_casino.tools.gameComponents.NewsBroadcast
+    <tw.com.lixin.wm_casino.tools.NewsBroadcast
         android:id="@+id/broadcast"
         android:layout_width="584dp"
         android:layout_height="30dp"

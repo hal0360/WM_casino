@@ -8,7 +8,7 @@
     android:background="#000"
     tools:context=".GameActivity">
 
-    <tw.com.lixin.wm_casino.tools.gameComponents.ProfileBar
+    <tw.com.lixin.wm_casino.tools.ProfileBar
         android:id="@+id/pro_bar"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/broadcast" />
 
-    <tw.com.lixin.wm_casino.tools.gameComponents.NewsBroadcast
+    <tw.com.lixin.wm_casino.tools.NewsBroadcast
         android:id="@+id/broadcast"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
