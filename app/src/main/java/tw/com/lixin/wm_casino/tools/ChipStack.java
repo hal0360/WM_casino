@@ -4,20 +4,24 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import androidx.constraintlayout.widget.ConstraintLayout;
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.dataModels.Client22;
 import tw.com.lixin.wm_casino.interfaces.StackCallBridge;
 import tw.com.lixin.wm_casino.models.Chip;
 import tw.com.lixin.wm_casino.models.ChipStackData;
+import tw.com.lixin.wm_casino.models.Table;
+import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
 public class ChipStack extends ConstraintLayout implements Animation.AnimationListener, View.OnClickListener {
 
@@ -60,7 +64,24 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         animeDwn = AnimationUtils.loadAnimation(context, R.anim.coin_anime_down);
         animeDwn.setAnimationListener(this);
         animeUp = AnimationUtils.loadAnimation(context, R.anim.coin_anime_up);
+
+
+        GameSource source = GameSource.getInstance();
+        data = source.chipDatas.get(getId());
+        if(data != null){
+            if(Table.curStage == 1){
+                clearCoin();
+            }
+            if(Table.curStage == 2){
+                cancelBet();
+            }
+        }else source.chipDatas.put(getId(),new ChipStackData());
     }
+
+    public void addCoinToClient(Client22 client22, int area){
+        data.addCoinToClient(client22,area);
+    }
+
 
     public void cancelBet(){
         data.cancelBet();
@@ -83,9 +104,10 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     }
 
     @SuppressLint("SetTextI18n")
-    public void setUp(ChipStackData cData, StackCallBridge bridge){
-        dtOdds.setText("1:"+cData.score);
-        data = cData;
+    public void setUp(String dtOdd, int maxVal, StackCallBridge bridge){
+        data.score = dtOdd;
+        data.maxValue = maxVal;
+        dtOdds.setText("1:"+dtOdd);
         for(Chip coin: data.addedCoin) noAnimeAdd(coin);
         for(Chip coin: data.tempAddedCoin) noAnimeAdd(coin);
         if(!data.isAddEmpty() || !data.isTempEmpty()){

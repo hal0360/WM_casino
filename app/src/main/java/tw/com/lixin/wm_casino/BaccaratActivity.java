@@ -31,28 +31,7 @@ import android.widget.TextView;
 
 public class BaccaratActivity extends RootActivity implements GameBridge, TableBridge, StackCallBridge {
 
-    private static int thisStage;
-    public static ChipStackData playStackData, playPairStackData, tieStackData, bankStackData, bankPairStackData;
-    public static boolean comission;
-    public static void bacStarted(TableLogData.Data data){
-        bankPairStackData = new ChipStackData();
-        bankStackData = new ChipStackData();
-        playPairStackData = new ChipStackData();
-        tieStackData = new ChipStackData();
-        playStackData = new ChipStackData();
-        playStackData.score = data.dtOdds.get(2);
-        bankStackData.score = data.dtOdds.get(1);
-        playPairStackData.score = data.dtOdds.get(5);
-        bankPairStackData.score = data.dtOdds.get(4);
-        tieStackData.score = data.dtOdds.get(3);
-        playStackData.maxValue = data.maxBet02;
-        tieStackData.maxValue = data.maxBet03;
-        playPairStackData.maxValue = data.maxBet04;
-        bankStackData.maxValue = data.maxBet01;
-        bankPairStackData.maxValue = data.maxBet04;
-        comission = false;
-        thisStage = 1;
-    }
+    public static boolean comission = false;
 
     private IjkVideoView video;
     private BacTable table;
@@ -104,11 +83,11 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
 
         betBtn.clicked(v -> {
             Client22 client22 = new Client22();
-            bankPairStackData.addCoinToClient(client22, 4);
-            tieStackData.addCoinToClient(client22, 3);
-            bankStackData.addCoinToClient(client22, 1);
-            playPairStackData.addCoinToClient(client22, 5);
-            playStackData.addCoinToClient(client22, 2);
+            bankerPairStack.addCoinToClient(client22, 4);
+            tieStack.addCoinToClient(client22, 3);
+            bankerStack.addCoinToClient(client22, 1);
+            playerPairStack.addCoinToClient(client22, 5);
+            playerStack.addCoinToClient(client22, 2);
             if (client22.data.betArr.size() > 0) { source.send(Json.to(client22)); }
             else alert("You haven't put any money!");
         });
@@ -158,29 +137,6 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
         table.bind(this);
         source.bind(this);
 
-        playerPairStack.setUp(playPairStackData, this);
-        bankerPairStack.setUp(bankPairStackData, this);
-        playerStack.setUp(playStackData, this);
-        bankerStack.setUp(bankStackData, this);
-        tieStack.setUp(tieStackData, this);
-
-        if(table.stage != thisStage){
-            if(table.stage == 1){
-                playerPairStack.clearCoin();
-                playerStack.clearCoin();
-                bankerPairStack.clearCoin();
-                tieStack.clearCoin();
-                bankerStack.clearCoin();
-            }
-            if(table.stage == 2){
-                playerPairStack.cancelBet();
-                playerStack.cancelBet();
-                bankerPairStack.cancelBet();
-                tieStack.cancelBet();
-                bankerStack.cancelBet();
-            }
-        }
-        thisStage = table.stage;
         cardArea.setUp(table.pokers);
 
         if(table.stage == 1){
@@ -219,7 +175,6 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
 
     @Override
     public void stageUpdate() {
-        thisStage = table.stage;
         if (table.stage == 1) {
             panel.setGyuShu(table.number,table.round);
             profile.updateBalance();

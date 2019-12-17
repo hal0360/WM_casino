@@ -13,6 +13,7 @@ import tw.com.lixin.wm_casino.BaccaratActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
+import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.tools.grids.CasinoGrid;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
@@ -60,7 +61,7 @@ public class BacCollection extends Collection implements TableBridge {
         holder.clicked(R.id.root,v->{
             GameSource source = GameSource.getInstance();
             source.tableLogin(table,data -> {
-                BaccaratActivity.bacStarted(data);
+                source.logData = data;
                 activity.pushActivity(BaccaratActivity.class);
             }, activity::alert);
         });

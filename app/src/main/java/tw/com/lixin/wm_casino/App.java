@@ -3,13 +3,16 @@ package tw.com.lixin.wm_casino;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.util.DisplayMetrics;
+import android.util.SparseArray;
 
 import tw.com.atromoby.utils.RegisterApplication;
+import tw.com.lixin.wm_casino.models.ChipStackData;
 
 public class App extends RegisterApplication {
 
     public static MediaPlayer player, click, bet, control;
     public static boolean musicOn, effectOn;
+
 
     @Override
     public void onCreate() {

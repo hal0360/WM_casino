@@ -38,7 +38,7 @@ public abstract class Table {
     public int groupType;
     public int dealerID;
     public int result = -99;
-
+    public static int curStage;
     public SparseIntArray pokers = new SparseIntArray();
 
     public Table(Group group){
@@ -105,6 +105,7 @@ public abstract class Table {
             pokers.clear();
         }
         this.stage = stage;
+        if(isBinded) curStage = stage;
         handle(() -> bridge.stageUpdate());
         if(stage == 4) unBind();
     }

@@ -1,5 +1,7 @@
 package tw.com.lixin.wm_casino.websocketSource;
 
+import android.util.SparseArray;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,7 @@ import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.CmdStr;
 import tw.com.lixin.wm_casino.interfaces.CmdTableLog;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
+import tw.com.lixin.wm_casino.models.ChipStackData;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.popups.PeoplePopup;
 import tw.com.lixin.wm_casino.popups.WinLossPopup;
@@ -35,6 +38,11 @@ public class GameSource extends CasinoSource{
     public int peopleOnline;
     public List<PeopleCollection> peopleCollections;
 
+
+    public SparseArray<ChipStackData> chipDatas;
+    public TableLogData.Data logData;
+
+
     public void bind(GameBridge bridge){
         this.bridge = bridge;
         binded(true);
@@ -51,6 +59,7 @@ public class GameSource extends CasinoSource{
     }
 
     public final void tableLogin(Table table, CmdTableLog logOK, CmdStr logFail){
+        chipDatas = new SparseArray<>();
         defineURL("ws://gameserver.a45.me:15" + table.gameID);
         this.table = table;
         cmdTableLog = logOK;
@@ -63,6 +72,7 @@ public class GameSource extends CasinoSource{
     }
 
     public void tableLogout( ){
+        chipDatas = null;
         cmdTableLog = null;
         cmdTableFail = null;
         peopleCollections = null;

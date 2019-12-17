@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
+import android.util.SparseArray;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -15,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import tw.com.atromoby.widgets.CmdView;
+import tw.com.lixin.wm_casino.App;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.interfaces.StackCallBridge;
 import tw.com.lixin.wm_casino.models.Chip;
@@ -31,6 +34,7 @@ public class BetStack extends ConstraintLayout implements Animation.AnimationLis
     private GradientDrawable shape;
    // private StackCallBridge bridge;
 
+
     public BetStack(Context context, AttributeSet attrs) {
         super(context, attrs);
 
@@ -41,7 +45,7 @@ public class BetStack extends ConstraintLayout implements Animation.AnimationLis
         coin3 = findViewById(R.id.coin3);
         coin4 = findViewById(R.id.coin4);
         coin5 = findViewById(R.id.coin5);
-
+        valTxt = findViewById(R.id.bet_value);
 
         shape = new GradientDrawable();
         shape.setColor(0xFF369762);
@@ -52,6 +56,8 @@ public class BetStack extends ConstraintLayout implements Animation.AnimationLis
         animeDwn = AnimationUtils.loadAnimation(context, R.anim.coin_anime_down);
         animeDwn.setAnimationListener(this);
         animeUp = AnimationUtils.loadAnimation(context, R.anim.coin_anime_up);
+
+
     }
 
     public void cancelBet(){
