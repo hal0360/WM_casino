@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.global.Poker;
+import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
 public class BacCardArea extends ConstraintLayout {
 
@@ -36,6 +37,9 @@ public class BacCardArea extends ConstraintLayout {
         pokers.put(2,findViewById(R.id.banker_poker1));
         pokers.put(4,findViewById(R.id.banker_poker2));
         pokers.put(6,findViewById(R.id.banker_poker3));
+
+        GameSource source = GameSource.getInstance();
+        setUp(source.table.pokers);
     }
 
     public void setUp(SparseIntArray dataPokers){

@@ -67,7 +67,8 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
 
 
         GameSource source = GameSource.getInstance();
-        data = source.chipDatas.get(getId());
+        int thisID = getId();
+        data = source.chipDatas.get(thisID);
         if(data != null){
             if(Table.curStage == 1){
                 clearCoin();
@@ -75,7 +76,9 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
             if(Table.curStage == 2){
                 cancelBet();
             }
-        }else source.chipDatas.put(getId(),new ChipStackData());
+        }else{
+            if(thisID != NO_ID) source.chipDatas.put(getId(),new ChipStackData());
+        }
     }
 
     public void addCoinToClient(Client22 client22, int area){

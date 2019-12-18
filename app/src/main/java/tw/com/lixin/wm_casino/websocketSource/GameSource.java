@@ -88,6 +88,7 @@ public class GameSource extends CasinoSource{
                 TableLogData tableLogData = Json.from(text, TableLogData.class);
                 if(tableLogData.data.gameID == table.gameID && tableLogData.data.groupID == table.groupID && tableLogData.data.memberID == User.memberID()){
                     if(tableLogData.data.bOk){
+                        logData = tableLogData.data;
                         cmdTableLog.exec(tableLogData.data);
                     }
                     else{

@@ -136,7 +136,11 @@ public class BaccaratActivity extends RootActivity implements GameBridge, TableB
         video.start();
         table.bind(this);
         source.bind(this);
-
+        playerStack.setUp(source.logData.dtOdds.get(2),source.logData.maxBet02,this);
+        bankerStack.setUp(source.logData.dtOdds.get(1),source.logData.maxBet01,this);
+        tieStack.setUp(source.logData.dtOdds.get(3),source.logData.maxBet03,this);
+        playerPairStack.setUp(source.logData.dtOdds.get(5),source.logData.maxBet04,this);
+        bankerPairStack.setUp(source.logData.dtOdds.get(4),source.logData.maxBet04,this);
         cardArea.setUp(table.pokers);
 
         if(table.stage == 1){
