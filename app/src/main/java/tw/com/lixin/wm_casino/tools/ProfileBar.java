@@ -39,8 +39,12 @@ public class ProfileBar extends ConstraintLayout implements View.OnClickListener
         settingBtn.setOnClickListener(this);
     }
 
-    public void setTitile(String txt){
+    public void setTitle(String txt){
         title.setText(txt);
+    }
+
+    public String getTitle(){
+        return title.getText().toString().trim();
     }
 
     @SuppressLint("SetTextI18n")

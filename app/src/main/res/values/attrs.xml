@@ -6,6 +6,10 @@
     <attr name="grid_y" format="integer" />
     <attr name="grid_x" format="integer" />
 
+    <declare-styleable name="CasinoArea">
+
+    </declare-styleable>
+
     <declare-styleable name="CasinoGrid">
         <attr name="grid_y" />
         <attr name="grid_x" />

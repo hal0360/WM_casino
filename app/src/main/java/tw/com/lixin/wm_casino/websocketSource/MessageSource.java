@@ -4,6 +4,7 @@ import tw.com.atromoby.utils.Json;
 import tw.com.lixin.wm_casino.dataModels.Client11;
 import tw.com.lixin.wm_casino.dataModels.MessageData;
 import tw.com.lixin.wm_casino.global.User;
+import tw.com.lixin.wm_casino.interfaces.CmdStr;
 import tw.com.lixin.wm_casino.tools.MessageArea;
 
 public class MessageSource extends CasinoSource{
@@ -16,6 +17,7 @@ public class MessageSource extends CasinoSource{
     }
 
     private MessageArea area;
+    private CmdStr cmdConFail;
 
     public void bind(MessageArea bridge){
         area = bridge;
@@ -31,13 +33,13 @@ public class MessageSource extends CasinoSource{
         return area;
     }
 
-    public final void mssLogin(int gameid, int groupid){
+    public final void mssLogin(int gameid, int groupid, CmdStr logFail){
         defineURL("ws://gameserver.a45.me:15801");
 
         login(User.sid(),data->{
             Client11 client = new Client11(gameid, groupid);
             send(Json.to(client));
-        }, fail-> handle(() -> area.failedToConnect()));
+        }, fail-> cmdConFail.exec(fail));
     }
 
     @Override

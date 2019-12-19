@@ -59,7 +59,6 @@ public class BacTable extends Table{
         bankerScore = data.bankerScore;
     }
 
-
     private void divide(int rawVal){
         List<Integer> powers = new ArrayList<>();
         for(int i = 10; i >= 0; i-- ){
