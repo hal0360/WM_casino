@@ -20,7 +20,7 @@ public class MessageArea extends CollectionsView {
     public void login(int gameID, int groupID){
         source = MessageSource.getInstance();
         source.bind(this);
-        source.mssLogin(gameID, groupID);
+       // source.mssLogin(gameID, groupID);
     }
 
     public void logout(){

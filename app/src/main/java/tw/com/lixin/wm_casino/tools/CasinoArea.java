@@ -12,6 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import tw.com.atromoby.widgets.CollectionsView;
 import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.App;
+import tw.com.lixin.wm_casino.CasinoActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
@@ -20,6 +21,7 @@ import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.Chip;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.popups.LimitPopup;
+import tw.com.lixin.wm_casino.popups.NumberPadDialog;
 import tw.com.lixin.wm_casino.popups.ProfilePopup;
 import tw.com.lixin.wm_casino.tools.buttons.ClickText;
 import tw.com.lixin.wm_casino.tools.chips.ChipView;
@@ -28,26 +30,30 @@ import tw.com.lixin.wm_casino.websocketSource.GameSource;
 public class CasinoArea extends ConstraintLayout implements View.OnClickListener{
 
     private ProfileBar bar;
-    private LimitPopup popup;
-    private TextView gyuShu, countdown, member;
+    private TextView gyuShu, countdown, member, cusChipTxt;
     private ImageView dealImg;
     private GameSource source;
     private Table table;
     private ChipView selectedChip;
     private CollectionsView mssList;
+    private ConstraintLayout cusChip;
+
+    public CasinoArea(Context context) {super(context);}
 
     public CasinoArea(Context context, AttributeSet attrs) {
         super(context, attrs);
         View.inflate(context, R.layout.casino_area, this);
 
-        source = GameSource.getInstance();
-        table = source.table;
+       // source = GameSource.getInstance();
+       // table = source.table;
 
         member = findViewById(R.id.member);
         bar = findViewById(R.id.profile);
         countdown = findViewById(R.id.count_txt);
         dealImg = findViewById(R.id.dealer_img);
         mssList = findViewById(R.id.mss_list);
+        cusChip = findViewById(R.id.custom_chip);
+        cusChipTxt = findViewById(R.id.custom_num_txt);
 
         findViewById(R.id.chip1).setOnClickListener(this);
         findViewById(R.id.chip5).setOnClickListener(this);
@@ -65,19 +71,30 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
 
         TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.CasinoArea);
 
-
         a.recycle();
 
         gyuShu = findViewById(R.id.gyu_shu);
         ClickText limitBtn = findViewById(R.id.limit_btn);
         limitBtn.clicked(v->{
-            popup = new LimitPopup();
+            LimitPopup popup = new LimitPopup();
+          //  activity.showPopup(popup);
+        });
+
+        cusChip.setOnClickListener(v->{
+            cusChipTxt.setText("");
+            NumberPadDialog popup = new NumberPadDialog();
             RootActivity activity = (RootActivity) getContext();
             activity.showPopup(popup);
         });
 
-        post(this::soourceUp);
+     //   post(this::soourceUp);
 
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void setCusChip(int val){
+        String cusStr = cusChipTxt.getText().toString();
+        cusChipTxt.setText(cusStr + val);
     }
 
     @SuppressLint("SetTextI18n")
@@ -106,6 +123,9 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
+
+
+
         selectedChip.turnOff();
         selectedChip = (ChipView) v;
         selectedChip.turnOn();

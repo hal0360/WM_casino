@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<merge
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="360dp"
-    android:layout_height="500dp">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="SpUsage,HardcodedText,ContentDescription"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <tw.com.lixin.wm_casino.tools.ProfileBar
         android:id="@+id/profile"
@@ -22,7 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile">
 
-        <ImageView
+        <tw.com.lixin.wm_casino.tools.buttons.ClickImage
             android:id="@+id/mss_btn"
             android:layout_width="38dp"
             android:layout_height="38dp"
@@ -34,7 +34,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
+        <tw.com.lixin.wm_casino.tools.buttons.ClickImage
             android:id="@+id/signal_btn"
             android:layout_width="38dp"
             android:layout_height="38dp"
@@ -45,7 +45,7 @@
             app:layout_constraintEnd_toEndOf="@+id/mss_btn"
             app:layout_constraintTop_toBottomOf="@+id/mss_btn" />
 
-        <ImageView
+        <tw.com.lixin.wm_casino.tools.buttons.ClickImage
             android:id="@+id/change_btn"
             android:layout_width="38dp"
             android:layout_height="38dp"
@@ -56,7 +56,7 @@
             app:layout_constraintEnd_toEndOf="@+id/signal_btn"
             app:layout_constraintTop_toBottomOf="@+id/signal_btn" />
 
-        <ImageView
+        <tw.com.lixin.wm_casino.tools.buttons.ClickImage
             android:id="@+id/people_btn"
             android:layout_width="38dp"
             android:layout_height="38dp"
@@ -71,12 +71,12 @@
             android:id="@+id/ppl_num_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="2dp"
+            android:layout_marginEnd="1dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/light_blue_ball"
             android:gravity="center"
-            android:paddingStart="3dp"
-            android:paddingEnd="3dp"
+            android:paddingStart="2dp"
+            android:paddingEnd="2dp"
             android:text="@string/zero"
             android:textColor="#fff"
             android:textSize="10dp"
@@ -87,12 +87,12 @@
             android:id="@+id/signal_num_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="2dp"
+            android:layout_marginEnd="1dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/green_ball"
             android:gravity="center"
-            android:paddingStart="3dp"
-            android:paddingEnd="3dp"
+            android:paddingStart="2dp"
+            android:paddingEnd="2dp"
             android:text="@string/zero"
             android:textColor="#fff"
             android:textSize="10dp"
@@ -222,15 +222,14 @@
             android:layout_width="85dp"
             android:layout_height="0dp"
             android:layout_marginTop="2dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="2dp"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout6"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
-        android:id="@+id/view10"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#34754D"
@@ -238,7 +237,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/video" />
-
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"
@@ -360,7 +358,7 @@
         android:layout_width="70dp"
         android:layout_height="25dp"
         android:textSize="11dp"
-        app:control_type="confirm"
+        android:text="@string/confirm"
         app:layout_constraintBottom_toTopOf="@+id/view9"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -368,6 +366,7 @@
         android:id="@+id/cancel_btn"
         android:layout_width="70dp"
         android:textSize="11dp"
+        android:text="@string/cancel"
         android:layout_height="25dp"
         android:layout_marginEnd="2dp"
         app:layout_constraintBottom_toBottomOf="@+id/confirm_btn"
@@ -403,10 +402,10 @@
         android:layout_width="70dp"
         android:layout_height="0dp"
         android:layout_marginEnd="2dp"
-        app:control_type="rebet"
+        android:text="@string/re_bet"
         android:textSize="11dp"
         app:layout_constraintBottom_toTopOf="@+id/view9"
         app:layout_constraintEnd_toStartOf="@+id/cancel_btn"
         app:layout_constraintTop_toTopOf="@+id/cancel_btn" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</merge>

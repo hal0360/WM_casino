@@ -170,7 +170,6 @@
             android:layout_width="70dp"
             android:layout_height="25dp"
             android:textSize="11dp"
-            app:control_type="confirm"
             app:layout_constraintBottom_toTopOf="@+id/view9"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -222,7 +221,6 @@
             android:layout_width="70dp"
             android:layout_height="0dp"
             android:layout_marginEnd="2dp"
-            app:control_type="rebet"
             android:textSize="11dp"
             app:layout_constraintBottom_toTopOf="@+id/view9"
             app:layout_constraintEnd_toStartOf="@+id/cancel_btn"

@@ -31,7 +31,7 @@ public class GameActivity extends RootActivity {
 
 
         if(source.curGameID == 101){
-            bar.setTitile(getString(R.string.wmbaccarat));
+            bar.setTitle(getString(R.string.wmbaccarat));
             SparseArray<Table> tables = source.allTables.get(101);
             for(int i = 0; i < tables.size(); i++) {
                 Table table = tables.valueAt(i);

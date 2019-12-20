@@ -1,11 +1,11 @@
 package tw.com.lixin.wm_casino.tools.buttons;
 
 import android.content.Context;
-import android.content.res.TypedArray;
-import androidx.appcompat.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
+
+import androidx.appcompat.widget.AppCompatTextView;
 import tw.com.atromoby.widgets.CmdView;
 import tw.com.lixin.wm_casino.App;
 import tw.com.lixin.wm_casino.R;
@@ -17,21 +17,11 @@ public class ControlButton extends AppCompatTextView implements View.OnClickList
 
     public ControlButton(Context context, AttributeSet attrs) {
         super(context, attrs);
-        TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.ControlButton);
-        int type = a.getInt(R.styleable.ControlButton_control_type, 3);
 
         setBackgroundResource(R.drawable.controll_off);
         setGravity(Gravity.CENTER);
         setTextColor(0xffffffff);
 
-        if(type == 1){
-            setText(R.string.re_bet);
-        }else if(type ==2){
-            setText(R.string.confirm);
-        }else{
-            setText(R.string.cancel);
-        }
-        a.recycle();
         setOnClickListener(this);
     }
 
