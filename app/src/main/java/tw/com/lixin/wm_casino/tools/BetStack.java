@@ -18,6 +18,7 @@ import java.util.List;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import tw.com.atromoby.widgets.CmdView;
 import tw.com.lixin.wm_casino.App;
+import tw.com.lixin.wm_casino.CasinoActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.interfaces.StackCallBridge;
 import tw.com.lixin.wm_casino.models.Chip;
@@ -40,6 +41,7 @@ public class BetStack extends ConstraintLayout implements Animation.AnimationLis
 
         View.inflate(context, R.layout.bet_stack, this);
         setOnClickListener(this);
+
         coin1 = findViewById(R.id.coin1);
         coin2 = findViewById(R.id.coin2);
         coin3 = findViewById(R.id.coin3);
@@ -57,6 +59,11 @@ public class BetStack extends ConstraintLayout implements Animation.AnimationLis
         animeDwn.setAnimationListener(this);
         animeUp = AnimationUtils.loadAnimation(context, R.anim.coin_anime_up);
 
+
+        post(()->{
+            CasinoActivity activity = (CasinoActivity)context;
+            activity.getArea().addToStack(this);
+        });
 
     }
 

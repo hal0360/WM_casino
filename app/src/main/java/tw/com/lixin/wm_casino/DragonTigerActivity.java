@@ -165,10 +165,11 @@ public class DragonTigerActivity extends RootActivity implements GameBridge, Tab
             alert("Please wait!!");
             return;
         }
+        /*
         if(stack.add(Chip.curChip)){
             betBtn.disable(false);
             cancelBtn.disable(false);
-        }else{ alert("max value exceeded"); }
+        }else{ alert("max value exceeded"); }*/
     }
 
     @Override

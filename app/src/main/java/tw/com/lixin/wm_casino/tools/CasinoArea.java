@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import androidx.constraintlayout.widget.ConstraintLayout;
 import tw.com.atromoby.widgets.CollectionsView;
 import tw.com.atromoby.widgets.RootActivity;
@@ -37,9 +40,15 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
     private ChipView selectedChip;
     private CollectionsView mssList;
     private ConstraintLayout cusChip;
+    private CasinoActivity activity;
+
+    private static Chip curChip;
+
+    private List<BetStack> stacks;
 
     public CasinoArea(Context context) {super(context);}
 
+    @SuppressLint("SetTextI18n")
     public CasinoArea(Context context, AttributeSet attrs) {
         super(context, attrs);
         View.inflate(context, R.layout.casino_area, this);
@@ -47,6 +56,7 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
        // source = GameSource.getInstance();
        // table = source.table;
 
+        stacks = new ArrayList<>();
         member = findViewById(R.id.member);
         bar = findViewById(R.id.profile);
         countdown = findViewById(R.id.count_txt);
@@ -59,15 +69,26 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
         findViewById(R.id.chip5).setOnClickListener(this);
         findViewById(R.id.chip50).setOnClickListener(this);
         findViewById(R.id.chip100).setOnClickListener(this);
+        findViewById(R.id.chip10).setOnClickListener(this);
         findViewById(R.id.chip20).setOnClickListener(this);
         findViewById(R.id.chip500).setOnClickListener(this);
         findViewById(R.id.chip1000).setOnClickListener(this);
         findViewById(R.id.chip5000).setOnClickListener(this);
         findViewById(R.id.chip10000).setOnClickListener(this);
-        selectedChip = findViewById(R.id.chip10);
-        selectedChip.setOnClickListener(this);
-        selectedChip.turnOn();
-        Chip.curChip = selectedChip.getChip();
+        if(curChip != null){
+            if(curChip.resId == -99) {
+                selectedChip = findViewById(R.id.chip10);
+                cusChipTxt.setText(curChip.value+"");
+            }else {
+                selectedChip = findViewById(curChip.resId);
+                selectedChip.turnOn();
+            }
+        }else {
+            selectedChip = findViewById(R.id.chip10);
+            selectedChip.turnOn();
+            curChip = selectedChip.getChip();
+        }
+
 
         TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.CasinoArea);
 
@@ -81,24 +102,44 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
         });
 
         cusChip.setOnClickListener(v->{
-            cusChipTxt.setText("");
-            NumberPadDialog popup = new NumberPadDialog();
-            RootActivity activity = (RootActivity) getContext();
-            activity.showPopup(popup);
+            selectedChip.turnOff();
+            curChip = new Chip(10, R.drawable.chipcustom,-99);
+            cusChipTxt.setText(10+"");
+            activity.showPopup(new NumberPadDialog());
         });
 
-     //   post(this::soourceUp);
+        post(this::soourceUp);
 
+    }
+
+    public void addToStack(BetStack stack){
+        stacks.add(stack);
     }
 
     @SuppressLint("SetTextI18n")
     public void setCusChip(int val){
         String cusStr = cusChipTxt.getText().toString();
-        cusChipTxt.setText(cusStr + val);
+        cusStr = cusStr + val;
+        curChip.value = Integer.parseInt(cusStr);
+        cusChipTxt.setText(cusStr);
+    }
+
+    public void setCusBack(){
+        String cusStr = cusChipTxt.getText().toString();
+        cusStr = cusStr.substring(0, cusStr.length() - 1);
+        if (cusStr.equals("")) {
+            curChip.value = 1;
+            cusChipTxt.setText("1");
+        }
+        curChip.value = Integer.parseInt(cusStr);
+        cusChipTxt.setText(cusStr);
     }
 
     @SuppressLint("SetTextI18n")
     private void soourceUp(){
+
+        activity = (CasinoActivity) getContext();
+        /*
         bar.setTitle(bar.getTitle() + table.groupID);
         member.setText(User.userName());
         bar.updateBalance();
@@ -112,7 +153,7 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
         });
         table.onSecond(sec-> countdown.setText(sec+""));
         table.onTable(()-> gyuShu.setText(table.number + "/" + table.round));
-
+*/
     }
 
 
@@ -123,12 +164,9 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-
-
-
         selectedChip.turnOff();
         selectedChip = (ChipView) v;
         selectedChip.turnOn();
-        Chip.curChip = selectedChip.getChip();
+        curChip = selectedChip.getChip();
     }
 }

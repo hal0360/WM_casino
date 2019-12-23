@@ -47,7 +47,7 @@ init();
         selectedChip = findViewById(R.id.chip10);
         selectedChip.setOnClickListener(this);
         selectedChip.turnOn();
-        Chip.curChip = selectedChip.getChip();
+      //  Chip.curChip = selectedChip.getChip();
         //chipViews.add(findViewById(R.id.chip1));
     }
 
@@ -60,6 +60,6 @@ init();
         selectedChip.turnOff();
         selectedChip = (ChipView) v;
         selectedChip.turnOn();
-        Chip.curChip = selectedChip.getChip();
+       // Chip.curChip = selectedChip.getChip();
     }
 }

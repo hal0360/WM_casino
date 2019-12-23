@@ -12,7 +12,16 @@
         android:layout_height="500dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <tw.com.lixin.wm_casino.tools.BetStack
+            android:layout_width="114dp"
+            android:layout_height="122dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </tw.com.lixin.wm_casino.tools.CasinoArea>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout22"

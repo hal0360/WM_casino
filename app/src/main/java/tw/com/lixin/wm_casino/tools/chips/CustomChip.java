@@ -25,7 +25,7 @@ public class CustomChip extends ConstraintLayout {
         View.inflate(context, R.layout.coustom_chip, this);
         this.context = context;
         numTxt = findViewById(R.id.num_txt);
-        chip = new Chip(1, R.drawable.chipcustom);
+       // chip = new Chip(1, R.drawable.chipcustom);
         setBackgroundResource(R.drawable.chip_custom);
 
     }
@@ -39,7 +39,7 @@ public class CustomChip extends ConstraintLayout {
         int tSiaze = a.getInt(R.styleable.CustomChip_number_size, 8);
         numTxt.setTextSize(TypedValue.COMPLEX_UNIT_DIP,tSiaze);
         a.recycle();
-        chip = new Chip(1, R.drawable.chipcustom);
+        //chip = new Chip(1, R.drawable.chipcustom);
         setBackgroundResource(R.drawable.chip_custom);
 
     }

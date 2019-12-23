@@ -24,7 +24,7 @@ public class ChipView extends androidx.appcompat.widget.AppCompatImageView{
         imageOn = imgOn;
         imageOff = imgOff;
         setImageResource(imgOff);
-        chip = new Chip(val, imgOff);
+        chip = new Chip(val, imgOff, getId());
     }
 
     public Chip getChip(){
