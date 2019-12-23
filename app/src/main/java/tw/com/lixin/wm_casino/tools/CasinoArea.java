@@ -97,8 +97,12 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
         gyuShu = findViewById(R.id.gyu_shu);
         ClickText limitBtn = findViewById(R.id.limit_btn);
         limitBtn.clicked(v->{
-            LimitPopup popup = new LimitPopup();
+         //   LimitPopup popup = new LimitPopup();
           //  activity.showPopup(popup);
+
+            for(BetStack stack: stacks){
+                stack.clearCoin();
+            }
         });
 
         cusChip.setOnClickListener(v->{

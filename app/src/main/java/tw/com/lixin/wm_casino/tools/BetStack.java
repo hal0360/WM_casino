@@ -83,7 +83,7 @@ public class BetStack extends ConstraintLayout implements Animation.AnimationLis
     }
 
     public void clearCoin(){
-        data.clear();
+       // data.clear();
         reset();
     }
 
@@ -116,7 +116,7 @@ public class BetStack extends ConstraintLayout implements Animation.AnimationLis
     @SuppressLint("SetTextI18n")
     private void reset(){
         hit = 0;
-        valTxt.setText(data.value + "");
+//        valTxt.setText(data.value + "");
         coin1.setVisibility(View.INVISIBLE);
         coin2.setVisibility(View.INVISIBLE);
         coin3.setVisibility(View.INVISIBLE);
