@@ -3,12 +3,9 @@ package tw.com.lixin.wm_casino.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import tw.com.lixin.wm_casino.dataModels.Client22;
-
 public class ChipStackData {
     public int value = 0;
     public int maxValue = 999;
-    public String score;
 
     public List<Chip> addedCoin = new ArrayList<>();
     public List<Chip> tempAddedCoin = new ArrayList<>();
@@ -19,24 +16,11 @@ public class ChipStackData {
         tempAddedCoin = new ArrayList<>();
     }
 
-    public void addCoinToClient(Client22 client22, int area){
-        for(Chip coin: tempAddedCoin){
-            client22.addBet(area,coin.value);
-        }
-    }
-
     public void comfirmBet(){
         addedCoin.addAll(tempAddedCoin);
         tempAddedCoin = new ArrayList<>();
     }
 
-    public boolean isTempEmpty(){
-        return tempAddedCoin.size() == 0;
-    }
-
-    public boolean isAddEmpty(){
-        return addedCoin.size() == 0;
-    }
 
     public boolean add(Chip coin){
         value = value + coin.value;

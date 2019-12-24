@@ -10,8 +10,8 @@ import tw.com.lixin.wm_casino.models.ChipStackData;
 
 public class App extends RegisterApplication {
 
-    public static MediaPlayer player, click, bet, control;
-    public static boolean musicOn, effectOn;
+    private static MediaPlayer player, click, bet, control;
+    private static boolean musicOn, effectOn;
 
 
     @Override

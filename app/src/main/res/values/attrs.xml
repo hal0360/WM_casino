@@ -6,10 +6,6 @@
     <attr name="grid_y" format="integer" />
     <attr name="grid_x" format="integer" />
 
-    <declare-styleable name="CasinoArea">
-
-    </declare-styleable>
-
     <declare-styleable name="CasinoGrid">
         <attr name="grid_y" />
         <attr name="grid_x" />
@@ -32,6 +28,7 @@
         <attr name="show_balance" format="boolean" />
     </declare-styleable>
 
+    <!--
     <declare-styleable name="ChipStack">
         <attr name="title_color" format="color" />
         <attr name="title" />
@@ -39,6 +36,7 @@
         <attr name="normal_color" format="color" />
         <attr name="border_color" format="color" />
     </declare-styleable>
+    -->
 
     <declare-styleable name="CustomChip">
         <attr name="number_size" format="integer" />

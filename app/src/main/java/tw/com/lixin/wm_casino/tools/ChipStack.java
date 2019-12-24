@@ -2,7 +2,6 @@ package tw.com.lixin.wm_casino.tools;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -15,9 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import tw.com.atromoby.utils.Kit;
+import tw.com.lixin.wm_casino.App;
+import tw.com.lixin.wm_casino.CasinoActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.dataModels.Client22;
-import tw.com.lixin.wm_casino.interfaces.StackCallBridge;
 import tw.com.lixin.wm_casino.models.Chip;
 import tw.com.lixin.wm_casino.models.ChipStackData;
 import tw.com.lixin.wm_casino.models.Table;
@@ -27,19 +28,17 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
 
     private ImageView coin1, coin2, coin3, coin4, coin5;
     private Animation animeDwn, animeUp;
-    private int hit = 0;
+    private int hit = 0, area;
     private List<Integer> ids = new ArrayList<>();
     private TextView valTxt;
-    private TextView dtOdds;
     public ChipStackData data;
-    private int betColor, normalColor;
     private GradientDrawable shape;
-    private StackCallBridge bridge;
+    private GameSource source;
 
     public ChipStack(Context context, AttributeSet attrs) {
         super(context, attrs);
-
         View.inflate(context, R.layout.chip_stack, this);
+
         setOnClickListener(this);
         coin1 = findViewById(R.id.coin1);
         coin2 = findViewById(R.id.coin2);
@@ -47,26 +46,25 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         coin4 = findViewById(R.id.coin4);
         coin5 = findViewById(R.id.coin5);
         valTxt = findViewById(R.id.bet_value);
-        TextView title = findViewById(R.id.table_title);
-        dtOdds = findViewById(R.id.dtOdds);
-        TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.ChipStack);
-        title.setTextColor(a.getColor(R.styleable.ChipStack_title_color, 0xFFFFFFFF));
 
-        title.setText(a.getString(R.styleable.ChipStack_title));
-        betColor = a.getColor(R.styleable.ChipStack_bet_color, 0xFFA9DB8D);
-        normalColor = a.getColor(R.styleable.ChipStack_normal_color, 0xFF369762);
+        //TextView title = findViewById(R.id.table_title);
+        //dtOdds = findViewById(R.id.dtOdds);
+        //TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.ChipStack);
+        //title.setTextColor(a.getColor(R.styleable.ChipStack_title_color, 0xFFFFFFFF));
+        //title.setText(a.getString(R.styleable.ChipStack_title));
+        //betColor = a.getColor(R.styleable.ChipStack_bet_color, 0xFFA9DB8D);
+        //normalColor = a.getColor(R.styleable.ChipStack_normal_color, 0xFF369762);
         shape = new GradientDrawable();
-        shape.setColor(normalColor);
-        shape.setStroke(2, a.getColor(R.styleable.ChipStack_border_color, 0xFF4AC283));
-        shape.setCornerRadius(7);
+        shape.setColor(0xFF369762);
+        shape.setStroke(2, 0xFF4AC283);
+        shape.setCornerRadius(8);
         setBackground(shape);
-        a.recycle();
+       // a.recycle();
         animeDwn = AnimationUtils.loadAnimation(context, R.anim.coin_anime_down);
         animeDwn.setAnimationListener(this);
         animeUp = AnimationUtils.loadAnimation(context, R.anim.coin_anime_up);
 
-
-        GameSource source = GameSource.getInstance();
+        source = GameSource.getInstance();
         int thisID = getId();
         data = source.chipDatas.get(thisID);
         if(data != null){
@@ -79,12 +77,18 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         }else{
             if(thisID != NO_ID) source.chipDatas.put(getId(),new ChipStackData());
         }
+
+        post(()->{
+            CasinoActivity activity = (CasinoActivity)context;
+            activity.getArea().addToStack(this);
+        });
     }
 
     public void addCoinToClient(Client22 client22, int area){
-        data.addCoinToClient(client22,area);
+        for(Chip coin: data.tempAddedCoin){
+            client22.addBet(area,coin.value);
+        }
     }
-
 
     public void cancelBet(){
         data.cancelBet();
@@ -107,18 +111,16 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     }
 
     @SuppressLint("SetTextI18n")
-    public void setUp(String dtOdd, int maxVal, StackCallBridge bridge){
-        data.score = dtOdd;
+    public void setUp(int area, int maxVal){
+        this.area = area;
         data.maxValue = maxVal;
-        dtOdds.setText("1:"+dtOdd);
         for(Chip coin: data.addedCoin) noAnimeAdd(coin);
         for(Chip coin: data.tempAddedCoin) noAnimeAdd(coin);
-        if(!data.isAddEmpty() || !data.isTempEmpty()){
-            shape.setColor(betColor);
+        if(data.addedCoin.size() > 0 || data.tempAddedCoin.size() > 0){
+            shape.setColor(0xFFA9DB8D);
             valTxt.setVisibility(View.VISIBLE);
             valTxt.setText(data.value + "");
         }
-        this.bridge = bridge;
     }
 
     @SuppressLint("SetTextI18n")
@@ -126,8 +128,8 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         reset();
         for(Chip coin: data.addedCoin) noAnimeAdd(coin);
         for(Chip coin: data.tempAddedCoin) noAnimeAdd(coin);
-        if(!data.isAddEmpty() || !data.isTempEmpty()){
-            shape.setColor(betColor);
+        if(data.addedCoin.size() > 0 || data.tempAddedCoin.size() > 0){
+            shape.setColor(0xFFA9DB8D);
             valTxt.setVisibility(View.VISIBLE);
             valTxt.setText(data.value + "");
         }
@@ -143,7 +145,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         coin4.setVisibility(View.INVISIBLE);
         coin5.setVisibility(View.INVISIBLE);
         valTxt.setVisibility(View.INVISIBLE);
-        shape.setColor(normalColor);
+        shape.setColor(0xFF369762);
         ids = new ArrayList<>();
     }
 
@@ -178,12 +180,15 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     }
 
     @SuppressLint("SetTextI18n")
-    public boolean add(Chip coin){
-        if(!data.add(coin)) return false;
+    public void add(Chip coin){
+        if(source.table.stage != 1) {
+            Kit.alert(getContext(),"Please wait!!");
+            return;
+        }
+        if(!data.add(coin)) return;
+        App.betting();
         valTxt.setVisibility(View.VISIBLE);
-
-        shape.setColor(betColor);
-
+        shape.setColor(0xFFA9DB8D);
         valTxt.setText(data.value + "");
         ids.add(coin.image);
         if(hit == 0){
@@ -213,7 +218,6 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
             coin1.startAnimation(animeDwn);
         }
         hit++;
-        return true;
     }
 
     @Override
@@ -231,6 +235,6 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
 
     @Override
     public void onClick(View v) {
-        if(bridge != null ) bridge.stackBet(this);
+        add(CasinoArea.curChip);
     }
 }

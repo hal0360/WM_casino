@@ -26,6 +26,7 @@ import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.popups.LimitPopup;
 import tw.com.lixin.wm_casino.popups.NumberPadDialog;
 import tw.com.lixin.wm_casino.popups.ProfilePopup;
+import tw.com.lixin.wm_casino.tools.buttons.ClickImage;
 import tw.com.lixin.wm_casino.tools.buttons.ClickText;
 import tw.com.lixin.wm_casino.tools.chips.ChipView;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
@@ -42,9 +43,9 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
     private ConstraintLayout cusChip;
     private CasinoActivity activity;
 
-    private static Chip curChip;
+    public static Chip curChip;
 
-    private List<BetStack> stacks;
+    private List<ChipStack> stacks;
 
     public CasinoArea(Context context) {super(context);}
 
@@ -52,9 +53,6 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
     public CasinoArea(Context context, AttributeSet attrs) {
         super(context, attrs);
         View.inflate(context, R.layout.casino_area, this);
-
-       // source = GameSource.getInstance();
-       // table = source.table;
 
         stacks = new ArrayList<>();
         member = findViewById(R.id.member);
@@ -64,6 +62,7 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
         mssList = findViewById(R.id.mss_list);
         cusChip = findViewById(R.id.custom_chip);
         cusChipTxt = findViewById(R.id.custom_num_txt);
+        gyuShu = findViewById(R.id.gyu_shu);
 
         findViewById(R.id.chip1).setOnClickListener(this);
         findViewById(R.id.chip5).setOnClickListener(this);
@@ -89,23 +88,17 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
             curChip = selectedChip.getChip();
         }
 
-
-        TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.CasinoArea);
-
-        a.recycle();
-
-        gyuShu = findViewById(R.id.gyu_shu);
         ClickText limitBtn = findViewById(R.id.limit_btn);
         limitBtn.clicked(v->{
          //   LimitPopup popup = new LimitPopup();
           //  activity.showPopup(popup);
 
-            for(BetStack stack: stacks){
-                stack.clearCoin();
-            }
         });
 
+        //ClickImage mssBtn = findViewById(R.id)
+
         cusChip.setOnClickListener(v->{
+            App.betting();
             selectedChip.turnOff();
             curChip = new Chip(10, R.drawable.chipcustom,-99);
             cusChipTxt.setText(10+"");
@@ -116,7 +109,7 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
 
     }
 
-    public void addToStack(BetStack stack){
+    public void addToStack(ChipStack stack){
         stacks.add(stack);
     }
 
@@ -168,6 +161,7 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
+        App.betting();
         selectedChip.turnOff();
         selectedChip = (ChipView) v;
         selectedChip.turnOn();
