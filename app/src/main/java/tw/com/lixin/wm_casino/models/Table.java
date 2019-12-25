@@ -40,12 +40,7 @@ public abstract class Table {
     public int groupType;
     public int dealerID;
     public int result = -99;
-    public static int curStage;
     public SparseIntArray pokers = new SparseIntArray();
-
-    private Cmd cmdGrid, cmdResult, cmdTable;
-    private CmdCard cmdPoker;
-    private CmdInt cmdSec, cmdStage, cmdAreaStage;
 
     public Table(Group group){
 
@@ -68,14 +63,6 @@ public abstract class Table {
             Log.e(dealerName + " BitError", e.getMessage());
         }
     }
-
-    public void onStage(CmdInt cmd){ cmdStage = cmd; }
-    public void onAreaStage(CmdInt cmd){ cmdAreaStage = cmd; }
-    public void onGrid(Cmd cmd){ cmdGrid = cmd; }
-    public void onResult(Cmd cmd){ cmdResult = cmd; }
-    public void onTable(Cmd cmd){ cmdTable = cmd; }
-    public void onCard(CmdCard cmd){ cmdPoker = cmd; }
-    public void onSecond(CmdInt cmd){ cmdSec = cmd; }
 
     public void bind(TableBridge bridge){
         this.bridge = bridge;
@@ -120,18 +107,12 @@ public abstract class Table {
         }
         this.stage = stage;
 
-        if(cmdAreaStage != null) cmdAreaStage.exec(stage);
-        if(cmdStage != null) cmdStage.exec(stage);
-
-        if(isBinded) curStage = stage;
         handle(() -> bridge.stageUpdate());
         if(stage == 4) unBind();
     }
 
     public void receive24(int area, int id) {
         pokers.put(area,id);
-
-        if(cmdPoker != null) cmdPoker.exec(area, id);
 
         handle(() -> bridge.cardUpdate(area, id));
     }
@@ -141,13 +122,11 @@ public abstract class Table {
         number = data.gameNo;
         groupType = data.groupType;
 
-        if(cmdTable != null) cmdTable.exec();
+        handle(() -> bridge.tableUpdate());
     }
 
     public void receive26(TableData.Data data) {
         historyUpdate(data);
-
-        if(cmdGrid != null) cmdGrid.exec();
 
         handle(() -> bridge.gridUpdate());
     }
@@ -162,8 +141,6 @@ public abstract class Table {
             public void run() {
                 if(curTime > 0) curTime--;
 
-                if(cmdSec != null) cmdSec.exec(curTime);
-
                 handle(() -> bridge.betCountdown(curTime));
             }
         }, 0, 1000);
@@ -172,8 +149,6 @@ public abstract class Table {
     public void receive25(TableData.Data data) {
         result = data.result;
         resultUpdate(data);
-
-        if(cmdResult != null) cmdResult.exec();
 
         handle(() -> bridge.resultUpdate());
     }

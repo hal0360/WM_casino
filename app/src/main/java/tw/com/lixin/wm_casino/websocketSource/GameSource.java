@@ -5,6 +5,7 @@ import android.util.SparseArray;
 import java.util.ArrayList;
 import java.util.List;
 
+import tw.com.atromoby.utils.CmdInt;
 import tw.com.atromoby.utils.Json;
 import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.collections.PeopleCollection;
@@ -40,12 +41,8 @@ public class GameSource extends CasinoSource{
     public int peopleOnline;
     public List<PeopleCollection> peopleCollections;
 
-
     public SparseArray<ChipStackData> chipDatas;
     public TableLogData.Data logData;
-
-    private CmdBool cmdBet;
-    private CmdFloat cmdBal, cmdWin;
 
     public void bind(GameBridge bridge){
         this.bridge = bridge;
@@ -56,14 +53,6 @@ public class GameSource extends CasinoSource{
         this.bridge = null;
         this.popup = null;
         binded(false);
-    }
-
-    public void onBet(CmdBool cmd){
-        cmdBet = cmd;
-    }
-
-    public void onBalance(CmdFloat cmd){
-        cmdBal = cmd;
     }
 
     public void bindPeople(PeoplePopup popup){
@@ -110,26 +99,20 @@ public class GameSource extends CasinoSource{
                 }
                 break;
             case 22:
-                if(gameData.data.groupID == table.groupID && cmdBet != null) cmdBet.exec(gameData.data.bOk);
-
                 if(gameData.data.groupID == table.groupID) handle(() -> bridge.betUpdate(gameData.data.bOk));
                 break;
             case 23:
-                if(gameData.data.memberID == User.memberID() && cmdBal != null) cmdBal.exec(gameData.data.balance);
-
                 if(gameData.data.groupID == table.groupID && gameData.data.memberID == User.memberID()){
                     User.balance(gameData.data.balance);
+                    handle(() -> bridge.balanceUpdate());
                 }
                 break;
             case 31:
                 if(gameData.data.groupID == table.groupID && gameData.data.memberID == User.memberID()){
 
-                    if(cmdWin != null) cmdWin.exec(gameData.data.moneyWin);
+                    handle(() -> bridge.winLossUpdate(gameData.data.moneyWin));
 
-                    RootActivity activity = (RootActivity) bridge;
-                    WinLossPopup popup = new WinLossPopup();
-                    popup.setPay(gameData.data.moneyWin);
-                    activity.showPopup(new WinLossPopup());
+
                 }
                 break;
             case 28:

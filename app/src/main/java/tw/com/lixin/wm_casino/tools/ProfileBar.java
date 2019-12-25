@@ -35,7 +35,7 @@ public class ProfileBar extends ConstraintLayout implements View.OnClickListener
             balanceImg.setVisibility(VISIBLE);
         }
         a.recycle();
-        post(this::updateBalance);
+       // post(this::updateBalance);
         settingBtn.setOnClickListener(this);
     }
 

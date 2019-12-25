@@ -31,10 +31,10 @@
 
     <ImageView
         android:id="@+id/coin1"
-        android:layout_width="35dp"
-        android:layout_height="30dp"
+        android:layout_width="28dp"
+        android:layout_height="24dp"
         android:layout_marginBottom="3dp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,10 +42,10 @@
 
     <ImageView
         android:id="@+id/coin2"
-        android:layout_width="35dp"
-        android:layout_height="30dp"
-        android:layout_marginBottom="4dp"
-        android:visibility="invisible"
+        android:layout_width="28dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="3dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/coin1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,10 +53,10 @@
 
     <ImageView
         android:id="@+id/coin3"
-        android:layout_width="35dp"
-        android:layout_height="30dp"
-        android:layout_marginBottom="4dp"
-        android:visibility="invisible"
+        android:layout_width="28dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="3dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/coin2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,10 +64,10 @@
 
     <ImageView
         android:id="@+id/coin4"
-        android:layout_width="35dp"
-        android:layout_height="30dp"
-        android:layout_marginBottom="4dp"
-        android:visibility="invisible"
+        android:layout_width="28dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="3dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/coin3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,10 +75,10 @@
 
     <ImageView
         android:id="@+id/coin5"
-        android:layout_width="35dp"
-        android:layout_height="30dp"
-        android:layout_marginBottom="4dp"
-        android:visibility="invisible"
+        android:layout_width="28dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="3dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/coin4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,14 +86,17 @@
 
     <TextView
         android:id="@+id/bet_value"
-        android:layout_width="50dp"
-        android:layout_height="19dp"
-        android:layout_marginBottom="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:paddingRight="3dp"
+        android:paddingLeft="3dp"
         android:background="@drawable/table_stack_val_border"
         android:gravity="center"
         android:textColor="#fff"
-        android:textSize="11dp"
-        android:visibility="invisible"
+        android:text="33444"
+        android:textSize="10dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

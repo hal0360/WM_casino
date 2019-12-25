@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import tw.com.atromoby.rtmplayer.IjkVideoView;
 import tw.com.atromoby.widgets.CollectionsView;
 import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.App;
@@ -24,8 +25,11 @@ import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.Chip;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.popups.LimitPopup;
+import tw.com.lixin.wm_casino.popups.MessagePopup;
 import tw.com.lixin.wm_casino.popups.NumberPadDialog;
+import tw.com.lixin.wm_casino.popups.PeoplePopup;
 import tw.com.lixin.wm_casino.popups.ProfilePopup;
+import tw.com.lixin.wm_casino.popups.SignalPopup;
 import tw.com.lixin.wm_casino.tools.buttons.ClickImage;
 import tw.com.lixin.wm_casino.tools.buttons.ClickText;
 import tw.com.lixin.wm_casino.tools.chips.ChipView;
@@ -37,15 +41,15 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
     private TextView gyuShu, countdown, member, cusChipTxt;
     private ImageView dealImg;
     private GameSource source;
-    private Table table;
     private ChipView selectedChip;
     private CollectionsView mssList;
     private ConstraintLayout cusChip;
     private CasinoActivity activity;
+    private IjkVideoView video;
+    public static int curStage;
 
     public static Chip curChip;
 
-    private List<ChipStack> stacks;
 
     public CasinoArea(Context context) {super(context);}
 
@@ -54,7 +58,7 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
         super(context, attrs);
         View.inflate(context, R.layout.casino_area, this);
 
-        stacks = new ArrayList<>();
+        source = GameSource.getInstance();
         member = findViewById(R.id.member);
         bar = findViewById(R.id.profile);
         countdown = findViewById(R.id.count_txt);
@@ -63,6 +67,7 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
         cusChip = findViewById(R.id.custom_chip);
         cusChipTxt = findViewById(R.id.custom_num_txt);
         gyuShu = findViewById(R.id.gyu_shu);
+        video = findViewById(R.id.video);
 
         findViewById(R.id.chip1).setOnClickListener(this);
         findViewById(R.id.chip5).setOnClickListener(this);
@@ -89,13 +94,11 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
         }
 
         ClickText limitBtn = findViewById(R.id.limit_btn);
-        limitBtn.clicked(v->{
-         //   LimitPopup popup = new LimitPopup();
-          //  activity.showPopup(popup);
-
-        });
-
-        //ClickImage mssBtn = findViewById(R.id)
+        limitBtn.clicked(v-> activity.showPopup( new LimitPopup()));
+        ClickImage mssBtn = findViewById(R.id.mss_btn);
+        mssBtn.clicked(v-> activity.showPopup(new MessagePopup()));
+        ClickImage peopleBtn = findViewById(R.id.people_btn);
+        peopleBtn.clicked(v-> activity.showPopup(new PeoplePopup()));
 
         cusChip.setOnClickListener(v->{
             App.betting();
@@ -109,9 +112,40 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
 
     }
 
-    public void addToStack(ChipStack stack){
-        stacks.add(stack);
+    public void setMember(String mem){
+        member.setText(mem);
     }
+
+    public void dealing(){
+        dealImg.setVisibility(VISIBLE);
+    }
+
+    public void betting(){
+        dealImg.setVisibility(INVISIBLE);
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void setSecond(int sec){
+        countdown.setText(sec+"");
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void setGyuShu(int num, int round){
+        gyuShu.setText(num + "/" + round);
+    }
+
+    public void setVideo(int groupID){
+        video.setVideoPath("rtmp://wmvdo.nicejj.cn/live" + groupID + "/stream1");
+    }
+
+    public void playVideo(){
+        video.start();
+    }
+
+    public void stopVideo(){
+        video.stopPlayback();
+    }
+
 
     @SuppressLint("SetTextI18n")
     public void setCusChip(int val){
@@ -158,6 +192,10 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
         bar.setTitle(txt);
     }
 
+    @SuppressLint("SetTextI18n")
+    public void updateBalance() {
+        bar.updateBalance();
+    }
 
     @Override
     public void onClick(View v) {

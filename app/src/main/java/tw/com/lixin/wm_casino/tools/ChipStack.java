@@ -65,23 +65,19 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         animeUp = AnimationUtils.loadAnimation(context, R.anim.coin_anime_up);
 
         source = GameSource.getInstance();
-        int thisID = getId();
-        data = source.chipDatas.get(thisID);
+        data = source.chipDatas.get(getId());
         if(data != null){
-            if(Table.curStage == 1){
-                clearCoin();
+            if(source.table.stage == 1){
+                if(CasinoArea.curStage != 1) data.clear();
             }
-            if(Table.curStage == 2){
-                cancelBet();
+            if(source.table.stage == 2){
+                if(CasinoArea.curStage != 2) data.cancelBet();
             }
         }else{
-            if(thisID != NO_ID) source.chipDatas.put(getId(),new ChipStackData());
+            data = new ChipStackData();
+            source.chipDatas.put(getId(),data);
         }
-
-        post(()->{
-            CasinoActivity activity = (CasinoActivity)context;
-            activity.getArea().addToStack(this);
-        });
+        refresh();
     }
 
     public void addCoinToClient(Client22 client22, int area){
@@ -114,13 +110,6 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     public void setUp(int area, int maxVal){
         this.area = area;
         data.maxValue = maxVal;
-        for(Chip coin: data.addedCoin) noAnimeAdd(coin);
-        for(Chip coin: data.tempAddedCoin) noAnimeAdd(coin);
-        if(data.addedCoin.size() > 0 || data.tempAddedCoin.size() > 0){
-            shape.setColor(0xFFA9DB8D);
-            valTxt.setVisibility(View.VISIBLE);
-            valTxt.setText(data.value + "");
-        }
     }
 
     @SuppressLint("SetTextI18n")
