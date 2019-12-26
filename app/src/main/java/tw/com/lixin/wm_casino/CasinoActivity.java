@@ -1,17 +1,17 @@
 package tw.com.lixin.wm_casino;
 
 import android.os.Bundle;
-import android.util.SparseArray;
 import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import tw.com.atromoby.utils.Json;
 import tw.com.atromoby.widgets.RootActivity;
+import tw.com.lixin.wm_casino.dataModels.Client22;
 import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
-import tw.com.lixin.wm_casino.models.ChipStackData;
 import tw.com.lixin.wm_casino.popups.WinLossPopup;
 import tw.com.lixin.wm_casino.tools.CardArea;
 import tw.com.lixin.wm_casino.tools.CasinoArea;
@@ -23,6 +23,7 @@ public class CasinoActivity extends RootActivity implements TableBridge, GameBri
     protected CasinoArea casinoArea;
     protected CardArea cardArea;
     protected GameSource source;
+    public static int curStage;
 
     private List<ChipStack> stacks;
 
@@ -43,6 +44,11 @@ public class CasinoActivity extends RootActivity implements TableBridge, GameBri
 
     public void AddToArea(int stackId, int maxVal, int area){
         ChipStack stack = findViewById(stackId);
+        stack.setUp(area, maxVal);
+        stacks.add(stack);
+    }
+
+    public void AddToArea(ChipStack stack, int maxVal, int area){
         stack.setUp(area, maxVal);
         stacks.add(stack);
     }
@@ -71,6 +77,7 @@ public class CasinoActivity extends RootActivity implements TableBridge, GameBri
         }
         casinoArea.updateBalance();
         casinoArea.setMember(User.userName());
+        casinoArea.setPPLnum(source.pplOnline);
         gridUpdate();
     }
 
@@ -84,6 +91,8 @@ public class CasinoActivity extends RootActivity implements TableBridge, GameBri
 
     @Override
     public void stageUpdate() {
+        casinoArea.setPPLnum(source.pplOnline);
+        curStage = source.table.stage;
         if (source.table.stage == 1) {
             casinoArea.betting();
             cardArea.setVisibility(View.VISIBLE);
@@ -92,10 +101,9 @@ public class CasinoActivity extends RootActivity implements TableBridge, GameBri
             casinoArea.dealing();
             cardArea.setVisibility(View.VISIBLE);
             for (ChipStack stack: stacks) stack.cancelBet();
-
-            cancelBtn.disable(true);
-            rebetBtn.disable(true);
-            betBtn.disable(true);
+            casinoArea.cancelBtn.disable(true);
+            casinoArea.rebetBtn.disable(true);
+            casinoArea.confirmBtn.disable(true);
         } else if (source.table.stage == 4) {
 
         }
@@ -131,10 +139,9 @@ public class CasinoActivity extends RootActivity implements TableBridge, GameBri
         if(betOK){
             alert("bet succ!");
             for (ChipStack stack: stacks) stack.comfirmBet();
-
-            cancelBtn.disable(true);
-            rebetBtn.disable(false);
-            betBtn.disable(true);
+            casinoArea.cancelBtn.disable(true);
+            casinoArea.rebetBtn.disable(false);
+            casinoArea.confirmBtn.disable(true);
         }else{ alert("bet fail!"); }
     }
 
@@ -150,16 +157,29 @@ public class CasinoActivity extends RootActivity implements TableBridge, GameBri
         showPopup(new WinLossPopup());
     }
 
-
     public void confirm(){
-
+        Client22 client22 = new Client22();
+        for (ChipStack stack: stacks) stack.addCoinToClient(client22);
+        if (client22.data.betArr.size() > 0) { source.send(Json.to(client22)); }
+        else alert("You haven't put any money!");
+        casinoArea.confirmBtn.disable(false);
+        casinoArea.cancelBtn.disable(false);
     }
 
     public void cancel(){
-
+        for (ChipStack stack: stacks) stack.cancelBet();
+        casinoArea.confirmBtn.disable(true);
+        casinoArea.cancelBtn.disable(true);
     }
 
     public void rebet(){
+        for (ChipStack stack: stacks) stack.repeatBet();
+        casinoArea.confirmBtn.disable(false);
+        casinoArea.cancelBtn.disable(false);
+    }
 
+    public void stackBet() {
+        casinoArea.confirmBtn.disable(false);
+        casinoArea.cancelBtn.disable(false);
     }
 }

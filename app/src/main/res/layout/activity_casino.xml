@@ -40,8 +40,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="0.5dp"
+        android:layout_marginBottom="0.5dp"
         android:background="#fff"
-        app:layout_constraintBottom_toBottomOf="@+id/main_grid"
+        app:layout_constraintBottom_toTopOf="@+id/ask_play_btn"
         app:layout_constraintEnd_toEndOf="@+id/casino_area"
         app:layout_constraintStart_toEndOf="@+id/fourth_grid"
         app:layout_constraintTop_toBottomOf="@+id/casino_area">
@@ -55,7 +56,8 @@
             android:textColor="#000"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpUsage" />
 
         <TextView
             android:id="@+id/textView15"
@@ -156,47 +158,6 @@
             app:layout_constraintStart_toEndOf="@+id/textView19"
             app:layout_constraintTop_toBottomOf="@+id/banker_pair_count" />
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="1dp"
-            android:background="#000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView19" />
-
-        <View
-            android:id="@+id/view4"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:background="#000"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view" />
-
-        <tw.com.lixin.wm_casino.tools.buttons.AskButton
-            android:id="@+id/ask_bank_btn"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:ask_type="banker"
-            app:layout_constraintBottom_toTopOf="@+id/view4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view" />
-
-        <tw.com.lixin.wm_casino.tools.buttons.AskButton
-            android:id="@+id/ask_play_btn"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:ask_type="player"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view4" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <tw.com.lixin.wm_casino.tools.grids.BacMainGrid
@@ -250,5 +211,27 @@
         app:layout_constraintEnd_toEndOf="@+id/fourth_grid"
         app:layout_constraintStart_toStartOf="@+id/main_grid"
         app:layout_constraintTop_toBottomOf="@+id/casino_area" />
+
+    <tw.com.lixin.wm_casino.tools.buttons.AskButton
+        android:id="@+id/ask_bank_btn"
+        android:layout_width="0dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="0.5dp"
+        app:ask_type="banker"
+        app:layout_constraintBottom_toBottomOf="@+id/fourth_grid"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout22"
+        app:layout_constraintStart_toEndOf="@+id/fourth_grid" />
+
+    <tw.com.lixin.wm_casino.tools.buttons.AskButton
+        android:id="@+id/ask_play_btn"
+        android:layout_width="0dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="0.5dp"
+        android:layout_marginBottom="0.5dp"
+        app:ask_type="player"
+        app:layout_constraintBottom_toTopOf="@+id/ask_bank_btn"
+        app:layout_constraintEnd_toEndOf="@+id/ask_bank_btn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/second_grid" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

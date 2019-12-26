@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <tw.com.atromoby.rtmplayer.IjkVideoView
         android:id="@+id/video"
         android:layout_width="0dp"
         android:layout_height="220dp"
@@ -93,7 +93,7 @@
             android:gravity="center"
             android:paddingStart="2dp"
             android:paddingEnd="2dp"
-            android:text="@string/zero"
+            android:text="1"
             android:textColor="#fff"
             android:textSize="10dp"
             app:layout_constraintBottom_toBottomOf="@+id/signal_btn"
@@ -223,11 +223,12 @@
             android:layout_height="0dp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </tw.com.atromoby.rtmplayer.IjkVideoView>
 
     <View
         android:layout_width="0dp"

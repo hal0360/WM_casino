@@ -6,26 +6,24 @@ import android.widget.TextView;
 import tw.com.atromoby.widgets.Collection;
 import tw.com.atromoby.widgets.CollectionHolder;
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.models.People;
 
 public class PeopleCollection extends Collection {
-    private String name;
-    private int winRate, memberID;
+   private People people;
 
-    public PeopleCollection(int memberID, String name, int winRate) {
+    public PeopleCollection(People people) {
         super(R.layout.people_collection);
+        this.people = people;
 
-        this.memberID = memberID;
-        this.winRate = winRate;
-        this.name = name;
     }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void onBind(CollectionHolder holder) {
         TextView text = holder.findViewById(R.id.name_txt);
-        text.setText(name);
+        text.setText(people.name);
         text = holder.findViewById(R.id.win_rate_txt);
-        text.setText(winRate+"%");
+        text.setText(people.winRate+"%");
     }
 
     @Override

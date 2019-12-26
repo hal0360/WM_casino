@@ -21,7 +21,6 @@ import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.dataModels.Client22;
 import tw.com.lixin.wm_casino.models.Chip;
 import tw.com.lixin.wm_casino.models.ChipStackData;
-import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
 public class ChipStack extends ConstraintLayout implements Animation.AnimationListener, View.OnClickListener {
@@ -67,11 +66,11 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         source = GameSource.getInstance();
         data = source.chipDatas.get(getId());
         if(data != null){
-            if(source.table.stage == 1){
-                if(CasinoArea.curStage != 1) data.clear();
+            if(source.table.stage == 1 && CasinoActivity.curStage != 1){
+                data.clear();
             }
-            if(source.table.stage == 2){
-                if(CasinoArea.curStage != 2) data.cancelBet();
+            if(source.table.stage == 2 && CasinoActivity.curStage != 2){
+                data.cancelBet();
             }
         }else{
             data = new ChipStackData();
@@ -80,7 +79,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         refresh();
     }
 
-    public void addCoinToClient(Client22 client22, int area){
+    public void addCoinToClient(Client22 client22){
         for(Chip coin: data.tempAddedCoin){
             client22.addBet(area,coin.value);
         }
@@ -169,12 +168,15 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     }
 
     @SuppressLint("SetTextI18n")
-    public void add(Chip coin){
+    public boolean add(Chip coin){
         if(source.table.stage != 1) {
             Kit.alert(getContext(),"Please wait!!");
-            return;
+            return false;
         }
-        if(!data.add(coin)) return;
+        if(!data.add(coin)){
+            Kit.alert(getContext(),"Exceed mas value!!");
+            return false;
+        }
         App.betting();
         valTxt.setVisibility(View.VISIBLE);
         shape.setColor(0xFFA9DB8D);
@@ -207,6 +209,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
             coin1.startAnimation(animeDwn);
         }
         hit++;
+        return true;
     }
 
     @Override
@@ -224,6 +227,9 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
 
     @Override
     public void onClick(View v) {
-        add(CasinoArea.curChip);
+        if( add(CasinoArea.curChip)) {
+            CasinoActivity activity = (CasinoActivity) getContext();;
+            activity.stackBet();
+        }
     }
 }

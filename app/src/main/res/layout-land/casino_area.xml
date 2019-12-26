@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:show_balance="true" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <tw.com.atromoby.rtmplayer.IjkVideoView
         android:id="@+id/video"
         android:layout_width="460dp"
         android:layout_height="0dp"
@@ -270,7 +270,7 @@
             app:layout_constraintStart_toEndOf="@+id/textView20"
             app:layout_constraintTop_toTopOf="@+id/textView20" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </tw.com.atromoby.rtmplayer.IjkVideoView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/custom_chip"
@@ -395,6 +395,7 @@
         android:id="@+id/mss_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/video"
         app:layout_constraintStart_toStartOf="parent"

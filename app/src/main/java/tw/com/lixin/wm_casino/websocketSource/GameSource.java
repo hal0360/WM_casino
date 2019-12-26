@@ -5,23 +5,18 @@ import android.util.SparseArray;
 import java.util.ArrayList;
 import java.util.List;
 
-import tw.com.atromoby.utils.CmdInt;
 import tw.com.atromoby.utils.Json;
-import tw.com.atromoby.widgets.RootActivity;
-import tw.com.lixin.wm_casino.collections.PeopleCollection;
 import tw.com.lixin.wm_casino.dataModels.Client10;
 import tw.com.lixin.wm_casino.dataModels.GameData;
 import tw.com.lixin.wm_casino.dataModels.TableLogData;
 import tw.com.lixin.wm_casino.global.User;
-import tw.com.lixin.wm_casino.interfaces.CmdBool;
-import tw.com.lixin.wm_casino.interfaces.CmdFloat;
 import tw.com.lixin.wm_casino.interfaces.CmdStr;
 import tw.com.lixin.wm_casino.interfaces.CmdTableLog;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
 import tw.com.lixin.wm_casino.models.ChipStackData;
+import tw.com.lixin.wm_casino.models.People;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.popups.PeoplePopup;
-import tw.com.lixin.wm_casino.popups.WinLossPopup;
 
 public class GameSource extends CasinoSource{
 
@@ -38,8 +33,8 @@ public class GameSource extends CasinoSource{
     private CmdStr cmdTableFail;
 
     private PeoplePopup popup;
-    public int peopleOnline;
-    public List<PeopleCollection> peopleCollections;
+    public int pplOnline;
+    public List<People> peoples;
 
     public SparseArray<ChipStackData> chipDatas;
     public TableLogData.Data logData;
@@ -51,7 +46,6 @@ public class GameSource extends CasinoSource{
 
     public void unbind(){
         this.bridge = null;
-        this.popup = null;
         binded(false);
     }
 
@@ -59,14 +53,19 @@ public class GameSource extends CasinoSource{
         this.popup = popup;
     }
 
+    public void unbindPeople(){
+        this.popup = null;
+    }
+
+
     public final void tableLogin(Table table, CmdTableLog logOK, CmdStr logFail){
-        chipDatas = new SparseArray<>();
         defineURL("ws://gameserver.a45.me:15" + table.gameID);
         this.table = table;
         cmdTableLog = logOK;
         cmdTableFail = logFail;
         login(User.sid(),data->{
-            peopleCollections = new ArrayList<>();
+            peoples = new ArrayList<>();
+            chipDatas = new SparseArray<>();
             Client10 client = new Client10(table.groupID);
             send(Json.to(client));
         }, fail-> cmdTableFail.exec(fail));
@@ -76,7 +75,8 @@ public class GameSource extends CasinoSource{
         chipDatas = null;
         cmdTableLog = null;
         cmdTableFail = null;
-        peopleCollections = null;
+        peoples = null;
+        popup = null;
         unbind();
         close();
     }
@@ -109,23 +109,27 @@ public class GameSource extends CasinoSource{
                 break;
             case 31:
                 if(gameData.data.groupID == table.groupID && gameData.data.memberID == User.memberID()){
-
                     handle(() -> bridge.winLossUpdate(gameData.data.moneyWin));
-
-
                 }
                 break;
             case 28:
                 if(gameData.data.groupID == table.groupID){
-                    PeopleCollection collection = new PeopleCollection(gameData.data.memberID, gameData.data.userName, gameData.data.winRate);
-                    peopleCollections.add(collection);
-                    if(popup != null) handleSimple(()-> popup.peopleIn(collection, gameData.data.userCount));
+                    pplOnline = gameData.data.userCount;
+                    if(popup != null) handleSimple(()-> popup.peopleIn( new People(gameData.data.userName, gameData.data.winRate, gameData.data.memberID), gameData.data.userCount));
                 }
-
-               // if(popup != null && gameData.data.groupID == table.groupID) handleSimple(()-> popup.peopleIn(gameData.data.memberID, gameData.data.userName, gameData.data.winRate));
                 break;
             case 29:
-              // if(popup != null && gameData.data.groupID == table.groupID) handleSimple(()-> popup.peopleOut(gameData.data.memberID));
+                if(gameData.data.groupID == table.groupID){
+                    pplOnline = gameData.data.userCount;
+                    for (int i = 0; i < peoples.size(); i++) {
+                        if(gameData.data.memberID == peoples.get(i).memberID) {
+                            peoples.remove(i);
+                            int pos = i;
+                            if(popup != null) handleSimple(()-> popup.peopleOut( pos, gameData.data.userCount));
+                            break;
+                        }
+                    }
+                }
                 break;
         }
     }

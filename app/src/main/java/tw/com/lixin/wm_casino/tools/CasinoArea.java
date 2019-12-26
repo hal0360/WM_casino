@@ -32,21 +32,20 @@ import tw.com.lixin.wm_casino.popups.ProfilePopup;
 import tw.com.lixin.wm_casino.popups.SignalPopup;
 import tw.com.lixin.wm_casino.tools.buttons.ClickImage;
 import tw.com.lixin.wm_casino.tools.buttons.ClickText;
+import tw.com.lixin.wm_casino.tools.buttons.ControlButton;
 import tw.com.lixin.wm_casino.tools.chips.ChipView;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
 public class CasinoArea extends ConstraintLayout implements View.OnClickListener{
 
     private ProfileBar bar;
-    private TextView gyuShu, countdown, member, cusChipTxt;
+    private TextView gyuShu, countdown, member, cusChipTxt, pplTxt;
     private ImageView dealImg;
-    private GameSource source;
     private ChipView selectedChip;
     private CollectionsView mssList;
-    private ConstraintLayout cusChip;
     private CasinoActivity activity;
     private IjkVideoView video;
-    public static int curStage;
+    public ControlButton confirmBtn, cancelBtn, rebetBtn;
 
     public static Chip curChip;
 
@@ -58,16 +57,19 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
         super(context, attrs);
         View.inflate(context, R.layout.casino_area, this);
 
-        source = GameSource.getInstance();
         member = findViewById(R.id.member);
         bar = findViewById(R.id.profile);
         countdown = findViewById(R.id.count_txt);
         dealImg = findViewById(R.id.dealer_img);
         mssList = findViewById(R.id.mss_list);
-        cusChip = findViewById(R.id.custom_chip);
+        ConstraintLayout cusChip = findViewById(R.id.custom_chip);
         cusChipTxt = findViewById(R.id.custom_num_txt);
         gyuShu = findViewById(R.id.gyu_shu);
         video = findViewById(R.id.video);
+        confirmBtn =  findViewById(R.id.confirm_btn);
+        cancelBtn =  findViewById(R.id.cancel_btn);
+        rebetBtn =  findViewById(R.id.rebet_btn);
+        pplTxt = findViewById(R.id.ppl_num_txt);
 
         findViewById(R.id.chip1).setOnClickListener(this);
         findViewById(R.id.chip5).setOnClickListener(this);
@@ -93,12 +95,16 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
             curChip = selectedChip.getChip();
         }
 
+        post(()->  activity = (CasinoActivity) getContext());
+
         ClickText limitBtn = findViewById(R.id.limit_btn);
         limitBtn.clicked(v-> activity.showPopup( new LimitPopup()));
         ClickImage mssBtn = findViewById(R.id.mss_btn);
         mssBtn.clicked(v-> activity.showPopup(new MessagePopup()));
         ClickImage peopleBtn = findViewById(R.id.people_btn);
         peopleBtn.clicked(v-> activity.showPopup(new PeoplePopup()));
+        ClickImage signalBtn = findViewById(R.id.signal_btn);
+        signalBtn.clicked(v-> activity.showPopup(new SignalPopup()));
 
         cusChip.setOnClickListener(v->{
             App.betting();
@@ -108,8 +114,17 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
             activity.showPopup(new NumberPadDialog());
         });
 
-        post(this::soourceUp);
+        confirmBtn.clicked(v-> activity.confirm());
 
+        cancelBtn.clicked(v-> activity.cancel());
+
+        rebetBtn.clicked(v-> activity.rebet());
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void setPPLnum(int num){
+        pplTxt.setText(""+num);
     }
 
     public void setMember(String mem){
@@ -165,28 +180,6 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
         curChip.value = Integer.parseInt(cusStr);
         cusChipTxt.setText(cusStr);
     }
-
-    @SuppressLint("SetTextI18n")
-    private void soourceUp(){
-
-        activity = (CasinoActivity) getContext();
-        /*
-        bar.setTitle(bar.getTitle() + table.groupID);
-        member.setText(User.userName());
-        bar.updateBalance();
-
-        table.onAreaStage(stage->{
-            if (table.stage == 1) {
-                dealImg.setVisibility(INVISIBLE);
-            } else if (table.stage == 2) {
-                dealImg.setVisibility(VISIBLE);
-            }
-        });
-        table.onSecond(sec-> countdown.setText(sec+""));
-        table.onTable(()-> gyuShu.setText(table.number + "/" + table.round));
-*/
-    }
-
 
     public void setTitle(String txt){
         bar.setTitle(txt);
