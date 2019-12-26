@@ -9,31 +9,10 @@
     <tw.com.lixin.wm_casino.tools.CasinoArea
         android:id="@+id/casino_area"
         android:layout_width="360dp"
-        android:layout_height="500dp"
+        android:layout_height="465dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
-
-        <tw.com.lixin.wm_casino.tools.BetStack
-            android:id="@+id/betStack"
-            android:layout_width="114dp"
-            android:layout_height="122dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.71000004" />
-
-        <tw.com.lixin.wm_casino.tools.BetStack
-            android:layout_width="119dp"
-            android:layout_height="125dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/betStack"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.75" />
-
-    </tw.com.lixin.wm_casino.tools.CasinoArea>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout22"
