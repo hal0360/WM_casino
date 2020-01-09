@@ -8,8 +8,9 @@
     android:layout_marginBottom="2dp"
     android:background="@drawable/lobby_bg01"
     tools:ignore="ContentDescription,SpUsage"
-    tools:context=".DragonTigerActivity">
+    >
 
+    <!--
     <tw.com.lixin.wm_casino.tools.ProfileBar
         android:id="@+id/profile"
         android:layout_width="0dp"
@@ -316,7 +317,7 @@
         app:layout_constraintEnd_toEndOf="@+id/second_grid"
         app:layout_constraintStart_toStartOf="@+id/second_grid"
         app:layout_constraintTop_toBottomOf="@+id/second_grid" />
-    <!--
+
     <tw.com.lixin.wm_casino.tools.BacCardArea
         android:id="@+id/card_area"
         android:layout_width="0dp"

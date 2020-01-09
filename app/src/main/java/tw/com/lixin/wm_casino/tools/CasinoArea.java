@@ -2,39 +2,27 @@ package tw.com.lixin.wm_casino.tools;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import androidx.constraintlayout.widget.ConstraintLayout;
 import tw.com.atromoby.rtmplayer.IjkVideoView;
 import tw.com.atromoby.widgets.CollectionsView;
-import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.App;
 import tw.com.lixin.wm_casino.CasinoActivity;
 import tw.com.lixin.wm_casino.R;
-import tw.com.lixin.wm_casino.global.User;
-import tw.com.lixin.wm_casino.interfaces.GameBridge;
-import tw.com.lixin.wm_casino.interfaces.StackCallBridge;
-import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.Chip;
-import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.popups.LimitPopup;
 import tw.com.lixin.wm_casino.popups.MessagePopup;
 import tw.com.lixin.wm_casino.popups.NumberPadDialog;
 import tw.com.lixin.wm_casino.popups.PeoplePopup;
-import tw.com.lixin.wm_casino.popups.ProfilePopup;
 import tw.com.lixin.wm_casino.popups.SignalPopup;
 import tw.com.lixin.wm_casino.tools.buttons.ClickImage;
 import tw.com.lixin.wm_casino.tools.buttons.ClickText;
 import tw.com.lixin.wm_casino.tools.buttons.ControlButton;
 import tw.com.lixin.wm_casino.tools.chips.ChipView;
-import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
 public class CasinoArea extends ConstraintLayout implements View.OnClickListener{
 
@@ -65,7 +53,6 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
         ConstraintLayout cusChip = findViewById(R.id.custom_chip);
         cusChipTxt = findViewById(R.id.custom_num_txt);
         gyuShu = findViewById(R.id.gyu_shu);
-        video = findViewById(R.id.video);
         confirmBtn =  findViewById(R.id.confirm_btn);
         cancelBtn =  findViewById(R.id.cancel_btn);
         rebetBtn =  findViewById(R.id.rebet_btn);
@@ -95,8 +82,6 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
             curChip = selectedChip.getChip();
         }
 
-        post(()->  activity = (CasinoActivity) getContext());
-
         ClickText limitBtn = findViewById(R.id.limit_btn);
         limitBtn.clicked(v-> activity.showPopup( new LimitPopup()));
         ClickImage mssBtn = findViewById(R.id.mss_btn);
@@ -120,6 +105,11 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
 
         rebetBtn.clicked(v-> activity.rebet());
 
+    }
+
+    public void setUp(){
+        video = findViewById(R.id.video);
+        activity = (CasinoActivity) getContext();
     }
 
     @SuppressLint("SetTextI18n")

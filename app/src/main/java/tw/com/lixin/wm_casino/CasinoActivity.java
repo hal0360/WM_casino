@@ -18,7 +18,7 @@ import tw.com.lixin.wm_casino.tools.CasinoArea;
 import tw.com.lixin.wm_casino.tools.ChipStack;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
-public class CasinoActivity extends RootActivity implements TableBridge, GameBridge {
+public abstract class CasinoActivity extends RootActivity implements TableBridge, GameBridge {
 
     protected CasinoArea casinoArea;
     protected CardArea cardArea;
@@ -30,25 +30,26 @@ public class CasinoActivity extends RootActivity implements TableBridge, GameBri
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_casino);
 
         stacks = new ArrayList<>();
         source = GameSource.getInstance();
         casinoArea = findViewById(R.id.casino_area);
         cardArea = findViewById(R.id.card_area);
+
+        casinoArea.setUp();
     }
 
     public CasinoArea getArea(){
         return  casinoArea;
     }
 
-    public void AddToArea(int stackId, int maxVal, int area){
+    protected void addToArea(int stackId, int maxVal, int area){
         ChipStack stack = findViewById(stackId);
         stack.setUp(area, maxVal);
         stacks.add(stack);
     }
 
-    public void AddToArea(ChipStack stack, int maxVal, int area){
+    protected void addToArea(ChipStack stack, int maxVal, int area){
         stack.setUp(area, maxVal);
         stacks.add(stack);
     }
@@ -56,6 +57,9 @@ public class CasinoActivity extends RootActivity implements TableBridge, GameBri
     @Override
     public void onResume() {
         super.onResume();
+
+        cardArea.setBackgroundColor(0xFF00FF00);
+
         if(!source.isConnected()){
             alert("connection lost");
             finish();
@@ -85,8 +89,14 @@ public class CasinoActivity extends RootActivity implements TableBridge, GameBri
     public void onPause() {
         super.onPause();
         casinoArea.stopVideo();
-        source.table.unBind();
-        source.unbind();
+      //  source.table.unBind();
+      //  source.unbind();
+    }
+
+    @Override
+    public void onBackPressed() {
+        source.tableLogout();
+        finish();
     }
 
     @Override

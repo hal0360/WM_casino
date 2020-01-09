@@ -1,6 +1,5 @@
 package tw.com.lixin.wm_casino;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.SparseArray;
 
@@ -12,11 +11,8 @@ import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 public class LobbyActivity extends RootActivity implements LobbyBridge {
 
     private LobbySource lobbySource;
-
     private SparseArray<GameButton> gameButtons;
 
-
-    @SuppressLint("FindViewByIdCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +32,7 @@ public class LobbyActivity extends RootActivity implements LobbyBridge {
 
         for(int i = 0; i < gameButtons.size(); i++) {
             int key = gameButtons.keyAt(i);
+            gameButtons.get(key).setPeopleNumber(lobbySource.peopleOnline.get(key));
             gameButtons.get(key).clicked(v-> enterGame(key));
         }
     }

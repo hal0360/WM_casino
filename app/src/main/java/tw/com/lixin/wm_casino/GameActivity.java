@@ -29,7 +29,6 @@ public class GameActivity extends RootActivity {
         List<BacCollection> collections = new ArrayList<>();
         ProfileBar bar = findViewById(R.id.pro_bar);
 
-
         if(source.curGameID == 101){
             bar.setTitle(getString(R.string.wmbaccarat));
             SparseArray<Table> tables = source.allTables.get(101);
@@ -60,6 +59,5 @@ public class GameActivity extends RootActivity {
         super.onDestroy();
       //  tableList.clean();
     }
-
 
 }

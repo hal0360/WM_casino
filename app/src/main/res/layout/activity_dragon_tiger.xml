@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     android:background="#000"
     tools:ignore="ContentDescription,SpUsage"
-    tools:context=".DragonTigerActivity">
+    >
 
+    <!--
     <tw.com.lixin.wm_casino.tools.ProfileBar
         android:id="@+id/profile"
         android:layout_width="360dp"
@@ -378,5 +379,5 @@
         app:layout_constraintEnd_toEndOf="@+id/fourth_grid"
         app:layout_constraintStart_toStartOf="@+id/main_grid"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout24" />
-
+-->
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,7 +25,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class DragonTigerActivity extends RootActivity implements GameBridge, TableBridge, StackCallBridge {
+
+ /*
+public class DragonTigerActivity extends RootActivity  {
 
     private static int thisStage;
     public static ChipStackData tigerStackData, tieStackData, dragonStackData;
@@ -165,11 +167,11 @@ public class DragonTigerActivity extends RootActivity implements GameBridge, Tab
             alert("Please wait!!");
             return;
         }
-        /*
+
         if(stack.add(Chip.curChip)){
             betBtn.disable(false);
             cancelBtn.disable(false);
-        }else{ alert("max value exceeded"); }*/
+        }else{ alert("max value exceeded"); }
     }
 
     @Override
@@ -241,4 +243,7 @@ public class DragonTigerActivity extends RootActivity implements GameBridge, Tab
         cardArea.update(area, img);
     }
 
+
 }
+*/
+

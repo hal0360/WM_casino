@@ -31,9 +31,9 @@
 
     <ImageView
         android:id="@+id/coin1"
-        android:layout_width="28dp"
-        android:layout_height="24dp"
-        android:layout_marginBottom="3dp"
+        android:layout_width="21dp"
+        android:layout_height="18dp"
+        android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,9 +41,9 @@
 
     <ImageView
         android:id="@+id/coin2"
-        android:layout_width="28dp"
-        android:layout_height="24dp"
-        android:layout_marginBottom="3dp"
+        android:layout_width="21dp"
+        android:layout_height="18dp"
+        android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="@+id/coin1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,9 +51,9 @@
 
     <ImageView
         android:id="@+id/coin3"
-        android:layout_width="28dp"
-        android:layout_height="24dp"
-        android:layout_marginBottom="3dp"
+        android:layout_width="21dp"
+        android:layout_height="18dp"
+        android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="@+id/coin2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,9 +61,9 @@
 
     <ImageView
         android:id="@+id/coin4"
-        android:layout_width="28dp"
-        android:layout_height="24dp"
-        android:layout_marginBottom="3dp"
+        android:layout_width="21dp"
+        android:layout_height="18dp"
+        android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="@+id/coin3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,9 +71,9 @@
 
     <ImageView
         android:id="@+id/coin5"
-        android:layout_width="28dp"
-        android:layout_height="24dp"
-        android:layout_marginBottom="3dp"
+        android:layout_width="21dp"
+        android:layout_height="18dp"
+        android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="@+id/coin4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,8 +89,8 @@
         android:background="@drawable/table_stack_val_border"
         android:gravity="center"
         android:textColor="#fff"
-        android:text="33444"
-        android:textSize="10dp"
+        android:text="000000"
+        android:textSize="9dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

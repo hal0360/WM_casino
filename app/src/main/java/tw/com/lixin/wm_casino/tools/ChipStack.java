@@ -46,6 +46,13 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         coin5 = findViewById(R.id.coin5);
         valTxt = findViewById(R.id.bet_value);
 
+        coin1.setElevation(1);
+        coin2.setElevation(1);
+        coin3.setElevation(1);
+        coin4.setElevation(1);
+        coin5.setElevation(1);
+        valTxt.setElevation(1);
+
         //TextView title = findViewById(R.id.table_title);
         //dtOdds = findViewById(R.id.dtOdds);
         //TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.ChipStack);
@@ -64,19 +71,19 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         animeUp = AnimationUtils.loadAnimation(context, R.anim.coin_anime_up);
 
         source = GameSource.getInstance();
-        data = source.chipDatas.get(getId());
-        if(data != null){
-            if(source.table.stage == 1 && CasinoActivity.curStage != 1){
-                data.clear();
+
+        post(()->{
+            data = source.chipDatas.get(getId());
+            if(data != null){
+                if(source.table.stage == 1 && CasinoActivity.curStage != 1) data.clear();
+                if(source.table.stage == 2 && CasinoActivity.curStage != 2) data.cancelBet();
+            }else{
+                data = new ChipStackData();
+                source.chipDatas.put(getId(),data);
             }
-            if(source.table.stage == 2 && CasinoActivity.curStage != 2){
-                data.cancelBet();
-            }
-        }else{
-            data = new ChipStackData();
-            source.chipDatas.put(getId(),data);
-        }
-        refresh();
+            refresh();
+        });
+
     }
 
     public void addCoinToClient(Client22 client22){
