@@ -27,6 +27,10 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
 
     private List<ChipStack> stacks;
 
+   // public abstract void cleanCard();
+
+   // public abstract void cleanCard();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,10 +123,6 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         }
     }
 
-    @Override
-    public void gridUpdate() {
-
-    }
 
     @Override
     public void betCountdown(int sec) {

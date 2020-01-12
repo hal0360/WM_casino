@@ -151,7 +151,6 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
         video.stopPlayback();
     }
 
-
     @SuppressLint("SetTextI18n")
     public void setCusChip(int val){
         String cusStr = cusChipTxt.getText().toString();

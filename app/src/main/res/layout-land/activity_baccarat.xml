@@ -224,7 +224,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="1dp"
             android:text="@string/banker_abb"
             android:textColor="#000"
             android:textSize="8.5dp"
@@ -276,11 +276,11 @@
             app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
         <TextView
-            android:id="@+id/tiger_count"
+            android:id="@+id/bank_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="1dp"
             android:text="@string/zero"
             android:textColor="#000"
             android:textSize="8.5dp"
@@ -288,7 +288,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/dragon_count"
+            android:id="@+id/play_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -296,7 +296,7 @@
             android:textColor="#000"
             android:textSize="8.5dp"
             app:layout_constraintStart_toEndOf="@+id/textView15"
-            app:layout_constraintTop_toBottomOf="@+id/tiger_count" />
+            app:layout_constraintTop_toBottomOf="@+id/bank_count" />
 
         <TextView
             android:id="@+id/tie_count"
@@ -307,10 +307,10 @@
             android:textColor="#000"
             android:textSize="8.5dp"
             app:layout_constraintStart_toEndOf="@+id/textView17"
-            app:layout_constraintTop_toBottomOf="@+id/dragon_count" />
+            app:layout_constraintTop_toBottomOf="@+id/play_count" />
 
         <TextView
-            android:id="@+id/banker_pair_count"
+            android:id="@+id/bank_pair_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -321,7 +321,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tie_count" />
 
         <TextView
-            android:id="@+id/player_pair_count"
+            android:id="@+id/play_pair_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -329,7 +329,7 @@
             android:textColor="#000"
             android:textSize="8.5dp"
             app:layout_constraintStart_toEndOf="@+id/textView19"
-            app:layout_constraintTop_toBottomOf="@+id/banker_pair_count" />
+            app:layout_constraintTop_toBottomOf="@+id/bank_pair_count" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -389,10 +389,129 @@
 
     <tw.com.lixin.wm_casino.tools.CardArea
         android:id="@+id/card_area"
-        android:layout_width="500dp"
-        android:layout_height="26dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/casino_area">
+
+        <ImageView
+            android:id="@+id/player_poker3"
+            android:layout_width="37dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="13dp"
+            android:rotation="90"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/poker_c7" />
+
+        <ImageView
+            android:id="@+id/player_poker2"
+            android:layout_width="37dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginBottom="7dp"
+            app:layout_constraintBottom_toBottomOf="@+id/player_poker3"
+            app:layout_constraintStart_toEndOf="@+id/player_poker3"
+            app:srcCompat="@drawable/poker_c3" />
+
+        <ImageView
+            android:id="@+id/player_poker1"
+            android:layout_width="37dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/player_poker2"
+            app:layout_constraintStart_toEndOf="@+id/player_poker2"
+            app:srcCompat="@drawable/poker_c3" />
+
+        <ImageView
+            android:id="@+id/banker_poker3"
+            android:layout_width="37dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="100dp"
+            android:rotation="90"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/poker_c2" />
+
+        <ImageView
+            android:id="@+id/banker_poker2"
+            android:layout_width="37dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="11dp"
+            android:layout_marginBottom="7dp"
+            app:layout_constraintBottom_toBottomOf="@+id/banker_poker3"
+            app:layout_constraintEnd_toStartOf="@+id/banker_poker3"
+            app:srcCompat="@drawable/poker_c10" />
+
+        <ImageView
+            android:id="@+id/banker_poker1"
+            android:layout_width="37dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/banker_poker2"
+            app:layout_constraintEnd_toStartOf="@+id/banker_poker2"
+            app:srcCompat="@drawable/poker_d10" />
+
+        <tw.com.atromoby.widgets.RonTextView
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="5dp"
+            android:id="@+id/player_score"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:gravity="center"
+            android:text="@string/zero"
+            android:textColor="#fff"
+            android:textSize="12dp"
+            app:border_radius="9dp"
+            app:first_color="#1E90FF"
+            app:layout_constraintStart_toEndOf="@+id/player_poker1"
+            app:layout_constraintTop_toTopOf="@+id/player_poker1" />
+
+        <TextView
+            android:id="@+id/player_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/player"
+            android:textColor="#fff"
+            android:textSize="13dp"
+            app:layout_constraintEnd_toEndOf="@+id/player_score"
+            app:layout_constraintStart_toStartOf="@+id/player_score"
+            app:layout_constraintTop_toBottomOf="@+id/player_score" />
+
+        <tw.com.atromoby.widgets.RonTextView
+            android:id="@+id/banker_score"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:gravity="center"
+            android:text="@string/zero"
+            android:textColor="#fff"
+            android:textSize="12dp"
+            app:border_radius="9dp"
+            app:first_color="#FF1493"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="25dp"
+            app:layout_constraintEnd_toStartOf="@+id/banker_poker1"
+            app:layout_constraintTop_toTopOf="@+id/banker_poker1" />
+
+        <TextView
+            android:id="@+id/banker_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/banker"
+            android:textColor="#fff"
+            android:textSize="13dp"
+            app:layout_constraintEnd_toEndOf="@+id/banker_score"
+            app:layout_constraintStart_toStartOf="@+id/banker_score"
+            app:layout_constraintTop_toBottomOf="@+id/banker_score" />
 
     </tw.com.lixin.wm_casino.tools.CardArea>
 
