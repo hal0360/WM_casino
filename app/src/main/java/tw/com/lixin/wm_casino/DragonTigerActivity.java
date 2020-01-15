@@ -195,7 +195,6 @@ public class DragonTigerActivity extends RootActivity  {
         } else if (table.stage == 4) {
 
         }
-
     }
 
     @Override

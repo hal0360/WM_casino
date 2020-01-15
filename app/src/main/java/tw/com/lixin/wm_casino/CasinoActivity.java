@@ -1,7 +1,9 @@
 package tw.com.lixin.wm_casino;
 
 import android.os.Bundle;
+import android.util.SparseArray;
 import android.view.View;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +11,7 @@ import java.util.List;
 import tw.com.atromoby.utils.Json;
 import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.dataModels.Client22;
+import tw.com.lixin.wm_casino.global.Poker;
 import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
@@ -23,13 +26,14 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     protected CasinoArea casinoArea;
     protected CardArea cardArea;
     protected GameSource source;
+    protected SparseArray<ImageView> pokers;
     public static int curStage;
 
     private List<ChipStack> stacks;
 
    // public abstract void cleanCard();
 
-   // public abstract void cleanCard();
+    public abstract void cleanCard();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +91,14 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         casinoArea.setMember(User.userName());
         casinoArea.setPPLnum(source.pplOnline);
         gridUpdate();
+
+        for(int p = 0; p < pokers.size(); p++) pokers.valueAt(p).setVisibility(View.INVISIBLE);
+        for(int i = 0; i < source.table.pokers.size(); i++) {
+            int key = source.table.pokers.keyAt(i);
+            ImageView pokerImg = pokers.get(key);
+            pokerImg.setVisibility(View.VISIBLE);
+            pokerImg.setImageResource(Poker.NUM(source.table.pokers.get(key)));
+        }
     }
 
     @Override
@@ -103,13 +115,39 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         finish();
     }
 
+    public abstract void betStarted();
+/*
+    @Override
+    public void stageUpdate() {
+        thisStage = table.stage;
+        if (table.stage == 1) {
+            countdown.betting();
+            cardArea.reset();
+            tigerStack.clearCoin();
+            dragonStack.clearCoin();
+            tieStack.clearCoin();
+        } else if (table.stage == 2) {
+            countdown.dealing();
+            cardArea.setVisibility(View.VISIBLE);
+            tigerStack.cancelBet();
+            dragonStack.cancelBet();
+            tieStack.cancelBet();;
+            cancelBtn.disable(true);
+            rebetBtn.disable(true);
+            betBtn.disable(true);
+        } else if (table.stage == 4) {
+
+        }
+    }*/
+
     @Override
     public void stageUpdate() {
         casinoArea.setPPLnum(source.pplOnline);
         curStage = source.table.stage;
         if (source.table.stage == 1) {
             casinoArea.betting();
-            cardArea.setVisibility(View.VISIBLE);
+            betStarted();
+            cardArea.setVisibility(View.INVISIBLE);
             for (ChipStack stack: stacks) stack.clearCoin();
         } else if (source.table.stage == 2) {
             casinoArea.dealing();
