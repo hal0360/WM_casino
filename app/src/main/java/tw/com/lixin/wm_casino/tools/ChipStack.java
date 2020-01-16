@@ -28,11 +28,12 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     private ImageView coin1, coin2, coin3, coin4, coin5;
     private Animation animeDwn, animeUp;
     private int hit = 0, area;
-    private List<Integer> ids = new ArrayList<>();
+    private List<Integer> ids;
     private TextView valTxt;
     public ChipStackData data;
     private GradientDrawable shape;
     private GameSource source;
+    private int maxValue;
 
     public ChipStack(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -113,7 +114,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     @SuppressLint("SetTextI18n")
     public void setUp(int area, int maxVal){
         this.area = area;
-        data.maxValue = maxVal;
+        maxValue = maxVal;
     }
 
     @SuppressLint("SetTextI18n")
@@ -178,10 +179,11 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
             Kit.alert(getContext(),"Please wait!!");
             return false;
         }
-        if(!data.add(coin)){
-            Kit.alert(getContext(),"Exceed mas value!!");
+        if((data.value + coin.value) > maxValue){
+            Kit.alert(getContext(),"Exceed max value!!");
             return false;
         }
+        data.add(coin);
         App.betting();
         valTxt.setVisibility(View.VISIBLE);
         shape.setColor(0xFFA9DB8D);

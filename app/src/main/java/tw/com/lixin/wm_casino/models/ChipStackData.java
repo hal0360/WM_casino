@@ -5,7 +5,6 @@ import java.util.List;
 
 public class ChipStackData {
     public int value = 0;
-    public int maxValue = 999;
 
     public List<Chip> addedCoin = new ArrayList<>();
     public List<Chip> tempAddedCoin = new ArrayList<>();
@@ -21,15 +20,9 @@ public class ChipStackData {
         tempAddedCoin = new ArrayList<>();
     }
 
-
-    public boolean add(Chip coin){
+    public void add(Chip coin){
         value = value + coin.value;
-        if(value > maxValue){
-            value = value - coin.value;
-            return false;
-        }
         tempAddedCoin.add(coin);
-        return true;
     }
 
     public void cancelBet(){

@@ -18,8 +18,7 @@ import tw.com.lixin.wm_casino.tools.grids.CellView.BacRoadView;
 public class BacMainGrid extends TableLayout {
 
     private BacRoadView[][] viewGrid;
-    public int posX = 0;
-    private int posY = 0;
+    private int posX, posY;
     private Context context;
     private Animation fadeAnime;
 
@@ -93,6 +92,8 @@ public class BacMainGrid extends TableLayout {
     }
 
     public void drawRoad(List<Integer> big){
+      posX = 0;
+        posY = 0;
         for(int ref: big){
             if(posY > 5) {
                 posY = 0;
@@ -103,6 +104,4 @@ public class BacMainGrid extends TableLayout {
         }
         posY--;
     }
-
-
 }
