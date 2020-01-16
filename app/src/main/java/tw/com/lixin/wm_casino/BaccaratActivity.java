@@ -1,47 +1,27 @@
 package tw.com.lixin.wm_casino;
 
-import tw.com.atromoby.rtmplayer.IjkVideoView;
-import tw.com.atromoby.utils.Json;
-import tw.com.atromoby.widgets.RootActivity;
-import tw.com.lixin.wm_casino.dataModels.Client22;
-import tw.com.lixin.wm_casino.dataModels.TableLogData;
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.widget.TextView;
+
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
-import tw.com.lixin.wm_casino.interfaces.StackCallBridge;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
-import tw.com.lixin.wm_casino.models.Chip;
-import tw.com.lixin.wm_casino.models.ChipStackData;
 import tw.com.lixin.wm_casino.tools.grids.BacMainGrid;
 import tw.com.lixin.wm_casino.tools.grids.CasinoDoubleGrid;
 import tw.com.lixin.wm_casino.tools.grids.CasinoGrid;
-import tw.com.lixin.wm_casino.tools.buttons.AskButton;
-import tw.com.lixin.wm_casino.tools.buttons.ControlButton;
-import tw.com.lixin.wm_casino.tools.BacCardArea;
-import tw.com.lixin.wm_casino.tools.BetCountdown;
-import tw.com.lixin.wm_casino.tools.ChipStack;
-import tw.com.lixin.wm_casino.tools.ProfileBar;
-import tw.com.lixin.wm_casino.tools.RatePanel;
-import tw.com.lixin.wm_casino.websocketSource.GameSource;
-
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-import android.util.SparseArray;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import static android.view.View.INVISIBLE;
+import static android.view.View.VISIBLE;
 
 
 public class BaccaratActivity extends CasinoActivity implements GameBridge, TableBridge {
 
     public static boolean comission = false;
-
     private BacMainGrid mainGrid;
     private CasinoDoubleGrid secondGrid, thirdGrid, fourthGrid;
     private CasinoGrid firstGrid;
     private BacTable table;
-    private SparseArray<ImageView> pokers;
     private TextView playerScore, playerTxt, bankerScore, bankerTxt;
 
     @Override
@@ -63,14 +43,32 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         playerTxt = findViewById(R.id.player_txt);
         bankerScore = findViewById(R.id.banker_score);
         bankerTxt = findViewById(R.id.banker_txt);
-        pokers = new SparseArray<>();
-        pokers.put(1,findViewById(R.id.player_poker1));
-        pokers.put(3,findViewById(R.id.player_poker2));
-        pokers.put(5,findViewById(R.id.player_poker3));
-        pokers.put(2,findViewById(R.id.banker_poker1));
-        pokers.put(4,findViewById(R.id.banker_poker2));
-        pokers.put(6,findViewById(R.id.banker_poker3));
+        addCard(1, R.id.player_poker1);
+        addCard(3, R.id.player_poker2);
+        addCard(5, R.id.player_poker3);
+        addCard(2, R.id.banker_poker1);
+        addCard(4, R.id.banker_poker2);
+        addCard(6, R.id.banker_poker3);
         table = (BacTable) source.table;
+        if(table.stage != 1) setScores();
+    }
+
+    @Override
+    public void betStarted() {
+        playerScore.setVisibility(INVISIBLE);
+        playerTxt.setVisibility(INVISIBLE);
+        bankerScore.setVisibility(INVISIBLE);
+        bankerTxt.setVisibility(INVISIBLE);
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void setScores(){
+        playerScore.setText(table.playerScore+"");
+        bankerScore.setText(table.bankerScore+"");
+        playerScore.setVisibility(VISIBLE);
+        playerTxt.setVisibility(VISIBLE);
+        bankerScore.setVisibility(VISIBLE);
+        bankerTxt.setVisibility(VISIBLE);
     }
 
     private void askRoad(int win) {
@@ -112,7 +110,6 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
 
     @Override
     public void resultUpdate() {
-
         if (table.result == 1) {
 
         } else if (table.result == 2) {
@@ -120,13 +117,7 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         } else if (table.result == 4) {
 
         }
-        if(table.result != -1){
-         //   cardArea.showScore(table.playerScore, table.bankerScore);
-        }
+        setScores();
     }
 
-    @Override
-    public void cardUpdate(int area, int img) {
-      //  cardArea.update(area, img);
-    }
 }

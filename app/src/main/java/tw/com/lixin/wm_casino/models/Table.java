@@ -39,7 +39,7 @@ public abstract class Table {
     public int groupID, gameID;
     public int groupType;
     public int dealerID;
-    public int result = -99;
+    public int result;
     public SparseIntArray pokers = new SparseIntArray();
 
     public Table(Group group){
@@ -102,7 +102,6 @@ public abstract class Table {
             timer.cancel();
         }
         if (stage == 1) {
-            result = -99;
             pokers.clear();
         }
         this.stage = stage;

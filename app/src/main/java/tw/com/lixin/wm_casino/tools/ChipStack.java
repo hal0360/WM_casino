@@ -71,7 +71,6 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         animeUp = AnimationUtils.loadAnimation(context, R.anim.coin_anime_up);
 
         source = GameSource.getInstance();
-
         post(()->{
             data = source.chipDatas.get(getId());
             if(data != null){
@@ -83,7 +82,6 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
             }
             refresh();
         });
-
     }
 
     public void addCoinToClient(Client22 client22){

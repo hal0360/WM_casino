@@ -28,12 +28,7 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     protected GameSource source;
     protected SparseArray<ImageView> pokers;
     public static int curStage;
-
     private List<ChipStack> stacks;
-
-   // public abstract void cleanCard();
-
-    public abstract void cleanCard();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +38,7 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         source = GameSource.getInstance();
         casinoArea = findViewById(R.id.casino_area);
         cardArea = findViewById(R.id.card_area);
-
+        pokers = new SparseArray<>();
         casinoArea.setUp();
     }
 
@@ -60,6 +55,11 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     protected void addToArea(ChipStack stack, int maxVal, int area){
         stack.setUp(area, maxVal);
         stacks.add(stack);
+    }
+
+    protected void addCard(int area, int card_id){
+        ImageView img = findViewById(card_id);
+        pokers.put(area,img);
     }
 
     @Override
@@ -105,8 +105,8 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     public void onPause() {
         super.onPause();
         casinoArea.stopVideo();
-      //  source.table.unBind();
-      //  source.unbind();
+        source.table.unBind();
+        source.unbind();
     }
 
     @Override
@@ -116,29 +116,6 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     }
 
     public abstract void betStarted();
-/*
-    @Override
-    public void stageUpdate() {
-        thisStage = table.stage;
-        if (table.stage == 1) {
-            countdown.betting();
-            cardArea.reset();
-            tigerStack.clearCoin();
-            dragonStack.clearCoin();
-            tieStack.clearCoin();
-        } else if (table.stage == 2) {
-            countdown.dealing();
-            cardArea.setVisibility(View.VISIBLE);
-            tigerStack.cancelBet();
-            dragonStack.cancelBet();
-            tieStack.cancelBet();;
-            cancelBtn.disable(true);
-            rebetBtn.disable(true);
-            betBtn.disable(true);
-        } else if (table.stage == 4) {
-
-        }
-    }*/
 
     @Override
     public void stageUpdate() {
@@ -146,6 +123,7 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         curStage = source.table.stage;
         if (source.table.stage == 1) {
             casinoArea.betting();
+            for(int p = 0; p < pokers.size(); p++) pokers.valueAt(p).setVisibility(View.INVISIBLE);
             betStarted();
             cardArea.setVisibility(View.INVISIBLE);
             for (ChipStack stack: stacks) stack.clearCoin();
@@ -161,15 +139,9 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         }
     }
 
-
     @Override
     public void betCountdown(int sec) {
         casinoArea.setSecond(sec);
-    }
-
-    @Override
-    public void resultUpdate() {
-
     }
 
     @Override
@@ -179,7 +151,11 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
 
     @Override
     public void cardUpdate(int area, int img) {
-
+        ImageView pokerImg = pokers.get(area);
+        if(pokerImg != null){
+            pokerImg.setVisibility(View.VISIBLE);
+            pokerImg.setImageResource(Poker.NUM(img));
+        }
     }
 
     @Override
