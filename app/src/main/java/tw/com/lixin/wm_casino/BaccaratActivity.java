@@ -7,6 +7,7 @@ import android.widget.TextView;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
+import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.tools.grids.BacMainGrid;
 import tw.com.lixin.wm_casino.tools.grids.CasinoDoubleGrid;
 import tw.com.lixin.wm_casino.tools.grids.CasinoGrid;
@@ -43,6 +44,12 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         playerTxt = findViewById(R.id.player_txt);
         bankerScore = findViewById(R.id.banker_score);
         bankerTxt = findViewById(R.id.banker_txt);
+        betStarted();
+        setTextView(R.id.tie_pair_dtO, "1:" + source.logData.dtOdds.get(3));
+        setTextView(R.id.banker_pair_dtO, "1:" + source.logData.dtOdds.get(4));
+        setTextView(R.id.player_pair_dtO, "1:" + source.logData.dtOdds.get(5));
+        setTextView(R.id.banker_dtO, "1:" + source.logData.dtOdds.get(1));
+        setTextView(R.id.player_dtO, "1:" + source.logData.dtOdds.get(2));
         addCard(1, R.id.player_poker1);
         addCard(3, R.id.player_poker2);
         addCard(5, R.id.player_poker3);
@@ -51,6 +58,7 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         addCard(6, R.id.banker_poker3);
         table = (BacTable) source.table;
         if(table.stage != 1) setScores();
+        casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/live" + table.groupID + "/stream1");
     }
 
     @Override
@@ -63,8 +71,8 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
 
     @SuppressLint("SetTextI18n")
     private void setScores(){
-        playerScore.setText(table.playerScore+"");
-        bankerScore.setText(table.bankerScore+"");
+        playerScore.setText(source.playerScore+"");
+        bankerScore.setText(source.bankerScore+"");
         playerScore.setVisibility(VISIBLE);
         playerTxt.setVisibility(VISIBLE);
         bankerScore.setVisibility(VISIBLE);
@@ -78,19 +86,6 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         fourthGrid.askRoad(table.fourthGrid.posXX, table.fourthGrid.posYY, table.fourthGrid.resX);
         if(win == 1){ mainGrid.askRoad(1);
         }else{ mainGrid.askRoad(5); }
-    }
-
-    public void cleanCard(){
-        pokers.get(1).setVisibility(INVISIBLE);
-        pokers.get(2).setVisibility(INVISIBLE);
-        pokers.get(3).setVisibility(INVISIBLE);
-        pokers.get(4).setVisibility(INVISIBLE);
-        pokers.get(5).setVisibility(INVISIBLE);
-        pokers.get(6).setVisibility(INVISIBLE);
-        playerScore.setVisibility(INVISIBLE);
-        playerTxt.setVisibility(INVISIBLE);
-        bankerScore.setVisibility(INVISIBLE);
-        bankerTxt.setVisibility(INVISIBLE);
     }
 
     @SuppressLint("SetTextI18n")
@@ -110,11 +105,12 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
 
     @Override
     public void resultUpdate() {
-        if (table.result == 1) {
+        Table.resDivide(source.result);
+        if (source.result == 1) {
 
-        } else if (table.result == 2) {
+        } else if (source.result == 2) {
 
-        } else if (table.result == 4) {
+        } else if (source.result == 4) {
 
         }
         setScores();

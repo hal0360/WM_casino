@@ -14,7 +14,7 @@ public class BacTable extends Table{
     public int tieCount = 0;
     public int bankPairCount = 0;
     public int playPairCount = 0;
-    public List<List<Integer>> sortedRoad;
+    private List<List<Integer>> sortedRoad;
   //  public List<Integer> mainRoad;
     public GridRoad firstGrid;
     public GridRoad secGrid;
@@ -23,7 +23,6 @@ public class BacTable extends Table{
     private List<Integer> tempRoad;
     private int preWin = 0;
     private int preRes = 0;
-    public int playerScore, bankerScore;
 
     public List<Integer> bigRoad;
 
@@ -51,12 +50,6 @@ public class BacTable extends Table{
         tieCount = data.historyData.tieCount;
         playPairCount = data.historyData.playerPairCount;
         bankPairCount = data.historyData.bankerPairCount;
-    }
-
-    @Override
-    public void resultUpdate(TableData.Data data) {
-        playerScore = data.playerScore;
-        bankerScore = data.bankerScore;
     }
 
     private void divide(int rawVal){

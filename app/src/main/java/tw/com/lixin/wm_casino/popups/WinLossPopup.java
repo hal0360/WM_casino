@@ -11,20 +11,22 @@ import tw.com.lixin.wm_casino.R;
 
 public class WinLossPopup extends PopupFragment {
 
-    private TextView pay;
     private TimeTask timeTask;
 
-    @SuppressLint("SetTextI18n")
-    public void setPay(float win){
-        pay.setText(win+"");
-        timeTask.delay(4000, this::dismiss);
+    private float winVal;
+
+    public WinLossPopup(float win){
+        winVal = win;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void dialogCreated(FragDialog dialog) {
         dialog.setContentView(R.layout.win_loss_popup);
-        pay = dialog.findViewById(R.id.pay_txt);
+        TextView pay = dialog.findViewById(R.id.pay_txt);
+        pay.setText(winVal+"");
         timeTask = new TimeTask();
+        timeTask.delay(4000, this::dismiss);
     }
 
     @Override

@@ -27,7 +27,6 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     protected CardArea cardArea;
     protected GameSource source;
     protected SparseArray<ImageView> pokers;
-    public static int curStage;
     private List<ChipStack> stacks;
 
     @Override
@@ -65,9 +64,6 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     @Override
     public void onResume() {
         super.onResume();
-
-        cardArea.setBackgroundColor(0xFF00FF00);
-
         if(!source.isConnected()){
             alert("connection lost");
             finish();
@@ -79,26 +75,25 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         source.table.bind(this);
         source.bind(this);
 
+        for(int p = 0; p < pokers.size(); p++) pokers.valueAt(p).setVisibility(View.INVISIBLE);
         if(source.table.stage == 1){
             cardArea.setVisibility(View.INVISIBLE);
             casinoArea.betting();
         }else {
             cardArea.setVisibility(View.VISIBLE);
-           // if(source.table.result != -99) cardArea.showScore(table.playerScore, table.bankerScore);
             casinoArea.dealing();
+            for(int i = 0; i < source.pokers.size(); i++) {
+                int key = source.pokers.keyAt(i);
+                ImageView pokerImg = pokers.get(key);
+                pokerImg.setVisibility(View.VISIBLE);
+                pokerImg.setImageResource(Poker.NUM(source.pokers.get(key)));
+            }
         }
+
         casinoArea.updateBalance();
         casinoArea.setMember(User.userName());
         casinoArea.setPPLnum(source.pplOnline);
         gridUpdate();
-
-        for(int p = 0; p < pokers.size(); p++) pokers.valueAt(p).setVisibility(View.INVISIBLE);
-        for(int i = 0; i < source.table.pokers.size(); i++) {
-            int key = source.table.pokers.keyAt(i);
-            ImageView pokerImg = pokers.get(key);
-            pokerImg.setVisibility(View.VISIBLE);
-            pokerImg.setImageResource(Poker.NUM(source.table.pokers.get(key)));
-        }
     }
 
     @Override
@@ -120,8 +115,8 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     @Override
     public void stageUpdate() {
         casinoArea.setPPLnum(source.pplOnline);
-        curStage = source.table.stage;
         if (source.table.stage == 1) {
+            source.pokers.clear();
             casinoArea.betting();
             for(int p = 0; p < pokers.size(); p++) pokers.valueAt(p).setVisibility(View.INVISIBLE);
             betStarted();
@@ -151,6 +146,8 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
 
     @Override
     public void cardUpdate(int area, int img) {
+
+
         ImageView pokerImg = pokers.get(area);
         if(pokerImg != null){
             pokerImg.setVisibility(View.VISIBLE);
@@ -176,9 +173,7 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
 
     @Override
     public void winLossUpdate(float win) {
-        WinLossPopup popup = new WinLossPopup();
-        popup.setPay(win);
-        showPopup(new WinLossPopup());
+        showPopup(new WinLossPopup(win));
     }
 
     public void confirm(){

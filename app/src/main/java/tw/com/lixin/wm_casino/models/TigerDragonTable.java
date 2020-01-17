@@ -139,11 +139,6 @@ public class TigerDragonTable extends Table{
         tieCount = data.historyData.tieCount;
     }
 
-    @Override
-    public void resultUpdate(TableData.Data data) {
-        pokerWin = Table.resDivide(data.result);
-        tigerScore = data.playerScore;
-        dragonScore = data.bankerScore;
-    }
+
 
 }

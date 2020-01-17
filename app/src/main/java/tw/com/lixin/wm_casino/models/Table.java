@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.util.Log;
-import android.util.SparseIntArray;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,10 +14,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import tw.com.atromoby.utils.Cmd;
-import tw.com.atromoby.utils.CmdInt;
 import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.dataModels.gameData.Group;
-import tw.com.lixin.wm_casino.interfaces.CmdCard;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
@@ -39,8 +36,6 @@ public abstract class Table {
     public int groupID, gameID;
     public int groupType;
     public int dealerID;
-    public int result;
-    public SparseIntArray pokers = new SparseIntArray();
 
     public Table(Group group){
 
@@ -78,7 +73,7 @@ public abstract class Table {
         if(isBinded) handler.post(()->{ if(isBinded) cmd.exec(); });
     }
 
-    static int resDivide(int rawVal){
+    public static int resDivide(int rawVal){
         List<Integer> powers = new ArrayList<>();
         for(int i = 8; i >= 0; i-- ){
             int boss = (int) Math.pow(2,i);
@@ -94,26 +89,16 @@ public abstract class Table {
     }
 
     public abstract void historyUpdate(TableData.Data data);
-    public abstract void resultUpdate(TableData.Data data);
    // public abstract void stageUpdate();
 
     public void receive20(int stage) {
         if (stage == 2) {
             timer.cancel();
         }
-        if (stage == 1) {
-            pokers.clear();
-        }
         this.stage = stage;
 
         handle(() -> bridge.stageUpdate());
         if(stage == 4) unBind();
-    }
-
-    public void receive24(int area, int id) {
-        pokers.put(area,id);
-
-        handle(() -> bridge.cardUpdate(area, id));
     }
 
     public void receive21(TableData.Data data) {
@@ -145,12 +130,4 @@ public abstract class Table {
         }, 0, 1000);
     }
 
-    public void receive25(TableData.Data data) {
-        result = data.result;
-        resultUpdate(data);
-
-        handle(() -> bridge.resultUpdate());
-    }
-
-    // protected abstract void statusUpdate();
 }

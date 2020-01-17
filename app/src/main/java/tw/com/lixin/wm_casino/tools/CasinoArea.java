@@ -139,8 +139,8 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
         gyuShu.setText(num + "/" + round);
     }
 
-    public void setVideo(int groupID){
-        video.setVideoPath("rtmp://wmvdo.nicejj.cn/live" + groupID + "/stream1");
+    public void setVideo(String url){
+        video.setVideoPath(url);
     }
 
     public void playVideo(){

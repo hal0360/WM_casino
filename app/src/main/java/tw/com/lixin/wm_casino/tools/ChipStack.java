@@ -74,10 +74,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         source = GameSource.getInstance();
         post(()->{
             data = source.chipDatas.get(getId());
-            if(data != null){
-                if(source.table.stage == 1 && CasinoActivity.curStage != 1) data.clear();
-                if(source.table.stage == 2 && CasinoActivity.curStage != 2) data.cancelBet();
-            }else{
+            if(data == null){
                 data = new ChipStackData();
                 source.chipDatas.put(getId(),data);
             }
@@ -235,7 +232,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     @Override
     public void onClick(View v) {
         if( add(CasinoArea.curChip)) {
-            CasinoActivity activity = (CasinoActivity) getContext();;
+            CasinoActivity activity = (CasinoActivity) getContext();
             activity.stackBet();
         }
     }

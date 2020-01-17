@@ -104,13 +104,8 @@ public class BacCollection extends Collection implements TableBridge {
     }
 
     @Override
-    public void resultUpdate() { }
-
-    @Override
     public void tableUpdate() {
 
     }
 
-    @Override
-    public void cardUpdate(int area, int img) { }
 }

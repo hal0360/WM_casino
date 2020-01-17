@@ -15,5 +15,11 @@ public class GameData {
         public String userName;
         public int winRate;
         public int userCount;
+
+        public int cardArea;
+        public int cardID;
+        public int bankerScore;
+        public int playerScore;
+        public int result;
     }
 }

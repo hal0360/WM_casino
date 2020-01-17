@@ -39,7 +39,7 @@ public class BacCardArea extends ConstraintLayout {
         pokers.put(6,findViewById(R.id.banker_poker3));
 
         GameSource source = GameSource.getInstance();
-        setUp(source.table.pokers);
+       // setUp(source.table.pokers);
     }
 
     public void setUp(SparseIntArray dataPokers){

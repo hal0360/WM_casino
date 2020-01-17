@@ -1,6 +1,8 @@
 package tw.com.lixin.wm_casino.websocketSource;
 
+import android.util.Log;
 import android.util.SparseArray;
+import android.util.SparseIntArray;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +41,13 @@ public class GameSource extends CasinoSource{
     public SparseArray<ChipStackData> chipDatas;
     public TableLogData.Data logData;
 
+    public int result;
+    public int playerScore, bankerScore;
+
+    public SparseIntArray pokers = new SparseIntArray();
+
+
+
     public void bind(GameBridge bridge){
         this.bridge = bridge;
         binded(true);
@@ -57,12 +66,12 @@ public class GameSource extends CasinoSource{
         this.popup = null;
     }
 
-
     public final void tableLogin(Table table, CmdTableLog logOK, CmdStr logFail){
         defineURL("ws://gameserver.a45.me:15" + table.gameID);
         this.table = table;
         cmdTableLog = logOK;
         cmdTableFail = logFail;
+        pokers.clear();
         login(User.sid(),data->{
             peoples = new ArrayList<>();
             chipDatas = new SparseArray<>();
@@ -100,6 +109,20 @@ public class GameSource extends CasinoSource{
                 break;
             case 22:
                 if(gameData.data.groupID == table.groupID) handle(() -> bridge.betUpdate(gameData.data.bOk));
+                break;
+            case 24:
+                if(gameData.data.groupID == table.groupID){
+                    pokers.put(gameData.data.cardArea,gameData.data.cardID);
+                    handle(() -> bridge.cardUpdate(gameData.data.cardArea,gameData.data.cardID));
+                }
+                break;
+            case 25:
+                if(gameData.data.groupID == table.groupID) {
+                    playerScore = gameData.data.playerScore;
+                    bankerScore = gameData.data.bankerScore;
+                    result = gameData.data.result;
+                    handle(() -> bridge.resultUpdate());
+                }
                 break;
             case 23:
                 if(gameData.data.groupID == table.groupID && gameData.data.memberID == User.memberID()){

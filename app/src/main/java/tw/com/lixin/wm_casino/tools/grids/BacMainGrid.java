@@ -61,7 +61,6 @@ public class BacMainGrid extends TableLayout {
             this.addView(row);
         }
 
-
     }
 
     public void clearAskViews(){

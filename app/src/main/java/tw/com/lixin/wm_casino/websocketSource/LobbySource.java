@@ -50,6 +50,7 @@ public class LobbySource extends CasinoSource{
 
     @Override
     public void onReceive(String text) {
+
         TableData tableData = Json.from(text, TableData.class);
         TableData.Data data = tableData.data;
 
@@ -86,17 +87,11 @@ public class LobbySource extends CasinoSource{
                     table.receive21(data);
                 }
                 return;
-            case 24:
-                if(table != null) table.receive24(tableData.data.cardArea, tableData.data.cardID);
-                return;
             case 26:
                 if(table != null) table.receive26(tableData.data);
                 return;
             case 38:
                 if(table != null) table.receive38(tableData.data.timeMillisecond);
-                return;
-            case 25:
-                if(table != null) table.receive25(tableData.data);
                 return;
         }
         proLogData(text);

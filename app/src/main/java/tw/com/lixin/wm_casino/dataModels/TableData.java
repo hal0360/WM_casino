@@ -16,11 +16,7 @@ public class TableData {
         public int groupID = -99;
 
         public int gameStage;
-        public int cardArea;
-        public int cardID;
-        public int bankerScore;
-        public int playerScore;
-        public int result;
+
         public List<Integer> historyArr;
         public HisData historyData;
         public int groupType;
