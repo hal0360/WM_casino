@@ -11,31 +11,23 @@ import tw.com.lixin.wm_casino.R;
 
 public class MessageCollection extends Collection {
 
-    private String message, user;
-    private int ingRes;
+    private String message, user, arg;
 
-    public MessageCollection(String user, String content, int imgRes) {
+    public MessageCollection(String user, String content, String arg) {
         super(R.layout.message_collection);
         message = content;
         this.user = user;
-        ingRes = imgRes;
+        this.arg = arg;
+
     }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void onBind(CollectionHolder holder) {
         TextView mss = holder.findViewById(R.id.message);
-        if(!user.equals("")){
-            mss.setText(user+ ": " +message);
-            mss.setTextColor(0xff7CFC00);
-            if (ingRes != 0) {
-                ImageView icon = holder.findViewById(R.id.icon);
-                icon.setVisibility(View.VISIBLE);
-                icon.setImageResource(ingRes);
-            }
-        }else {
-            mss.setText(message);
-        }
+
+        mss.setText(user+ ": " + arg + " " + message);
+       // mss.setTextColor(0xff7CFC00);
     }
 
     @Override

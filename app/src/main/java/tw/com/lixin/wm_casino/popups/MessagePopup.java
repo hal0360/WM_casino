@@ -6,6 +6,9 @@ import android.widget.ScrollView;
 import tw.com.atromoby.widgets.FragDialog;
 import tw.com.atromoby.widgets.PopupFragment;
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.collections.MessageCollection;
+import tw.com.lixin.wm_casino.dataModels.MssSendData;
+import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.tools.buttons.ClickImage;
 import tw.com.lixin.wm_casino.tools.buttons.ClickText;
 import tw.com.lixin.wm_casino.tools.MessageArea;
@@ -19,34 +22,31 @@ public class MessagePopup extends PopupFragment {
         dialog.setContentView(R.layout.message_popup);
 
         MessageSource source = MessageSource.getInstance();
-        MessageArea area = source.getArea();
 
-        if (area == null) return;
+        ((ClickImage) dialog.findViewById(R.id.emo_1)).clicked(v-> source.sendEmoji( 1));
+        ((ClickImage) dialog.findViewById(R.id.emo_2)).clicked(v-> source.sendEmoji(2));
+        ((ClickImage) dialog.findViewById(R.id.emo_3)).clicked(v-> source.sendEmoji(3));
+        ((ClickImage) dialog.findViewById(R.id.emo_4)).clicked(v-> source.sendEmoji( 4));
+        ((ClickImage) dialog.findViewById(R.id.emo_5)).clicked(v-> source.sendEmoji(5));
+        ((ClickImage) dialog.findViewById(R.id.emo_6)).clicked(v-> source.sendEmoji(6));
+        ((ClickImage) dialog.findViewById(R.id.emo_7)).clicked(v-> source.sendEmoji(7));
+        ((ClickImage) dialog.findViewById(R.id.emo_8)).clicked(v-> source.sendEmoji(8));
+        ((ClickImage) dialog.findViewById(R.id.emo_9)).clicked(v-> source.sendEmoji( 9));
+        ((ClickImage) dialog.findViewById(R.id.emo_10)).clicked(v-> source.sendEmoji( 10));
+        ((ClickImage) dialog.findViewById(R.id.emo_11)).clicked(v-> source.sendEmoji(11));
+        ((ClickImage) dialog.findViewById(R.id.emo_12)).clicked(v-> source.sendEmoji(12));
+        ((ClickImage) dialog.findViewById(R.id.emo_13)).clicked(v-> source.sendEmoji(13));
+        ((ClickImage) dialog.findViewById(R.id.emo_14)).clicked(v-> source.sendEmoji(14));
+        ((ClickImage) dialog.findViewById(R.id.emo_15)).clicked(v-> source.sendEmoji(15));
 
-        ((ClickImage) dialog.findViewById(R.id.emo_1)).clicked(v-> area.sendEmoji(R.drawable.emo1, 1));
-        ((ClickImage) dialog.findViewById(R.id.emo_2)).clicked(v-> area.sendEmoji(R.drawable.emo2, 2));
-        ((ClickImage) dialog.findViewById(R.id.emo_3)).clicked(v-> area.sendEmoji(R.drawable.emo3, 3));
-        ((ClickImage) dialog.findViewById(R.id.emo_4)).clicked(v-> area.sendEmoji(R.drawable.emo4, 4));
-        ((ClickImage) dialog.findViewById(R.id.emo_5)).clicked(v-> area.sendEmoji(R.drawable.emo5, 5));
-        ((ClickImage) dialog.findViewById(R.id.emo_6)).clicked(v-> area.sendEmoji(R.drawable.emo6, 6));
-        ((ClickImage) dialog.findViewById(R.id.emo_7)).clicked(v-> area.sendEmoji(R.drawable.emo7, 7));
-        ((ClickImage) dialog.findViewById(R.id.emo_8)).clicked(v-> area.sendEmoji(R.drawable.emo8, 8));
-        ((ClickImage) dialog.findViewById(R.id.emo_9)).clicked(v-> area.sendEmoji(R.drawable.emo9, 9));
-        ((ClickImage) dialog.findViewById(R.id.emo_10)).clicked(v-> area.sendEmoji(R.drawable.emo10, 10));
-        ((ClickImage) dialog.findViewById(R.id.emo_11)).clicked(v-> area.sendEmoji(R.drawable.emo11, 11));
-        ((ClickImage) dialog.findViewById(R.id.emo_12)).clicked(v-> area.sendEmoji(R.drawable.emo12, 12));
-        ((ClickImage) dialog.findViewById(R.id.emo_13)).clicked(v-> area.sendEmoji(R.drawable.emo13, 13));
-        ((ClickImage) dialog.findViewById(R.id.emo_14)).clicked(v-> area.sendEmoji(R.drawable.emo14, 14));
-        ((ClickImage) dialog.findViewById(R.id.emo_15)).clicked(v-> area.sendEmoji(R.drawable.emo15, 15));
-
-        ((ClickText) dialog.findViewById(R.id.mss_1)).clicked(v-> area.sendMessage(v.getRawText()));
-        ((ClickText) dialog.findViewById(R.id.mss_2)).clicked(v-> area.sendMessage(v.getRawText()));
-        ((ClickText) dialog.findViewById(R.id.mss_3)).clicked(v-> area.sendMessage(v.getRawText()));
-        ((ClickText) dialog.findViewById(R.id.mss_4)).clicked(v-> area.sendMessage(v.getRawText()));
-        ((ClickText) dialog.findViewById(R.id.mss_5)).clicked(v-> area.sendMessage(v.getRawText()));
-        ((ClickText) dialog.findViewById(R.id.mss_6)).clicked(v-> area.sendMessage(v.getRawText()));
-        ((ClickText) dialog.findViewById(R.id.mss_7)).clicked(v-> area.sendMessage(v.getRawText()));
-        ((ClickText) dialog.findViewById(R.id.mss_8)).clicked(v-> area.sendMessage(v.getRawText()));
+        ((ClickText) dialog.findViewById(R.id.mss_1)).clicked(v-> source.sendMessage(1));
+        ((ClickText) dialog.findViewById(R.id.mss_2)).clicked(v-> source.sendMessage(2));
+        ((ClickText) dialog.findViewById(R.id.mss_3)).clicked(v-> source.sendMessage(3));
+        ((ClickText) dialog.findViewById(R.id.mss_4)).clicked(v-> source.sendMessage(4));
+        ((ClickText) dialog.findViewById(R.id.mss_5)).clicked(v-> source.sendMessage(5));
+        ((ClickText) dialog.findViewById(R.id.mss_6)).clicked(v-> source.sendMessage(6));
+        ((ClickText) dialog.findViewById(R.id.mss_7)).clicked(v-> source.sendMessage(7));
+        ((ClickText) dialog.findViewById(R.id.mss_8)).clicked(v-> source.sendMessage(8));
 
         ScrollView textBox = dialog.findViewById(R.id.text_box);
         ScrollView emoBox = dialog.findViewById(R.id.emo_box);
@@ -59,6 +59,18 @@ public class MessagePopup extends PopupFragment {
             textBox.setVisibility(View.VISIBLE);
         });
     }
+
+
+
+   // public void sendMessage(String mss){
+    //    mssList.add(new MessageCollection(User.account(),mss,0));
+    //}
+
+    //public void sendEmoji(int imgRes, int arg){
+    //    mssList.add(new MessageCollection(User.account(),"",imgRes));
+    //}
+
+
 
     @Override
     public void dialogClosed(FragDialog dialog) {

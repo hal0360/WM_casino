@@ -15,6 +15,7 @@ import tw.com.lixin.wm_casino.global.Poker;
 import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.GameBridge;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
+import tw.com.lixin.wm_casino.popups.LimitPopup;
 import tw.com.lixin.wm_casino.popups.WinLossPopup;
 import tw.com.lixin.wm_casino.tools.CardArea;
 import tw.com.lixin.wm_casino.tools.CasinoArea;
@@ -44,6 +45,8 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     public CasinoArea getArea(){
         return  casinoArea;
     }
+
+    public abstract void limitShows(LimitPopup limitPopup);
 
     protected void addToArea(int stackId, int maxVal, int area){
         ChipStack stack = findViewById(stackId);
@@ -75,6 +78,8 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         source.table.bind(this);
         source.bind(this);
 
+        casinoArea.login(source.table.gameID, source.table.groupID);
+
         for(int p = 0; p < pokers.size(); p++) pokers.valueAt(p).setVisibility(View.INVISIBLE);
         if(source.table.stage == 1){
             cardArea.setVisibility(View.INVISIBLE);
@@ -102,6 +107,7 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         casinoArea.stopVideo();
         source.table.unBind();
         source.unbind();
+        casinoArea.logout();
     }
 
     @Override

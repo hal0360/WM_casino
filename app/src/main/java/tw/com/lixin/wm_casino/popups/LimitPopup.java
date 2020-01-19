@@ -23,8 +23,8 @@ public class LimitPopup extends PopupFragment {
 
     }
 
-    public void addLimit(String name, String odds, String max, String min){
-        limitCollections.add(new LimitCollection(name,odds,max,min));
+    public void addLimit(String name, String odds, int max, int min){
+        limitCollections.add(new LimitCollection(name,odds,max+"",min+""));
     }
 
 }

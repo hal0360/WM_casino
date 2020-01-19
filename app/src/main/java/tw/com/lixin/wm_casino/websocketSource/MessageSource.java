@@ -3,23 +3,25 @@ package tw.com.lixin.wm_casino.websocketSource;
 import tw.com.atromoby.utils.Json;
 import tw.com.lixin.wm_casino.dataModels.Client11;
 import tw.com.lixin.wm_casino.dataModels.MessageData;
+import tw.com.lixin.wm_casino.dataModels.MssSendData;
 import tw.com.lixin.wm_casino.global.User;
-import tw.com.lixin.wm_casino.interfaces.CmdStr;
-import tw.com.lixin.wm_casino.tools.MessageArea;
+import tw.com.lixin.wm_casino.tools.CasinoArea;
 
 public class MessageSource extends CasinoSource{
 
     private static MessageSource single_instance = null;
+
+    private int groupID, gameID;
+
     public static MessageSource getInstance()
     {
         if (single_instance == null) single_instance = new MessageSource();
         return single_instance;
     }
 
-    private MessageArea area;
-    private CmdStr cmdConFail;
+    private CasinoArea area;
 
-    public void bind(MessageArea bridge){
+    public void bind(CasinoArea bridge){
         area = bridge;
         binded(true);
     }
@@ -29,18 +31,34 @@ public class MessageSource extends CasinoSource{
         binded(false);
     }
 
-    public MessageArea getArea(){
-        return area;
-    }
-
-    public final void mssLogin(int gameid, int groupid, CmdStr logFail){
+    public final void mssLogin(int gameid, int groupid){
         defineURL("ws://gameserver.a45.me:15801");
-
+        gameID = gameid;
+        groupID = groupid;
         login(User.sid(),data->{
             Client11 client = new Client11(gameid, groupid);
             send(Json.to(client));
-        }, fail-> cmdConFail.exec(fail));
+        }, fail-> area.failedToConnect());
     }
+
+    public void sendEmoji(int arg){
+        MssSendData mssData = new MssSendData();
+        mssData.data.gameID = gameID;
+        mssData.data.groupID = groupID;
+        mssData.data.arguments = arg;
+        mssData.data.messageType = "Emoji";
+        send(Json.to(mssData));
+    }
+
+    public void sendMessage(int arg){
+        MssSendData mssData = new MssSendData();
+        mssData.data.gameID = gameID;
+        mssData.data.groupID = groupID;
+        mssData.data.arguments = arg;
+        mssData.data.messageType = "Example";
+        send(Json.to(mssData));
+    }
+
 
     @Override
     public void onReceive(String text) {

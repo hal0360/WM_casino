@@ -19,7 +19,7 @@ public class MessageArea extends CollectionsView {
 
     public void login(int gameID, int groupID){
         source = MessageSource.getInstance();
-        source.bind(this);
+     //   source.bind(this);
        // source.mssLogin(gameID, groupID);
     }
 
@@ -28,6 +28,7 @@ public class MessageArea extends CollectionsView {
         source.close();
     }
 
+    /*
     public void sendMessage(String mss){
         add(new MessageCollection(User.account(),mss,0));
     }
@@ -56,5 +57,5 @@ public class MessageArea extends CollectionsView {
 
     public void mssReceived(MessageData.Data data){
         add(new MessageCollection("",data.arguments,0));
-    }
+    }*/
 }

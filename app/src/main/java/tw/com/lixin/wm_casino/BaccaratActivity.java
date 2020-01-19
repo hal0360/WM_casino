@@ -8,13 +8,13 @@ import tw.com.lixin.wm_casino.interfaces.GameBridge;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.Table;
+import tw.com.lixin.wm_casino.popups.LimitPopup;
 import tw.com.lixin.wm_casino.tools.grids.BacMainGrid;
 import tw.com.lixin.wm_casino.tools.grids.CasinoDoubleGrid;
 import tw.com.lixin.wm_casino.tools.grids.CasinoGrid;
 
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
-
 
 public class BaccaratActivity extends CasinoActivity implements GameBridge, TableBridge {
 
@@ -59,6 +59,15 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         table = (BacTable) source.table;
         if(table.stage != 1) setScores();
         casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/live" + table.groupID + "/stream1");
+    }
+
+    @Override
+    public void limitShows(LimitPopup limitPopup) {
+        limitPopup.addLimit(getString(R.string.banker), source.logData.dtOdds.get(1), source.logData.maxBet01,1 );
+        limitPopup.addLimit(getString(R.string.player), source.logData.dtOdds.get(2), source.logData.maxBet02,1 );
+        limitPopup.addLimit(getString(R.string.tie), source.logData.dtOdds.get(3), source.logData.maxBet03,1 );
+        limitPopup.addLimit(getString(R.string.banker_pair), source.logData.dtOdds.get(4), source.logData.maxBet04,1 );
+        limitPopup.addLimit(getString(R.string.player_pair), source.logData.dtOdds.get(5), source.logData.maxBet04,1 );
     }
 
     @Override

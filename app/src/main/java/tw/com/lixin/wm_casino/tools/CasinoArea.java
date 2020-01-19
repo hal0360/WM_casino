@@ -7,12 +7,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
+
 import androidx.constraintlayout.widget.ConstraintLayout;
 import tw.com.atromoby.rtmplayer.IjkVideoView;
 import tw.com.atromoby.widgets.CollectionsView;
 import tw.com.lixin.wm_casino.App;
 import tw.com.lixin.wm_casino.CasinoActivity;
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.collections.MessageCollection;
+import tw.com.lixin.wm_casino.dataModels.MessageData;
 import tw.com.lixin.wm_casino.models.Chip;
 import tw.com.lixin.wm_casino.popups.LimitPopup;
 import tw.com.lixin.wm_casino.popups.MessagePopup;
@@ -23,6 +27,7 @@ import tw.com.lixin.wm_casino.tools.buttons.ClickImage;
 import tw.com.lixin.wm_casino.tools.buttons.ClickText;
 import tw.com.lixin.wm_casino.tools.buttons.ControlButton;
 import tw.com.lixin.wm_casino.tools.chips.ChipView;
+import tw.com.lixin.wm_casino.websocketSource.MessageSource;
 
 public class CasinoArea extends ConstraintLayout implements View.OnClickListener{
 
@@ -34,6 +39,7 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
     private CasinoActivity activity;
     private IjkVideoView video;
     public ControlButton confirmBtn, cancelBtn, rebetBtn;
+    private MessageSource source;
 
     public static Chip curChip;
 
@@ -83,7 +89,6 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
         }
 
         ClickText limitBtn = findViewById(R.id.limit_btn);
-        limitBtn.clicked(v-> activity.showPopup( new LimitPopup()));
         ClickImage mssBtn = findViewById(R.id.mss_btn);
         mssBtn.clicked(v-> activity.showPopup(new MessagePopup()));
         ClickImage peopleBtn = findViewById(R.id.people_btn);
@@ -105,11 +110,49 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
 
         rebetBtn.clicked(v-> activity.rebet());
 
+        limitBtn.clicked(v-> {
+            LimitPopup limitPopup = new LimitPopup();
+            activity.showPopup( new LimitPopup());
+            activity.limitShows(limitPopup);
+        });
     }
 
     public void setUp(){
         video = findViewById(R.id.video);
         activity = (CasinoActivity) getContext();
+    }
+
+    public void login(int gameID, int groupID){
+        source = MessageSource.getInstance();
+        source.bind(this);
+         source.mssLogin(gameID, groupID);
+    }
+
+    public void failedToConnect(){
+        mssList.add(new MessageCollection("","Error: connection failed",""));
+    }
+
+    public void failedToLogin(){
+        mssList.add(new MessageCollection("","Error: login failed",""));
+    }
+
+    public void connected(){
+        mssList.add(new MessageCollection("","Cconnection succesful",""));
+    }
+
+    public void mssBoxUpdated(List<MessageData.Data> datas ){
+        for (MessageData.Data data: datas){
+            mssList.add(new MessageCollection(data.sender, data.contents, data.arguments));
+        }
+    }
+
+    public void mssReceived(MessageData.Data data){
+        mssList.add(new MessageCollection(data.sender, data.contents, data.arguments));
+    }
+
+    public void logout(){
+        source.unbind();
+        source.close();
     }
 
     @SuppressLint("SetTextI18n")
