@@ -40,9 +40,9 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         secondGrid = findViewById(R.id.second_grid);
         thirdGrid = findViewById(R.id.third_grid);
         fourthGrid = findViewById(R.id.fourth_grid);
-        playerScore = findViewById(R.id.player_score);
+        playerScore = findViewById(R.id.tiger_score);
         playerTxt = findViewById(R.id.player_txt);
-        bankerScore = findViewById(R.id.banker_score);
+        bankerScore = findViewById(R.id.dragon_score);
         bankerTxt = findViewById(R.id.banker_txt);
         betStarted();
         setTextView(R.id.tie_pair_dtO, "1:" + source.logData.dtOdds.get(3));

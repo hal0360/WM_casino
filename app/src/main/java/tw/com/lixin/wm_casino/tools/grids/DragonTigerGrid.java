@@ -113,7 +113,7 @@ public class DragonTigerGrid  extends TableLayout {
         public DragTiRoadView(Context context) {
             super(context);
             setGravity(Gravity.CENTER);
-            setTextColor(0xffffffff);
+          //  setTextColor(0xffffffff);
             setTextSize(TypedValue.COMPLEX_UNIT_DIP, 7f);
         }
 

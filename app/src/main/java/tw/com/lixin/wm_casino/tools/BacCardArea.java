@@ -25,9 +25,9 @@ public class BacCardArea extends ConstraintLayout {
         View.inflate(context, R.layout.bac_card_area, this);
         setBackgroundColor(0xBF000000);
 
-        playerScore = findViewById(R.id.player_score);
+        playerScore = findViewById(R.id.tiger_score);
         playerTxt = findViewById(R.id.player_txt);
-        bankerScore = findViewById(R.id.banker_score);
+        bankerScore = findViewById(R.id.dragon_score);
         bankerTxt = findViewById(R.id.banker_txt);
 
         pokers = new SparseArray<>();
