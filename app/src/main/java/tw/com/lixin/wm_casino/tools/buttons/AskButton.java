@@ -60,6 +60,7 @@ public class AskButton extends ConstraintLayout {
         fourthSym.setImageResource(table.fourthGrid.resX);
     }
 
+    /*
     public void askTigerDragon(TigerDragonTable table, int win){
         table.askRoadThird(win);
         table.askRoadSec(win);
@@ -68,5 +69,5 @@ public class AskButton extends ConstraintLayout {
         secSym.setImageResource(table.secGrid.resX);
         thirdSym.setImageResource(table.thirdGrid.resX);
         fourthSym.setImageResource(table.fourthGrid.resX);
-    }
+    }*/
 }

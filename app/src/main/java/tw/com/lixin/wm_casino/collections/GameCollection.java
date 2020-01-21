@@ -48,7 +48,7 @@ public abstract class GameCollection extends Collection implements TableBridge {
     }
 
 
-    public void setTableName(String name){
+    void setTableName(String name){
         tableName.setText(name);
     }
 

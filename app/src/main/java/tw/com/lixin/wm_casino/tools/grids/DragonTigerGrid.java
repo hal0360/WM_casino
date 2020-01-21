@@ -10,15 +10,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
 
 import java.util.List;
 
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
-import androidx.core.widget.TextViewCompat;
 import tw.com.lixin.wm_casino.R;
-import tw.com.lixin.wm_casino.tools.grids.CellView.BacRoadView;
 
 public class DragonTigerGrid  extends TableLayout {
 
@@ -97,11 +94,18 @@ public class DragonTigerGrid  extends TableLayout {
     }
 
     public void drawRoad(List<Integer> big){
+        posX = 0;
+        posY = 0;
         for(int ref: big){
+
+
             if(posY > 5) {
                 posY = 0;
                 posX++;
             }
+
+            if(posX > 13) break;
+
             viewGrid[posX][posY].setRoad(ref);
             posY++;
         }
@@ -113,7 +117,7 @@ public class DragonTigerGrid  extends TableLayout {
         public DragTiRoadView(Context context) {
             super(context);
             setGravity(Gravity.CENTER);
-          //  setTextColor(0xffffffff);
+            setTextColor(0xffffffff);
             setTextSize(TypedValue.COMPLEX_UNIT_DIP, 7f);
         }
 

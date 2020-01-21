@@ -4,4 +4,5 @@ public class RoadItem {
     public int resID;
     public int x;
     public int y;
+    public String word;
 }

@@ -12,22 +12,12 @@ public class TigerDragonTable extends Table{
     public int tigerCount = 0;
     public int dragonCount = 0;
     public int tieCount = 0;
-    public List<List<Integer>> sortedRoad;
+
     public List<Integer> mainRoad;
-    public GridRoad firstGrid;
-    public GridRoad secGrid;
-    public GridRoad thirdGrid;
-    public GridRoad fourthGrid;
-    private List<Integer> tempRoad;
-    private int preWin = 0;
-    public int tigerScore, dragonScore, pokerWin = -1;
-
-
     public List<RoadItem> firstRoad;
     public List<RoadItem> secondRoad;
     public List<RoadItem> thirdRoad;
     public List<RoadItem> fourthRoad;
-
 
 
     public TigerDragonTable(Group group) {
@@ -35,132 +25,106 @@ public class TigerDragonTable extends Table{
         gameID = 102;
     }
 
-    private void packRes(int curWin){
-
-        int curRes = 0;
-        mainRoad.add(curWin);
-
-        if(curWin == 1){
-            curRes = Road.Bank;
-        }else if(curWin == 2){
-            curRes = Road.Play;
-        }else{
-            switch(preWin) {
-                case 0:
-                    return;
-                case 1:
-                    tempRoad.set(tempRoad.size() -1 ,Road.Bank_E);
-                    return;
-                case 2:
-                    tempRoad.set(tempRoad.size() -1 ,Road.Play_E);
-                    return;
-            }
-        }
-
-        if( (curWin - preWin) != 0){
-            tempRoad = new ArrayList<>();
-            sortedRoad.add(tempRoad);
-        }
-        tempRoad.add(curRes);
-        preWin = curWin;
-    }
-
-    public void askRoadFirst(int askWin){
-        if(askWin == 1){
-            firstGrid.drawRealAskFirst(preWin, askWin, Road.Bank);
-        }else{
-            firstGrid.drawRealAskFirst(preWin, askWin, Road.Play);
-        }
-
-    }
-
-    public void askRoadSec(int askWin){
-        if(sortedRoad.size()>1){
-            if(askWin ==  preWin) {
-                if(secGrid.blueWillWin){
-                    secGrid.drawRealAsk(Road.Play);
-                }else{
-                    secGrid.drawRealAsk(Road.Bank);
-                }
-            }else{
-                if(secGrid.blueWillWin){
-                    secGrid.drawRealAsk(Road.Bank);
-                }else{
-                    secGrid.drawRealAsk(Road.Play);
-                }
-            }
-        }
-    }
-
-    public void askRoadThird(int askWin){
-        if(sortedRoad.size()>2){
-            if(askWin ==  preWin) {
-                if(thirdGrid.blueWillWin){
-                    thirdGrid.drawRealAsk(Road.Play_S);
-                }else{
-                    thirdGrid.drawRealAsk(Road.Bank_S);
-                }
-            }else{
-                if(thirdGrid.blueWillWin){
-                    thirdGrid.drawRealAsk(Road.Bank_S);
-                }else{
-                    thirdGrid.drawRealAsk(Road.Play_S);
-                }
-            }
-        }
-    }
-
-    public void askRoadFourth(int askWin){
-        if(sortedRoad.size()>3){
-            if(askWin ==  preWin) {
-                if(fourthGrid.blueWillWin){
-                    fourthGrid.drawRealAsk(Road.Play_I);
-                }else{
-                    fourthGrid.drawRealAsk(Road.Bank_I);
-                }
-            }else{
-                if(fourthGrid.blueWillWin){
-                    fourthGrid.drawRealAsk(Road.Bank_I);
-                }else{
-                    fourthGrid.drawRealAsk(Road.Play_I);
-                }
-            }
-        }
-    }
-
-
     @SuppressWarnings("unchecked")
     @Override
     public void historyUpdate(TableData.Data data) {
-
-        int posX = 0;
-        int posY = 0;
-        for (Object obj2: data.historyData.dataArr2){
-            List<Integer> data2 = (List<Integer>) obj2;
-            for(int res: data2){
-               // firstRoad.add(res);
+        firstRoad = new ArrayList<>();
+        secondRoad = new ArrayList<>();
+        thirdRoad = new ArrayList<>();
+        fourthRoad = new ArrayList<>();
+        mainRoad = data.historyArr;
+        int[][] road = new int[200][6];
+        int posX;
+        int posY;
+        int next = -1;
+        int res;
+        List<Double> arr;
+        for (Object obj: data.historyData.dataArr2){
+            next++;
+            posX = next;
+            posY = -1;
+            arr = (List<Double>) obj;
+            for(double douRes: arr){
+                res =  (int) douRes;
+                posY++;
+                if(posY > 5 || road[posX][posY] != 0) posY--;
+                while (road[posX][posY] != 0) posX++;
+                road[posX][posY] = res;
+                RoadItem item = new RoadItem();
+                item.x = posX;
+                item.y = posY;
+                if(res == 1) item.resID = Road.Bank;
+                else if(res == 2) item.resID = Road.Play;
+                else if(res == 5) item.resID = Road.Bank_E;
+                else item.resID = Road.Play_E;
+                firstRoad.add(0,item);
             }
         }
-
-
-
-
-        mainRoad = new ArrayList<>();
-        sortedRoad = new ArrayList<>();
-        for(int val: data.historyArr) packRes(val);
-        firstGrid = new GridRoad();
-        firstGrid.setFirst(sortedRoad);
-        secGrid = new GridRoad();
-        secGrid.setSec(sortedRoad);
-        thirdGrid = new GridRoad();
-        thirdGrid.setThird(sortedRoad);
-        fourthGrid = new GridRoad();
-        fourthGrid.setFourth(sortedRoad);
+        next = -1;
+        road = new int[200][6];
+        for (Object obj: data.historyData.dataArr3){
+            next++;
+            posX = next;
+            posY = -1;
+            arr = (List<Double>) obj;
+            for(double douRes: arr){
+                res =  (int) douRes;
+                posY++;
+                if(posY > 5 || road[posX][posY] != 0) posY--;
+                while (road[posX][posY] != 0) posX++;
+                road[posX][posY] = res;
+                RoadItem item = new RoadItem();
+                item.x = posX;
+                item.y = posY;
+                if(res == 1) item.resID = Road.Bank;
+                else if(res == 2) item.resID = Road.Play;
+                secondRoad.add(0,item);
+            }
+        }
+        next = -1;
+        road = new int[200][6];
+        for (Object obj: data.historyData.dataArr4){
+            next++;
+            posX = next;
+            posY = -1;
+            arr = (List<Double>) obj;
+            for(double douRes: arr){
+                res =  (int) douRes;
+                posY++;
+                if(posY > 5 || road[posX][posY] != 0) posY--;
+                while (road[posX][posY] != 0) posX++;
+                road[posX][posY] = res;
+                RoadItem item = new RoadItem();
+                item.x = posX;
+                item.y = posY;
+                if(res == 1) item.resID = Road.Bank_S;
+                else if(res == 2) item.resID = Road.Play_S;
+                thirdRoad.add(0,item);
+            }
+        }
+        next = -1;
+        road = new int[200][6];
+        for (Object obj: data.historyData.dataArr5){
+            next++;
+            posX = next;
+            posY = -1;
+            arr = (List<Double>) obj;
+            for(double douRes: arr){
+                res =  (int) douRes;
+                posY++;
+                if(posY > 5 || road[posX][posY] != 0) posY--;
+                while (road[posX][posY] != 0) posX++;
+                road[posX][posY] = res;
+                RoadItem item = new RoadItem();
+                item.x = posX;
+                item.y = posY;
+                if(res == 1) item.resID = Road.Bank_I;
+                else if(res == 2) item.resID = Road.Play_I;
+                fourthRoad.add(0,item);
+            }
+        }
         tigerCount = data.historyData.tigerCount;
         dragonCount = data.historyData.dragonCount;
         tieCount = data.historyData.tieCount;
     }
-
-
-
 }

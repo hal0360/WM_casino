@@ -13,8 +13,11 @@ import android.view.animation.AnimationUtils;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
+import java.util.List;
+
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.models.GridRoad;
+import tw.com.lixin.wm_casino.models.RoadItem;
 
 
 public class CasinoGrid extends TableLayout {
@@ -47,6 +50,19 @@ public class CasinoGrid extends TableLayout {
         a.recycle();
         iniGrid(gridX, gridY);
     }
+
+    public void drawRoad(List<RoadItem> items){
+        if(items.size() == 0) return;
+        int offset = items.get(0).x + 1 - width;
+        if(offset < 0) offset = 0;
+        int absX;
+        for(RoadItem item: items){
+            absX = item.x - offset;
+            if (absX < 0) break;
+            insertImage(absX, item.y, item.resID);
+        }
+    }
+
 
     public void drawRoad(GridRoad road){
         int shift = road.posX - width + 1 ;

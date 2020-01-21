@@ -10,6 +10,7 @@ import tw.com.lixin.wm_casino.tools.buttons.AskButton;
 import tw.com.lixin.wm_casino.tools.grids.BacMainGrid;
 import tw.com.lixin.wm_casino.tools.grids.CasinoDoubleGrid;
 import tw.com.lixin.wm_casino.tools.grids.CasinoGrid;
+import tw.com.lixin.wm_casino.tools.grids.DragonTigerGrid;
 
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
@@ -17,7 +18,7 @@ import static android.view.View.VISIBLE;
 
 public class DragonTigerActivity extends CasinoActivity  {
 
-    private BacMainGrid mainGrid;
+    private DragonTigerGrid mainGrid;
     private CasinoDoubleGrid secondGrid, thirdGrid, fourthGrid;
     private CasinoGrid firstGrid;
     private TigerDragonTable table;
@@ -42,27 +43,23 @@ public class DragonTigerActivity extends CasinoActivity  {
         dragonScore = findViewById(R.id.dragon_score);
         dragonTxt = findViewById(R.id.dragon_txt);
         betStarted();
-        setTextView(R.id.tie_pair_dtO, "1:" + source.logData.dtOdds.get(3));
-        setTextView(R.id.banker_pair_dtO, "1:" + source.logData.dtOdds.get(4));
-        setTextView(R.id.player_pair_dtO, "1:" + source.logData.dtOdds.get(5));
-        setTextView(R.id.banker_dtO, "1:" + source.logData.dtOdds.get(1));
-        setTextView(R.id.player_dtO, "1:" + source.logData.dtOdds.get(2));
+        setTextView(R.id.tie_dtO, "1:" + source.logData.dtOdds.get(3));
+        setTextView(R.id.dragon_dtO, "1:" + source.logData.dtOdds.get(1));
+        setTextView(R.id.tiger_dtO, "1:" + source.logData.dtOdds.get(2));
         addCard(1, R.id.tiger_poker);
         addCard(2, R.id.dragon_poker);
         table = (TigerDragonTable) source.table;
 
       //  if(table.stage != 1) setScores();
 
-        casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/live" + table.groupID + "/stream1");
+        casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/dt" + table.groupID + "/stream1");
     }
 
     @Override
     public void limitShows(LimitPopup limitPopup) {
-        limitPopup.addLimit(getString(R.string.banker), source.logData.dtOdds.get(1), source.logData.maxBet01,1 );
-        limitPopup.addLimit(getString(R.string.player), source.logData.dtOdds.get(2), source.logData.maxBet02,1 );
-        limitPopup.addLimit(getString(R.string.tie), source.logData.dtOdds.get(3), source.logData.maxBet03,1 );
-        limitPopup.addLimit(getString(R.string.banker_pair), source.logData.dtOdds.get(4), source.logData.maxBet04,1 );
-        limitPopup.addLimit(getString(R.string.player_pair), source.logData.dtOdds.get(5), source.logData.maxBet04,1 );
+       // limitPopup.addLimit(getString(R.string.banker), source.logData.dtOdds.get(1), source.logData.maxBet01,1 );
+      //  limitPopup.addLimit(getString(R.string.player), source.logData.dtOdds.get(2), source.logData.maxBet02,1 );
+       // limitPopup.addLimit(getString(R.string.tie), source.logData.dtOdds.get(3), source.logData.maxBet03,1 );
     }
 
     @Override
@@ -84,21 +81,21 @@ public class DragonTigerActivity extends CasinoActivity  {
     }
 
     private void askRoad(int win) {
-        firstGrid.askRoad(table.firstGrid.posXX, table.firstGrid.posYY, table.firstGrid.resX);
-        secondGrid.askRoad(table.secGrid.posXX, table.secGrid.posYY, table.secGrid.resX);
-        thirdGrid.askRoad(table.thirdGrid.posXX, table.thirdGrid.posYY, table.thirdGrid.resX);
-        fourthGrid.askRoad(table.fourthGrid.posXX, table.fourthGrid.posYY, table.fourthGrid.resX);
-        if(win == 1){ mainGrid.askRoad(1);
-        }else{ mainGrid.askRoad(5); }
+      //  firstGrid.askRoad(table.firstGrid.posXX, table.firstGrid.posYY, table.firstGrid.resX);
+      // secondGrid.askRoad(table.secGrid.posXX, table.secGrid.posYY, table.secGrid.resX);
+      //  thirdGrid.askRoad(table.thirdGrid.posXX, table.thirdGrid.posYY, table.thirdGrid.resX);
+       // fourthGrid.askRoad(table.fourthGrid.posXX, table.fourthGrid.posYY, table.fourthGrid.resX);
+       // if(win == 1){ mainGrid.askRoad(1);
+       // }else{ mainGrid.askRoad(5); }
     }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void gridUpdate() {
-        firstGrid.drawRoad(table.firstGrid);
-        secondGrid.drawRoad(table.secGrid);
-        thirdGrid.drawRoad(table.thirdGrid);
-        fourthGrid.drawRoad(table.fourthGrid);
+        firstGrid.drawRoad(table.firstRoad);
+        secondGrid.drawRoad(table.secondRoad);
+        thirdGrid.drawRoad(table.thirdRoad);
+        fourthGrid.drawRoad(table.fourthRoad);
         mainGrid.drawRoad(table.mainRoad);
         setTextView(R.id.dragon_count, table.dragonCount+"");
         setTextView(R.id.tiger_count, table.tigerCount+"");

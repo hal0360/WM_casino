@@ -11,16 +11,12 @@ public class GridRoad {
     public int posY = -1;
     public int next = -1;
     public int preWin = 0;
-
   //  private int next;
     public int[][] road;
-
     public boolean blueWillWin = true;
-
     public GridRoad(){
         road = new int[80][6];
     }
-
 
     public int posXX = -1;
     public int posYY = -1;
