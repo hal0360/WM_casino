@@ -41,6 +41,7 @@ public abstract class Table {
 
         TableData tData = new TableData();
         tData.data.historyArr = group.historyArr;
+        tData.data.historyData = group.historyData;
         historyUpdate(tData.data);
         dealerID = group.dealerID;
         stage = group.gameStage;

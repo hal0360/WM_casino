@@ -1,5 +1,6 @@
 package tw.com.lixin.wm_casino.websocketSource;
 
+import android.util.Log;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 
@@ -14,6 +15,7 @@ import tw.com.lixin.wm_casino.interfaces.CmdTable;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.Table;
+import tw.com.lixin.wm_casino.models.TigerDragonTable;
 
 
 public class LobbySource extends CasinoSource{
@@ -30,6 +32,7 @@ public class LobbySource extends CasinoSource{
         allTables = new SparseArray<>();
         tableProvider = new SparseArray<>();
         tableProvider.put(101, BacTable::new);
+        tableProvider.put(102, TigerDragonTable::new);
     }
 
     private LobbyBridge bridge;

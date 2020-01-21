@@ -23,6 +23,13 @@ public class TigerDragonTable extends Table{
     public int tigerScore, dragonScore, pokerWin = -1;
 
 
+    public List<RoadItem> firstRoad;
+    public List<RoadItem> secondRoad;
+    public List<RoadItem> thirdRoad;
+    public List<RoadItem> fourthRoad;
+
+
+
     public TigerDragonTable(Group group) {
         super(group);
         gameID = 102;
@@ -121,8 +128,23 @@ public class TigerDragonTable extends Table{
         }
     }
 
+
+    @SuppressWarnings("unchecked")
     @Override
     public void historyUpdate(TableData.Data data) {
+
+        int posX = 0;
+        int posY = 0;
+        for (Object obj2: data.historyData.dataArr2){
+            List<Integer> data2 = (List<Integer>) obj2;
+            for(int res: data2){
+               // firstRoad.add(res);
+            }
+        }
+
+
+
+
         mainRoad = new ArrayList<>();
         sortedRoad = new ArrayList<>();
         for(int val: data.historyArr) packRes(val);

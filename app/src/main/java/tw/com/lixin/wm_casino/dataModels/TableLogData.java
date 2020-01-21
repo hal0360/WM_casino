@@ -7,7 +7,6 @@ public class TableLogData {
     public int protocol;
     public Data data;
 
-
     public class Data {
         public int memberID;
         public int gameID = -99;

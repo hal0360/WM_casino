@@ -8,13 +8,11 @@ public class TableData {
 
     public TableData(){
         data = new Data();
-        data.historyData = new HisData();
     }
 
     public class Data {
         public int gameID = -99;
         public int groupID = -99;
-
         public int gameStage;
 
         public List<Integer> historyArr;
@@ -30,6 +28,10 @@ public class TableData {
     }
 
     public class HisData{
+        public List<Object> dataArr2;
+        public List<Object> dataArr3;
+        public List<Object> dataArr4;
+        public List<Object> dataArr5;
         public int bankerCount;
         public int playerCount;
         public int bankerPairCount;
