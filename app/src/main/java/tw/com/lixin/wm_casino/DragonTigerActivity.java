@@ -7,7 +7,6 @@ import android.widget.TextView;
 import tw.com.lixin.wm_casino.models.TigerDragonTable;
 import tw.com.lixin.wm_casino.popups.LimitPopup;
 import tw.com.lixin.wm_casino.tools.buttons.AskButton;
-import tw.com.lixin.wm_casino.tools.grids.BacMainGrid;
 import tw.com.lixin.wm_casino.tools.grids.CasinoDoubleGrid;
 import tw.com.lixin.wm_casino.tools.grids.CasinoGrid;
 import tw.com.lixin.wm_casino.tools.grids.DragonTigerGrid;
@@ -51,7 +50,6 @@ public class DragonTigerActivity extends CasinoActivity  {
         table = (TigerDragonTable) source.table;
 
       //  if(table.stage != 1) setScores();
-
         casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/dt" + table.groupID + "/stream1");
     }
 

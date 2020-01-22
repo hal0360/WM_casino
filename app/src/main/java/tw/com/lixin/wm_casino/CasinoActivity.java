@@ -153,7 +153,6 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     @Override
     public void cardUpdate(int area, int img) {
 
-
         ImageView pokerImg = pokers.get(area);
         if(pokerImg != null){
             pokerImg.setVisibility(View.VISIBLE);

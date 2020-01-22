@@ -39,5 +39,37 @@ public class TableData {
         public int dragonCount;
         public int tigerCount;
         public int tieCount;
+        public List<Integer> dataArr1DragonAsk;
+        public List<List<Integer>> dataArr2DragonAsk;
+        public List<List<Integer>> dataArr3DragonAsk;
+        public List<List<Integer>> dataArr4DragonAsk;
+        public List<List<Integer>> dataArr5DragonAsk;
+        public List<Integer> dataArr1TigerAsk;
+        public List<List<Integer>> dataArr2TigerAsk;
+        public List<List<Integer>> dataArr3TigerAsk;
+        public List<List<Integer>> dataArr4TigerAsk;
+        public List<List<Integer>> dataArr5TigerAsk;
+        public int dragonAsk3;
+        public int dragonAsk4;
+        public int dragonAsk5;
+        public int tigerAsk3;
+        public int tigerAsk4;
+        public int tigerAsk5;
+        public List<Integer> dataArr1BankerAsk;
+        public List<List<Integer>> dataArr2BankerAsk;
+        public List<List<Integer>> dataArr3BankerAsk;
+        public List<List<Integer>> dataArr4BankerAsk;
+        public List<List<Integer>> dataArr5BankerAsk;
+        public List<Integer> dataArr1PlayerAsk;
+        public List<List<Integer>> dataArr2PlayerAsk;
+        public List<List<Integer>> dataArr3PlayerAsk;
+        public List<List<Integer>> dataArr4PlayerAsk;
+        public List<List<Integer>> dataArr5PlayerAsk;
+        public int bankerAsk3;
+        public int bankerAsk4;
+        public int bankerAsk5;
+        public int playerAsk3;
+        public int playerAsk4;
+        public int playerAsk5;
     }
 }

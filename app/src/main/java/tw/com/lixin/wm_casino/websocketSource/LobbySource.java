@@ -14,6 +14,7 @@ import tw.com.lixin.wm_casino.dataModels.gameData.Group;
 import tw.com.lixin.wm_casino.interfaces.CmdTable;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
 import tw.com.lixin.wm_casino.models.BacTable;
+import tw.com.lixin.wm_casino.models.RouletteTable;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.models.TigerDragonTable;
 
@@ -33,6 +34,7 @@ public class LobbySource extends CasinoSource{
         tableProvider = new SparseArray<>();
         tableProvider.put(101, BacTable::new);
         tableProvider.put(102, TigerDragonTable::new);
+        tableProvider.put(103, RouletteTable::new);
     }
 
     private LobbyBridge bridge;

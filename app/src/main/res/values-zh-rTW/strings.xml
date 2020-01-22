@@ -97,4 +97,23 @@
     <string name="mss_6">贏要衝，輸要縮～</string>
     <string name="mss_7">師父說拿AK不賭是棒槌～</string>
     <string name="mss_8">這麼多人買閒家，我買莊家，我是個倔梆子</string>
+
+    <string name="black">黑</string>
+    <string name="red">紅</string>
+    <string name="green">綠</string>
+    <string name="oh">零</string>
+    <string name="big">大</string>
+    <string name="small">小</string>
+    <string name="even">雙</string>
+    <string name="odd">單</string>
+    <string name="BIG">大</string>
+    <string name="SMALL">小</string>
+    <string name="EVEN">雙</string>
+    <string name="ODD">單</string>
+    <string name="dozen1">第一打</string>
+    <string name="dozen2">第二打</string>
+    <string name="dozen3">第三打</string>
+    <string name="column1">第一列</string>
+    <string name="column2">第二列</string>
+    <string name="column3">第三列</string>
 </resources>

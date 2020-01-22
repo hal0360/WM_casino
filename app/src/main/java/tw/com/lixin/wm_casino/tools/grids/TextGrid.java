@@ -7,17 +7,15 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.List;
 
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.models.RoadItem;
 
 public class TextGrid extends TableLayout {
 
@@ -36,16 +34,28 @@ public class TextGrid extends TableLayout {
         super(context, attrs);
         this.context = context;
 
-        TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.CasinoGrid);
+        TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.TextGrid);
         int gridX, gridY;
-        gridY = a.getInt(R.styleable.CasinoGrid_grid_y,0);
-        gridX = a.getInt(R.styleable.CasinoGrid_grid_x, 0);
+        gridY = a.getInt(R.styleable.TextGrid_grid_y,0);
+        gridX = a.getInt(R.styleable.TextGrid_grid_x, 0);
         setDividerDrawable(ContextCompat.getDrawable(context, R.drawable.table_divider));
         setShowDividers(TableRow.SHOW_DIVIDER_MIDDLE);
         setBackgroundColor(Color.parseColor("#ffffff"));
         a.recycle();
         iniGrid(gridX, gridY);
 
+    }
+
+    public void drawRoad(List<RoadItem> items){
+        if(items.size() == 0) return;
+        int offset = items.get(0).x + 1 - width;
+        if(offset < 0) offset = 0;
+        int absX;
+        for(RoadItem item: items){
+            absX = item.x - offset;
+            if (absX < 0) break;
+            insertImage(absX, item.y, item );
+        }
     }
 
     private void iniGrid(int x, int y){
@@ -74,8 +84,14 @@ public class TextGrid extends TableLayout {
         }
     }
 
-    public View insertImage(int x, int y, int image_res){
-        viewGrid[x][y].setBackgroundResource(image_res);
+    public View insertImage(int x, int y, RoadItem item){
+        TextView word = viewGrid[x][y];
+        word.setGravity(Gravity.CENTER);
+        word.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 7f);
+        word.setBackgroundResource(item.resID);
+        word.setTextColor(item.color);
+        if(item.strID == 0) word.setText(item.word);
+        else word.setText(context.getString(item.strID));
         return viewGrid[x][y];
     }
 

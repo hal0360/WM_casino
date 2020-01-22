@@ -97,4 +97,23 @@
     <string name="mss_6">Win to be brave, lose to be careful ~</string>
     <string name="mss_7">Master said : get AK does not bet is a fool ~</string>
     <string name="mss_8">So many people bet player , I bet dealer, I am a stubborn child</string>
+
+    <string name="black">B</string>
+    <string name="red">R</string>
+    <string name="green">G</string>
+    <string name="oh">Z</string>
+    <string name="big">B</string>
+    <string name="small">S</string>
+    <string name="even">E</string>
+    <string name="odd">O</string>
+    <string name="BIG">Big</string>
+    <string name="SMALL">Small</string>
+    <string name="EVEN">Even</string>
+    <string name="ODD">Odd</string>
+    <string name="dozen1">Dozen1</string>
+    <string name="dozen2">Dozen2</string>
+    <string name="dozen3">Dozen3</string>
+    <string name="column1">Column1</string>
+    <string name="column2">Column2</string>
+    <string name="column3">Column3</string>
 </resources>

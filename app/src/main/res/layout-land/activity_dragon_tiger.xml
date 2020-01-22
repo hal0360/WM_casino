@@ -7,9 +7,8 @@
     android:layout_gravity="center"
     android:layout_marginBottom="2dp"
     android:background="@drawable/lobby_bg01"
-    tools:context=".DragonTigerActivity"
     tools:ignore="ContentDescription,SpUsage"
-    >
+    tools:context=".DragonTigerActivity">
 
     <tw.com.lixin.wm_casino.tools.CasinoArea
         android:id="@+id/casino_area"

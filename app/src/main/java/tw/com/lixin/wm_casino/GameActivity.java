@@ -11,7 +11,9 @@ import tw.com.atromoby.widgets.CollectionsView;
 import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.collections.BacCollection;
 import tw.com.lixin.wm_casino.collections.DragonTigerCollection;
+import tw.com.lixin.wm_casino.collections.RouletteCollection;
 import tw.com.lixin.wm_casino.models.BacTable;
+import tw.com.lixin.wm_casino.models.RouletteTable;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.models.TigerDragonTable;
 import tw.com.lixin.wm_casino.tools.ProfileBar;
@@ -45,6 +47,13 @@ public class GameActivity extends RootActivity {
             for(int i = 0; i < tables.size(); i++) {
                 Table table = tables.valueAt(i);
                 collections.add(new DragonTigerCollection((TigerDragonTable) table));
+            }
+        }else if(source.curGameID == 103){
+            bar.setTitle("WM"+getString(R.string.dragon_tiger));
+            SparseArray<Table> tables = source.allTables.get(103);
+            for(int i = 0; i < tables.size(); i++) {
+                Table table = tables.valueAt(i);
+                collections.add(new RouletteCollection((RouletteTable) table));
             }
         }else{
             alert("error!");

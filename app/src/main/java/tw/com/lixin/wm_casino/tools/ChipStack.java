@@ -27,13 +27,13 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
 
     private ImageView coin1, coin2, coin3, coin4, coin5;
     private Animation animeDwn, animeUp;
-    private int hit = 0, area;
+    private int hit = 0, area = 1;
     private List<Integer> ids;
     private TextView valTxt;
     public ChipStackData data;
     private GradientDrawable shape;
     private GameSource source;
-    private int maxValue;
+    private int maxValue = 5;
 
     public ChipStack(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -72,6 +72,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         animeUp = AnimationUtils.loadAnimation(context, R.anim.coin_anime_up);
 
         source = GameSource.getInstance();
+
         post(()->{
             data = source.chipDatas.get(getId());
             if(data == null){
@@ -80,6 +81,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
             }
             refresh();
         });
+
     }
 
     public void addCoinToClient(Client22 client22){

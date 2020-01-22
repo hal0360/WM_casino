@@ -11,6 +11,12 @@
         <attr name="grid_x" />
     </declare-styleable>
 
+    <declare-styleable name="TextGrid">
+        <attr name="grid_y" />
+        <attr name="grid_x" />
+    </declare-styleable>
+
+
     <declare-styleable name="CasinoDoubleGrid">
         <attr name="grid_y" />
         <attr name="grid_x" />
