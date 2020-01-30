@@ -33,6 +33,7 @@ public class ItemRoad {
         int res;
         List<Double> arr;
         int next = -1;
+        boolean horiMode = false;
         try {
             for (Object obj: arrs){
                 next++;
@@ -42,7 +43,10 @@ public class ItemRoad {
                 for(double douRes: arr){
                     res =  (int) douRes;
                     posY++;
-                    if(posY > 5 || road[posX][posY] != 0) posY--;
+                    if(posY > 5 || road[posX][posY] != 0) {
+                        posY--;
+                        horiMode = true;
+                    }
                     while (road[posX][posY] != 0) posX++;
                     road[posX][posY] = res;
                 }
