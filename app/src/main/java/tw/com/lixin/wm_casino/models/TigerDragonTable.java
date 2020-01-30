@@ -19,9 +19,8 @@ public class TigerDragonTable extends Table{
     public List<RoadItem> thirdRoad;
     public List<RoadItem> fourthRoad;
 
-
     public TigerDragonTable(Group group) {
-        super(group);
+        super(group,102);
         gameID = 102;
     }
 
@@ -34,6 +33,7 @@ public class TigerDragonTable extends Table{
         fourthRoad = new ArrayList<>();
         mainRoad = data.historyArr;
 
+        /*
         int[][] road = new int[200][6];
         int posX;
         int posY;
@@ -131,5 +131,7 @@ public class TigerDragonTable extends Table{
         tigerCount = data.historyData.tigerCount;
         dragonCount = data.historyData.dragonCount;
         tieCount = data.historyData.tieCount;
+
+         */
     }
 }

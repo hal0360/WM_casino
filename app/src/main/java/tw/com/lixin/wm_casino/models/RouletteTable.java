@@ -15,7 +15,7 @@ public class RouletteTable extends Table {
     public List<RoadItem> fourthRoad;
 
     public RouletteTable(Group group) {
-        super(group);
+        super(group,56);
         gameID = 103;
     }
 
@@ -27,6 +27,7 @@ public class RouletteTable extends Table {
         thirdRoad = new ArrayList<>();
         fourthRoad = new ArrayList<>();
 
+        /*
         int posX = 0;
         int posY = 0;
         for(int num: data.historyArr){
@@ -142,5 +143,7 @@ public class RouletteTable extends Table {
                 fourthRoad.add(0,item);
             }
         }
+
+        */
     }
 }

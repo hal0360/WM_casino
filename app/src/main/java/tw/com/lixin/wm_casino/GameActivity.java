@@ -46,14 +46,14 @@ public class GameActivity extends RootActivity {
             SparseArray<Table> tables = source.allTables.get(102);
             for(int i = 0; i < tables.size(); i++) {
                 Table table = tables.valueAt(i);
-                collections.add(new DragonTigerCollection((TigerDragonTable) table));
+                collections.add(new DragonTigerCollection(table));
             }
         }else if(source.curGameID == 103){
             bar.setTitle("WM"+getString(R.string.dragon_tiger));
             SparseArray<Table> tables = source.allTables.get(103);
             for(int i = 0; i < tables.size(); i++) {
                 Table table = tables.valueAt(i);
-                collections.add(new RouletteCollection((RouletteTable) table));
+                collections.add(new RouletteCollection(table));
             }
         }else{
             alert("error!");

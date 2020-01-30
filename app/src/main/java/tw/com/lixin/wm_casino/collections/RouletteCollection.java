@@ -7,6 +7,7 @@ import tw.com.atromoby.widgets.CollectionHolder;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.RouletteActivity;
 import tw.com.lixin.wm_casino.models.RouletteTable;
+import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.tools.grids.CasinoGrid;
 import tw.com.lixin.wm_casino.tools.grids.TextGrid;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
@@ -17,9 +18,8 @@ public class RouletteCollection  extends GameCollection {
     private TextGrid firstGrid;
     private RouletteTable table;
 
-    public RouletteCollection(RouletteTable table) {
-        super(R.layout.roulette_collection, table);
-        this.table = table;
+    public RouletteCollection(Table table) {
+        super( table);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class RouletteCollection  extends GameCollection {
     @SuppressLint("SetTextI18n")
     @Override
     public void gridUpdate() {
-        firstGrid.drawRoad(table.firstRoad);
+        //firstGrid.drawRoad(table.firstRoad);
        // dragonRate.setText(table.dragonCount + "");
         //tigerRate.setText(table.tigerCount + "");
        // tieRate.setText(table.tieCount + "");

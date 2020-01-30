@@ -83,9 +83,9 @@ public class RouletteActivity extends CasinoActivity {
 
     @Override
     public void gridUpdate() {
-        firstGrid.drawRoad(table.firstRoad);
-        secondGrid.drawRoad(table.secondRoad);
-        thirdGrid.drawRoad(table.thirdRoad);
-        fourthGrid.drawRoad(table.fourthRoad);
+       // firstGrid.drawRoad(table.firstRoad);
+       // secondGrid.drawRoad(table.secondRoad);
+        //thirdGrid.drawRoad(table.thirdRoad);
+       // fourthGrid.drawRoad(table.fourthRoad);
     }
 }

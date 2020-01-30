@@ -27,7 +27,7 @@ public class BacTable extends Table{
     public List<Integer> bigRoad;
 
     public BacTable(Group group) {
-        super(group);
+        super(group,34);
         gameID = 101;
     }
 

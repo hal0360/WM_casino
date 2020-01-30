@@ -56,7 +56,7 @@ public class CasinoDoubleGrid  extends TableLayout {
         for(RoadItem item: items){
             absX = item.x - offset;
             if (absX < 0) break;
-            insertImage(absX, item.y, item.resID);
+            insertImage(absX, item.y, item.res);
         }
     }
 

@@ -1,6 +1,5 @@
 package tw.com.lixin.wm_casino.websocketSource;
 
-import android.util.Log;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 
@@ -11,12 +10,8 @@ import tw.com.lixin.wm_casino.dataModels.LobbyData;
 import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.dataModels.gameData.Game;
 import tw.com.lixin.wm_casino.dataModels.gameData.Group;
-import tw.com.lixin.wm_casino.interfaces.CmdTable;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
-import tw.com.lixin.wm_casino.models.BacTable;
-import tw.com.lixin.wm_casino.models.RouletteTable;
 import tw.com.lixin.wm_casino.models.Table;
-import tw.com.lixin.wm_casino.models.TigerDragonTable;
 
 
 public class LobbySource extends CasinoSource{
@@ -31,17 +26,17 @@ public class LobbySource extends CasinoSource{
     private LobbySource() {
         defineURL("ws://gameserver.a45.me:15109");
         allTables = new SparseArray<>();
-        tableProvider = new SparseArray<>();
-        tableProvider.put(101, BacTable::new);
-        tableProvider.put(102, TigerDragonTable::new);
-        tableProvider.put(103, RouletteTable::new);
+       // tableProvider = new SparseArray<>();
+      //  tableProvider.put(101, BacTable::new);
+       // tableProvider.put(102, TigerDragonTable::new);
+       // tableProvider.put(103, RouletteTable::new);
     }
 
     private LobbyBridge bridge;
     public int curGameID;
     public SparseIntArray peopleOnline = new SparseIntArray();
     public SparseArray<SparseArray<Table>> allTables;
-    private SparseArray<CmdTable> tableProvider;
+   // private SparseArray<CmdTable> tableProvider;
 
     public void bind(LobbyBridge bridge){
         this.bridge = bridge;
@@ -74,8 +69,8 @@ public class LobbySource extends CasinoSource{
             case 21:
                 if(table == null){
                     if(data.gameStage != 4 && !data.dealerImage.equals("") && !data.dealerName.equals("")){
-                        CmdTable cmdTable = tableProvider.get(data.gameID);
-                        if(cmdTable == null) return;
+                      //  CmdTable cmdTable = tableProvider.get(data.gameID);
+                      //  if(cmdTable == null) return;
                         Group group = new Group();
                         group.dealerID = data.dealerID;
                         group.gameNo = data.gameNo;
@@ -86,7 +81,7 @@ public class LobbySource extends CasinoSource{
                         group.groupID = data.groupID;
                         group.groupType = data.groupType;
                         group.historyArr = new ArrayList<>();
-                        if(tableGroup != null) tableGroup.put(data.groupID, cmdTable.exec(group) );
+                        if(tableGroup != null) tableGroup.put(data.groupID, new Table(group, data.gameID));
                     }
                 }else {
                     table.receive21(data);
@@ -108,16 +103,14 @@ public class LobbySource extends CasinoSource{
             case 35:
                 allTables = new SparseArray<>();
                 for(Game game: lobbyData.data.gameArr){
-                    CmdTable cmdTable = tableProvider.get(game.gameID);
-                    if(cmdTable != null){
-                        SparseArray<Table> tableGroup = new SparseArray<>();
-                        for(Group tableStage: game.groupArr){
-                            if ( tableStage.gameStage != 4 && !tableStage.dealerImage.equals("") && !tableStage.dealerName.equals("")){
-                                tableGroup.put(tableStage.groupID,cmdTable.exec(tableStage));
-                            }
+                   // CmdTable cmdTable = tableProvider.get(game.gameID);
+                    SparseArray<Table> tableGroup = new SparseArray<>();
+                    for(Group tableStage: game.groupArr){
+                        if ( tableStage.gameStage != 4 && !tableStage.dealerImage.equals("") && !tableStage.dealerName.equals("")){
+                          //  tableGroup.put(tableStage.groupID, new Table(tableStage,game.gameID));
                         }
-                        allTables.put(game.gameID, tableGroup);
                     }
+                    allTables.put(game.gameID, tableGroup);
                 }
 
                 handle(()-> bridge.wholeDataUpdated());
