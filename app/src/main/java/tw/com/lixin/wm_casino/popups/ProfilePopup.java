@@ -29,8 +29,7 @@ public class ProfilePopup extends PopupFragment {
         });
 
         ((ClickConstraint) dialog.findViewById(R.id.language_btn)).clicked(v-> {
-            RootActivity activity =(RootActivity) dialog.getContext();
-            activity.showPopup(languagePopup);
+            dialog.getRootActivity().showPopup(languagePopup);
         });
 
         ((ClickConstraint) dialog.findViewById(R.id.rule_btn)).clicked(v->{

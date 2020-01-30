@@ -2,14 +2,20 @@ package tw.com.lixin.wm_casino;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.widget.TextView;
 
+import java.util.List;
+
+import tw.com.lixin.wm_casino.global.Road;
+import tw.com.lixin.wm_casino.models.ItemRoad;
 import tw.com.lixin.wm_casino.models.TigerDragonTable;
 import tw.com.lixin.wm_casino.popups.LimitPopup;
 import tw.com.lixin.wm_casino.tools.buttons.AskButton;
 import tw.com.lixin.wm_casino.tools.grids.CasinoDoubleGrid;
 import tw.com.lixin.wm_casino.tools.grids.CasinoGrid;
 import tw.com.lixin.wm_casino.tools.grids.DragonTigerGrid;
+import tw.com.lixin.wm_casino.tools.grids.TextGrid;
 
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
@@ -17,10 +23,8 @@ import static android.view.View.VISIBLE;
 
 public class DragonTigerActivity extends CasinoActivity  {
 
-    private DragonTigerGrid mainGrid;
+    private TextGrid mainGrid, firstGrid;
     private CasinoDoubleGrid secondGrid, thirdGrid, fourthGrid;
-    private CasinoGrid firstGrid;
-    private TigerDragonTable table;
     private TextView tigerScore, tigerTxt, dragonScore, dragonTxt;
     private AskButton askTiger, askDragon;
 
@@ -41,16 +45,17 @@ public class DragonTigerActivity extends CasinoActivity  {
         tigerTxt = findViewById(R.id.tiger_txt);
         dragonScore = findViewById(R.id.dragon_score);
         dragonTxt = findViewById(R.id.dragon_txt);
+        askTiger = findViewById(R.id.ask_tiger_btn);
+        askDragon = findViewById(R.id.ask_dragon_btn);
         betStarted();
         setTextView(R.id.tie_dtO, "1:" + source.logData.dtOdds.get(3));
         setTextView(R.id.dragon_dtO, "1:" + source.logData.dtOdds.get(1));
         setTextView(R.id.tiger_dtO, "1:" + source.logData.dtOdds.get(2));
         addCard(1, R.id.tiger_poker);
         addCard(2, R.id.dragon_poker);
-        table = (TigerDragonTable) source.table;
 
       //  if(table.stage != 1) setScores();
-        casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/dt" + table.groupID + "/stream1");
+        casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/dt" + source.table.groupID + "/stream1");
     }
 
     @Override
@@ -87,17 +92,53 @@ public class DragonTigerActivity extends CasinoActivity  {
        // }else{ mainGrid.askRoad(5); }
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
     public void gridUpdate() {
-        firstGrid.drawRoad(table.firstRoad);
-        secondGrid.drawRoad(table.secondRoad);
-        thirdGrid.drawRoad(table.thirdRoad);
-        fourthGrid.drawRoad(table.fourthRoad);
-        mainGrid.drawRoad(table.mainRoad);
-        setTextView(R.id.dragon_count, table.dragonCount+"");
-        setTextView(R.id.tiger_count, table.tigerCount+"");
-        setTextView(R.id.tie_count, table.tieCount+"");
+        setRoads(source.table.mainRoad, source.table.firstRoad, source.table.secondRoad, source.table.thirdRoad, source.table.fourthRoad);
+        setTextView(R.id.dragon_count, source.table.data.dragonCount+"");
+        setTextView(R.id.tiger_count, source.table.data.tigerCount+"");
+        setTextView(R.id.tie_count, source.table.data.tieCount+"");
+        askTiger.setAsk(source.table.data.tigerAsk3,source.table.data.tigerAsk4,source.table.data.tigerAsk5);
+        askDragon.setAsk(source.table.data.dragonAsk3,source.table.data.dragonAsk4,source.table.data.dragonAsk5);
+    }
+
+    private void setRoads(List<Integer> main, ItemRoad first, ItemRoad second, ItemRoad third, ItemRoad fourth){
+        firstGrid.drawRoad(first, (v,r)->{
+            if(r == 1) v.setBackgroundResource(Road.Bank);
+            else if(r == 2) v.setBackgroundResource(Road.Play);
+            else if(r == 6) v.setBackgroundResource(Road.Play_E);
+            else if(r == 5) v.setBackgroundResource(Road.Bank_E);
+            else v.setBackgroundResource(0);
+        });
+        secondGrid.drawRoad(second, (v,r)->{
+            if(r == 1) v.setBackgroundResource(Road.Bank);
+            else if(r == 2) v.setBackgroundResource(Road.Play);
+        });
+        thirdGrid.drawRoad(third, (v,r)->{
+            if(r == 1) v.setBackgroundResource(Road.Bank_S);
+            else if(r == 2) v.setBackgroundResource(Road.Play_S);
+        });
+        fourthGrid.drawRoad(fourth, (v,r)->{
+            if(r == 1) v.setBackgroundResource(Road.Bank_I);
+            else if(r == 2) v.setBackgroundResource(Road.Play_I);
+        });
+        mainGrid.drawMainRoad(main, (v,r) ->{
+            /*
+            v.setTextColor(0xffffffff);
+            v.setTextSize(7f);
+            if(r == 1){
+                v.setBackgroundResource(R.drawable.red_road);
+                v.setText(getString(R.string.dragon_road));
+            }
+            else if(r == 2){
+                v.setBackgroundResource(R.drawable.blue_road);
+                v.setText(getString(R.string.tiger_road));
+            }
+            else if(r == 4){
+                v.setBackgroundResource(R.drawable.green_road);
+                v.setText(getString(R.string.tie_road));
+            }*/
+        });
     }
 
     @Override

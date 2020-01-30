@@ -56,6 +56,7 @@ public class Table {
 
     public Table(Group group, int gid){
 
+        gameID = gid;
         TableData tData = new TableData();
         tData.data.historyArr = group.historyArr;
         tData.data.historyData = group.historyData;
@@ -66,7 +67,6 @@ public class Table {
         groupType = group.groupType;
         round = group.gameNoRound;
         number = group.gameNo;
-        gameID = gid;
         dealerName = group.dealerName;
         handler = LobbySource.getInstance().getGenHandler();
 
@@ -108,7 +108,8 @@ public class Table {
     }
 
     public void historyUpdate(TableData.Data data) {
-        if(data.historyData.dataArr1BankerAsk != null){
+
+        if(gameID == 101 && data.historyData.dataArr1BankerAsk != null){
             mainRoadAsk1 = data.historyData.dataArr1BankerAsk;
             firstRoadAsk1 = new ItemRoad(data.historyData.dataArr2BankerAsk);
             secondRoadAsk1 = new ItemRoad(data.historyData.dataArr3BankerAsk);
@@ -119,7 +120,7 @@ public class Table {
             secondRoadAsk2 = new ItemRoad(data.historyData.dataArr3PlayerAsk);
             thirdRoadAsk2 = new ItemRoad(data.historyData.dataArr4PlayerAsk);
             fourthRoadAsk2 = new ItemRoad(data.historyData.dataArr5PlayerAsk);
-        } else if(data.historyData.dataArr1DragonAsk != null){
+        } else if(gameID == 102 && data.historyData.dataArr1DragonAsk != null){
             mainRoadAsk1 = data.historyData.dataArr1DragonAsk;
             firstRoadAsk1 = new ItemRoad(data.historyData.dataArr2DragonAsk);
             secondRoadAsk1 = new ItemRoad(data.historyData.dataArr3DragonAsk);
@@ -131,6 +132,7 @@ public class Table {
             thirdRoadAsk2 = new ItemRoad(data.historyData.dataArr4TigerAsk);
             fourthRoadAsk2 = new ItemRoad(data.historyData.dataArr5TigerAsk);
         }
+
         mainRoad = data.historyArr;
         firstRoad = new ItemRoad(data.historyData.dataArr2);
         secondRoad = new ItemRoad(data.historyData.dataArr3);

@@ -292,11 +292,13 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <tw.com.lixin.wm_casino.tools.grids.DragonTigerGrid
+    <tw.com.lixin.wm_casino.tools.grids.TextGrid
         android:id="@+id/main_grid"
         android:layout_width="159dp"
         android:layout_height="68dp"
         android:layout_marginTop="1dp"
+        app:grid_x="14"
+        app:grid_y="6"
         app:layout_constraintStart_toStartOf="@+id/casino_area"
         app:layout_constraintTop_toBottomOf="@+id/first_grid" />
 
@@ -334,7 +336,7 @@
         app:layout_constraintStart_toEndOf="@+id/main_grid"
         app:layout_constraintTop_toBottomOf="@+id/first_grid" />
 
-    <tw.com.lixin.wm_casino.tools.grids.CasinoGrid
+    <tw.com.lixin.wm_casino.tools.grids.TextGrid
         android:id="@+id/first_grid"
         android:layout_width="0dp"
         android:layout_height="68dp"

@@ -22,8 +22,8 @@ public abstract class GameCollection extends Collection implements TableBridge {
     private ImageView cardImg;
     protected RootActivity activity;
     protected Table table;
-    protected TextView count1, count2, count3;
-    protected TextGrid textGrid;
+     TextView count1, count2, count3;
+     TextGrid textGrid;
 
     GameCollection(Table table) {
         super(R.layout.table_collection);

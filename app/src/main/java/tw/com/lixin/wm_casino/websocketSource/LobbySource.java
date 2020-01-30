@@ -104,10 +104,11 @@ public class LobbySource extends CasinoSource{
                 allTables = new SparseArray<>();
                 for(Game game: lobbyData.data.gameArr){
                    // CmdTable cmdTable = tableProvider.get(game.gameID);
+
                     SparseArray<Table> tableGroup = new SparseArray<>();
                     for(Group tableStage: game.groupArr){
                         if ( tableStage.gameStage != 4 && !tableStage.dealerImage.equals("") && !tableStage.dealerName.equals("")){
-                          //  tableGroup.put(tableStage.groupID, new Table(tableStage,game.gameID));
+                            tableGroup.put(tableStage.groupID, new Table(tableStage,game.gameID));
                         }
                     }
                     allTables.put(game.gameID, tableGroup);

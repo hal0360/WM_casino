@@ -16,7 +16,10 @@ import android.widget.TableRow;
 import java.util.List;
 
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.interfaces.CmdTxtView;
+import tw.com.lixin.wm_casino.interfaces.CmdViewRes;
 import tw.com.lixin.wm_casino.models.GridRoad;
+import tw.com.lixin.wm_casino.models.ItemRoad;
 import tw.com.lixin.wm_casino.models.RoadItem;
 
 
@@ -60,6 +63,22 @@ public class CasinoGrid extends TableLayout {
             absX = item.x - offset;
             if (absX < 0) break;
             insertImage(absX, item.y, item.res);
+        }
+    }
+
+    public void drawRoad(ItemRoad road, CmdViewRes cmd){
+        int shift = road.posX - width + 1 ;
+        int wLim;
+        if (shift <= 0){
+            shift = 0;
+            wLim = road.posX + 1;
+        }else{
+            wLim = width;
+        }
+        for(int x = 0; x < wLim; x++){
+            for(int y=0; y<6; y++){
+                cmd.exec(viewGrid[x][y], road.road[x + shift][y]);
+            }
         }
     }
 

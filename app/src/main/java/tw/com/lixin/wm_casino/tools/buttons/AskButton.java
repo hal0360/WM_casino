@@ -5,17 +5,21 @@ import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import tw.com.atromoby.widgets.CmdView;
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.global.Road;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.TigerDragonTable;
 
-public class AskButton extends ConstraintLayout {
+public class AskButton extends ConstraintLayout implements View.OnTouchListener{
 
     private ImageView secSym, thirdSym, fourthSym;
+    private CmdView cmdDown, cmdUp;
 
     public AskButton(Context context) {
         super(context);
@@ -58,6 +62,40 @@ public class AskButton extends ConstraintLayout {
         secSym.setImageResource(table.secGrid.resX);
         thirdSym.setImageResource(table.thirdGrid.resX);
         fourthSym.setImageResource(table.fourthGrid.resX);
+    }
+
+    public void clickDown(CmdView cd){
+        cmdDown = cd;
+    }
+
+    public void clickUp(CmdView cd){
+        cmdUp = cd;
+    }
+
+    public void setAsk(int sec, int thir, int four){
+        if(sec == 1) secSym.setImageResource(Road.Bank);
+        else if(sec == 2) secSym.setImageResource(Road.Play);
+        if(thir == 1) thirdSym.setImageResource(Road.Bank_S);
+        else if(thir == 2) thirdSym.setImageResource(Road.Play_S);
+        if(four == 1) fourthSym.setImageResource(Road.Bank_I);
+        else if(four == 2) fourthSym.setImageResource(Road.Play_I);
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        switch(event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                if(cmdDown != null){
+                    cmdDown.exec(v);
+                }
+                return true; // if you want to handle the touch event
+            case MotionEvent.ACTION_UP:
+                if(cmdUp != null){
+                    cmdUp.exec(v);
+                }
+                return true; // if you want to handle the touch event
+        }
+        return false;
     }
 
     /*

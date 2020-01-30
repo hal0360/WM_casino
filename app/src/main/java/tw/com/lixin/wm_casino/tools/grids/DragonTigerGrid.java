@@ -118,7 +118,7 @@ public class DragonTigerGrid  extends TableLayout {
             super(context);
             setGravity(Gravity.CENTER);
             setTextColor(0xffffffff);
-            setTextSize(TypedValue.COMPLEX_UNIT_DIP, 7f);
+            setTextSize(TypedValue.COMPLEX_UNIT_DIP, 8f);
         }
 
         public void clear(){
