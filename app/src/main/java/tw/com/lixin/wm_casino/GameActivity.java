@@ -22,7 +22,6 @@ import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 public class GameActivity extends RootActivity {
 
     private LobbySource source;
-    private CollectionsView tableList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,26 +29,26 @@ public class GameActivity extends RootActivity {
         setContentView(R.layout.activity_game);
 
         source = LobbySource.getInstance();
-        tableList = findViewById(R.id.table_list);
+        CollectionsView tableList = findViewById(R.id.table_list);
         List<Collection> collections = new ArrayList<>();
         ProfileBar bar = findViewById(R.id.pro_bar);
 
         if(source.curGameID == 101){
-            bar.setTitle(getString(R.string.wmbaccarat));
+            bar.setTitle(getString(R.string.baccarat));
             SparseArray<Table> tables = source.allTables.get(101);
             for(int i = 0; i < tables.size(); i++) {
                 Table table = tables.valueAt(i);
                 collections.add(new BacCollection((BacTable) table));
             }
         }else if(source.curGameID == 102){
-            bar.setTitle("WM"+getString(R.string.dragon_tiger));
+            bar.setTitle(getString(R.string.dragon_tiger));
             SparseArray<Table> tables = source.allTables.get(102);
             for(int i = 0; i < tables.size(); i++) {
                 Table table = tables.valueAt(i);
                 collections.add(new DragonTigerCollection(table));
             }
         }else if(source.curGameID == 103){
-            bar.setTitle("WM"+getString(R.string.dragon_tiger));
+            bar.setTitle(getString(R.string.roulette));
             SparseArray<Table> tables = source.allTables.get(103);
             for(int i = 0; i < tables.size(); i++) {
                 Table table = tables.valueAt(i);

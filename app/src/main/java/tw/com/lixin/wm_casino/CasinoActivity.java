@@ -59,6 +59,10 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         stacks.add(stack);
     }
 
+    public void addToAreall(ChipStack stack){
+        stacks.add(stack);
+    }
+
     protected void addCard(int area, int card_id){
         ImageView img = findViewById(card_id);
         pokers.put(area,img);

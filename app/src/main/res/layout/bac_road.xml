@@ -19,8 +19,8 @@
     <View
         android:id="@+id/red_dot"
         android:background="@drawable/tiny_red_bac"
-        android:layout_width="3dp"
-        android:layout_height="3dp"
+        android:layout_width="3.5dp"
+        android:layout_height="3.5dp"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,8 +28,8 @@
     <View
         android:id="@+id/blue_dot"
         android:background="@drawable/tiny_blue_bac"
-        android:layout_width="3dp"
-        android:layout_height="3dp"
+        android:layout_width="3.5dp"
+        android:layout_height="3.5dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

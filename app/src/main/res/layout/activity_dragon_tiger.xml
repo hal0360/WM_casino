@@ -21,6 +21,8 @@
             android:layout_width="119.5dp"
             android:layout_height="120dp"
             android:layout_marginBottom="86dp"
+            app:area="3"
+            app:max_val="20"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -54,6 +56,8 @@
             android:id="@+id/dragon_stack"
             android:layout_width="119.5dp"
             android:layout_height="0dp"
+            app:area="1"
+            app:max_val="100"
             app:layout_constraintBottom_toBottomOf="@+id/tie_stack"
             app:layout_constraintStart_toEndOf="@+id/tie_stack"
             app:layout_constraintTop_toTopOf="@+id/tie_stack">
@@ -87,6 +91,8 @@
             android:id="@+id/tiger_stack"
             android:layout_width="119.5dp"
             android:layout_height="0dp"
+            app:area="2"
+            app:max_val="100"
             app:layout_constraintBottom_toBottomOf="@+id/tie_stack"
             app:layout_constraintEnd_toStartOf="@+id/tie_stack"
             app:layout_constraintTop_toTopOf="@+id/tie_stack">

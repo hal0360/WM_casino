@@ -4,13 +4,9 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
-import java.util.List;
-
-import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.content.ContextCompat;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.interfaces.CmdTxtView;
@@ -19,7 +15,7 @@ import tw.com.lixin.wm_casino.tools.grids.CellView.WordView;
 
 public class TextGrid extends TableLayout {
 
-    private AppCompatImageView[][] viewGrid;
+    private WordView[][] viewGrid;
     public int width, height;
     private Context context;
 
@@ -46,7 +42,9 @@ public class TextGrid extends TableLayout {
 
     }
 
+    /*
     public void drawMainRoad(List<Integer> road, CmdTxtView cmd){
+        clear();
         if(road.size() == 0) return;
         int quotient = road.size() / height;
         int remainder = road.size() % height;
@@ -62,22 +60,18 @@ public class TextGrid extends TableLayout {
                 posY = 0;
                 posX++;
             }
+            viewGrid[posX][posY].clear();
             cmd.exec(viewGrid[posX][posY], ref);
             posY++;
         }
-    }
+    }*/
 
     public void drawRoad(ItemRoad road, CmdTxtView cmd){
-        int shift = road.posX - width + 1 ;
-        int wLim;
-        if (shift <= 0){
-            shift = 0;
-            wLim = road.posX + 1;
-        }else{
-            wLim = width;
-        }
-        for(int x = 0; x < wLim; x++){
-            for(int y=0; y<6; y++){
+        int shift = road.maxX - width + 1 ;
+        if (shift <= 0) shift = 0;
+        for(int x = 0; x < width; x++){
+            for(int y=0; y<6; y++) {
+                viewGrid[x][y].clear();
                 cmd.exec(viewGrid[x][y], road.road[x + shift][y]);
             }
         }
@@ -86,8 +80,8 @@ public class TextGrid extends TableLayout {
     private void iniGrid(int x, int y){
         width = x;
         height = y;
-        viewGrid = new AppCompatImageView[x][y];
-        AppCompatImageView view;
+        viewGrid = new WordView[x][y];
+        WordView view;
 
         for(int i=0; i<y; i++){
 
@@ -96,8 +90,7 @@ public class TextGrid extends TableLayout {
             row.setShowDividers(TableRow.SHOW_DIVIDER_MIDDLE);
             row.setLayoutParams(new TableLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0, 1.0f));
             for(int j=0; j<x; j++){
-                view = new AppCompatImageView(context);
-                view.setScaleType(ImageView.ScaleType.FIT_XY);
+                view = new WordView(context);
                 view.setLayoutParams(new TableRow.LayoutParams(0, LayoutParams.MATCH_PARENT, 1.0f));
                 row.addView(view);
                 viewGrid[j][i] = view;
@@ -108,7 +101,7 @@ public class TextGrid extends TableLayout {
 
     public void clear(){
         for(int i=0; i<height; i++){
-           // for(int j=0; j<width; j++) viewGrid[j][i].clear();
+            for(int j=0; j<width; j++) viewGrid[j][i].clear();
         }
     }
 

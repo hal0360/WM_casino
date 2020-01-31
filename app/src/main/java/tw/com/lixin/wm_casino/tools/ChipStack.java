@@ -2,6 +2,7 @@ package tw.com.lixin.wm_casino.tools;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -27,17 +28,22 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
 
     private ImageView coin1, coin2, coin3, coin4, coin5;
     private Animation animeDwn, animeUp;
-    private int hit = 0, area = 1;
+    private int hit = 0;
     private List<Integer> ids;
     private TextView valTxt;
     public ChipStackData data;
     private GradientDrawable shape;
     private GameSource source;
-    private int maxValue = 5;
+    private int maxValue, area;
 
     public ChipStack(Context context, AttributeSet attrs) {
         super(context, attrs);
         View.inflate(context, R.layout.chip_stack, this);
+
+        TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.ChipStack);
+        maxValue = a.getInt(R.styleable.ChipStack_max_val,5);
+        area = a.getInt(R.styleable.ChipStack_area, 1);
+        a.recycle();
 
         setOnClickListener(this);
         coin1 = findViewById(R.id.coin1);
@@ -80,6 +86,8 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
                 source.chipDatas.put(getId(),data);
             }
             refresh();
+            CasinoActivity casinoActivity = (CasinoActivity) context;
+            casinoActivity.addToAreall(this);
         });
 
     }

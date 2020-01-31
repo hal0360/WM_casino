@@ -66,22 +66,6 @@ public class CasinoGrid extends TableLayout {
         }
     }
 
-    public void drawRoad(ItemRoad road, CmdViewRes cmd){
-        int shift = road.posX - width + 1 ;
-        int wLim;
-        if (shift <= 0){
-            shift = 0;
-            wLim = road.posX + 1;
-        }else{
-            wLim = width;
-        }
-        for(int x = 0; x < wLim; x++){
-            for(int y=0; y<6; y++){
-                cmd.exec(viewGrid[x][y], road.road[x + shift][y]);
-            }
-        }
-    }
-
 
     public void drawRoad(GridRoad road){
         int shift = road.posX - width + 1 ;

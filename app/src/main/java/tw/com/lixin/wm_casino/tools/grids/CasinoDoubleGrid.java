@@ -52,16 +52,11 @@ public class CasinoDoubleGrid  extends TableLayout {
     }
 
     public void drawRoad(ItemRoad road, CmdViewRes cmd){
-        int shift = road.posX - width + 1 ;
-        int wLim;
-        if (shift <= 0){
-            shift = 0;
-            wLim = road.posX + 1;
-        }else{
-            wLim = width;
-        }
-        for(int x = 0; x < wLim; x++){
-            for(int y=0; y<6; y++){
+        int shift = road.maxX - width + 1 ;
+        if (shift <= 0) shift = 0;
+        for(int x = 0; x < width; x++){
+            for(int y=0; y<6; y++) {
+                viewGrid[x][y].setBackgroundResource(0);
                 cmd.exec(viewGrid[x][y], road.road[x + shift][y]);
             }
         }

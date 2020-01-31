@@ -36,13 +36,13 @@ public class DragonTigerCollection extends GameCollection {
     public void gridUpdate() {
         textGrid.drawRoad(table.firstRoad, (v,r)->{
             if(r == 1){
-                v.setBackgroundResource(Road.Bank);
+                v.setTextImg(Road.Bank);
             }else if(r == 2){
-                v.setBackgroundResource(Road.Play);
+                v.setTextImg(Road.Play);
             }else if(r == 6){
-                v.setBackgroundResource(Road.Play_E);
+                v.setTextImg(Road.Play_E);
             }else if(r == 5){
-                v.setBackgroundResource(Road.Bank_E);
+                v.setTextImg(Road.Bank_E);
             }
         });
         count1.setText(getString(R.string.dragon_abb) + ":" + table.data.dragonCount);
