@@ -114,6 +114,20 @@
         app:layout_constraintStart_toEndOf="@+id/dealer_img"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
+    <tw.com.lixin.wm_casino.tools.grids.DiceGrid
+        android:id="@+id/dice_grid"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="3dp"
+        app:grid_x="8"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dealer_img"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/road_grid_block"
         android:layout_width="0dp"

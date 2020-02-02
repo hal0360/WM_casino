@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import tw.com.atromoby.utils.Json;
 import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.dataModels.Client22;
@@ -20,6 +21,7 @@ import tw.com.lixin.wm_casino.popups.WinLossPopup;
 import tw.com.lixin.wm_casino.tools.CardArea;
 import tw.com.lixin.wm_casino.tools.CasinoArea;
 import tw.com.lixin.wm_casino.tools.ChipStack;
+import tw.com.lixin.wm_casino.tools.buttons.ArrowButton;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
 public abstract class CasinoActivity extends RootActivity implements TableBridge, GameBridge {
@@ -30,16 +32,69 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     protected SparseArray<ImageView> pokers;
     private List<ChipStack> stacks;
 
+    protected List<ConstraintLayout> pages;
+    int curPage;
+    protected List<View> grids;
+    int curGrid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        curPage = 0;
+        curGrid = 0;
+        pages = new ArrayList<>();
+        grids = new ArrayList<>();
         stacks = new ArrayList<>();
         source = GameSource.getInstance();
         casinoArea = findViewById(R.id.casino_area);
         cardArea = findViewById(R.id.card_area);
         pokers = new SparseArray<>();
         casinoArea.setUp();
+    }
+
+    protected void addGrid(View grid){
+        grids.add(grid);
+    }
+    protected void addPage(int page_id){
+        ConstraintLayout page = findViewById(page_id);
+        pages.add(page);
+    }
+    protected void setGridArrow(int arrow_left, int arrow_right){
+        ArrowButton arrowLeft = findViewById(arrow_left);
+        ArrowButton arrowRight = findViewById(arrow_right);
+        arrowRight.clicked(v->{
+            curGrid++;
+            if(curGrid>grids.size()){
+                curGrid = 0;
+            }
+            grids.get(curGrid).bringToFront();
+        });
+        arrowLeft.clicked(v->{
+            curGrid--;
+            if(curGrid<0){
+                curGrid = grids.size()-1;
+            }
+            grids.get(curGrid).bringToFront();
+        });
+    }
+    protected void setPageArrow(int arrow_left, int arrow_right){
+        ArrowButton arrowLeft = findViewById(arrow_left);
+        ArrowButton arrowRight = findViewById(arrow_right);
+        arrowRight.clicked(v->{
+            curPage++;
+            if(curPage>pages.size()){
+                curPage = 0;
+            }
+            pages.get(curPage).bringToFront();
+        });
+        arrowLeft.clicked(v->{
+            curPage--;
+            if(curPage<0){
+                curPage = pages.size()-1;
+            }
+            pages.get(curPage).bringToFront();
+        });
     }
 
     public CasinoArea getArea(){

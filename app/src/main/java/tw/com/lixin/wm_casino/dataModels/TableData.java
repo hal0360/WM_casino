@@ -39,6 +39,8 @@ public class TableData {
         public int dragonCount;
         public int tigerCount;
         public int tieCount;
+        public int oddCount;
+        public int evenCount;
         public List<Integer> dataArr1DragonAsk;
         public List<List<Integer>> dataArr2DragonAsk;
         public List<List<Integer>> dataArr3DragonAsk;

@@ -11,13 +11,24 @@
         <attr name="grid_x" />
     </declare-styleable>
 
+    <declare-styleable name="DiceGrid">
+        <attr name="grid_x" />
+    </declare-styleable>
+
+    <declare-styleable name="ArrowButton">
+        <attr name="direction" format="enum">
+            <enum name="left" value="1"/>
+            <enum name="right" value="2"/>
+        </attr>
+    </declare-styleable>
+
     <declare-styleable name="TextGrid">
         <attr name="grid_y" />
         <attr name="grid_x" />
     </declare-styleable>
 
     <declare-styleable name="ChipStack">
-        <attr name="area" format="integer" />
+        <attr name="area" format="string" />
         <attr name="max_val" format="integer" />
     </declare-styleable>
 

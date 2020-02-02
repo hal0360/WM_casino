@@ -34,7 +34,8 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     public ChipStackData data;
     private GradientDrawable shape;
     private GameSource source;
-    private int maxValue, area;
+    private int maxValue;
+    private String area;
 
     public ChipStack(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -42,7 +43,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
 
         TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.ChipStack);
         maxValue = a.getInt(R.styleable.ChipStack_max_val,5);
-        area = a.getInt(R.styleable.ChipStack_area, 1);
+        area = a.getString(R.styleable.ChipStack_area);
         a.recycle();
 
         setOnClickListener(this);
@@ -52,6 +53,16 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         coin4 = findViewById(R.id.coin4);
         coin5 = findViewById(R.id.coin5);
         valTxt = findViewById(R.id.bet_value);
+
+        //temp
+        coin1.setVisibility(View.INVISIBLE);
+        coin2.setVisibility(View.INVISIBLE);
+        coin3.setVisibility(View.INVISIBLE);
+        coin4.setVisibility(View.INVISIBLE);
+        coin5.setVisibility(View.INVISIBLE);
+        valTxt.setVisibility(View.INVISIBLE);
+        //temp
+
 
         coin1.setElevation(1);
         coin2.setElevation(1);
@@ -120,7 +131,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
 
     @SuppressLint("SetTextI18n")
     public void setUp(int area, int maxVal){
-        this.area = area;
+       // this.area = area;
         maxValue = maxVal;
     }
 

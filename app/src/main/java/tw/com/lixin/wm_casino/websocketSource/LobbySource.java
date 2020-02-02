@@ -68,6 +68,7 @@ public class LobbySource extends CasinoSource{
                 return;
             case 21:
                 if(table == null){
+                    /*
                     if(data.gameStage != 4 && !data.dealerImage.equals("") && !data.dealerName.equals("")){
                       //  CmdTable cmdTable = tableProvider.get(data.gameID);
                       //  if(cmdTable == null) return;
@@ -83,6 +84,7 @@ public class LobbySource extends CasinoSource{
                         group.historyArr = new ArrayList<>();
                         if(tableGroup != null) tableGroup.put(data.groupID, new Table(group, data.gameID));
                     }
+                     */
                 }else {
                     table.receive21(data);
                 }

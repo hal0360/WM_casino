@@ -16,10 +16,10 @@ public class Client22 {
         public int commission = 0;
     }
 
-    public void addBet(int area, int val){
+    public void addBet(String area, int val){
         BetStack betStack = new BetStack();
         betStack.addBetMoney = val;
-        betStack.betArea = area + "";
+        betStack.betArea = area;
         data.betArr.add(betStack);
     }
 

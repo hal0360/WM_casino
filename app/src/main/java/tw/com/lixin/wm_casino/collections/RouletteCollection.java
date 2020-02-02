@@ -15,7 +15,6 @@ import tw.com.lixin.wm_casino.websocketSource.GameSource;
 public class RouletteCollection  extends GameCollection {
 
     private TextView dragonRate, tigerRate, tieRate;
-    private TextGrid firstGrid;
     private RouletteTable table;
 
     public RouletteCollection(Table table) {
@@ -29,8 +28,6 @@ public class RouletteCollection  extends GameCollection {
       //  dragonRate = holder.findViewById(R.id.dragon_rate);
       //  tigerRate = holder.findViewById(R.id.tiger_rate);
       //  tieRate = holder.findViewById(R.id.tie_rate);
-
-        firstGrid = holder.findViewById(R.id.first_grid);
         setTableName(activity.getString(R.string.roulette) + table.groupID);
         gridUpdate();
         holder.clicked(R.id.root,v->{
