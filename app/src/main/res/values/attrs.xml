@@ -6,8 +6,16 @@
     <attr name="grid_y" format="integer" />
     <attr name="grid_x" format="integer" />
 
+    <declare-styleable name="CardImage">
+        <attr name="card_area" format="integer" />
+    </declare-styleable>
+
     <declare-styleable name="CasinoGrid">
         <attr name="grid_y" />
+        <attr name="grid_x" />
+    </declare-styleable>
+
+    <declare-styleable name="NiuGird">
         <attr name="grid_x" />
     </declare-styleable>
 

@@ -23,6 +23,7 @@ public class WordView extends FrameLayout {
         roadTxt.setGravity(Gravity.CENTER);
         addView(view);
         addView(roadTxt);
+
     }
 
     public void clear(){

@@ -12,8 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SicBoActivity"></activity>
-        <activity android:name=".RouletteActivity"></activity>
+        <activity android:name=".NiuNiuActivity"></activity>
+        <activity android:name=".SicBoActivity" />
+        <activity android:name=".RouletteActivity" />
         <activity android:name=".DragonTigerActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
@@ -24,7 +25,7 @@
         </activity>
         <activity android:name=".LobbyActivity" />
         <activity android:name=".GameActivity" />
-        <activity android:name=".BaccaratActivity"></activity>
+        <activity android:name=".BaccaratActivity" />
     </application>
 
 </manifest>

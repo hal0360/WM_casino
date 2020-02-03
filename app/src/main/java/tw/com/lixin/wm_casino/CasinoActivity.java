@@ -19,6 +19,7 @@ import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.popups.LimitPopup;
 import tw.com.lixin.wm_casino.popups.WinLossPopup;
 import tw.com.lixin.wm_casino.tools.CardArea;
+import tw.com.lixin.wm_casino.tools.CardImage;
 import tw.com.lixin.wm_casino.tools.CasinoArea;
 import tw.com.lixin.wm_casino.tools.ChipStack;
 import tw.com.lixin.wm_casino.tools.buttons.ArrowButton;
@@ -51,6 +52,25 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         cardArea = findViewById(R.id.card_area);
         pokers = new SparseArray<>();
         casinoArea.setUp();
+
+
+
+
+
+
+        if(source.table.stage == 1){
+            cardArea.setVisibility(View.INVISIBLE);
+            casinoArea.betting();
+        }else {
+            cardArea.setVisibility(View.VISIBLE);
+            casinoArea.dealing();
+        }
+        casinoArea.updateBalance();
+        casinoArea.setMember(User.userName());
+        casinoArea.setPPLnum(source.pplOnline);
+        casinoArea.setGyuShu(source.table.number,source.table.round);
+        casinoArea.updateBalance();
+        gridUpdate();
     }
 
     protected void addGrid(View grid){
@@ -103,24 +123,40 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
 
     public abstract void limitShows(LimitPopup limitPopup);
 
-    protected void addToArea(int stackId, int maxVal, int area){
+    protected void addToArea(int stackId, int maxVal, long area){
         ChipStack stack = findViewById(stackId);
         stack.setUp(area, maxVal);
         stacks.add(stack);
     }
 
-    protected void addToArea(ChipStack stack, int maxVal, int area){
+    protected void addToArea(ChipStack stack, int maxVal, long area){
         stack.setUp(area, maxVal);
         stacks.add(stack);
     }
 
-    public void addToAreall(ChipStack stack){
+    public void addToArea(ChipStack stack){
         stacks.add(stack);
     }
 
     protected void addCard(int area, int card_id){
+
         ImageView img = findViewById(card_id);
+        if(source.table.stage == 1){
+            img.setVisibility(View.INVISIBLE);
+        }else {
+            img.setImageResource(Poker.NUM(source.pokers.get(area)));
+        }
+
         pokers.put(area,img);
+    }
+
+    public void addCard(CardImage cardImage){
+        if(source.table.stage == 1){
+            cardImage.setVisibility(View.INVISIBLE);
+        }else {
+            cardImage.setImageResource(Poker.NUM(source.pokers.get(cardImage.area)));
+        }
+        pokers.put(cardImage.area,cardImage);
     }
 
     @Override
@@ -131,33 +167,11 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
             finish();
             return;
         }
-        casinoArea.setGyuShu(source.table.number,source.table.round);
-        casinoArea.updateBalance();
+
         casinoArea.playVideo();
         source.table.bind(this);
         source.bind(this);
-
         casinoArea.login(source.table.gameID, source.table.groupID);
-
-        for(int p = 0; p < pokers.size(); p++) pokers.valueAt(p).setVisibility(View.INVISIBLE);
-        if(source.table.stage == 1){
-            cardArea.setVisibility(View.INVISIBLE);
-            casinoArea.betting();
-        }else {
-            cardArea.setVisibility(View.VISIBLE);
-            casinoArea.dealing();
-            for(int i = 0; i < source.pokers.size(); i++) {
-                int key = source.pokers.keyAt(i);
-                ImageView pokerImg = pokers.get(key);
-                pokerImg.setVisibility(View.VISIBLE);
-                pokerImg.setImageResource(Poker.NUM(source.pokers.get(key)));
-            }
-        }
-
-        casinoArea.updateBalance();
-        casinoArea.setMember(User.userName());
-        casinoArea.setPPLnum(source.pplOnline);
-        gridUpdate();
     }
 
     @Override
@@ -241,7 +255,7 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     }
 
     public void confirm(){
-        Client22 client22 = new Client22();
+        Client22 client22 = new Client22(source.table.gameID, source.table.groupID);
         for (ChipStack stack: stacks) stack.addCoinToClient(client22);
         if (client22.data.betArr.size() > 0) { source.send(Json.to(client22)); }
         else alert("You haven't put any money!");

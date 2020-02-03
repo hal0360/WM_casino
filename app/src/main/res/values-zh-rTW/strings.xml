@@ -36,6 +36,9 @@
     <string name="sound_effect">音效</string>
     <!-- Casino page -->
     <string name="player">閒</string>
+    <string name="player1">閒1</string>
+    <string name="player2">閒2</string>
+    <string name="player3">閒3</string>
     <string name="banker">莊</string>
     <string name="super6">超级6</string>
     <string name="tie">和</string>
@@ -117,4 +120,6 @@
     <string name="column2">第二列</string>
     <string name="column3">第三列</string>
     <string name="wei">圍</string>
+    <string name="equal">平倍</string>
+    <string name="doublle">翻倍</string>
 </resources>

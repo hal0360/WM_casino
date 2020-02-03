@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#000"
+    tools:ignore="HardcodedText,SpUsage"
+    android:layout_height="match_parent"
+    tools:context=".NiuNiuActivity">
+
+    <tw.com.lixin.wm_casino.tools.CasinoArea
+        android:id="@+id/casino_area"
+        android:layout_width="360dp"
+        android:layout_height="524dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <tw.com.lixin.wm_casino.tools.ChipStack
+            android:id="@+id/stack_playerEqual2"
+            android:layout_width="117dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="2dp"
+            app:area="3"
+            app:layout_constraintBottom_toTopOf="@+id/stack_playerDouble2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:max_val="100">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="@string/equal"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="1:0.95"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </tw.com.lixin.wm_casino.tools.ChipStack>
+
+        <tw.com.lixin.wm_casino.tools.ChipStack
+            android:id="@+id/stack_playerEqual3"
+            android:layout_width="117dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="3dp"
+            app:area="5"
+            app:layout_constraintBottom_toBottomOf="@+id/stack_playerEqual2"
+            app:layout_constraintStart_toEndOf="@+id/stack_playerEqual2"
+            app:layout_constraintTop_toTopOf="@+id/stack_playerEqual2"
+            app:max_val="100">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="@string/equal"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="1:0.95"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </tw.com.lixin.wm_casino.tools.ChipStack>
+
+        <tw.com.lixin.wm_casino.tools.ChipStack
+            android:id="@+id/stack_playerEqual1"
+            android:layout_width="117dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="3dp"
+            app:area="1"
+            app:layout_constraintBottom_toBottomOf="@+id/stack_playerEqual2"
+            app:layout_constraintEnd_toStartOf="@+id/stack_playerEqual2"
+            app:layout_constraintTop_toTopOf="@+id/stack_playerEqual2"
+            app:max_val="100">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="@string/equal"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="1:0.95"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </tw.com.lixin.wm_casino.tools.ChipStack>
+
+        <tw.com.lixin.wm_casino.tools.ChipStack
+            android:id="@+id/stack_playerDouble2"
+            android:layout_width="117dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="86dp"
+            app:area="4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:max_val="20">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="@string/doublle"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="1:0.95\u2191"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </tw.com.lixin.wm_casino.tools.ChipStack>
+
+        <tw.com.lixin.wm_casino.tools.ChipStack
+            android:id="@+id/stack_playerDouble3"
+            android:layout_width="117dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="3dp"
+            app:area="6"
+            app:layout_constraintBottom_toBottomOf="@+id/stack_playerDouble2"
+            app:layout_constraintStart_toEndOf="@+id/stack_playerDouble2"
+            app:layout_constraintTop_toTopOf="@+id/stack_playerDouble2"
+            app:max_val="20">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="@string/doublle"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="1:0.95\u2191"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </tw.com.lixin.wm_casino.tools.ChipStack>
+
+        <tw.com.lixin.wm_casino.tools.ChipStack
+            android:id="@+id/stack_playerDouble1"
+            android:layout_width="117dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="3dp"
+            app:area="2"
+            app:layout_constraintBottom_toBottomOf="@+id/stack_playerDouble2"
+            app:layout_constraintEnd_toStartOf="@+id/stack_playerDouble2"
+            app:layout_constraintTop_toTopOf="@+id/stack_playerDouble2"
+            app:max_val="20">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="@string/doublle"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="1:0.95\u2191"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </tw.com.lixin.wm_casino.tools.ChipStack>
+
+        <tw.com.lixin.wm_casino.tools.CardArea
+            android:id="@+id/card_area"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="ContentDescription">
+
+            <tw.com.lixin.wm_casino.tools.CardImage
+                android:id="@+id/cardImage"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="40dp"
+                app:card_area="21"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <tw.com.lixin.wm_casino.tools.CardImage
+                android:id="@+id/cardImage2"
+                android:layout_width="30dp"
+                android:layout_height="0dp"
+                app:card_area="22"
+                app:layout_constraintBottom_toBottomOf="@+id/cardImage"
+                app:layout_constraintStart_toEndOf="@+id/cardImage"
+                app:layout_constraintTop_toTopOf="@+id/cardImage" />
+
+            <tw.com.lixin.wm_casino.tools.CardImage
+                android:id="@+id/cardImage3"
+                android:layout_width="30dp"
+                android:layout_height="0dp"
+                app:card_area="23"
+                app:layout_constraintBottom_toBottomOf="@+id/cardImage2"
+                app:layout_constraintStart_toEndOf="@+id/cardImage2"
+                app:layout_constraintTop_toTopOf="@+id/cardImage2" />
+
+            <tw.com.lixin.wm_casino.tools.CardImage
+                android:id="@+id/cardImage4"
+                android:layout_width="30dp"
+                android:layout_height="0dp"
+                app:card_area="24"
+                app:layout_constraintBottom_toBottomOf="@+id/cardImage3"
+                app:layout_constraintStart_toEndOf="@+id/cardImage3"
+                app:layout_constraintTop_toTopOf="@+id/cardImage3" />
+
+            <tw.com.lixin.wm_casino.tools.CardImage
+                android:id="@+id/cardImage5"
+                android:layout_width="30dp"
+                android:layout_height="0dp"
+                app:card_area="25"
+                app:layout_constraintBottom_toBottomOf="@+id/cardImage4"
+                app:layout_constraintStart_toEndOf="@+id/cardImage4"
+                app:layout_constraintTop_toTopOf="@+id/cardImage4" />
+
+            <tw.com.lixin.wm_casino.tools.CardImage
+                android:id="@+id/cardImage6"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="40dp"
+                app:card_area="31"
+                app:layout_constraintStart_toStartOf="@+id/cardImage"
+                app:layout_constraintTop_toBottomOf="@+id/cardImage" />
+
+            <tw.com.lixin.wm_casino.tools.CardImage
+                android:id="@+id/cardImage7"
+                android:layout_width="30dp"
+                android:layout_height="0dp"
+                app:card_area="32"
+                app:layout_constraintBottom_toBottomOf="@+id/cardImage6"
+                app:layout_constraintStart_toEndOf="@+id/cardImage6"
+                app:layout_constraintTop_toTopOf="@+id/cardImage6" />
+
+            <tw.com.lixin.wm_casino.tools.CardImage
+                android:id="@+id/cardImage8"
+                android:layout_width="30dp"
+                android:layout_height="0dp"
+                app:card_area="33"
+                app:layout_constraintBottom_toBottomOf="@+id/cardImage7"
+                app:layout_constraintStart_toEndOf="@+id/cardImage7"
+                app:layout_constraintTop_toTopOf="@+id/cardImage7" />
+
+            <tw.com.lixin.wm_casino.tools.CardImage
+                android:id="@+id/cardImage10"
+                android:layout_width="30dp"
+                android:layout_height="0dp"
+                app:card_area="34"
+                app:layout_constraintBottom_toBottomOf="@+id/cardImage8"
+                app:layout_constraintStart_toEndOf="@+id/cardImage8"
+                app:layout_constraintTop_toTopOf="@+id/cardImage8" />
+
+            <tw.com.lixin.wm_casino.tools.CardImage
+                android:id="@+id/cardImage11"
+                android:layout_width="30dp"
+                android:layout_height="0dp"
+                app:card_area="35"
+                app:layout_constraintBottom_toBottomOf="@+id/cardImage10"
+                app:layout_constraintStart_toEndOf="@+id/cardImage10"
+                app:layout_constraintTop_toTopOf="@+id/cardImage10" />
+
+            <tw.com.lixin.wm_casino.tools.CardImage
+                android:id="@+id/cardImage12"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="40dp"
+                app:card_area="1"
+                app:layout_constraintStart_toEndOf="@+id/cardImage5"
+                app:layout_constraintTop_toTopOf="@+id/cardImage5" />
+
+            <tw.com.lixin.wm_casino.tools.CardImage
+                android:id="@+id/cardImage13"
+                android:layout_width="30dp"
+                android:layout_height="0dp"
+                app:card_area="2"
+                app:layout_constraintBottom_toBottomOf="@+id/cardImage12"
+                app:layout_constraintStart_toEndOf="@+id/cardImage12"
+                app:layout_constraintTop_toTopOf="@+id/cardImage12" />
+
+            <tw.com.lixin.wm_casino.tools.CardImage
+                android:id="@+id/cardImage14"
+                android:layout_width="30dp"
+                android:layout_height="0dp"
+                app:card_area="3"
+                app:layout_constraintBottom_toBottomOf="@+id/cardImage13"
+                app:layout_constraintStart_toEndOf="@+id/cardImage13"
+                app:layout_constraintTop_toTopOf="@+id/cardImage13" />
+
+            <tw.com.lixin.wm_casino.tools.CardImage
+                android:id="@+id/cardImage15"
+                android:layout_width="30dp"
+                android:layout_height="0dp"
+                app:card_area="4"
+                app:layout_constraintBottom_toBottomOf="@+id/cardImage14"
+                app:layout_constraintStart_toEndOf="@+id/cardImage14"
+                app:layout_constraintTop_toTopOf="@+id/cardImage14" />
+
+            <tw.com.lixin.wm_casino.tools.CardImage
+                android:id="@+id/cardImage16"
+                android:layout_width="30dp"
+                android:layout_height="0dp"
+                app:card_area="5"
+                app:layout_constraintBottom_toBottomOf="@+id/cardImage15"
+                app:layout_constraintStart_toEndOf="@+id/cardImage15"
+                app:layout_constraintTop_toTopOf="@+id/cardImage15" />
+
+            <tw.com.lixin.wm_casino.tools.CardImage
+                android:id="@+id/cardImage17"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                app:card_area="11"
+                app:layout_constraintStart_toStartOf="@+id/cardImage12"
+                app:layout_constraintTop_toTopOf="@+id/cardImage11" />
+
+            <tw.com.lixin.wm_casino.tools.CardImage
+                android:id="@+id/cardImage18"
+                android:layout_width="30dp"
+                android:layout_height="0dp"
+                app:card_area="12"
+                app:layout_constraintBottom_toBottomOf="@+id/cardImage17"
+                app:layout_constraintStart_toEndOf="@+id/cardImage17"
+                app:layout_constraintTop_toTopOf="@+id/cardImage17" />
+
+            <tw.com.lixin.wm_casino.tools.CardImage
+                android:id="@+id/cardImage19"
+                android:layout_width="30dp"
+                android:layout_height="0dp"
+                app:card_area="13"
+                app:layout_constraintBottom_toBottomOf="@+id/cardImage18"
+                app:layout_constraintStart_toEndOf="@+id/cardImage18"
+                app:layout_constraintTop_toTopOf="@+id/cardImage18" />
+
+            <tw.com.lixin.wm_casino.tools.CardImage
+                android:id="@+id/cardImage20"
+                android:layout_width="30dp"
+                android:layout_height="0dp"
+                app:card_area="14"
+                app:layout_constraintBottom_toBottomOf="@+id/cardImage19"
+                app:layout_constraintStart_toEndOf="@+id/cardImage19"
+                app:layout_constraintTop_toTopOf="@+id/cardImage19" />
+
+            <tw.com.lixin.wm_casino.tools.CardImage
+                android:id="@+id/cardImage21"
+                android:layout_width="30dp"
+                android:layout_height="0dp"
+                app:card_area="15"
+                app:layout_constraintBottom_toBottomOf="@+id/cardImage20"
+                app:layout_constraintStart_toEndOf="@+id/cardImage20"
+                app:layout_constraintTop_toTopOf="@+id/cardImage20" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/player3"
+                android:textColor="#fff"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/cardImage6"
+                app:layout_constraintStart_toStartOf="@+id/cardImage6" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/player2"
+                android:textColor="#fff"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/cardImage"
+                app:layout_constraintStart_toStartOf="@+id/cardImage" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/banker"
+                android:textColor="#fff"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/cardImage12"
+                app:layout_constraintStart_toStartOf="@+id/cardImage12" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/player1"
+                android:textColor="#fff"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/cardImage17"
+                app:layout_constraintStart_toStartOf="@+id/cardImage17" />
+
+        </tw.com.lixin.wm_casino.tools.CardArea>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:background="#00BFFF"
+            android:gravity="center"
+            android:text="@string/player2"
+            android:textColor="#fff"
+            android:textSize="13dp"
+            app:layout_constraintBottom_toTopOf="@+id/stack_playerEqual2"
+            app:layout_constraintEnd_toEndOf="@+id/stack_playerEqual2"
+            app:layout_constraintStart_toStartOf="@+id/stack_playerEqual2" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:background="#00008B"
+            android:gravity="center"
+            android:text="@string/player1"
+            android:textColor="#fff"
+            android:textSize="13dp"
+            app:layout_constraintBottom_toTopOf="@+id/stack_playerEqual1"
+            app:layout_constraintEnd_toEndOf="@+id/stack_playerEqual1"
+            app:layout_constraintStart_toStartOf="@+id/stack_playerEqual1" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:background="#20B2AA"
+            android:gravity="center"
+            android:text="@string/player3"
+            android:textColor="#fff"
+            android:textSize="13dp"
+            app:layout_constraintBottom_toTopOf="@+id/stack_playerEqual3"
+            app:layout_constraintEnd_toEndOf="@+id/stack_playerEqual3"
+            app:layout_constraintStart_toStartOf="@+id/stack_playerEqual3" />
+
+    </tw.com.lixin.wm_casino.tools.CasinoArea>
+
+    <tw.com.lixin.wm_casino.tools.grids.NiuGird
+        android:layout_width="0dp"
+        android:layout_height="95dp"
+        app:grid_x="13"
+        app:layout_constraintEnd_toEndOf="@+id/casino_area"
+        app:layout_constraintStart_toStartOf="@+id/casino_area"
+        app:layout_constraintTop_toBottomOf="@+id/casino_area" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

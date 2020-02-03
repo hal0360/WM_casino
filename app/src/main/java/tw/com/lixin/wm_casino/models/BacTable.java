@@ -37,6 +37,8 @@ public class BacTable extends Table{
         bigRoad = new ArrayList<>();
         sortedRoad = new ArrayList<>();
         for(int val: data.historyArr) divide(val);
+
+
         firstGrid = new GridRoad();
         firstGrid.setFirst(sortedRoad);
         secGrid = new GridRoad();

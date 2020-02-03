@@ -1,7 +1,6 @@
 package tw.com.lixin.wm_casino.collections;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,7 +16,7 @@ import tw.com.lixin.wm_casino.tools.grids.TextGrid;
 
 public abstract class GameCollection extends Collection implements TableBridge {
 
-    private TextView countDown, statusTxt, tableName;
+    private TextView countDown, statusTxt, tableName, dealTxt;
     private ConstraintLayout block;
     private ImageView cardImg;
     protected RootActivity activity;
@@ -35,6 +34,7 @@ public abstract class GameCollection extends Collection implements TableBridge {
     public void onBind(CollectionHolder holder) {
         activity = (RootActivity) holder.getContex();
         textGrid = holder.findViewById(R.id.text_grid);
+        dealTxt = holder.findViewById(R.id.deal_txt);
         block = holder.findViewById(R.id.road_grid_block);
         cardImg = holder.findViewById(R.id.card_img);
         statusTxt = holder.findViewById(R.id.status_txt);
@@ -71,6 +71,7 @@ public abstract class GameCollection extends Collection implements TableBridge {
     public void stageUpdate() {
         if(table.stage == 1){
             countDown.setVisibility(View.VISIBLE);
+            dealTxt.setVisibility(View.INVISIBLE);
             countDown.setText(table.curTime + "");
             block.setVisibility(View.INVISIBLE);
         }else {
@@ -82,6 +83,7 @@ public abstract class GameCollection extends Collection implements TableBridge {
                 cardImg.setImageResource(R.drawable.card_waiting);
             }
             countDown.setVisibility(View.INVISIBLE);
+            dealTxt.setVisibility(View.VISIBLE);
             block.setVisibility(View.VISIBLE);
         }
     }

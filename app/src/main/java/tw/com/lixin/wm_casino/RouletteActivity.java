@@ -2,27 +2,19 @@ package tw.com.lixin.wm_casino;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.widget.TextView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import tw.com.lixin.wm_casino.models.RouletteTable;
 import tw.com.lixin.wm_casino.popups.LimitPopup;
 import tw.com.lixin.wm_casino.tools.buttons.ClickImage;
 import tw.com.lixin.wm_casino.tools.grids.TextGrid;
-
-import android.view.View;
-import android.widget.TextView;
 
 import static android.view.View.INVISIBLE;
 
 public class RouletteActivity extends CasinoActivity {
 
     private TextGrid firstGrid, secondGrid, thirdGrid, fourthGrid;
-    private RouletteTable table;
+
     private TextView resultTxt, oddEvenTxt;
     private ConstraintLayout page1, page2;
     private ClickImage leftArrow, rightArrow;
@@ -42,8 +34,9 @@ public class RouletteActivity extends CasinoActivity {
         fourthGrid = findViewById(R.id.fourth_grid);
         resultTxt = findViewById(R.id.result_txt);
         oddEvenTxt = findViewById(R.id.odd_even_txt);
-        table = (RouletteTable) source.table;
-        casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/rou0" + table.groupID + "/stream1");
+
+        casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/rou" + String.format("%02d", source.table.groupID) + "/stream1");
+
         betStarted();
 
         leftArrow.clicked(v->{

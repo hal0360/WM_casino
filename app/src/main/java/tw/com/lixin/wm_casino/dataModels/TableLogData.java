@@ -1,6 +1,5 @@
 package tw.com.lixin.wm_casino.dataModels;
 
-import java.util.Map;
 
 public class TableLogData {
 
@@ -13,7 +12,7 @@ public class TableLogData {
         public int groupID = -99;
         public Boolean bOk;
         public float balance;
-        public Map<Long, String> dtOdds;
+       // public Map<Long, String> dtOdds;
         public int maxBet01;
         public int maxBet02;
         public int maxBet03;

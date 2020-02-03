@@ -36,6 +36,9 @@
     <string name="sound_effect">Sound effect</string>
     <!-- Casino page -->
     <string name="player">Player</string>
+    <string name="player1">Player1</string>
+    <string name="player2">Player2</string>
+    <string name="player3">Player3</string>
     <string name="banker">Banker</string>
     <string name="super6">Super6</string>
     <string name="tie">Tie</string>
@@ -117,4 +120,6 @@
     <string name="column2">Column2</string>
     <string name="column3">Column3</string>
     <string name="wei">L</string>
+    <string name="equal">Equal</string>
+    <string name="doublle">Double</string>
 </resources>

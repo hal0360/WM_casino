@@ -1,10 +1,7 @@
 package tw.com.lixin.wm_casino.models;
 
 
-import java.util.ArrayList;
 import java.util.List;
-
-import tw.com.lixin.wm_casino.global.Road;
 
 public class ItemRoad {
 
@@ -14,6 +11,7 @@ public class ItemRoad {
 
     ItemRoad(List<List<Integer>> arrs, String fuk){
         road = new int[300][6];
+
 
         int next = -1;
         int posX, posY;
@@ -97,24 +95,5 @@ public class ItemRoad {
 
         }
     }
-
-
-    private void divide(int rawVal){
-        List<Integer> powers = new ArrayList<>();
-        for(int i = 10; i >= 0; i-- ){
-            int boss = (int) Math.pow(2,i);
-            if(rawVal >= boss){
-                powers.add(0,boss);
-                rawVal = rawVal - boss;
-                if(rawVal <= 0){
-                   // packRes(powers);
-                    break;
-                }
-            }
-        }
-    }
-
-
-
 
 }

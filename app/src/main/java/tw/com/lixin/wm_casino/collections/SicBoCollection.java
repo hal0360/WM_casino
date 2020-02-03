@@ -2,18 +2,12 @@ package tw.com.lixin.wm_casino.collections;
 
 import android.annotation.SuppressLint;
 import android.view.View;
-import android.widget.TextView;
 
 import tw.com.atromoby.widgets.CollectionHolder;
-import tw.com.lixin.wm_casino.DragonTigerActivity;
 import tw.com.lixin.wm_casino.R;
-import tw.com.lixin.wm_casino.RouletteActivity;
 import tw.com.lixin.wm_casino.SicBoActivity;
-import tw.com.lixin.wm_casino.global.Road;
-import tw.com.lixin.wm_casino.models.RouletteTable;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.tools.grids.DiceGrid;
-import tw.com.lixin.wm_casino.tools.grids.TextGrid;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
 public class SicBoCollection extends GameCollection {
@@ -46,7 +40,7 @@ public class SicBoCollection extends GameCollection {
         diceGrid.drawRoad(table.mainArr);
         count1.setText(getString(R.string.odd) + ":" + table.data.oddCount);
         count2.setText(getString(R.string.even) + ":" + table.data.evenCount);
-        count3.setText("");
+        count3.setText(getString(R.string.big) + ":" + table.data.bigCount);
     }
 }
 

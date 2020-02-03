@@ -45,11 +45,13 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         bankerScore = findViewById(R.id.banker_score);
         bankerTxt = findViewById(R.id.banker_txt);
         betStarted();
-        setTextView(R.id.tie_pair_dtO, "1:" + source.logData.dtOdds.get(3));
-        setTextView(R.id.banker_pair_dtO, "1:" + source.logData.dtOdds.get(4));
-        setTextView(R.id.player_pair_dtO, "1:" + source.logData.dtOdds.get(5));
-        setTextView(R.id.banker_dtO, "1:" + source.logData.dtOdds.get(1));
-        setTextView(R.id.player_dtO, "1:" + source.logData.dtOdds.get(2));
+
+      //  setTextView(R.id.tie_pair_dtO, "1:" + source.logData.dtOdds.get(3));
+      //  setTextView(R.id.banker_pair_dtO, "1:" + source.logData.dtOdds.get(4));
+      //  setTextView(R.id.player_pair_dtO, "1:" + source.logData.dtOdds.get(5));
+     //   setTextView(R.id.banker_dtO, "1:" + source.logData.dtOdds.get(1));
+      //  setTextView(R.id.player_dtO, "1:" + source.logData.dtOdds.get(2));
+
         addCard(1, R.id.player_poker1);
         addCard(3, R.id.player_poker2);
         addCard(5, R.id.player_poker3);
@@ -63,11 +65,11 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
 
     @Override
     public void limitShows(LimitPopup limitPopup) {
-        limitPopup.addLimit(getString(R.string.banker), source.logData.dtOdds.get(1), source.logData.maxBet01,1 );
-        limitPopup.addLimit(getString(R.string.player), source.logData.dtOdds.get(2), source.logData.maxBet02,1 );
-        limitPopup.addLimit(getString(R.string.tie), source.logData.dtOdds.get(3), source.logData.maxBet03,1 );
-        limitPopup.addLimit(getString(R.string.banker_pair), source.logData.dtOdds.get(4), source.logData.maxBet04,1 );
-        limitPopup.addLimit(getString(R.string.player_pair), source.logData.dtOdds.get(5), source.logData.maxBet04,1 );
+      //  limitPopup.addLimit(getString(R.string.banker), source.logData.dtOdds.get(1), source.logData.maxBet01,1 );
+      //  limitPopup.addLimit(getString(R.string.player), source.logData.dtOdds.get(2), source.logData.maxBet02,1 );
+      //  limitPopup.addLimit(getString(R.string.tie), source.logData.dtOdds.get(3), source.logData.maxBet03,1 );
+      //  limitPopup.addLimit(getString(R.string.banker_pair), source.logData.dtOdds.get(4), source.logData.maxBet04,1 );
+       // limitPopup.addLimit(getString(R.string.player_pair), source.logData.dtOdds.get(5), source.logData.maxBet04,1 );
     }
 
     @Override

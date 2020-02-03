@@ -45,9 +45,11 @@ public class DragonTigerActivity extends CasinoActivity  {
         askTiger = findViewById(R.id.ask_tiger_btn);
         askDragon = findViewById(R.id.ask_dragon_btn);
         betStarted();
-        setTextView(R.id.tie_dtO, "1:" + source.logData.dtOdds.get(3));
-        setTextView(R.id.dragon_dtO, "1:" + source.logData.dtOdds.get(1));
-        setTextView(R.id.tiger_dtO, "1:" + source.logData.dtOdds.get(2));
+
+      //  setTextView(R.id.tie_dtO, "1:" + source.logData.dtOdds.get(3));
+     //   setTextView(R.id.dragon_dtO, "1:" + source.logData.dtOdds.get(1));
+      //  setTextView(R.id.tiger_dtO, "1:" + source.logData.dtOdds.get(2));
+
         addCard(1, R.id.tiger_poker);
         addCard(2, R.id.dragon_poker);
 

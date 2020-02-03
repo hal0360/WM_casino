@@ -42,7 +42,11 @@ public class SicBoActivity extends CasinoActivity {
         mainGrid = findViewById(R.id.main_grid);
         firstGrid = findViewById(R.id.first_grid);
         secondGrid = findViewById(R.id.second_grid);
+
+        setPageArrow(R.id.arrow_left,R.id.arrow_right);
+        if(isPortrait()) setPageArrow(R.id.arrow_left_grid,R.id.arrow_right_grid);
         casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/sb" +  String.format("%02d", source.table.groupID) + "/stream1");
+
     }
 
     @Override
