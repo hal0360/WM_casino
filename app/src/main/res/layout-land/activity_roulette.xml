@@ -1345,7 +1345,7 @@
 
         <tw.com.lixin.wm_casino.tools.buttons.ArrowButton
             android:id="@+id/arrow_left"
-            android:layout_width="21dp"
+            android:layout_width="22dp"
             android:layout_height="0dp"
             android:padding="3dp"
             app:layout_constraintBottom_toBottomOf="@+id/page_3"
@@ -1354,7 +1354,7 @@
 
         <tw.com.lixin.wm_casino.tools.buttons.ArrowButton
             android:id="@+id/arrow_right"
-            android:layout_width="21dp"
+            android:layout_width="22dp"
             android:layout_height="0dp"
             android:padding="3dp"
             app:direction="right"

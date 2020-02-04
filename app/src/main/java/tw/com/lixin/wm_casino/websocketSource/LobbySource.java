@@ -69,52 +69,6 @@ public class LobbySource extends CasinoSource{
                     if(data.gameStage == 4) tableGroup.remove(data.groupID);
                 }
                 return;
-
-            case 25:
-                if(tableData.data.groupID == 1 && tableData.data.gameID == 106) {
-
-                    GameData gameData = Json.from(text, GameData.class);
-                   // int b=0, p1=0, p2=0, p3=0;
-
-                    //int rere = b + p1*200 + p2*40000 + p3*8000000;
-
-                    List<Integer> flush = new ArrayList<>();
-                    flush.add(160);
-                    flush.add(128);
-                    flush.add(96);
-                    flush.add(64);
-                    flush.add(32);
-                    flush.add(0);
-                    Log.e("samgong", "gogo");
-                    for(int b = 1; b < 32; b++){
-
-                        for(int bf: flush){
-
-                            for(int p1 = 1; p1 < 32; p1++){
-
-                                for(int p1f: flush){
-
-                                    for(int p2 = 1; p2 < 32; p2++){
-
-                                        for(int p2f: flush){
-
-                                            for(int p3 = 1; p3 < 32; p3++){
-
-                                                for(int p3f: flush){
-                                                    if((b+bf + (p1+p1f)*200 + (p2+p2f)*40000 + (p3+p3f)*8000000) == gameData.data.result) Log.e("samgong", b + " " + p1 + " " + p2 + " ");
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                }
-                break;
-
-
             case 21:
                 if(table == null){
                     /*
