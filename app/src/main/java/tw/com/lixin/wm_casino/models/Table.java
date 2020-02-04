@@ -94,21 +94,6 @@ public class Table {
         if(isBinded) handler.post(()->{ if(isBinded) cmd.exec(); });
     }
 
-    public static int resDivide(int rawVal){
-        List<Integer> powers = new ArrayList<>();
-        for(int i = 8; i >= 0; i-- ){
-            int boss = (int) Math.pow(2,i);
-            if(rawVal >= boss){
-                powers.add(0,boss);
-                rawVal = rawVal - boss;
-                if(rawVal <= 0){
-                    break;
-                }
-            }
-        }
-        return powers.get(0);
-    }
-
     public void historyUpdate(TableData.Data data) {
         mainArr = data.historyArr;
         firstRoad = new ItemRoad(data.historyData.dataArr2);
@@ -149,7 +134,7 @@ public class Table {
             secondRoadAsk2 = new ItemRoad(data.historyData.dataArr3TigerAsk,"");
             thirdRoadAsk2 = new ItemRoad(data.historyData.dataArr4TigerAsk,"");
             fourthRoadAsk2 = new ItemRoad(data.historyData.dataArr5TigerAsk,"");
-        }else if(gameID == 103 ){
+        }else {
             mainRoad =  new ItemRoad(data.historyArr, 9);
         }
     }

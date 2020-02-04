@@ -37,6 +37,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     private int maxValue;
     private long area = 1;
 
+
     public ChipStack(Context context, AttributeSet attrs) {
         super(context, attrs);
         View.inflate(context, R.layout.chip_stack, this);
@@ -91,7 +92,9 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         source = GameSource.getInstance();
 
         post(()->{
-            data = source.chipDatas.get(getId());
+            int vid = getId();
+            if(vid == NO_ID) throw new ArithmeticException(getClass().getSimpleName() + " HAVE NO ID");
+            data = source.chipDatas.get(vid);
             if(data == null){
                 data = new ChipStackData();
                 source.chipDatas.put(getId(),data);
@@ -130,7 +133,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     }
 
     @SuppressLint("SetTextI18n")
-    public void setUp(long area, int maxVal){
+    public void setAreaMax(long area, int maxVal){
         this.area = area;
         maxValue = maxVal;
     }

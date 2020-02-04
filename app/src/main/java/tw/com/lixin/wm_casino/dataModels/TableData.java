@@ -45,6 +45,7 @@ public class TableData {
         public int player1Count;
         public int player2Count;
         public int player3Count;
+        public int zeroCount;
         public List<Integer> dataArr1DragonAsk;
         public List<List<Integer>> dataArr2DragonAsk;
         public List<List<Integer>> dataArr3DragonAsk;

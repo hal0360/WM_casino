@@ -3,42 +3,28 @@ package tw.com.lixin.wm_casino.tools.grids;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
-import java.util.List;
-
 import androidx.core.content.ContextCompat;
 import tw.com.lixin.wm_casino.R;
-import tw.com.lixin.wm_casino.interfaces.CmdTxtView;
 import tw.com.lixin.wm_casino.models.ItemRoad;
 import tw.com.lixin.wm_casino.tools.grids.CellView.BacRoadView;
 
 public class BacMainGrid extends TableLayout {
 
     private BacRoadView[][] viewGrid;
-    private int posX, posY;
     public int width, height;
-    private Context context;
 
-    private Animation fadeAnime;
-
-    private View predictV;
 
     public BacMainGrid(Context context)
     {
         super(context);
-        this.context = context;
     }
 
     public BacMainGrid(Context context, AttributeSet attrs)
     {
         super(context, attrs);
-        this.context = context;
-        fadeAnime = AnimationUtils.loadAnimation(context, R.anim.prediction_fade);
 
         setDividerDrawable(ContextCompat.getDrawable(context, R.drawable.table_divider));
         setShowDividers(TableRow.SHOW_DIVIDER_MIDDLE);
@@ -46,6 +32,8 @@ public class BacMainGrid extends TableLayout {
 
         viewGrid = new BacRoadView[14][6];
         BacRoadView view;
+        width = 14;
+        height = 6;
 
         for(int i=0; i<6; i++){
 
@@ -67,40 +55,15 @@ public class BacMainGrid extends TableLayout {
 
     }
 
-    public void drawRoad(ItemRoad road, CmdTxtView cmd){
-        int shift = road.maxX - width + 1 ;
-        if (shift <= 0) shift = 0;
+    public void drawRoad(ItemRoad road){
         for(int x = 0; x < width; x++){
             for(int y=0; y<6; y++) {
                 viewGrid[x][y].clear();
-            //    cmd.exec(viewGrid[x][y], road.road[x + shift][y]);
+                viewGrid[x][y].setRoad(road.road[x][y]);
             }
         }
     }
 
-
-
-
-
-    public void clearAskViews(){
-        if(predictV == null) return;
-        predictV.clearAnimation();
-        predictV.setBackgroundResource(0);
-    }
-
-    public void askRoad(int ref) {
-        clearAskViews();
-        if (posY > 5) {
-            predictV = viewGrid[posX+1][0];
-        }else{
-            predictV = viewGrid[posX][posY+1];
-        }
-        predictV.startAnimation(fadeAnime);
-    }
-
-    public void setRoad(int x, int y, int ref){
-        viewGrid[x][y].setRoad(ref);
-    }
 
     public void clear(){
         for(int i=0; i<6; i++){
@@ -109,17 +72,4 @@ public class BacMainGrid extends TableLayout {
         }
     }
 
-    public void drawRoad(List<Integer> big){
-      posX = 0;
-        posY = 0;
-        for(int ref: big){
-            if(posY > 5) {
-                posY = 0;
-                posX++;
-            }
-            viewGrid[posX][posY].setRoad(ref);
-            posY++;
-        }
-        posY--;
-    }
 }

@@ -122,4 +122,9 @@
     <string name="wei">围</string>
     <string name="equal">平倍</string>
     <string name="doublle">翻倍</string>
+
+    <string name="pairPlus">对牌以上</string>
+    <string name="bankerPairPlus">庄对牌以上</string>
+    <string name="win">贏</string>
+    <string name="lose">输</string>
 </resources>

@@ -1,15 +1,12 @@
 package tw.com.lixin.wm_casino.collections;
 
 import android.annotation.SuppressLint;
-import android.util.Log;
-import android.widget.TextView;
 
 import tw.com.atromoby.widgets.CollectionHolder;
 import tw.com.lixin.wm_casino.DragonTigerActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.global.Road;
 import tw.com.lixin.wm_casino.models.Table;
-import tw.com.lixin.wm_casino.tools.grids.TextGrid;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
 public class DragonTigerCollection extends GameCollection {

@@ -4,6 +4,7 @@ package tw.com.lixin.wm_casino.global;
 import tw.com.lixin.wm_casino.R;
 
 public class Road {
+    public static final int ZERO = -909;
     public static final int Play = R.drawable.play_1;
     public static final int Play_B = R.drawable.play_2;
     public static final int Play_P = R.drawable.play_3;

@@ -1019,7 +1019,8 @@
                     android:textColor="#fff"
                     android:textSize="12dp"
                     app:layout_constraintStart_toEndOf="@+id/textView34"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="TooManyViews" />
 
                 <TextView
                     android:id="@+id/textView36"
@@ -1450,5 +1451,22 @@
         app:layout_constraintEnd_toEndOf="@+id/casino_area"
         app:layout_constraintStart_toStartOf="@+id/casino_area"
         app:layout_constraintTop_toBottomOf="@+id/casino_area" />
+
+    <tw.com.lixin.wm_casino.tools.buttons.ArrowButton
+        android:id="@+id/arrow_left_grid"
+        android:layout_width="25dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="@+id/first_grid"
+        app:layout_constraintStart_toStartOf="@+id/first_grid"
+        app:layout_constraintTop_toTopOf="@+id/first_grid" />
+
+    <tw.com.lixin.wm_casino.tools.buttons.ArrowButton
+        android:id="@+id/arrow_right_grid"
+        android:layout_width="25dp"
+        android:layout_height="60dp"
+        app:direction="right"
+        app:layout_constraintBottom_toBottomOf="@+id/first_grid"
+        app:layout_constraintEnd_toEndOf="@+id/first_grid"
+        app:layout_constraintTop_toTopOf="@+id/first_grid" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

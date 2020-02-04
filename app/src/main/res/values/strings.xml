@@ -122,4 +122,9 @@
     <string name="wei">L</string>
     <string name="equal">Equal</string>
     <string name="doublle">Double</string>
+
+    <string name="pairPlus">PairPlus</string>
+    <string name="bankerPairPlus">BankerPairPlus</string>
+    <string name="win">Win</string>
+    <string name="lose">Lose</string>
 </resources>

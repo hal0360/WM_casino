@@ -2,19 +2,13 @@ package tw.com.lixin.wm_casino;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.widget.TextView;
-
-import java.util.List;
 
 import tw.com.lixin.wm_casino.global.Road;
 import tw.com.lixin.wm_casino.models.ItemRoad;
-import tw.com.lixin.wm_casino.models.TigerDragonTable;
 import tw.com.lixin.wm_casino.popups.LimitPopup;
 import tw.com.lixin.wm_casino.tools.buttons.AskButton;
 import tw.com.lixin.wm_casino.tools.grids.CasinoDoubleGrid;
-import tw.com.lixin.wm_casino.tools.grids.CasinoGrid;
-import tw.com.lixin.wm_casino.tools.grids.DragonTigerGrid;
 import tw.com.lixin.wm_casino.tools.grids.TextGrid;
 
 import static android.view.View.INVISIBLE;
@@ -46,9 +40,9 @@ public class DragonTigerActivity extends CasinoActivity  {
         askDragon = findViewById(R.id.ask_dragon_btn);
         betStarted();
 
-      //  setTextView(R.id.tie_dtO, "1:" + source.logData.dtOdds.get(3));
-     //   setTextView(R.id.dragon_dtO, "1:" + source.logData.dtOdds.get(1));
-      //  setTextView(R.id.tiger_dtO, "1:" + source.logData.dtOdds.get(2));
+        setTextView(R.id.tie_dtO, "1:8");
+        setTextView(R.id.dragon_dtO, "1:1");
+        setTextView(R.id.tiger_dtO, "1:1");
 
         addCard(1, R.id.tiger_poker);
         addCard(2, R.id.dragon_poker);
@@ -57,15 +51,15 @@ public class DragonTigerActivity extends CasinoActivity  {
         askDragon.clickUp(v-> setRoads(source.table.mainRoad, source.table.firstRoad, source.table.secondRoad, source.table.thirdRoad, source.table.fourthRoad));
         askTiger.clickDown(v-> setRoads(source.table.mainRoadAsk2, source.table.firstRoadAsk2, source.table.secondRoadAsk2, source.table.thirdRoadAsk2, source.table.fourthRoadAsk2));
         askTiger.clickUp(v-> setRoads(source.table.mainRoad, source.table.firstRoad, source.table.secondRoad, source.table.thirdRoad, source.table.fourthRoad));
-      //  if(table.stage != 1) setScores();
+        if(source.table.stage != 1) setScores();
         casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/dt" + source.table.groupID + "/stream1");
     }
 
     @Override
     public void limitShows(LimitPopup limitPopup) {
-       // limitPopup.addLimit(getString(R.string.banker), source.logData.dtOdds.get(1), source.logData.maxBet01,1 );
-      //  limitPopup.addLimit(getString(R.string.player), source.logData.dtOdds.get(2), source.logData.maxBet02,1 );
-       // limitPopup.addLimit(getString(R.string.tie), source.logData.dtOdds.get(3), source.logData.maxBet03,1 );
+        limitPopup.addLimit(getString(R.string.banker), "1", source.logData.maxBet01,1 );
+        limitPopup.addLimit(getString(R.string.player), "1", source.logData.maxBet02,1 );
+        limitPopup.addLimit(getString(R.string.tie), "8", source.logData.maxBet03,1 );
     }
 
     @Override

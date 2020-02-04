@@ -19,9 +19,6 @@ import static android.view.View.VISIBLE;
 
 public class SicBoActivity extends CasinoActivity {
 
-    private ConstraintLayout page1, page2, page3, page4, page5;
-    private ClickImage leftArrow, rightArrow, leftGridArrow, rightGridArrow;
-
     private TextView sumTxt, oddEvenTxt, sizeTxt;
     private ImageView diceR1, diceR2, diceR3;
     private DiceGrid mainGrid;
@@ -43,10 +40,19 @@ public class SicBoActivity extends CasinoActivity {
         firstGrid = findViewById(R.id.first_grid);
         secondGrid = findViewById(R.id.second_grid);
 
-        setPageArrow(R.id.arrow_left,R.id.arrow_right);
-        if(isPortrait()) setPageArrow(R.id.arrow_left_grid,R.id.arrow_right_grid);
+        addPage(R.id.page_1);
+        addPage(R.id.page_2);
+        addPage(R.id.page_3);
+        addPage(R.id.page_4);
+        addPage(R.id.page_5);
+        setPageArrow(R.id.arrow_left, R.id.arrow_right);
+        if(isPortrait()){
+            addGrid(mainGrid);
+            addGrid(firstGrid);
+            addGrid(secondGrid);
+            setGridArrow(R.id.arrow_left_grid, R.id.arrow_right_grid);
+        }
         casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/sb" +  String.format("%02d", source.table.groupID) + "/stream1");
-
     }
 
     @Override

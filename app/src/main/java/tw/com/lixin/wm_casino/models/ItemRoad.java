@@ -3,6 +3,8 @@ package tw.com.lixin.wm_casino.models;
 
 import java.util.List;
 
+import tw.com.lixin.wm_casino.global.Road;
+
 public class ItemRoad {
 
     public int[][] road;
@@ -11,7 +13,6 @@ public class ItemRoad {
 
     ItemRoad(List<List<Integer>> arrs, String fuk){
         road = new int[300][6];
-
 
         int next = -1;
         int posX, posY;
@@ -35,8 +36,9 @@ public class ItemRoad {
                     }
                 }
                 if(posX > maxX) maxX = posX;
-                road[posX][posY] = res;
 
+                if(res == 0) road[posX][posY] = Road.ZERO;
+                else road[posX][posY] = res;
             }
         }
     }
@@ -52,7 +54,8 @@ public class ItemRoad {
                 posX++;
                 if(posX > maxX) maxX = posX;
             }
-            road[posX][posY] = res;
+            if(res == 0) road[posX][posY] = Road.ZERO;
+            else road[posX][posY] = res;
             posY++;
         }
 
@@ -88,7 +91,8 @@ public class ItemRoad {
                         }
                     }
                     if(posX > maxX) maxX = posX;
-                    road[posX][posY] = res;
+                    if(res == 0) road[posX][posY] = Road.ZERO;
+                    else road[posX][posY] = res;
                 }
             }
         }catch (Exception e){

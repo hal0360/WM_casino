@@ -507,9 +507,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-        <!--
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/page_2"
             android:layout_width="460dp"
@@ -1007,7 +1004,8 @@
                     android:textColor="#fff"
                     android:textSize="8dp"
                     app:layout_constraintStart_toEndOf="@+id/textView37"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="TooManyViews" />
 
                 <TextView
                     android:id="@+id/textView39"
@@ -1345,27 +1343,24 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        -->
-
-        <tw.com.lixin.wm_casino.tools.buttons.ClickImage
+        <tw.com.lixin.wm_casino.tools.buttons.ArrowButton
             android:id="@+id/arrow_left"
             android:layout_width="21dp"
             android:layout_height="0dp"
             android:padding="3dp"
             app:layout_constraintBottom_toBottomOf="@+id/page_3"
             app:layout_constraintStart_toStartOf="@+id/page_3"
-            app:layout_constraintTop_toTopOf="@+id/page_3"
-            app:srcCompat="@drawable/arrow_left" />
+            app:layout_constraintTop_toTopOf="@+id/page_3" />
 
-        <tw.com.lixin.wm_casino.tools.buttons.ClickImage
+        <tw.com.lixin.wm_casino.tools.buttons.ArrowButton
             android:id="@+id/arrow_right"
             android:layout_width="21dp"
             android:layout_height="0dp"
             android:padding="3dp"
+            app:direction="right"
             app:layout_constraintBottom_toBottomOf="@+id/page_3"
             app:layout_constraintEnd_toEndOf="@+id/page_3"
-            app:layout_constraintTop_toTopOf="@+id/page_3"
-            app:srcCompat="@drawable/arrow_right" />
+            app:layout_constraintTop_toTopOf="@+id/page_3" />
 
     </tw.com.lixin.wm_casino.tools.CasinoArea>
 
