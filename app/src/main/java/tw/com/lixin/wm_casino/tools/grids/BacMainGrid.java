@@ -13,13 +13,17 @@ import java.util.List;
 
 import androidx.core.content.ContextCompat;
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.interfaces.CmdTxtView;
+import tw.com.lixin.wm_casino.models.ItemRoad;
 import tw.com.lixin.wm_casino.tools.grids.CellView.BacRoadView;
 
 public class BacMainGrid extends TableLayout {
 
     private BacRoadView[][] viewGrid;
     private int posX, posY;
+    public int width, height;
     private Context context;
+
     private Animation fadeAnime;
 
     private View predictV;
@@ -62,6 +66,21 @@ public class BacMainGrid extends TableLayout {
         }
 
     }
+
+    public void drawRoad(ItemRoad road, CmdTxtView cmd){
+        int shift = road.maxX - width + 1 ;
+        if (shift <= 0) shift = 0;
+        for(int x = 0; x < width; x++){
+            for(int y=0; y<6; y++) {
+                viewGrid[x][y].clear();
+            //    cmd.exec(viewGrid[x][y], road.road[x + shift][y]);
+            }
+        }
+    }
+
+
+
+
 
     public void clearAskViews(){
         if(predictV == null) return;

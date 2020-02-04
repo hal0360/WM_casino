@@ -41,8 +41,6 @@ public class Table {
     public List<Integer> mainArr;
 
     public ItemRoad mainRoad;
-    public List<Integer> mainBacRoadAsk1;
-    public List<Integer> mainBacRoadAsk2;
     public ItemRoad firstRoad;
     public ItemRoad secondRoad;
     public ItemRoad thirdRoad;
@@ -125,15 +123,17 @@ public class Table {
             for(int val: data.historyArr) divide(val);
             mainRoad =  new ItemRoad(bigRoad, 9);
             firstRoad = new ItemRoad(sortedRoad,"");
-
-
-            mainBacRoadAsk1 = data.historyData.dataArr1BankerAsk;
-            mainBacRoadAsk2 = data.historyData.dataArr1PlayerAsk;
-            firstRoadAsk1 = new ItemRoad(data.historyData.dataArr2BankerAsk,"");
+            for(int val: data.historyData.dataArr1BankerAsk) divide(val);
+            mainRoadAsk1 = new ItemRoad(bigRoad, 9);
+            firstRoadAsk1 = new ItemRoad(sortedRoad,"");
+            for(int val: data.historyData.dataArr1PlayerAsk) divide(val);
+            mainRoadAsk2 = new ItemRoad(bigRoad, 9);
+            firstRoadAsk2 = new ItemRoad(sortedRoad,"");
+            bigRoad = null;
+            sortedRoad = null;
             secondRoadAsk1 = new ItemRoad(data.historyData.dataArr3BankerAsk,"");
             thirdRoadAsk1 = new ItemRoad(data.historyData.dataArr4BankerAsk,"");
             fourthRoadAsk1 = new ItemRoad(data.historyData.dataArr5BankerAsk,"");
-            firstRoadAsk2 = new ItemRoad(data.historyData.dataArr2PlayerAsk,"");
             secondRoadAsk2 = new ItemRoad(data.historyData.dataArr3PlayerAsk,"");
             thirdRoadAsk2 = new ItemRoad(data.historyData.dataArr4PlayerAsk,"");
             fourthRoadAsk2 = new ItemRoad(data.historyData.dataArr5PlayerAsk,"");

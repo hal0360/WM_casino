@@ -35,6 +35,8 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         addToArea(R.id.tie_stack,source.logData.maxBet03,3);
         addToArea(R.id.banker_pair_stack,source.logData.maxBet04,4);
         addToArea(R.id.player_pair_stack,source.logData.maxBet04,5);
+
+
         mainGrid = findViewById(R.id.main_grid);
         firstGrid = findViewById(R.id.first_grid);
         secondGrid = findViewById(R.id.second_grid);

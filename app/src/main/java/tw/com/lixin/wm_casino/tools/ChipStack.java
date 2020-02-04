@@ -35,7 +35,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     private GradientDrawable shape;
     private GameSource source;
     private int maxValue;
-    private long area;
+    private long area = 1;
 
     public ChipStack(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -63,7 +63,6 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         coin5.setVisibility(View.INVISIBLE);
         valTxt.setVisibility(View.INVISIBLE);
         //temp
-
 
         coin1.setElevation(1);
         coin2.setElevation(1);

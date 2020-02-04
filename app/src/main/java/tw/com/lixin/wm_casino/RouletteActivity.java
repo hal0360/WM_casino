@@ -19,6 +19,7 @@ public class RouletteActivity extends CasinoActivity {
     private ConstraintLayout page1, page2;
     private ClickImage leftArrow, rightArrow;
 
+    @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_roulette);
