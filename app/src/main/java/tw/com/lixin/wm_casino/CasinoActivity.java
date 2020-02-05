@@ -37,6 +37,8 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     protected List<View> grids;
     int curGrid;
 
+    private ArrowButton arrowLeft, arrowRight, arrowGridLeft, arrowGridRight;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -233,33 +235,36 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         ConstraintLayout page = findViewById(page_id);
         pages.add(page);
     }
-    protected void setGridArrow(int arrow_left, int arrow_right){
-        ArrowButton arrowLeft = findViewById(arrow_left);
-        ArrowButton arrowRight = findViewById(arrow_right);
-        arrowRight.clicked(v->{
+    protected void setGridArrow(){
+        arrowGridLeft = findViewById(R.id.arrow_left_grid);
+        arrowGridRight = findViewById(R.id.arrow_right_grid);
+        arrowGridRight.clicked(v->{
             curGrid++;
-            if(curGrid>grids.size()){
+            if(curGrid>=grids.size()){
                 curGrid = 0;
             }
             grids.get(curGrid).bringToFront();
+            arrowGridLeft.bringToFront();
         });
-        arrowLeft.clicked(v->{
+        arrowGridLeft.clicked(v->{
             curGrid--;
             if(curGrid<0){
                 curGrid = grids.size()-1;
             }
             grids.get(curGrid).bringToFront();
+            arrowGridRight.bringToFront();
         });
     }
-    protected void setPageArrow(int arrow_left, int arrow_right){
-        ArrowButton arrowLeft = findViewById(arrow_left);
-        ArrowButton arrowRight = findViewById(arrow_right);
+    protected void setPageArrow(){
+        arrowLeft = findViewById(R.id.arrow_left);
+        arrowRight = findViewById(R.id.arrow_right);
         arrowRight.clicked(v->{
             curPage++;
-            if(curPage>pages.size()){
+            if(curPage >= pages.size()){
                 curPage = 0;
             }
             pages.get(curPage).bringToFront();
+            arrowLeft.bringToFront();
         });
         arrowLeft.clicked(v->{
             curPage--;
@@ -267,6 +272,7 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
                 curPage = pages.size()-1;
             }
             pages.get(curPage).bringToFront();
+            arrowRight.bringToFront();
         });
     }
 }

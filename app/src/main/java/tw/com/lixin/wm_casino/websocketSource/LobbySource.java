@@ -54,6 +54,8 @@ public class LobbySource extends CasinoSource{
     @Override
     public void onReceive(String text) {
 
+        Log.e("lobby", text);
+
         TableData tableData = Json.from(text, TableData.class);
         TableData.Data data = tableData.data;
 
@@ -106,10 +108,9 @@ public class LobbySource extends CasinoSource{
         LobbyData lobbyData = Json.from(text, LobbyData.class);
         switch(lobbyData.protocol) {
             case 35:
+
                 allTables = new SparseArray<>();
                 for(Game game: lobbyData.data.gameArr){
-                   // CmdTable cmdTable = tableProvider.get(game.gameID);
-
                     SparseArray<Table> tableGroup = new SparseArray<>();
                     for(Group tableStage: game.groupArr){
                         if ( tableStage.gameStage != 4 && !tableStage.dealerImage.equals("") && !tableStage.dealerName.equals("")){

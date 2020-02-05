@@ -127,4 +127,9 @@
     <string name="bankerPairPlus">BankerPairPlus</string>
     <string name="win">Win</string>
     <string name="lose">Lose</string>
+
+    <string name="niu">Niu</string>
+    <string name="no_niu">No Niu</string>
+    <string name="wugong">5P</string>
+
 </resources>

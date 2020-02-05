@@ -1,16 +1,12 @@
 package tw.com.lixin.wm_casino;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import tw.com.lixin.wm_casino.popups.LimitPopup;
-import tw.com.lixin.wm_casino.tools.buttons.ClickImage;
 import tw.com.lixin.wm_casino.tools.grids.CellView.DiceView;
 import tw.com.lixin.wm_casino.tools.grids.DiceGrid;
 import tw.com.lixin.wm_casino.tools.grids.TextGrid;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,6 +26,7 @@ public class SicBoActivity extends CasinoActivity {
         setContentView(R.layout.activity_sic_bo);
         super.onCreate(savedInstanceState);
 
+        casinoArea.setTitle(getString(R.string.sic_bo) + source.table.groupID);
         sumTxt = findViewById(R.id.sum_txt);
         oddEvenTxt = findViewById(R.id.oddeven_txt);
         sizeTxt = findViewById(R.id.size_txt);
@@ -45,12 +42,12 @@ public class SicBoActivity extends CasinoActivity {
         addPage(R.id.page_3);
         addPage(R.id.page_4);
         addPage(R.id.page_5);
-        setPageArrow(R.id.arrow_left, R.id.arrow_right);
+        setPageArrow();
         if(isPortrait()){
             addGrid(mainGrid);
             addGrid(firstGrid);
             addGrid(secondGrid);
-            setGridArrow(R.id.arrow_left_grid, R.id.arrow_right_grid);
+            setGridArrow();
         }
         casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/sb" +  String.format("%02d", source.table.groupID) + "/stream1");
     }
@@ -70,6 +67,7 @@ public class SicBoActivity extends CasinoActivity {
         oddEvenTxt.setVisibility(INVISIBLE);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void resultUpdate() {
         String number = String.valueOf(source.result);
@@ -82,6 +80,7 @@ public class SicBoActivity extends CasinoActivity {
         else oddEvenTxt.setText(R.string.ODD);
         if(sumTol < 11) sizeTxt.setText(R.string.SMALL);
         else sizeTxt.setText(R.string.BIG);
+        sumTxt.setText(sumTol+"");
         sumTxt.setVisibility(VISIBLE);
         sizeTxt.setVisibility(VISIBLE);
         diceR1.setVisibility(VISIBLE);

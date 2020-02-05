@@ -7,7 +7,10 @@ import android.util.AttributeSet;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
+import java.util.List;
+
 import androidx.core.content.ContextCompat;
+import tw.com.lixin.wm_casino.App;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.tools.grids.CellView.WordView;
 
@@ -31,7 +34,7 @@ public class SamGrid extends TableLayout {
         int gridX, gridY;
         gridY = 3;
         gridX = a.getInt(R.styleable.SamGrid_grid_x, 0);
-        setDividerDrawable(ContextCompat.getDrawable(context, R.drawable.table_divider));
+        setDividerDrawable(ContextCompat.getDrawable(context, R.drawable.table_divider_white));
         setShowDividers(TableRow.SHOW_DIVIDER_MIDDLE);
         setBackgroundColor(Color.parseColor("#ffffff"));
         a.recycle();
@@ -41,6 +44,58 @@ public class SamGrid extends TableLayout {
     public void clear(){
         for(int i=0; i<height; i++){
             for(int j=0; j<width; j++) viewGrid[j][i].clear();
+        }
+    }
+
+    public void drawRoad(List<Integer> road){
+        int shift = road.size() - width;
+        if (shift<0) shift = 0;
+        clear();
+        int index = 0;
+        while (shift<road.size()) {
+            List<int[]> res = App.getSamgong(road.get(shift));
+            viewGrid[index][0].setTextColor(0xffffffff);
+            viewGrid[index][1].setTextColor(0xffffffff);
+            viewGrid[index][2].setTextColor(0xffffffff);
+            viewGrid[index][0].setTextSize(15);
+            viewGrid[index][1].setTextSize(15);
+            viewGrid[index][2].setTextSize(15);
+
+            if(res.get(0)[0] > res.get(3)[0]) {
+                viewGrid[index][0].setText(context.getString(R.string.player_road));
+                viewGrid[index][0].setTextImg(R.drawable.blue_road);
+            }else if(res.get(0)[0] == res.get(3)[0]){
+                viewGrid[index][0].setText(context.getString(R.string.tie_road));
+                viewGrid[index][0].setTextImg(R.drawable.green_road);
+            }else {
+                viewGrid[index][0].setText(context.getString(R.string.banker_road));
+                viewGrid[index][0].setTextImg(R.drawable.red_road);
+            }
+
+            if(res.get(1)[0] > res.get(3)[0]) {
+                viewGrid[index][1].setText(context.getString(R.string.player_road));
+                viewGrid[index][1].setTextImg(R.drawable.blue_road);
+            }else if(res.get(1)[0] == res.get(3)[0]){
+                viewGrid[index][1].setText(context.getString(R.string.tie_road));
+                viewGrid[index][1].setTextImg(R.drawable.green_road);
+            }else {
+                viewGrid[index][1].setText(context.getString(R.string.banker_road));
+                viewGrid[index][1].setTextImg(R.drawable.red_road);
+            }
+
+            if(res.get(2)[0] > res.get(3)[0]) {
+                viewGrid[index][2].setText(context.getString(R.string.player_road));
+                viewGrid[index][2].setTextImg(R.drawable.blue_road);
+            }else if(res.get(2)[0] == res.get(3)[0]){
+                viewGrid[index][2].setText(context.getString(R.string.tie_road));
+                viewGrid[index][2].setTextImg(R.drawable.green_road);
+            }else {
+                viewGrid[index][2].setText(context.getString(R.string.banker_road));
+                viewGrid[index][2].setTextImg(R.drawable.red_road);
+            }
+
+            shift++;
+            index++;
         }
     }
 
@@ -74,6 +129,14 @@ public class SamGrid extends TableLayout {
                 view = new WordView(context);
                 view.setLayoutParams(new TableRow.LayoutParams(0, LayoutParams.MATCH_PARENT, 1.0f));
                 row.addView(view);
+
+                view.setTextSize(15);
+                view.setTextColor(0xffffffff);
+                view.setText(context.getString(R.string.player_abb));
+                view.setTextImg(R.drawable.blue_road);
+
+
+
                 viewGrid[j][i] = view;
             }
             this.addView(row);

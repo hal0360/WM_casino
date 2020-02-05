@@ -1444,6 +1444,38 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/size_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFD700"
+            android:textSize="13dp"
+            android:text="Big 19-36"
+            app:layout_constraintBottom_toTopOf="@+id/dozen_txt"
+            app:layout_constraintStart_toStartOf="@+id/dozen_txt" />
+
+        <TextView
+            android:id="@+id/dozen_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@string/dozen1"
+            android:textColor="#FFD700"
+            android:textSize="13dp"
+            app:layout_constraintBottom_toBottomOf="@+id/odd_even_txt"
+            app:layout_constraintStart_toEndOf="@+id/odd_even_txt"
+            app:layout_constraintTop_toTopOf="@+id/odd_even_txt" />
+
+        <TextView
+            android:id="@+id/column_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFD700"
+            android:textSize="13dp"
+            android:text="@string/column1"
+            app:layout_constraintStart_toStartOf="@+id/dozen_txt"
+            app:layout_constraintTop_toBottomOf="@+id/dozen_txt" />
+
     </tw.com.lixin.wm_casino.tools.CardArea>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

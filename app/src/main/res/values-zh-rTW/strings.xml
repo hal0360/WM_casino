@@ -127,4 +127,8 @@
     <string name="bankerPairPlus">莊對牌以上</string>
     <string name="win">贏</string>
     <string name="lose">輸</string>
+
+    <string name="niu">牛</string>
+    <string name="no_niu">無牛</string>
+    <string name="wugong">5公</string>
 </resources>

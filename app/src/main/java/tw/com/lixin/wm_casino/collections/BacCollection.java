@@ -6,6 +6,7 @@ import tw.com.atromoby.widgets.CollectionHolder;
 import tw.com.lixin.wm_casino.BaccaratActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.models.Table;
+import tw.com.lixin.wm_casino.tools.grids.CellView.WordView;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
 public class BacCollection extends GameCollection {
@@ -30,9 +31,7 @@ public class BacCollection extends GameCollection {
     @SuppressLint("SetTextI18n")
     @Override
     public void gridUpdate() {
-        textGrid.drawRoad(table.firstRoad, (v,r)->{
-
-        });
+        textGrid.drawRoad(table.firstRoad, WordView::setTextImg);
         count1.setText(getString(R.string.banker_abb) + ":" + table.data.bankerCount);
         count2.setText(getString(R.string.player_abb) + ":" + table.data.playerCount);
         count3.setText(getString(R.string.tie_abb) + ":" + table.data.tieCount);

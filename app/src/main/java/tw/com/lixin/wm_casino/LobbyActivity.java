@@ -39,7 +39,7 @@ public class LobbyActivity extends RootActivity implements LobbyBridge {
 
     public void enterGame(int gameid){
         lobbySource.curGameID = gameid;
-        toActivity(GameActivity.class);
+        pushActivity(GameActivity.class);
     }
 
     @Override

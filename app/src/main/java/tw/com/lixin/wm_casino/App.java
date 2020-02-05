@@ -4,6 +4,7 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.SparseArray;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +18,53 @@ public class App extends RegisterApplication {
 
 
     public static List<Integer> flush;
+    public static List<Integer> niu;
+
+
+    public static SparseArray<String> sam;
+
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        sam = new SparseArray<>();
+        sam.put(1,"0");
+        sam.put(2,"p0");
+        sam.put(3,"2p0");
+        sam.put(4,"1");
+        sam.put(5,"p1");
+        sam.put(6,"2p1");
+        sam.put(7,"2");
+        sam.put(8,"p2");
+        sam.put(9,"2p2");
+        sam.put(10,"3");
+        sam.put(11,"p3");
+        sam.put(12,"2p3");
+        sam.put(13,"4");
+        sam.put(14,"p4");
+        sam.put(15,"2p4");
+        sam.put(16,"5");
+        sam.put(17,"p5");
+        sam.put(18,"2p5");
+        sam.put(19,"6");
+        sam.put(20,"p6");
+        sam.put(21,"2p6");
+        sam.put(22,"7");
+        sam.put(23,"p7");
+        sam.put(24,"2p7");
+        sam.put(25,"8");
+        sam.put(26,"p8");
+        sam.put(27,"2p8");
+        sam.put(28,"9");
+        sam.put(29,"p9");
+        sam.put(30,"2p9");
+        sam.put(31,"3p");
+
+
+        niu = new ArrayList<>();
+        niu.add(20);
+        niu.add(0);
 
         flush = new ArrayList<>();
         flush.add(160);
@@ -47,25 +91,56 @@ public class App extends RegisterApplication {
     }
 
 
-    public static int[] getSamgong( int result){
-        for(int b = 1; b < 32; b++){
-            for(int bf: flush){
-                for(int p1 = 1; p1 < 32; p1++){
-                    for(int p1f: flush){
-                        for(int p2 = 1; p2 < 32; p2++){
-                            for(int p2f: flush){
-                                for(int p3 = 1; p3 < 32; p3++){
-                                    for(int p3f: flush){
-                                        if((b+bf + (p1+p1f)*200 + (p2+p2f)*40000 + (p3+p3f)*8000000) == result) return new int[]{b, p1, p2, p3};
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+    public static int[] getNiutemp(int res){
+        for(int q = 1; q < 32; q++){
+            for(int qf: niu){
+                if((q + qf) == res) return new int[]{q,qf};
             }
         }
-        return new int[]{0, 0, 0, 0};
+        return new int[]{0,0};
+    }
+
+    public static List<int[]> getNiuniu( int result){
+        int remP3 = result%1000000;
+        int remP2 = remP3%10000;
+        int remP1 = remP2%100;
+        int qp3 = result/1000000;
+        int qp2 = remP3/10000;
+        int qp1 = remP2/100;
+
+        List<int[]> raw = new ArrayList<>();
+        raw.add(getNiutemp(qp1));
+        raw.add(getNiutemp(qp2));
+        raw.add(getNiutemp(qp3));
+        raw.add(getNiutemp(remP1));
+
+        return raw;
+    }
+
+    public static int[] getSamtemp(int res){
+        for(int q = 1; q < 32; q++){
+            for(int qf: flush){
+                if((q + qf) == res) return new int[]{q,qf};
+            }
+        }
+        return new int[]{0,0};
+    }
+
+    public static List<int[]> getSamgong( int result){
+        int remP3 = result%8000000;
+        int remP2 = remP3%40000;
+        int remP1 = remP2%200;
+        int qp3 = result/8000000;
+        int qp2 = remP3/40000;
+        int qp1 = remP2/200;
+
+        List<int[]> raw = new ArrayList<>();
+        raw.add(getSamtemp(qp1));
+        raw.add(getSamtemp(qp2));
+        raw.add(getSamtemp(qp3));
+        raw.add(getSamtemp(remP1));
+
+        return raw;
     }
 
 

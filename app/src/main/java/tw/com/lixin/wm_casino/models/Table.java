@@ -72,12 +72,13 @@ public class Table {
         dealerName = group.dealerName;
         handler = LobbySource.getInstance().getGenHandler();
 
+        /*
         try {
             InputStream in = new java.net.URL(group.dealerImage).openStream();
             dealerImage = BitmapFactory.decodeStream(in);
         }catch(IOException e) {
             Log.e(dealerName + " BitError", e.getMessage());
-        }
+        }*/
     }
 
     public void bind(TableBridge bridge){
@@ -95,9 +96,10 @@ public class Table {
     }
 
     public void historyUpdate(TableData.Data data) {
+
         mainArr = data.historyArr;
         firstRoad = new ItemRoad(data.historyData.dataArr2);
-        secondRoad = new ItemRoad(data.historyData.dataArr3);
+       secondRoad = new ItemRoad(data.historyData.dataArr3);
         thirdRoad = new ItemRoad(data.historyData.dataArr4);
         fourthRoad = new ItemRoad(data.historyData.dataArr5);
         this.data = data.historyData;
@@ -137,6 +139,8 @@ public class Table {
         }else {
             mainRoad =  new ItemRoad(data.historyArr, 9);
         }
+
+
     }
 
 

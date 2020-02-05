@@ -416,6 +416,7 @@
                 app:layout_constraintTop_toTopOf="@+id/cardImage20" />
 
             <TextView
+                android:id="@+id/player3_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
@@ -426,6 +427,7 @@
                 app:layout_constraintStart_toStartOf="@+id/cardImage6" />
 
             <TextView
+                android:id="@+id/player2_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
@@ -436,6 +438,7 @@
                 app:layout_constraintStart_toStartOf="@+id/cardImage" />
 
             <TextView
+                android:id="@+id/banker_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
@@ -446,6 +449,7 @@
                 app:layout_constraintStart_toStartOf="@+id/cardImage12" />
 
             <TextView
+                android:id="@+id/player1_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
@@ -499,6 +503,7 @@
     </tw.com.lixin.wm_casino.tools.CasinoArea>
 
     <tw.com.lixin.wm_casino.tools.grids.NiuGird
+        android:id="@+id/main_grid"
         android:layout_width="0dp"
         android:layout_height="95dp"
         app:grid_x="13"

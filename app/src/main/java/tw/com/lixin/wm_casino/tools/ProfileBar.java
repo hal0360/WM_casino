@@ -25,15 +25,15 @@ public class ProfileBar extends ConstraintLayout implements View.OnClickListener
         balance = findViewById(R.id.balance_txt);
         title = findViewById(R.id.title);
         ImageView settingBtn = findViewById(R.id.setting_btn);
-        ImageView balanceImg = findViewById(R.id.balance_img);
+       // ImageView balanceImg = findViewById(R.id.balance_img);
         setBackgroundColor(0xff0d0d0d);
         TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.ProfileBar);
         title.setText(a.getString(R.styleable.ProfileBar_title));
-        boolean showBal = a.getBoolean(R.styleable.ProfileBar_show_balance, false);
-        if(showBal) {
-            balance.setVisibility(VISIBLE);
-            balanceImg.setVisibility(VISIBLE);
-        }
+        boolean showBal = a.getBoolean(R.styleable.ProfileBar_show_balance, true);
+     //   if(!showBal) {
+          //  balance.setVisibility(INVISIBLE);
+          //  balanceImg.setVisibility(INVISIBLE);
+       // }
         a.recycle();
        // post(this::updateBalance);
         settingBtn.setOnClickListener(this);

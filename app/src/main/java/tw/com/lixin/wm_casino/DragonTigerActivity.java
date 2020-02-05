@@ -27,6 +27,7 @@ public class DragonTigerActivity extends CasinoActivity  {
         setContentView(R.layout.activity_dragon_tiger);
         super.onCreate(savedInstanceState);
 
+        casinoArea.setTitle(getString(R.string.dragon_tiger) + source.table.groupID);
         mainGrid = findViewById(R.id.main_grid);
         firstGrid = findViewById(R.id.first_grid);
         secondGrid = findViewById(R.id.second_grid);

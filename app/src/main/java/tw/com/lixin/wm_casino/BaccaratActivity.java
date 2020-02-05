@@ -35,6 +35,7 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         setContentView(R.layout.activity_baccarat);
         super.onCreate(savedInstanceState);
 
+        casinoArea.setTitle(getString(R.string.baccarat) + source.table.groupID);
         setStackAreaMax(R.id.banker_stack,source.logData.maxBet01,1);
         setStackAreaMax(R.id.player_stack,source.logData.maxBet02,2);
         setStackAreaMax(R.id.tie_stack,source.logData.maxBet03,3);
@@ -54,11 +55,11 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         askPlayer = findViewById(R.id.ask_play_btn);
         betStarted();
 
-      //  setTextView(R.id.tie_pair_dtO, "1:" + source.logData.dtOdds.get(3));
-      //  setTextView(R.id.banker_pair_dtO, "1:" + source.logData.dtOdds.get(4));
-      //  setTextView(R.id.player_pair_dtO, "1:" + source.logData.dtOdds.get(5));
-     //   setTextView(R.id.banker_dtO, "1:" + source.logData.dtOdds.get(1));
-      //  setTextView(R.id.player_dtO, "1:" + source.logData.dtOdds.get(2));
+        setTextView(R.id.tie_pair_dtO, "1:8" );
+        setTextView(R.id.banker_pair_dtO, "1:11" );
+        setTextView(R.id.player_pair_dtO, "1:11" );
+        setTextView(R.id.banker_dtO, "1:0.95" );
+        setTextView(R.id.player_dtO, "1:1" );
 
         addCard(1, R.id.player_poker1);
         addCard(3, R.id.player_poker2);

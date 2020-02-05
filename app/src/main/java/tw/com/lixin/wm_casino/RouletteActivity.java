@@ -2,20 +2,20 @@ package tw.com.lixin.wm_casino;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import tw.com.lixin.wm_casino.global.Road;
 import tw.com.lixin.wm_casino.popups.LimitPopup;
-import tw.com.lixin.wm_casino.tools.buttons.ClickImage;
 import tw.com.lixin.wm_casino.tools.grids.TextGrid;
 
 import static android.view.View.INVISIBLE;
+import static android.view.View.VISIBLE;
 
 public class RouletteActivity extends CasinoActivity {
 
     private TextGrid firstGrid, secondGrid, thirdGrid, fourthGrid;
-    private TextView resultTxt, oddEvenTxt;
+    private TextView resultTxt, oddEvenTxt, sizeTxt, dozenTxt, columnTxt;
 
 
     @SuppressLint("DefaultLocale")
@@ -24,22 +24,26 @@ public class RouletteActivity extends CasinoActivity {
         setContentView(R.layout.activity_roulette);
         super.onCreate(savedInstanceState);
 
+        casinoArea.setTitle(getString(R.string.roulette) + source.table.groupID);
         firstGrid = findViewById(R.id.first_grid);
         secondGrid = findViewById(R.id.second_grid);
         thirdGrid = findViewById(R.id.third_grid);
         fourthGrid = findViewById(R.id.fourth_grid);
         resultTxt = findViewById(R.id.result_txt);
         oddEvenTxt = findViewById(R.id.odd_even_txt);
+        sizeTxt = findViewById(R.id.size_txt);
+        dozenTxt = findViewById(R.id.dozen_txt);
+        columnTxt = findViewById(R.id.column_txt);
 
         addPage(R.id.page_1);
         addPage(R.id.page_2);
         addPage(R.id.page_3);
-        setPageArrow(R.id.arrow_left, R.id.arrow_right);
+        setPageArrow();
         if(isPortrait()){
             addGrid(firstGrid);
             addGrid(secondGrid);
             addGrid(thirdGrid);
-            setGridArrow(R.id.arrow_left_grid, R.id.arrow_right_grid);
+            setGridArrow();
         }
         casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/rou" + String.format("%02d", source.table.groupID) + "/stream1");
 
@@ -55,7 +59,9 @@ public class RouletteActivity extends CasinoActivity {
     public void betStarted() {
         resultTxt.setVisibility(INVISIBLE);
         oddEvenTxt.setVisibility(INVISIBLE);
-
+        sizeTxt.setVisibility(INVISIBLE);
+        columnTxt.setVisibility(INVISIBLE);
+        dozenTxt.setVisibility(INVISIBLE);
     }
 
     @SuppressLint("SetTextI18n")
@@ -65,6 +71,23 @@ public class RouletteActivity extends CasinoActivity {
         resultTxt.setText(source.result+"");
         if ( (source.result & 1) == 0 ) oddEvenTxt.setText(getString(R.string.EVEN));
         else oddEvenTxt.setText(getString(R.string.ODD));
+
+        if(source.result >18 ) sizeTxt.setText(getString(R.string.BIG) + "19-36");
+        else  sizeTxt.setText(getString(R.string.SMALL) + "1-18");
+
+        if(source.result <13 ) dozenTxt.setText(getString(R.string.dozen1));
+        else if(source.result >24) dozenTxt.setText(getString(R.string.dozen3));
+        else dozenTxt.setText(getString(R.string.dozen2));
+
+        if(source.result % 3 == 0) columnTxt.setText(getString(R.string.column1));
+        else if(source.result % 3 == 2) columnTxt.setText(getString(R.string.column2));
+        else columnTxt.setText(getString(R.string.column3));
+
+        resultTxt.setVisibility(VISIBLE);
+        oddEvenTxt.setVisibility(VISIBLE);
+        sizeTxt.setVisibility(VISIBLE);
+        columnTxt.setVisibility(VISIBLE);
+        dozenTxt.setVisibility(VISIBLE);
     }
 
     @Override

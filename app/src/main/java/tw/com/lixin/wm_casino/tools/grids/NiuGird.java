@@ -7,7 +7,10 @@ import android.util.AttributeSet;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
+import java.util.List;
+
 import androidx.core.content.ContextCompat;
+import tw.com.lixin.wm_casino.App;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.tools.grids.CellView.WordView;
 
@@ -31,12 +34,55 @@ public class NiuGird extends TableLayout {
         int gridX, gridY;
         gridY = 4;
         gridX = a.getInt(R.styleable.NiuGird_grid_x, 0);
-        setDividerDrawable(ContextCompat.getDrawable(context, R.drawable.table_divider));
+        setDividerDrawable(ContextCompat.getDrawable(context, R.drawable.table_divider_white));
         setShowDividers(TableRow.SHOW_DIVIDER_MIDDLE);
         setBackgroundColor(Color.parseColor("#ffffff"));
         a.recycle();
         iniGrid(gridX, gridY);
     }
+
+    public void drawRoad(List<Integer> road){
+        int shift = road.size() - width;
+        if (shift<0) shift = 0;
+        clear();
+        int index = 0;
+        while (shift<road.size()) {
+            List<int[]> res = App.getNiuniu(road.get(shift));
+            viewGrid[index][0].setTextColor(0xffffffff);
+            viewGrid[index][1].setTextColor(0xffffffff);
+            viewGrid[index][2].setTextColor(0xffffffff);
+            viewGrid[index][3].setTextColor(0xffffffff);
+            viewGrid[index][0].setTextSize(12);
+            viewGrid[index][1].setTextSize(12);
+            viewGrid[index][2].setTextSize(12);
+            viewGrid[index][3].setTextSize(12);
+
+            viewGrid[index][1].setText(res.get(0)[0]);
+            if(res.get(0)[1] == 0){
+                viewGrid[index][1].setBackgroundColor(0xff808080);
+            }else {
+                viewGrid[index][1].setBackgroundColor(0xff00008b);
+            }
+            viewGrid[index][2].setText(res.get(1)[0]);
+            if(res.get(1)[1] == 0){
+                viewGrid[index][2].setBackgroundColor(0xff808080);
+            }else {
+                viewGrid[index][2].setBackgroundColor(0xff00bfff);
+            }
+            viewGrid[index][3].setText(res.get(2)[0]);
+            if(res.get(2)[1] == 0){
+                viewGrid[index][3].setBackgroundColor(0xff808080);
+            }else {
+                viewGrid[index][3].setBackgroundColor(0xff20b2aa);
+            }
+            viewGrid[index][0].setText(res.get(3)[0]);
+            viewGrid[index][0].setBackgroundColor(0xff808080);
+
+            shift++;
+            index++;
+        }
+    }
+
 
     public void clear(){
         for(int i=0; i<height; i++){
@@ -55,9 +101,8 @@ public class NiuGird extends TableLayout {
             row.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 0, 1.0f));
 
 
-            row.setDividerDrawable(ContextCompat.getDrawable(context, R.drawable.table_divider));
+            row.setDividerDrawable(ContextCompat.getDrawable(context, R.drawable.table_divider_white));
             row.setShowDividers(TableRow.SHOW_DIVIDER_MIDDLE);
-
 
 
             view = new WordView(context);

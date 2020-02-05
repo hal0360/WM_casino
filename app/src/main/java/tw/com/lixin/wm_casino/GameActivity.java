@@ -13,6 +13,7 @@ import tw.com.lixin.wm_casino.collections.BacCollection;
 import tw.com.lixin.wm_casino.collections.DragonTigerCollection;
 import tw.com.lixin.wm_casino.collections.NiuCollection;
 import tw.com.lixin.wm_casino.collections.RouletteCollection;
+import tw.com.lixin.wm_casino.collections.SamgongCollection;
 import tw.com.lixin.wm_casino.collections.SicBoCollection;
 import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.Table;
@@ -38,7 +39,7 @@ public class GameActivity extends RootActivity {
             SparseArray<Table> tables = source.allTables.get(101);
             for(int i = 0; i < tables.size(); i++) {
                 Table table = tables.valueAt(i);
-                collections.add(new BacCollection((BacTable) table));
+                collections.add(new BacCollection(table));
             }
         }else if(source.curGameID == 102){
             bar.setTitle(getString(R.string.dragon_tiger));
@@ -62,11 +63,18 @@ public class GameActivity extends RootActivity {
                 collections.add(new SicBoCollection(table));
             }
         }else if(source.curGameID == 105){
-            bar.setTitle(getString(R.string.sic_bo));
+            bar.setTitle(getString(R.string.niuniu));
             SparseArray<Table> tables = source.allTables.get(105);
             for(int i = 0; i < tables.size(); i++) {
                 Table table = tables.valueAt(i);
                 collections.add(new NiuCollection(table));
+            }
+        }else if(source.curGameID == 106){
+            bar.setTitle(getString(R.string.samgong));
+            SparseArray<Table> tables = source.allTables.get(106);
+            for(int i = 0; i < tables.size(); i++) {
+                Table table = tables.valueAt(i);
+                collections.add(new SamgongCollection(table));
             }
         }else{
             alert("error!");
