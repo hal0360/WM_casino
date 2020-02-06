@@ -1,12 +1,13 @@
 package tw.com.lixin.wm_casino.websocketSource;
 
-import android.util.Log;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Response;
+import okhttp3.WebSocket;
 import tw.com.atromoby.utils.Json;
 import tw.com.lixin.wm_casino.dataModels.Client10;
 import tw.com.lixin.wm_casino.dataModels.GameData;
@@ -19,6 +20,7 @@ import tw.com.lixin.wm_casino.models.ChipStackData;
 import tw.com.lixin.wm_casino.models.People;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.popups.PeoplePopup;
+import tw.com.lixin.wm_casino.tools.buttons.MessageButton;
 
 public class GameSource extends CasinoSource{
 
@@ -45,7 +47,6 @@ public class GameSource extends CasinoSource{
     public int playerScore, bankerScore;
 
     public SparseIntArray pokers = new SparseIntArray();
-
 
 
     public void bind(GameBridge bridge){
@@ -90,6 +91,13 @@ public class GameSource extends CasinoSource{
         close();
     }
 
+    private void mssLogin(int gameID, int groupID){
+        handleSimple(()->{
+            MessageSource source = MessageSource.getInstance();
+            source.mssLogin(gameID, groupID);
+        },1500);
+    }
+
     @Override
     public void onReceive(String text) {
         GameData gameData = Json.from(text, GameData.class);
@@ -104,6 +112,13 @@ public class GameSource extends CasinoSource{
                     else{
                         tableLogout( );
                         cmdTableFail.exec("login failed");
+                    }
+                }
+                break;
+            case 20:
+                if(gameData.data.groupID == table.groupID && gameData.data.gameStage == 1) {
+                    for(int s = 0; s < chipDatas.size(); s++){
+                        chipDatas.valueAt(s).clear();
                     }
                 }
                 break;
@@ -155,5 +170,11 @@ public class GameSource extends CasinoSource{
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onFailure(WebSocket webSocket, Throwable t, Response response) {
+        if(connected)  handle(() ->  bridge.serverFailed());
+        super.onFailure( webSocket,  t,  response);
     }
 }

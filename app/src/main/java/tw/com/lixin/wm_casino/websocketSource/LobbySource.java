@@ -4,11 +4,10 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import okhttp3.Response;
+import okhttp3.WebSocket;
 import tw.com.atromoby.utils.Json;
-import tw.com.lixin.wm_casino.dataModels.GameData;
+import tw.com.lixin.wm_casino.App;
 import tw.com.lixin.wm_casino.dataModels.LobbyData;
 import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.dataModels.gameData.Game;
@@ -20,6 +19,9 @@ import tw.com.lixin.wm_casino.models.Table;
 public class LobbySource extends CasinoSource{
 
     private static LobbySource single_instance = null;
+
+    private App app;
+
     public static LobbySource getInstance()
     {
         if (single_instance == null) single_instance = new LobbySource();
@@ -27,6 +29,7 @@ public class LobbySource extends CasinoSource{
     }
 
     private LobbySource() {
+        app = App.getThisApp();
         defineURL("ws://gameserver.a45.me:15109");
         allTables = new SparseArray<>();
        // tableProvider = new SparseArray<>();
@@ -127,6 +130,12 @@ public class LobbySource extends CasinoSource{
                 handle(()-> bridge.peopleOnlineUpdate(lobbyData.data.gameID, lobbyData.data.onlinePeople));
                 break;
         }
+    }
+
+    @Override
+    public void onFailure(WebSocket webSocket, Throwable t, Response response) {
+        if(connected) handleSimple(()-> app.lobbyFail());
+        super.onFailure( webSocket,  t,  response);
     }
 
 }

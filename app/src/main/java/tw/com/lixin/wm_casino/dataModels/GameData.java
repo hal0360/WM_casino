@@ -11,6 +11,7 @@ public class GameData {
         public Boolean bOk;
         public float moneyWin;
         public float balance;
+        public int gameStage;
 
         public String userName;
         public int winRate;

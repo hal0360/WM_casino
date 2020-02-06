@@ -46,10 +46,6 @@ public class LobbyActivity extends RootActivity implements LobbyBridge {
     public void onResume() {
         super.onResume();
         lobbySource.bind(this);
-        if(!lobbySource.isConnected()){
-            alert("Connection lost");
-            toActivity(LoginActivity.class);
-        }
     }
 
     @Override

@@ -1,14 +1,15 @@
 package tw.com.lixin.wm_casino;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.SparseArray;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import tw.com.atromoby.utils.Kit;
 import tw.com.atromoby.utils.RegisterApplication;
 
 public class App extends RegisterApplication {
@@ -23,11 +24,14 @@ public class App extends RegisterApplication {
 
     public static SparseArray<String> sam;
 
+    private static App app;
+
 
     @Override
     public void onCreate() {
         super.onCreate();
 
+        app = this;
         sam = new SparseArray<>();
         sam.put(1,"0");
         sam.put(2,"p0");
@@ -88,8 +92,19 @@ public class App extends RegisterApplication {
         control = MediaPlayer.create(this, R.raw.control);
         control.setLooping(false);
 
+
     }
 
+    public static App getThisApp(){
+        return app;
+    }
+
+    public void lobbyFail(){
+        Kit.alert(this,"Lobby disconnected");
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
 
     public static int[] getNiutemp(int res){
         for(int q = 1; q < 32; q++){

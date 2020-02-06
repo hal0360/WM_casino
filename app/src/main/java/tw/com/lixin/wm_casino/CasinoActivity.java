@@ -105,13 +105,14 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     }
 
     @Override
+    public void serverFailed() {
+        alert("Game disconnected");
+        finish();
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
-        if(!source.isConnected()){
-            alert("connection lost");
-            finish();
-            return;
-        }
 
         gridUpdate();
         casinoArea.playVideo();

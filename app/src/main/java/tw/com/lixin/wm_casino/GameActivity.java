@@ -15,21 +15,18 @@ import tw.com.lixin.wm_casino.collections.NiuCollection;
 import tw.com.lixin.wm_casino.collections.RouletteCollection;
 import tw.com.lixin.wm_casino.collections.SamgongCollection;
 import tw.com.lixin.wm_casino.collections.SicBoCollection;
-import tw.com.lixin.wm_casino.models.BacTable;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.tools.ProfileBar;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
 public class GameActivity extends RootActivity {
 
-    private LobbySource source;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        source = LobbySource.getInstance();
+        LobbySource source = LobbySource.getInstance();
         CollectionsView tableList = findViewById(R.id.table_list);
         List<Collection> collections = new ArrayList<>();
         ProfileBar bar = findViewById(R.id.pro_bar);
@@ -86,10 +83,6 @@ public class GameActivity extends RootActivity {
     @Override
     public void onResume() {
         super.onResume();
-        if(!source.isConnected()){
-            alert("connection lost");
-            toActivity(LoginActivity.class);
-        }
     }
 
     @Override

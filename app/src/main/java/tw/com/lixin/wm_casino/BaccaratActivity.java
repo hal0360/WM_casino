@@ -147,7 +147,6 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         setScores();
     }
 
-
     private int resDivide(int rawVal){
         List<Integer> powers = new ArrayList<>();
         for(int i = 8; i >= 0; i-- ){

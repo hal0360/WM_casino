@@ -25,7 +25,7 @@ public abstract class CasinoSource extends WebSocketListener{
 
     private Handler logHandler = new Handler();
 
-    private boolean connected = false;
+    boolean connected = false;
     private String loginDataStr;
     private String webUrl;
     private CmdLog cmdLogOpen;
@@ -51,9 +51,7 @@ public abstract class CasinoSource extends WebSocketListener{
         cmdLogOpen = logOK;
         cmdLogFail = logFail;
         logHandler.postDelayed(()-> {
-            cmdLogOpen = null;
             if(cmdLogFail != null) cmdLogFail.exec("Websocket login timeout");
-            cmdLogFail = null;
             close();
         },6000);
         loginDataStr = Json.to(new LoginData( user, pass));
@@ -67,11 +65,9 @@ public abstract class CasinoSource extends WebSocketListener{
         cmdLogOpen = logOK;
         cmdLogFail = logFail;
         logHandler.postDelayed(()-> {
-            cmdLogOpen = null;
             if(cmdLogFail != null) cmdLogFail.exec("Websocket login timeout");
-            cmdLogFail = null;
             close();
-        },6000);
+        },7000);
         loginDataStr = Json.to(new CheckData(sid));
         OkHttpClient client = new OkHttpClient();
         webSocket = client.newWebSocket(new Request.Builder().url(webUrl).build(), this);
@@ -84,25 +80,17 @@ public abstract class CasinoSource extends WebSocketListener{
         cmdLogOpen = logOK;
         cmdLogFail = logFail;
         logHandler.postDelayed(()-> {
-            cmdLogOpen = null;
             if(cmdLogFail != null) cmdLogFail.exec("Websocket login timeout");
-            cmdLogFail = null;
             close();
-        },6000);
+        },7000);
         loginDataStr = Json.to(new CheckData(sid));
         OkHttpClient client = new OkHttpClient();
         webSocket = client.newWebSocket(new Request.Builder().url(webUrl).build(), this);
         client.dispatcher().executorService().shutdown();
     }
 
-
-
     void defineURL(String url){
         webUrl = url;
-    }
-
-    public boolean isConnected() {
-        return connected;
     }
 
     public abstract void onReceive(String text);
@@ -138,6 +126,10 @@ public abstract class CasinoSource extends WebSocketListener{
 
     void handleSimple(Cmd cmd){
         genHandler.post(cmd::exec);
+    }
+
+    void handleSimple(Cmd cmd, int millsec){
+        genHandler.postDelayed(cmd::exec, millsec);
     }
 
     public void send(String message){
