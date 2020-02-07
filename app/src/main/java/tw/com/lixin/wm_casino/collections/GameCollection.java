@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import tw.com.atromoby.widgets.Collection;
 import tw.com.atromoby.widgets.CollectionHolder;
+import tw.com.atromoby.widgets.FragDialog;
 import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
@@ -23,16 +24,25 @@ public abstract class GameCollection extends Collection implements TableBridge {
     protected Table table;
      TextView count1, count2, count3;
      TextGrid textGrid;
+     private boolean snall = false;
+     private FragDialog fragDialog;
 
     GameCollection(Table table) {
         super(R.layout.table_collection);
         this.table = table;
     }
 
+    GameCollection(Table table, FragDialog blob) {
+        super(R.layout.game_collection);
+        this.table = table;
+        snall = true;
+        fragDialog = blob;
+    }
+
     @SuppressLint("SetTextI18n")
     @Override
     public void onBind(CollectionHolder holder) {
-        activity = (RootActivity) holder.getContex();
+
         textGrid = holder.findViewById(R.id.text_grid);
         dealTxt = holder.findViewById(R.id.deal_txt);
         block = holder.findViewById(R.id.road_grid_block);
@@ -42,13 +52,21 @@ public abstract class GameCollection extends Collection implements TableBridge {
         count1 = holder.findViewById(R.id.count1);
         count2 = holder.findViewById(R.id.count2);
         count3 = holder.findViewById(R.id.count3);
-        ImageView dealerImg = holder.findViewById(R.id.dealer_img);
-        TextView dealername = holder.findViewById(R.id.dealername_txt);
-        dealername.setText(table.dealerName);
-        if(table.dealerImage != null) dealerImg.setImageBitmap(table.dealerImage);
-        else dealerImg.setImageResource(R.drawable.hamster);
-        tableName = holder.findViewById(R.id.table_name_txt);
 
+        if(!snall){
+            activity = (RootActivity) holder.getContex();
+            ImageView dealerImg = holder.findViewById(R.id.dealer_img);
+            TextView dealername = holder.findViewById(R.id.dealername_txt);
+            dealername.setText(table.dealerName);
+            if(table.dealerImage != null) dealerImg.setImageBitmap(table.dealerImage);
+            else dealerImg.setImageResource(R.drawable.hamster);
+        }else {
+            activity = fragDialog.getRootActivity();
+        }
+
+
+
+        tableName = holder.findViewById(R.id.table_name_txt);
         stageUpdate();
         table.bind(this);
     }

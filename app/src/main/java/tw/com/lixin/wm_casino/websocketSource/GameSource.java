@@ -20,7 +20,6 @@ import tw.com.lixin.wm_casino.models.ChipStackData;
 import tw.com.lixin.wm_casino.models.People;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.popups.PeoplePopup;
-import tw.com.lixin.wm_casino.tools.buttons.MessageButton;
 
 public class GameSource extends CasinoSource{
 
@@ -108,6 +107,7 @@ public class GameSource extends CasinoSource{
                     if(tableLogData.data.bOk){
                         logData = tableLogData.data;
                         cmdTableLog.exec(tableLogData.data);
+                        mssLogin(table.gameID, table.groupID);
                     }
                     else{
                         tableLogout( );
@@ -119,6 +119,10 @@ public class GameSource extends CasinoSource{
                 if(gameData.data.groupID == table.groupID && gameData.data.gameStage == 1) {
                     for(int s = 0; s < chipDatas.size(); s++){
                         chipDatas.valueAt(s).clear();
+                    }
+                }else if(gameData.data.groupID == table.groupID && gameData.data.gameStage == 2) {
+                    for(int s = 0; s < chipDatas.size(); s++){
+                        chipDatas.valueAt(s).cancelBet();
                     }
                 }
                 break;

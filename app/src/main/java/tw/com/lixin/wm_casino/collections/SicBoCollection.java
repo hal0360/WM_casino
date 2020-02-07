@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.view.View;
 
 import tw.com.atromoby.widgets.CollectionHolder;
+import tw.com.atromoby.widgets.FragDialog;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.SicBoActivity;
 import tw.com.lixin.wm_casino.models.Table;
@@ -14,6 +15,10 @@ public class SicBoCollection extends GameCollection {
 
     public SicBoCollection(Table table) {
         super(table);
+    }
+
+    public SicBoCollection(Table table, FragDialog r) {
+        super(table,r);
     }
 
     private DiceGrid diceGrid;

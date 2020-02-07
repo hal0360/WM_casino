@@ -26,16 +26,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/white_menu" />
 
-    <ImageView
+    <View
         android:id="@+id/balance_img"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="6dp"
         android:layout_marginTop="3dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/wm_chips_s" />
+        android:background="@drawable/wm_chips_s" />
 
     <TextView
         android:id="@+id/balance_txt"
@@ -48,6 +49,7 @@
         android:text="@string/zero"
         android:textColor="#fff"
         android:textSize="14dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/balance_img"
         app:layout_constraintEnd_toStartOf="@+id/title"
         app:layout_constraintStart_toEndOf="@+id/balance_img"

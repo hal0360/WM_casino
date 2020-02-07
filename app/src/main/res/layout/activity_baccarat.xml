@@ -309,6 +309,20 @@
 
         </tw.com.lixin.wm_casino.tools.CardArea>
 
+        <RadioButton
+            android:id="@+id/comm_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="63dp"
+            android:buttonTint="#7FFFD4"
+            android:checked="true"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:text="@string/no_comm"
+            android:textColor="#fff"
+            app:layout_constraintBottom_toTopOf="@+id/player_stack"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </tw.com.lixin.wm_casino.tools.CasinoArea>
 
     <androidx.constraintlayout.widget.ConstraintLayout

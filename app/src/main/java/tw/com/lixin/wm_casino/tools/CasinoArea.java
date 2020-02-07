@@ -23,6 +23,7 @@ import tw.com.lixin.wm_casino.popups.MessagePopup;
 import tw.com.lixin.wm_casino.popups.NumberPadDialog;
 import tw.com.lixin.wm_casino.popups.PeoplePopup;
 import tw.com.lixin.wm_casino.popups.SignalPopup;
+import tw.com.lixin.wm_casino.popups.TableSwitchPopup;
 import tw.com.lixin.wm_casino.tools.buttons.ClickImage;
 import tw.com.lixin.wm_casino.tools.buttons.ClickText;
 import tw.com.lixin.wm_casino.tools.buttons.ControlButton;
@@ -32,7 +33,7 @@ import tw.com.lixin.wm_casino.websocketSource.MessageSource;
 public class CasinoArea extends ConstraintLayout implements View.OnClickListener{
 
     private ProfileBar bar;
-    private TextView gyuShu, countdown, member, cusChipTxt, pplTxt;
+    private TextView gyuShu, countdown, member, cusChipTxt, pplTxt, betTxt;
     private ImageView dealImg;
     private ChipView selectedChip;
     private CollectionsView mssList;
@@ -63,6 +64,7 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
         cancelBtn =  findViewById(R.id.cancel_btn);
         rebetBtn =  findViewById(R.id.rebet_btn);
         pplTxt = findViewById(R.id.ppl_num_txt);
+        betTxt = findViewById(R.id.bet_txt);
 
         findViewById(R.id.chip1).setOnClickListener(this);
         findViewById(R.id.chip5).setOnClickListener(this);
@@ -95,6 +97,8 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
         peopleBtn.clicked(v-> activity.showPopup(new PeoplePopup()));
         ClickImage signalBtn = findViewById(R.id.signal_btn);
         signalBtn.clicked(v-> activity.showPopup(new SignalPopup()));
+        ClickImage tableSwitchBtn = findViewById(R.id.change_btn);
+        tableSwitchBtn.clicked(v-> activity.showPopup(new TableSwitchPopup()));
 
         cusChip.setOnClickListener(v->{
             App.betting();
@@ -117,15 +121,19 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
         });
     }
 
+    @SuppressLint("SetTextI18n")
+    public void setBetTxt(int val){
+        betTxt.setText(val+"");
+    }
+
     public void setUp(){
         video = findViewById(R.id.video);
         activity = (CasinoActivity) getContext();
     }
 
-    public void login(int gameID, int groupID){
+    public void bindMss(){
         source = MessageSource.getInstance();
         source.bind(this);
-         source.mssLogin(gameID, groupID);
     }
 
     public void failedToConnect(){
@@ -150,9 +158,8 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
         mssList.add(new MessageCollection(data.sender, data.contents, data.arguments));
     }
 
-    public void logout(){
+    public void unBindMss(){
         source.unbind();
-        source.close();
     }
 
     @SuppressLint("SetTextI18n")
@@ -230,4 +237,5 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
         selectedChip.turnOn();
         curChip = selectedChip.getChip();
     }
+
 }

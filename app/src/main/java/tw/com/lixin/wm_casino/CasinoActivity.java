@@ -65,7 +65,6 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         casinoArea.setMember(User.userName());
         casinoArea.setPPLnum(source.pplOnline);
         casinoArea.setGyuShu(source.table.number,source.table.round);
-        casinoArea.updateBalance();
     }
 
     public CasinoArea getArea(){
@@ -113,12 +112,11 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     @Override
     public void onResume() {
         super.onResume();
-
         gridUpdate();
         casinoArea.playVideo();
         source.table.bind(this);
         source.bind(this);
-        casinoArea.login(source.table.gameID, source.table.groupID);
+        casinoArea.bindMss();
     }
 
     @Override
@@ -127,7 +125,7 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         casinoArea.stopVideo();
         source.table.unBind();
         source.unbind();
-        casinoArea.logout();
+        casinoArea.unBindMss();
     }
 
     @Override
@@ -188,7 +186,10 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
             casinoArea.cancelBtn.disable(true);
             casinoArea.rebetBtn.disable(false);
             casinoArea.confirmBtn.disable(true);
-        }else{ alert("bet fail!"); }
+        }else{
+            casinoArea.setBetTxt(0);
+            alert("bet fail!");
+        }
     }
 
     @Override
@@ -203,11 +204,16 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
 
     public void confirm(){
         Client22 client22 = new Client22(source.table.gameID, source.table.groupID);
-        for(int s = 0; s < stacks.size(); s++) stacks.valueAt(s).addCoinToClient(client22);
-        if (client22.data.betArr.size() > 0) { source.send(Json.to(client22)); }
+        int sumBet=0;
+        for(int s = 0; s < stacks.size(); s++) {
+            stacks.valueAt(s).addCoinToClient(client22);
+            sumBet = sumBet + stacks.valueAt(s).data.value;
+        }
+        if (client22.data.betArr.size() > 0) {
+            source.send(Json.to(client22));
+            casinoArea.setBetTxt(sumBet);
+        }
         else alert("You haven't put any money!");
-        casinoArea.confirmBtn.disable(false);
-        casinoArea.cancelBtn.disable(false);
     }
 
     public void cancel(){

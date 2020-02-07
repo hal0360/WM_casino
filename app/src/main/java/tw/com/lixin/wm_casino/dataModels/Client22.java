@@ -3,6 +3,8 @@ package tw.com.lixin.wm_casino.dataModels;
 import java.util.ArrayList;
 import java.util.List;
 
+import tw.com.lixin.wm_casino.BaccaratActivity;
+
 public class Client22 {
 
     public Data data;
@@ -12,13 +14,14 @@ public class Client22 {
         data = new Data();
         data.gameID = gameid;
         data.groupID = groupid;
+        data.commission = BaccaratActivity.comission;
     }
 
     public class Data{
         public int gameID;
         public int groupID;
         public List<BetStack> betArr = new ArrayList<>();
-        public int commission = 0;
+        int commission;
     }
 
     public void addBet(long area, int val){
@@ -29,8 +32,8 @@ public class Client22 {
     }
 
     public class BetStack{
-        public long betArea;
-        public int addBetMoney;
+        long betArea;
+        int addBetMoney;
 
     }
 

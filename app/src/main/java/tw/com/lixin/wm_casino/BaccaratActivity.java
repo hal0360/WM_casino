@@ -2,6 +2,7 @@ package tw.com.lixin.wm_casino;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -22,12 +23,12 @@ import static android.view.View.VISIBLE;
 
 public class BaccaratActivity extends CasinoActivity implements GameBridge, TableBridge {
 
-    public static boolean comission = false;
+    public static int comission = 0;
     private BacMainGrid mainGrid;
     private CasinoDoubleGrid secondGrid, thirdGrid, fourthGrid;
     private CasinoGrid firstGrid;
     private TextView playerScore, playerTxt, bankerScore, bankerTxt;
-
+    private RadioButton commBtn;
     private AskButton askBanker, askPlayer;
 
     @Override
@@ -42,6 +43,7 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         setStackAreaMax(R.id.banker_pair_stack,source.logData.maxBet04,4);
         setStackAreaMax(R.id.player_pair_stack,source.logData.maxBet04,5);
 
+        commBtn = findViewById(R.id.comm_btn);
         mainGrid = findViewById(R.id.main_grid);
         firstGrid = findViewById(R.id.first_grid);
         secondGrid = findViewById(R.id.second_grid);
@@ -72,6 +74,17 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         askBanker.clickUp(v-> setRoads(source.table.mainRoad, source.table.firstRoad, source.table.secondRoad, source.table.thirdRoad, source.table.fourthRoad));
         askPlayer.clickDown(v-> setRoads(source.table.mainRoadAsk2, source.table.firstRoadAsk2, source.table.secondRoadAsk2, source.table.thirdRoadAsk2, source.table.fourthRoadAsk2));
         askPlayer.clickUp(v-> setRoads(source.table.mainRoad, source.table.firstRoad, source.table.secondRoad, source.table.thirdRoad, source.table.fourthRoad));
+
+        commBtn.setOnClickListener(v->{
+            App.clicking();
+            if(commBtn.isChecked()){
+                setTextView(R.id.banker_dtO, "1:1" );
+                comission = 1;
+            }else {
+                setTextView(R.id.banker_dtO, "1:0.95" );
+                comission = 0;
+            }
+        });
 
         if(source.table.stage != 1) setScores();
         casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/live" + source.table.groupID + "/stream1");

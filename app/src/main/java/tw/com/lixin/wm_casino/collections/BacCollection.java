@@ -3,6 +3,7 @@ package tw.com.lixin.wm_casino.collections;
 import android.annotation.SuppressLint;
 
 import tw.com.atromoby.widgets.CollectionHolder;
+import tw.com.atromoby.widgets.FragDialog;
 import tw.com.lixin.wm_casino.BaccaratActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.models.Table;
@@ -14,6 +15,10 @@ public class BacCollection extends GameCollection {
 
     public BacCollection(Table table) {
         super(table);
+    }
+
+    public BacCollection(Table table, FragDialog f) {
+        super(table,f);
     }
 
     @Override

@@ -19,6 +19,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
 
+        <RadioButton
+            android:id="@+id/comm_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="125dp"
+            android:buttonTint="#7FFFD4"
+            android:checked="true"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:text="@string/no_comm"
+            android:textColor="#fff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <tw.com.lixin.wm_casino.tools.ChipStack
             android:id="@+id/tie_stack"
             android:layout_width="82dp"

@@ -4,11 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#000"
     android:layout_width="360dp"
-    android:layout_height="300dp">
+    android:layout_height="600dp">
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="112dp"
+        android:layout_width="110dp"
         android:layout_height="0dp"
         android:background="#22262D"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -73,10 +73,12 @@
 
     </ScrollView>
 
-    <tw.com.atromoby.widgets.ItemsView
+    <tw.com.atromoby.widgets.CollectionsView
+        android:id="@+id/table_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/scrollView2"

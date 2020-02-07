@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.view.View;
 
 import tw.com.atromoby.widgets.CollectionHolder;
+import tw.com.atromoby.widgets.FragDialog;
 import tw.com.lixin.wm_casino.NiuNiuActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.models.Table;
@@ -15,6 +16,11 @@ public class NiuCollection extends GameCollection {
     public NiuCollection(Table table) {
         super(table);
     }
+
+    public NiuCollection(Table table, FragDialog f) {
+        super(table,f);
+    }
+
 
     private NiuGird niuGird;
 

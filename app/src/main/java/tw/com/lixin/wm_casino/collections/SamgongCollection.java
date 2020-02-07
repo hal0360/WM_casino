@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.view.View;
 
 import tw.com.atromoby.widgets.CollectionHolder;
+import tw.com.atromoby.widgets.FragDialog;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.SamgongActivity;
 import tw.com.lixin.wm_casino.models.Table;
@@ -14,6 +15,10 @@ public class SamgongCollection extends GameCollection {
 
     public SamgongCollection(Table table) {
         super(table);
+    }
+
+    public SamgongCollection(Table table, FragDialog f) {
+        super(table,f);
     }
 
     private SamGrid samGrid;

@@ -3,6 +3,7 @@ package tw.com.lixin.wm_casino.collections;
 import android.annotation.SuppressLint;
 
 import tw.com.atromoby.widgets.CollectionHolder;
+import tw.com.atromoby.widgets.FragDialog;
 import tw.com.lixin.wm_casino.DragonTigerActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.global.Road;
@@ -14,6 +15,10 @@ public class DragonTigerCollection extends GameCollection {
 
     public DragonTigerCollection(Table table) {
         super(table);
+    }
+
+    public DragonTigerCollection(Table table, FragDialog f) {
+        super(table,f);
     }
 
     @Override
