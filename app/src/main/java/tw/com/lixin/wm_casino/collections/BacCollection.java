@@ -2,6 +2,7 @@ package tw.com.lixin.wm_casino.collections;
 
 import android.annotation.SuppressLint;
 
+import androidx.appcompat.app.AppCompatActivity;
 import tw.com.atromoby.widgets.CollectionHolder;
 import tw.com.atromoby.widgets.FragDialog;
 import tw.com.lixin.wm_casino.BaccaratActivity;
@@ -31,6 +32,11 @@ public class BacCollection extends GameCollection {
             GameSource source = GameSource.getInstance();
             source.tableLogin(table,data -> activity.pushActivity(BaccaratActivity.class), activity::alert);
         });
+    }
+
+    @Override
+    protected Class<? extends AppCompatActivity> toGameActicity() {
+        return BaccaratActivity.class;
     }
 
     @SuppressLint("SetTextI18n")

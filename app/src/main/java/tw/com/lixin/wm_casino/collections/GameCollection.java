@@ -5,15 +5,18 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import tw.com.atromoby.widgets.Collection;
 import tw.com.atromoby.widgets.CollectionHolder;
 import tw.com.atromoby.widgets.FragDialog;
 import tw.com.atromoby.widgets.RootActivity;
+import tw.com.lixin.wm_casino.BaccaratActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.tools.grids.TextGrid;
+import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
 public abstract class GameCollection extends Collection implements TableBridge {
 
@@ -25,7 +28,6 @@ public abstract class GameCollection extends Collection implements TableBridge {
      TextView count1, count2, count3;
      TextGrid textGrid;
      private boolean snall = false;
-     private FragDialog fragDialog;
 
     GameCollection(Table table) {
         super(R.layout.table_collection);
@@ -36,7 +38,7 @@ public abstract class GameCollection extends Collection implements TableBridge {
         super(R.layout.game_collection);
         this.table = table;
         snall = true;
-        fragDialog = blob;
+        activity = blob.getRootActivity();
     }
 
     @SuppressLint("SetTextI18n")
@@ -60,16 +62,24 @@ public abstract class GameCollection extends Collection implements TableBridge {
             dealername.setText(table.dealerName);
             if(table.dealerImage != null) dealerImg.setImageBitmap(table.dealerImage);
             else dealerImg.setImageResource(R.drawable.hamster);
-        }else {
-            activity = fragDialog.getRootActivity();
         }
 
-
+        holder.clicked(R.id.root,v->{
+            GameSource source = GameSource.getInstance();
+            if(snall){
+                source.tableLogin(table,data -> activity.toActivity(toGameActicity()), activity::alert);
+            }else {
+                source.tableLogin(table,data -> activity.pushActivity(toGameActicity()), activity::alert);
+            }
+        });
 
         tableName = holder.findViewById(R.id.table_name_txt);
         stageUpdate();
         table.bind(this);
+        gridUpdate();
     }
+
+    protected abstract Class<? extends AppCompatActivity> toGameActicity();
 
     public String getString(int rid){
         return activity.getString(rid);

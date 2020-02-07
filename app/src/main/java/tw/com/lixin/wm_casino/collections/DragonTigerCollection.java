@@ -2,6 +2,7 @@ package tw.com.lixin.wm_casino.collections;
 
 import android.annotation.SuppressLint;
 
+import androidx.appcompat.app.AppCompatActivity;
 import tw.com.atromoby.widgets.CollectionHolder;
 import tw.com.atromoby.widgets.FragDialog;
 import tw.com.lixin.wm_casino.DragonTigerActivity;
@@ -31,6 +32,11 @@ public class DragonTigerCollection extends GameCollection {
             GameSource source = GameSource.getInstance();
             source.tableLogin(table,data -> activity.pushActivity(DragonTigerActivity.class), activity::alert);
         });
+    }
+
+    @Override
+    protected Class<? extends AppCompatActivity> toGameActicity() {
+        return DragonTigerActivity.class;
     }
 
     @SuppressLint("SetTextI18n")

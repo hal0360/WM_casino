@@ -3,6 +3,7 @@ package tw.com.lixin.wm_casino.collections;
 import android.annotation.SuppressLint;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
 import tw.com.atromoby.widgets.CollectionHolder;
 import tw.com.atromoby.widgets.FragDialog;
 import tw.com.lixin.wm_casino.R;
@@ -37,6 +38,11 @@ public class SamgongCollection extends GameCollection {
             GameSource source = GameSource.getInstance();
             source.tableLogin(table,data -> activity.pushActivity(SamgongActivity.class), activity::alert);
         });
+    }
+
+    @Override
+    protected Class<? extends AppCompatActivity> toGameActicity() {
+        return SamgongActivity.class;
     }
 
     @SuppressLint("SetTextI18n")

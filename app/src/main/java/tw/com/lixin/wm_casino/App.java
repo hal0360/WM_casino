@@ -16,20 +16,26 @@ public class App extends RegisterApplication {
 
     private static MediaPlayer player, click, bet, control;
     public static boolean musicOn, effectOn;
-
-
     public static List<Integer> flush;
     public static List<Integer> niu;
-
-
     public static SparseArray<String> sam;
-
     private static App app;
-
+    public static SparseArray<Integer> AppNames;
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        AppNames.put(101,R.string.baccarat);
+        AppNames.put(102,R.string.dragon_tiger);
+        AppNames.put(103,R.string.roulette);
+        AppNames.put(104,R.string.sic_bo);
+        AppNames.put(105,R.string.niuniu);
+        AppNames.put(106,R.string.samgong);
+        AppNames.put(107,R.string.fantan);
+        AppNames.put(108,R.string.se_die);
+        AppNames.put(108,R.string.fish_prawn_crab);
+
 
         app = this;
         sam = new SparseArray<>();
