@@ -32,17 +32,12 @@ public class LobbySource extends CasinoSource{
         app = App.getThisApp();
         defineURL("ws://gameserver.a45.me:15109");
         allTables = new SparseArray<>();
-       // tableProvider = new SparseArray<>();
-      //  tableProvider.put(101, BacTable::new);
-       // tableProvider.put(102, TigerDragonTable::new);
-       // tableProvider.put(103, RouletteTable::new);
     }
 
     private LobbyBridge bridge;
     public int curGameID;
     public SparseIntArray peopleOnline = new SparseIntArray();
     public SparseArray<SparseArray<Table>> allTables;
-   // private SparseArray<CmdTable> tableProvider;
 
     public void bind(LobbyBridge bridge){
         this.bridge = bridge;

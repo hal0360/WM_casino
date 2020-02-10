@@ -6,12 +6,8 @@ import android.widget.ScrollView;
 import tw.com.atromoby.widgets.FragDialog;
 import tw.com.atromoby.widgets.PopupFragment;
 import tw.com.lixin.wm_casino.R;
-import tw.com.lixin.wm_casino.collections.MessageCollection;
-import tw.com.lixin.wm_casino.dataModels.MssSendData;
-import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.tools.buttons.ClickImage;
 import tw.com.lixin.wm_casino.tools.buttons.ClickText;
-import tw.com.lixin.wm_casino.tools.MessageArea;
 import tw.com.lixin.wm_casino.websocketSource.MessageSource;
 
 public class MessagePopup extends PopupFragment {

@@ -1,7 +1,6 @@
 package tw.com.lixin.wm_casino.tools.buttons;
 
 import android.content.Context;
-import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import android.util.AttributeSet;
@@ -14,8 +13,6 @@ import tw.com.atromoby.utils.Kit;
 import tw.com.atromoby.widgets.CmdView;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.global.Road;
-import tw.com.lixin.wm_casino.models.BacTable;
-import tw.com.lixin.wm_casino.models.TigerDragonTable;
 
 public class AskButton extends ConstraintLayout implements View.OnTouchListener{
 
@@ -59,16 +56,6 @@ public class AskButton extends ConstraintLayout implements View.OnTouchListener{
        // setFocusable(false);
     }
 
-    public void askBac(BacTable table, int win){
-        table.askRoadThird(win);
-        table.askRoadSec(win);
-        table.askRoadFirst(win);
-        table.askRoadFourth(win);
-        secSym.setImageResource(table.secGrid.resX);
-        thirdSym.setImageResource(table.thirdGrid.resX);
-        fourthSym.setImageResource(table.fourthGrid.resX);
-    }
-
     public void clickDown(CmdView cd){
         cmdDown = cd;
     }
@@ -103,15 +90,4 @@ public class AskButton extends ConstraintLayout implements View.OnTouchListener{
         }
         return false;
     }
-
-    /*
-    public void askTigerDragon(TigerDragonTable table, int win){
-        table.askRoadThird(win);
-        table.askRoadSec(win);
-        table.askRoadFirst(win);
-        table.askRoadFourth(win);
-        secSym.setImageResource(table.secGrid.resX);
-        thirdSym.setImageResource(table.thirdGrid.resX);
-        fourthSym.setImageResource(table.fourthGrid.resX);
-    }*/
 }

@@ -1,6 +1,5 @@
 package tw.com.lixin.wm_casino.dataModels;
 
-import java.util.List;
 
 public class MssSendData {
 

@@ -2,7 +2,6 @@ package tw.com.lixin.wm_casino;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import tw.com.lixin.wm_casino.global.Road;

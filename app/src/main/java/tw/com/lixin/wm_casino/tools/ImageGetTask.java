@@ -8,7 +8,6 @@ import android.util.SparseArray;
 import java.io.IOException;
 import java.io.InputStream;
 
-import tw.com.lixin.wm_casino.LobbyActivity;
 import tw.com.lixin.wm_casino.models.Table;
 
 public class ImageGetTask extends AsyncTask<Void, Void, Boolean> {

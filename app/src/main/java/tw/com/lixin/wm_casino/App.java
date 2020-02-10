@@ -11,6 +11,13 @@ import java.util.List;
 
 import tw.com.atromoby.utils.Kit;
 import tw.com.atromoby.utils.RegisterApplication;
+import tw.com.lixin.wm_casino.collections.BacCollection;
+import tw.com.lixin.wm_casino.collections.DragonTigerCollection;
+import tw.com.lixin.wm_casino.collections.NiuCollection;
+import tw.com.lixin.wm_casino.collections.RouletteCollection;
+import tw.com.lixin.wm_casino.collections.SamgongCollection;
+import tw.com.lixin.wm_casino.collections.SicBoCollection;
+import tw.com.lixin.wm_casino.interfaces.CmdCollection;
 
 public class App extends RegisterApplication {
 
@@ -20,22 +27,30 @@ public class App extends RegisterApplication {
     public static List<Integer> niu;
     public static SparseArray<String> sam;
     private static App app;
-    public static SparseArray<Integer> AppNames;
+    public static SparseArray<Integer> appNames;
+    public static SparseArray<CmdCollection> collectionProvider;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        AppNames.put(101,R.string.baccarat);
-        AppNames.put(102,R.string.dragon_tiger);
-        AppNames.put(103,R.string.roulette);
-        AppNames.put(104,R.string.sic_bo);
-        AppNames.put(105,R.string.niuniu);
-        AppNames.put(106,R.string.samgong);
-        AppNames.put(107,R.string.fantan);
-        AppNames.put(108,R.string.se_die);
-        AppNames.put(108,R.string.fish_prawn_crab);
+        collectionProvider = new SparseArray<>();
+        collectionProvider.put(101, BacCollection::new);
+        collectionProvider.put(102, DragonTigerCollection::new);
+        collectionProvider.put(103, RouletteCollection::new);
+        collectionProvider.put(104, SicBoCollection::new);
+        collectionProvider.put(105, NiuCollection::new);
+        collectionProvider.put(106, SamgongCollection::new);
 
+        appNames.put(101,R.string.baccarat);
+        appNames.put(102,R.string.dragon_tiger);
+        appNames.put(103,R.string.roulette);
+        appNames.put(104,R.string.sic_bo);
+        appNames.put(105,R.string.niuniu);
+        appNames.put(106,R.string.samgong);
+        appNames.put(107,R.string.fantan);
+        appNames.put(108,R.string.se_die);
+        appNames.put(110,R.string.fish_prawn_crab);
 
         app = this;
         sam = new SparseArray<>();
@@ -71,7 +86,6 @@ public class App extends RegisterApplication {
         sam.put(30,"2p9");
         sam.put(31,"3p");
 
-
         niu = new ArrayList<>();
         niu.add(20);
         niu.add(0);
@@ -97,8 +111,6 @@ public class App extends RegisterApplication {
 
         control = MediaPlayer.create(this, R.raw.control);
         control.setLooping(false);
-
-
     }
 
     public static App getThisApp(){

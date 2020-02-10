@@ -1,15 +1,13 @@
 package tw.com.lixin.wm_casino;
 
-import androidx.appcompat.app.AppCompatActivity;
-import tw.com.lixin.wm_casino.popups.LimitPopup;
-import tw.com.lixin.wm_casino.tools.grids.NiuGird;
-import tw.com.lixin.wm_casino.tools.grids.SamGrid;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import java.util.List;
+
+import tw.com.lixin.wm_casino.popups.LimitPopup;
+import tw.com.lixin.wm_casino.tools.grids.NiuGird;
 
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;

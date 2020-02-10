@@ -84,15 +84,6 @@
         </attr>
     </declare-styleable>
 
-    <declare-styleable name="VideoButton">
-        <attr name="button_type" format="enum">
-            <enum name="people" value="1"/>
-            <enum name="message" value="2"/>
-            <enum name="signal" value="3"/>
-            <enum name="change" value="4"/>
-        </attr>
-    </declare-styleable>
-
     <declare-styleable name="TableSwitchSelect">
         <attr name="game_name" />
         <attr name="game_image" />
