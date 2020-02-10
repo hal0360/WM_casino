@@ -203,7 +203,7 @@
                 app:srcCompat="@drawable/emo2" />
 
             <tw.com.lixin.wm_casino.tools.buttons.ClickImage
-                android:id="@+id/clickImage2"
+                android:id="@+id/emo_15"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginStart="13dp"
@@ -216,8 +216,8 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginStart="13dp"
-                app:layout_constraintStart_toEndOf="@+id/clickImage2"
-                app:layout_constraintTop_toTopOf="@+id/clickImage2"
+                app:layout_constraintStart_toEndOf="@+id/emo_15"
+                app:layout_constraintTop_toTopOf="@+id/emo_15"
                 app:srcCompat="@drawable/emo3" />
 
             <tw.com.lixin.wm_casino.tools.buttons.ClickImage
@@ -318,15 +318,6 @@
                 app:layout_constraintStart_toEndOf="@+id/emo_13"
                 app:layout_constraintTop_toTopOf="@+id/emo_13"
                 app:srcCompat="@drawable/emo14" />
-
-            <tw.com.lixin.wm_casino.tools.buttons.ClickImage
-                android:id="@+id/emo_15"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="13dp"
-                app:layout_constraintStart_toEndOf="@+id/emo_14"
-                app:layout_constraintTop_toTopOf="@+id/emo_14"
-                app:srcCompat="@drawable/emo15" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

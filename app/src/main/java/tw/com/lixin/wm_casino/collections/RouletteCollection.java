@@ -9,7 +9,6 @@ import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.RouletteActivity;
 import tw.com.lixin.wm_casino.global.Road;
 import tw.com.lixin.wm_casino.models.Table;
-import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
 public class RouletteCollection  extends GameCollection {
 
@@ -23,16 +22,8 @@ public class RouletteCollection  extends GameCollection {
     }
 
     @Override
-    public void onBind(CollectionHolder holder) {
-        super.onBind(holder);
+    protected void started(CollectionHolder holder) {
 
-
-        setTableName(activity.getString(R.string.roulette) + table.groupID);
-        gridUpdate();
-        holder.clicked(R.id.root,v->{
-            GameSource source = GameSource.getInstance();
-            source.tableLogin(table,data -> activity.pushActivity(RouletteActivity.class), activity::alert);
-        });
     }
 
     @Override

@@ -128,15 +128,11 @@ public abstract class CasinoSource extends WebSocketListener{
         genHandler.post(cmd::exec);
     }
 
-    void handleSimple(Cmd cmd, int millsec){
-        genHandler.postDelayed(cmd::exec, millsec);
-    }
-
     public void send(String message){
         webSocket.send(message);
     }
 
-    public void close(){
+    void close(){
         Log.e("onclose", "caleed");
         connected = false;
         if(webSocket == null) return;

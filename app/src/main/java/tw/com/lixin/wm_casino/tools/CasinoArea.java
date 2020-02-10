@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -28,6 +29,7 @@ import tw.com.lixin.wm_casino.tools.buttons.ClickImage;
 import tw.com.lixin.wm_casino.tools.buttons.ClickText;
 import tw.com.lixin.wm_casino.tools.buttons.ControlButton;
 import tw.com.lixin.wm_casino.tools.chips.ChipView;
+import tw.com.lixin.wm_casino.websocketSource.GameSource;
 import tw.com.lixin.wm_casino.websocketSource.MessageSource;
 
 public class CasinoArea extends ConstraintLayout implements View.OnClickListener{
@@ -43,6 +45,9 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
     private MessageSource source;
 
     public static Chip curChip;
+
+
+    private String videoUrl;
 
 
     public CasinoArea(Context context) {super(context);}
@@ -134,28 +139,23 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
     public void bindMss(){
         source = MessageSource.getInstance();
         source.bind(this);
-    }
-
-    public void failedToConnect(){
-        mssList.add(new MessageCollection("","Error: connection failed",""));
-    }
-
-    public void failedToLogin(){
-        mssList.add(new MessageCollection("","Error: login failed",""));
-    }
-
-    public void connected(){
-        mssList.add(new MessageCollection("","Cconnection succesful",""));
+        List<MessageCollection> collections = new ArrayList<>();
+        for (MessageData.Data data: source.mssDataList){
+            collections.add(new MessageCollection(data));
+        }
+        mssList.add(collections);
     }
 
     public void mssBoxUpdated(List<MessageData.Data> datas ){
         for (MessageData.Data data: datas){
-            mssList.add(new MessageCollection(data.sender, data.contents, data.arguments));
+            mssList.add(new MessageCollection(data));
         }
+        mssList.scrollToPosition(source.mssDataList.size() - 1);
     }
 
     public void mssReceived(MessageData.Data data){
-        mssList.add(new MessageCollection(data.sender, data.contents, data.arguments));
+        mssList.add(new MessageCollection(data));
+        mssList.scrollToPosition(source.mssDataList.size() - 1);
     }
 
     public void unBindMss(){
@@ -190,7 +190,18 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
     }
 
     public void setVideo(String url){
-        video.setVideoPath(url);
+        videoUrl = url;
+        GameSource gameSource = GameSource.getInstance();
+        String urlll = "rtmp://" + gameSource.videoSignal + ".cn/" + url + "/stream1";
+        video.setVideoPath(urlll);
+    }
+
+    public void resetVideo(){
+        video.stopPlayback();
+        GameSource gameSource = GameSource.getInstance();
+        String urlll = "rtmp://" + gameSource.videoSignal + ".cn/" + videoUrl + "/stream1";
+        video.setVideoPath(urlll);
+        video.start();
     }
 
     public void playVideo(){

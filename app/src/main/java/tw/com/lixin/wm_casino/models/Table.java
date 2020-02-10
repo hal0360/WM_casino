@@ -139,8 +139,6 @@ public class Table {
         }else {
             mainRoad =  new ItemRoad(data.historyArr, 9);
         }
-
-
     }
 
 
@@ -185,9 +183,6 @@ public class Table {
             }
         }, 0, 1000);
     }
-
-
-
 
 
 

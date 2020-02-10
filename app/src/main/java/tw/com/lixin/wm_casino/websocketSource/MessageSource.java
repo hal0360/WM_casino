@@ -1,5 +1,10 @@
 package tw.com.lixin.wm_casino.websocketSource;
 
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import tw.com.atromoby.utils.Json;
 import tw.com.lixin.wm_casino.dataModels.Client11;
 import tw.com.lixin.wm_casino.dataModels.MessageData;
@@ -13,10 +18,18 @@ public class MessageSource extends CasinoSource{
 
     private int groupID, gameID;
 
+    public List<MessageData.Data> mssDataList;
+
+    private String errorMss;
+
     public static MessageSource getInstance()
     {
         if (single_instance == null) single_instance = new MessageSource();
         return single_instance;
+    }
+
+    private MessageSource() {
+        mssDataList = new ArrayList<>();
     }
 
     private CasinoArea area;
@@ -31,14 +44,14 @@ public class MessageSource extends CasinoSource{
         binded(false);
     }
 
-    public final void mssLogin(int gameid, int groupid){
+    final void mssLogin(int gameid, int groupid){
         defineURL("ws://gameserver.a45.me:15801");
         gameID = gameid;
         groupID = groupid;
         login(User.sid(),data->{
             Client11 client = new Client11(gameid, groupid);
             send(Json.to(client));
-        }, fail-> area.failedToConnect());
+        }, fail-> errorMss = "Failed to connect");
     }
 
     public void sendEmoji(int arg){
@@ -62,21 +75,26 @@ public class MessageSource extends CasinoSource{
 
     @Override
     public void onReceive(String text) {
+
+        Log.e("mss", text);
+
         if(area == null) return;
         MessageData mdata = Json.from(text, MessageData.class);
         switch(mdata.protocol) {
             case 10:
                 if(mdata.data.bOk){
-                    handle(() -> area.connected());
+                    errorMss = "Connection successful";
                 }
                 else{
-                    handle(() -> area.failedToLogin());
+                    errorMss = "Failed to login";
                 }
                 break;
             case 102:
+                mssDataList.addAll(mdata.data.messageBoxArr);
                 handle(() -> area.mssBoxUpdated(mdata.data.messageBoxArr));
                 break;
             case 101:
+                mssDataList.add(mdata.data);
                 handle(() -> area.mssReceived(mdata.data));
                 break;
         }

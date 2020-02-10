@@ -10,7 +10,6 @@ import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.SamgongActivity;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.tools.grids.SamGrid;
-import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
 public class SamgongCollection extends GameCollection {
 
@@ -25,19 +24,10 @@ public class SamgongCollection extends GameCollection {
     private SamGrid samGrid;
 
     @Override
-    public void onBind(CollectionHolder holder) {
-        super.onBind(holder);
-
+    protected void started(CollectionHolder holder) {
         samGrid = holder.findViewById(R.id.sam_grid);
         samGrid.setVisibility(View.VISIBLE);
         textGrid.setVisibility(View.GONE);
-
-        setTableName(getString(R.string.samgong) + table.groupID);
-        gridUpdate();
-        holder.clicked(R.id.root,v->{
-            GameSource source = GameSource.getInstance();
-            source.tableLogin(table,data -> activity.pushActivity(SamgongActivity.class), activity::alert);
-        });
     }
 
     @Override

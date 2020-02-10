@@ -3,6 +3,8 @@ package tw.com.lixin.wm_casino.collections;
 import android.annotation.SuppressLint;
 import android.view.View;
 
+import java.util.ArrayList;
+
 import androidx.appcompat.app.AppCompatActivity;
 import tw.com.atromoby.widgets.CollectionHolder;
 import tw.com.atromoby.widgets.FragDialog;
@@ -10,7 +12,6 @@ import tw.com.lixin.wm_casino.NiuNiuActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.tools.grids.NiuGird;
-import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
 public class NiuCollection extends GameCollection {
 
@@ -22,23 +23,13 @@ public class NiuCollection extends GameCollection {
         super(table,f);
     }
 
-
     private NiuGird niuGird;
 
     @Override
-    public void onBind(CollectionHolder holder) {
-        super.onBind(holder);
-
+    protected void started(CollectionHolder holder) {
         niuGird = holder.findViewById(R.id.niu_grid);
         niuGird.setVisibility(View.VISIBLE);
         textGrid.setVisibility(View.GONE);
-
-        setTableName(getString(R.string.niuniu) + table.groupID);
-        gridUpdate();
-        holder.clicked(R.id.root,v->{
-            GameSource source = GameSource.getInstance();
-            source.tableLogin(table,data -> activity.pushActivity(NiuNiuActivity.class), activity::alert);
-        });
     }
 
     @Override

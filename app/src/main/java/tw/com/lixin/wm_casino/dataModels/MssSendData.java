@@ -4,7 +4,7 @@ package tw.com.lixin.wm_casino.dataModels;
 public class MssSendData {
 
     public Data data = new Data();
-    int protocol = 22;
+    int protocol = 101;
 
     public MssSendData(){
     }

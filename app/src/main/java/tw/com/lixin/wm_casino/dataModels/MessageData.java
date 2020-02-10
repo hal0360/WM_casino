@@ -15,7 +15,8 @@ public class MessageData {
         public String messageType;
         public String dateTime;
         public String sender;
-
-        public Boolean bOk;
+        public String senderName;
+        public int senderID;
+        public boolean bOk;
     }
 }

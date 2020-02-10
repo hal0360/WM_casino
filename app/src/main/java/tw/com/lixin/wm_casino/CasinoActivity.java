@@ -67,6 +67,10 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         casinoArea.setGyuShu(source.table.number,source.table.round);
     }
 
+    public void resetVideo(){
+        casinoArea.resetVideo();
+    }
+
     public CasinoArea getArea(){
         return  casinoArea;
     }

@@ -27,8 +27,9 @@ public class LobbyActivity extends RootActivity implements LobbyBridge {
         gameButtons.put(105,findViewById(R.id.niuniu_game));
         gameButtons.put(106,findViewById(R.id.samgong_game));
         gameButtons.put(107,findViewById(R.id.fantan_game));
-
+        gameButtons.put(108,findViewById(R.id.se_die_game));
         gameButtons.put(110,findViewById(R.id.fish_prawn_game));
+        gameButtons.put(111,findViewById(R.id.golden_flower_game));
 
         for(int i = 0; i < gameButtons.size(); i++) {
             int key = gameButtons.keyAt(i);

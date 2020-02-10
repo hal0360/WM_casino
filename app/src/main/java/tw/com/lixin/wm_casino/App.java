@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.util.DisplayMetrics;
 import android.util.SparseArray;
+import android.util.SparseIntArray;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +14,16 @@ import tw.com.atromoby.utils.Kit;
 import tw.com.atromoby.utils.RegisterApplication;
 import tw.com.lixin.wm_casino.collections.BacCollection;
 import tw.com.lixin.wm_casino.collections.DragonTigerCollection;
+import tw.com.lixin.wm_casino.collections.FantanCollection;
+import tw.com.lixin.wm_casino.collections.FishPrawnCollection;
+import tw.com.lixin.wm_casino.collections.GoldenFlowerCollection;
 import tw.com.lixin.wm_casino.collections.NiuCollection;
 import tw.com.lixin.wm_casino.collections.RouletteCollection;
 import tw.com.lixin.wm_casino.collections.SamgongCollection;
+import tw.com.lixin.wm_casino.collections.SeDieCollection;
 import tw.com.lixin.wm_casino.collections.SicBoCollection;
 import tw.com.lixin.wm_casino.interfaces.CmdCollection;
+import tw.com.lixin.wm_casino.interfaces.CmdTable;
 
 public class App extends RegisterApplication {
 
@@ -27,12 +33,54 @@ public class App extends RegisterApplication {
     public static List<Integer> niu;
     public static SparseArray<String> sam;
     private static App app;
-    public static SparseArray<Integer> appNames;
+    public static SparseIntArray appNames;
     public static SparseArray<CmdCollection> collectionProvider;
+    public static SparseArray<CmdTable> tableProvider;
+    public static SparseIntArray emos;
+    public static SparseIntArray examples;
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        examples = new SparseIntArray();
+        examples.put(1,R.string.mss_1);
+        examples.put(2,R.string.mss_2);
+        examples.put(3,R.string.mss_3);
+        examples.put(4,R.string.mss_4);
+        examples.put(5,R.string.mss_5);
+        examples.put(6,R.string.mss_6);
+        examples.put(7,R.string.mss_7);
+        examples.put(8,R.string.mss_8);
+
+        emos = new SparseIntArray();
+        emos.put(1,R.drawable.emo1);
+        emos.put(2,R.drawable.emo2);
+        emos.put(3,R.drawable.emo3);
+        emos.put(4,R.drawable.emo4);
+        emos.put(5,R.drawable.emo5);
+        emos.put(6,R.drawable.emo6);
+        emos.put(7,R.drawable.emo7);
+        emos.put(8,R.drawable.emo8);
+        emos.put(9,R.drawable.emo9);
+        emos.put(10,R.drawable.emo10);
+        emos.put(11,R.drawable.emo11);
+        emos.put(12,R.drawable.emo12);
+        emos.put(13,R.drawable.emo13);
+        emos.put(14,R.drawable.emo14);
+        emos.put(15,R.drawable.emo15);
+
+        tableProvider = new SparseArray<>();
+        tableProvider.put(101, BacCollection::new);
+        tableProvider.put(102, DragonTigerCollection::new);
+        tableProvider.put(103, RouletteCollection::new);
+        tableProvider.put(104, SicBoCollection::new);
+        tableProvider.put(105, NiuCollection::new);
+        tableProvider.put(106, SamgongCollection::new);
+        tableProvider.put(107, FantanCollection::new);
+        tableProvider.put(108, SeDieCollection::new);
+        tableProvider.put(110, FishPrawnCollection::new);
+        tableProvider.put(111, GoldenFlowerCollection::new);
 
         collectionProvider = new SparseArray<>();
         collectionProvider.put(101, BacCollection::new);
@@ -41,7 +89,12 @@ public class App extends RegisterApplication {
         collectionProvider.put(104, SicBoCollection::new);
         collectionProvider.put(105, NiuCollection::new);
         collectionProvider.put(106, SamgongCollection::new);
+        collectionProvider.put(107, FantanCollection::new);
+        collectionProvider.put(108, SeDieCollection::new);
+        collectionProvider.put(110, FishPrawnCollection::new);
+        collectionProvider.put(111, GoldenFlowerCollection::new);
 
+        appNames = new SparseIntArray();
         appNames.put(101,R.string.baccarat);
         appNames.put(102,R.string.dragon_tiger);
         appNames.put(103,R.string.roulette);
@@ -51,6 +104,7 @@ public class App extends RegisterApplication {
         appNames.put(107,R.string.fantan);
         appNames.put(108,R.string.se_die);
         appNames.put(110,R.string.fish_prawn_crab);
+        appNames.put(111,R.string.golden_flower);
 
         app = this;
         sam = new SparseArray<>();

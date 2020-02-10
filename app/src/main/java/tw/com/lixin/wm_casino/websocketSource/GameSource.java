@@ -47,6 +47,8 @@ public class GameSource extends CasinoSource{
 
     public SparseIntArray pokers = new SparseIntArray();
 
+    public String videoSignal;
+
 
     public void bind(GameBridge bridge){
         this.bridge = bridge;
@@ -94,7 +96,7 @@ public class GameSource extends CasinoSource{
         handleSimple(()->{
             MessageSource source = MessageSource.getInstance();
             source.mssLogin(gameID, groupID);
-        },1500);
+        });
     }
 
     @Override
@@ -105,6 +107,7 @@ public class GameSource extends CasinoSource{
                 TableLogData tableLogData = Json.from(text, TableLogData.class);
                 if(tableLogData.data.gameID == table.gameID && tableLogData.data.groupID == table.groupID && tableLogData.data.memberID == User.memberID()){
                     if(tableLogData.data.bOk){
+                        videoSignal = "gtgdd";
                         logData = tableLogData.data;
                         cmdTableLog.exec(tableLogData.data);
                         mssLogin(table.gameID, table.groupID);

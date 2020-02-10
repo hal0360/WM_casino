@@ -125,6 +125,16 @@
                 app:layout_constraintStart_toEndOf="@+id/fantan_game"
                 app:layout_constraintTop_toTopOf="@+id/fantan_game"/>
 
+            <tw.com.lixin.wm_casino.tools.buttons.GameButton
+                android:id="@+id/se_die_game"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="25dp"
+                app:game_image="@drawable/games_11"
+                app:game_name="@string/se_die"
+                app:layout_constraintStart_toStartOf="@+id/sic_bo_game"
+                app:layout_constraintTop_toBottomOf="@+id/sic_bo_game"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

@@ -11,7 +11,7 @@ import tw.com.atromoby.widgets.Collection;
 import tw.com.atromoby.widgets.CollectionHolder;
 import tw.com.atromoby.widgets.FragDialog;
 import tw.com.atromoby.widgets.RootActivity;
-import tw.com.lixin.wm_casino.BaccaratActivity;
+import tw.com.lixin.wm_casino.App;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.Table;
@@ -23,7 +23,7 @@ public abstract class GameCollection extends Collection implements TableBridge {
     private TextView countDown, statusTxt, tableName, dealTxt;
     private ConstraintLayout block;
     private ImageView cardImg;
-    protected RootActivity activity;
+    RootActivity activity;
     protected Table table;
      TextView count1, count2, count3;
      TextGrid textGrid;
@@ -72,12 +72,15 @@ public abstract class GameCollection extends Collection implements TableBridge {
                 source.tableLogin(table,data -> activity.pushActivity(toGameActicity()), activity::alert);
             }
         });
-
         tableName = holder.findViewById(R.id.table_name_txt);
+        setTableName(getString(App.appNames.get(table.gameID)) + table.groupID);
         stageUpdate();
         table.bind(this);
+        started(holder);
         gridUpdate();
     }
+
+    protected abstract void started(CollectionHolder holder);
 
     protected abstract Class<? extends AppCompatActivity> toGameActicity();
 

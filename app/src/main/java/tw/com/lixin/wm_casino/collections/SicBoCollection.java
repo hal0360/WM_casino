@@ -10,7 +10,6 @@ import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.SicBoActivity;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.tools.grids.DiceGrid;
-import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
 public class SicBoCollection extends GameCollection {
 
@@ -25,19 +24,10 @@ public class SicBoCollection extends GameCollection {
     private DiceGrid diceGrid;
 
     @Override
-    public void onBind(CollectionHolder holder) {
-        super.onBind(holder);
-
+    protected void started(CollectionHolder holder) {
         diceGrid = holder.findViewById(R.id.dice_grid);
         diceGrid.setVisibility(View.VISIBLE);
         textGrid.setVisibility(View.GONE);
-
-        setTableName(getString(R.string.sic_bo) + table.groupID);
-        gridUpdate();
-        holder.clicked(R.id.root,v->{
-            GameSource source = GameSource.getInstance();
-            source.tableLogin(table,data -> activity.pushActivity(SicBoActivity.class), activity::alert);
-        });
     }
 
     @Override

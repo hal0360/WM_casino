@@ -6,19 +6,12 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import tw.com.atromoby.utils.Kit;
 import tw.com.atromoby.widgets.Collection;
 import tw.com.atromoby.widgets.CollectionsView;
 import tw.com.atromoby.widgets.FragDialog;
 import tw.com.atromoby.widgets.PopupFragment;
-import tw.com.lixin.wm_casino.LobbyActivity;
+import tw.com.lixin.wm_casino.App;
 import tw.com.lixin.wm_casino.R;
-import tw.com.lixin.wm_casino.collections.BacCollection;
-import tw.com.lixin.wm_casino.collections.DragonTigerCollection;
-import tw.com.lixin.wm_casino.collections.NiuCollection;
-import tw.com.lixin.wm_casino.collections.RouletteCollection;
-import tw.com.lixin.wm_casino.collections.SamgongCollection;
-import tw.com.lixin.wm_casino.collections.SicBoCollection;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.tools.TableSwitchSelect;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
@@ -43,9 +36,19 @@ public class TableSwitchPopup extends PopupFragment {
         switchChannel(dialog, R.id.niuniu_game,105);
         switchChannel(dialog, R.id.samgong_game,106);
         switchChannel(dialog, R.id.fantan_game,107);
+        switchChannel(dialog, R.id.se_die_game,108);
+        switchChannel(dialog, R.id.fish_prawn_game,110);
+        switchChannel(dialog, R.id.golden_flower_game,111);
 
-        getGame(101,dialog);
 
+        LobbySource source = LobbySource.getInstance();
+        curSelect = tableSelects.get(source.curGameID);
+        SparseArray<Table> tables = source.allTables.get(source.curGameID);
+        List<Collection> collections = new ArrayList<>();
+        for(int i = 0; i < tables.size(); i++) {
+            collections.add(App.tableProvider.get(source.curGameID).exec(tables.valueAt(i),dialog));
+        }
+        tableList.add(collections);
     }
 
     @Override
@@ -67,42 +70,10 @@ public class TableSwitchPopup extends PopupFragment {
     private void getGame(int gameId, FragDialog dialog){
         LobbySource source = LobbySource.getInstance();
         List<Collection> collections = new ArrayList<>();
-        if(gameId == 101){
-            SparseArray<Table> tables = source.allTables.get(101);
-            for(int i = 0; i < tables.size(); i++) {
-                Table table = tables.valueAt(i);
-                collections.add(new BacCollection(table,dialog));
-            }
-        }else if(gameId == 102){
-            SparseArray<Table> tables = source.allTables.get(102);
-            for(int i = 0; i < tables.size(); i++) {
-                Table table = tables.valueAt(i);
-                collections.add(new DragonTigerCollection(table,dialog));
-            }
-        }else if(gameId == 103){
-            SparseArray<Table> tables = source.allTables.get(103);
-            for(int i = 0; i < tables.size(); i++) {
-                Table table = tables.valueAt(i);
-                collections.add(new RouletteCollection(table,dialog));
-            }
-        }else if(gameId == 104){
-            SparseArray<Table> tables = source.allTables.get(104);
-            for(int i = 0; i < tables.size(); i++) {
-                Table table = tables.valueAt(i);
-                collections.add(new SicBoCollection(table,dialog));
-            }
-        }else if(gameId == 105){
-            SparseArray<Table> tables = source.allTables.get(105);
-            for(int i = 0; i < tables.size(); i++) {
-                Table table = tables.valueAt(i);
-                collections.add(new NiuCollection(table,dialog));
-            }
-        }else if(gameId == 106){
-            SparseArray<Table> tables = source.allTables.get(106);
-            for(int i = 0; i < tables.size(); i++) {
-                Table table = tables.valueAt(i);
-                collections.add(new SamgongCollection(table,dialog));
-            }
+
+        SparseArray<Table> tables = source.allTables.get(gameId);
+        for(int i = 0; i < tables.size(); i++) {
+            collections.add(App.tableProvider.get(gameId).exec(tables.valueAt(i),dialog));
         }
         tableList.replace(collections);
     }

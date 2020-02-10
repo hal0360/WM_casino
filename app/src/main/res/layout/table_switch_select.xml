@@ -31,7 +31,7 @@
         android:layout_width="12dp"
         android:layout_height="12dp"
         android:layout_marginStart="4dp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/game_img"
         app:layout_constraintStart_toEndOf="@+id/game_name"
         app:layout_constraintTop_toTopOf="@+id/game_img"

@@ -69,6 +69,27 @@
                 app:game_image="@drawable/games_07"
                 app:game_name="@string/fantan" />
 
+            <tw.com.lixin.wm_casino.tools.TableSwitchSelect
+                android:id="@+id/se_die_game"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                app:game_image="@drawable/games_11"
+                app:game_name="@string/se_die" />
+
+            <tw.com.lixin.wm_casino.tools.TableSwitchSelect
+                android:id="@+id/fish_prawn_game"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                app:game_image="@drawable/games_10"
+                app:game_name="@string/fish_prawn_crab" />
+
+            <tw.com.lixin.wm_casino.tools.TableSwitchSelect
+                android:id="@+id/golden_flower_game"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                app:game_image="@drawable/games_09"
+                app:game_name="@string/golden_flower" />
+
         </LinearLayout>
 
     </ScrollView>

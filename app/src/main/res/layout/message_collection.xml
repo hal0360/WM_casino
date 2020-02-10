@@ -10,7 +10,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextViesds adddd s sfsfsffffffffffffffffffffffffff"
-        android:textColor="#FFD700"
         android:textSize="11dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

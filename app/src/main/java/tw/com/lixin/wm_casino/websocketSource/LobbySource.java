@@ -1,6 +1,5 @@
 package tw.com.lixin.wm_casino.websocketSource;
 
-import android.util.Log;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 
@@ -51,14 +50,9 @@ public class LobbySource extends CasinoSource{
 
     @Override
     public void onReceive(String text) {
-
-        Log.e("lobby", text);
-
         TableData tableData = Json.from(text, TableData.class);
         TableData.Data data = tableData.data;
-
         SparseArray<Table> tableGroup = allTables.get(data.gameID);
-
         Table table = null;
         if(tableGroup != null) table = tableGroup.get(data.groupID);
 
