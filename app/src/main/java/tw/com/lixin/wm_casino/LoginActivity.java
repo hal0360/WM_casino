@@ -15,6 +15,7 @@ import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.CmdImg;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
 import tw.com.lixin.wm_casino.popups.LanguagePopup;
+import tw.com.lixin.wm_casino.popups.LiveVideoPopup;
 import tw.com.lixin.wm_casino.popups.LoadDialog;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
@@ -71,7 +72,7 @@ public class LoginActivity extends RootActivity implements LobbyBridge {
             });
         });
 
-       // clicked(R.id.lang_btn,v-> popup.show());
+        clicked(R.id.video_btn,v-> showPopup(new LiveVideoPopup()));
 
 
         clicked(R.id.lang_btn,v->  showPopup(popup));

@@ -87,7 +87,7 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         });
 
         if(source.table.stage != 1) setScores();
-        casinoArea.setVideo("rtmp://" + source.videoSignal + ".cn/live" + source.table.groupID + "/stream1");
+        casinoArea.setVideo("live" + source.table.groupID);
     }
 
     private void setRoads(ItemRoad main, ItemRoad first, ItemRoad second, ItemRoad third, ItemRoad fourth){
@@ -109,11 +109,13 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
 
     @Override
     public void limitShows(LimitPopup limitPopup) {
-      //  limitPopup.addLimit(getString(R.string.banker), source.logData.dtOdds.get(1), source.logData.maxBet01,1 );
-      //  limitPopup.addLimit(getString(R.string.player), source.logData.dtOdds.get(2), source.logData.maxBet02,1 );
-      //  limitPopup.addLimit(getString(R.string.tie), source.logData.dtOdds.get(3), source.logData.maxBet03,1 );
-      //  limitPopup.addLimit(getString(R.string.banker_pair), source.logData.dtOdds.get(4), source.logData.maxBet04,1 );
-       // limitPopup.addLimit(getString(R.string.player_pair), source.logData.dtOdds.get(5), source.logData.maxBet04,1 );
+        limitPopup.addLimit(getString(R.string.banker), "1:0.95", source.logData.maxBet01,1 );
+        limitPopup.addLimit(getString(R.string.player), "1:1", source.logData.maxBet02,1 );
+        limitPopup.addLimit(getString(R.string.tie), "1:8", source.logData.maxBet03,1 );
+        limitPopup.addLimit(getString(R.string.banker_pair), "1:11", source.logData.maxBet04,1 );
+        limitPopup.addLimit(getString(R.string.player_pair), "1:11", source.logData.maxBet04,1 );
+        limitPopup.addLimit(getString(R.string.BIG), "1:0.5", source.logData.maxBet04,1 );
+        limitPopup.addLimit(getString(R.string.SMALL), "1:1.5", source.logData.maxBet04,1 );
     }
 
     @Override

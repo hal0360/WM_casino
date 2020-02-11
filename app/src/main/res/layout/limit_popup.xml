@@ -7,162 +7,36 @@
     tools:ignore="ContentDescription,SpUsage"
     android:layout_height="360dp">
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/setting_box"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:id="@+id/text_box"
         android:layout_marginStart="8dp"
         android:layout_marginTop="57dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="#222222"
-        android:fillViewport="true"
-        android:visibility="gone"
+        android:background="#000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="5dp"
+            android:textColor="#fff"
+            android:background="@drawable/light_blue_ball"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="1-100"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
 
-            <tw.com.lixin.wm_casino.tools.buttons.ClickText
-                android:id="@+id/mss_1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="1dp"
-                android:padding="5dp"
-                android:background="@drawable/message_border"
-                android:text="@string/mss_1"
-                android:textColor="#fff"
-                android:textSize="20dp"
-                android:gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <tw.com.lixin.wm_casino.tools.buttons.ClickText
-                android:id="@+id/mss_2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="1dp"
-                android:padding="5dp"
-                android:background="@drawable/message_border"
-                android:text="@string/mss_2"
-                android:textColor="#fff"
-                android:textSize="20dp"
-                android:gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mss_1" />
-
-            <tw.com.lixin.wm_casino.tools.buttons.ClickText
-                android:id="@+id/mss_3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="1dp"
-                android:padding="5dp"
-                android:background="@drawable/message_border"
-                android:text="@string/mss_3"
-                android:textColor="#fff"
-                android:textSize="20dp"
-                android:gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mss_2" />
-
-            <tw.com.lixin.wm_casino.tools.buttons.ClickText
-                android:id="@+id/mss_4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="1dp"
-                android:padding="5dp"
-                android:background="@drawable/message_border"
-                android:text="@string/mss_4"
-                android:textColor="#fff"
-                android:textSize="20dp"
-                android:gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mss_3" />
-
-            <tw.com.lixin.wm_casino.tools.buttons.ClickText
-                android:id="@+id/mss_5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="1dp"
-                android:padding="5dp"
-                android:background="@drawable/message_border"
-                android:text="@string/mss_5"
-                android:textColor="#fff"
-                android:textSize="20dp"
-                android:gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mss_4" />
-
-            <tw.com.lixin.wm_casino.tools.buttons.ClickText
-                android:id="@+id/mss_6"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginEnd="1dp"
-                android:padding="5dp"
-                android:background="@drawable/message_border"
-                android:text="@string/mss_6"
-                android:textColor="#fff"
-                android:textSize="20dp"
-                android:gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mss_5" />
-
-            <tw.com.lixin.wm_casino.tools.buttons.ClickText
-                android:id="@+id/mss_7"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginEnd="1dp"
-                android:padding="5dp"
-                android:background="@drawable/message_border"
-                android:text="@string/mss_7"
-                android:textColor="#fff"
-                android:textSize="20dp"
-                android:gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mss_6" />
-
-            <tw.com.lixin.wm_casino.tools.buttons.ClickText
-                android:id="@+id/mss_8"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginEnd="1dp"
-                android:padding="5dp"
-                android:background="@drawable/message_border"
-                android:text="@string/mss_8"
-                android:textColor="#fff"
-                android:textSize="20dp"
-                android:gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mss_7" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/limit_box"
@@ -173,13 +47,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="#000"
-        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/name_txt"
@@ -190,7 +61,7 @@
             android:textColor="#fff"
             android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.08"
+            app:layout_constraintHorizontal_bias="0.03"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -203,7 +74,7 @@
             android:textColor="#fff"
             android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.32"
+            app:layout_constraintHorizontal_bias="0.39"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -216,7 +87,7 @@
             android:textColor="#fff"
             android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintHorizontal_bias="0.65"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -229,7 +100,7 @@
             android:textColor="#fff"
             android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -250,7 +121,7 @@
         android:id="@+id/limit_btn"
         android:layout_width="130dp"
         android:layout_height="48dp"
-        android:layout_marginStart="45dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/message_butt_border"
         android:gravity="center"
@@ -261,16 +132,30 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <tw.com.lixin.wm_casino.tools.buttons.ClickText
-        android:id="@+id/speaker_btn"
+        android:id="@+id/setting_btn"
         android:layout_width="130dp"
         android:layout_height="48dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="45dp"
+        android:layout_marginEnd="50dp"
         android:gravity="center"
         android:text="@string/settings"
         android:textColor="#fff"
         android:textSize="23dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <tw.com.lixin.wm_casino.tools.buttons.ClickText
+        android:id="@+id/close_btn"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:textColor="#fff"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="X"
+        app:layout_constraintBottom_toTopOf="@+id/limit_box"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

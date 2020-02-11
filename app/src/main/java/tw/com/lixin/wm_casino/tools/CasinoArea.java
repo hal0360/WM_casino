@@ -43,12 +43,8 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
     private IjkVideoView video;
     public ControlButton confirmBtn, cancelBtn, rebetBtn;
     private MessageSource source;
-
     public static Chip curChip;
-
-
     private String videoUrl;
-
 
     public CasinoArea(Context context) {super(context);}
 
@@ -121,8 +117,7 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
 
         limitBtn.clicked(v-> {
             LimitPopup limitPopup = new LimitPopup();
-            activity.showPopup( new LimitPopup());
-            activity.limitShows(limitPopup);
+            activity.showPopup( limitPopup);
         });
     }
 

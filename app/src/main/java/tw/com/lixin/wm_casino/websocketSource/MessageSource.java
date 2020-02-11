@@ -72,7 +72,6 @@ public class MessageSource extends CasinoSource{
         send(Json.to(mssData));
     }
 
-
     @Override
     public void onReceive(String text) {
 

@@ -33,7 +33,7 @@ public class SamgongActivity extends CasinoActivity {
         addPage(R.id.page_2);
         addPage(R.id.page_3);
         setPageArrow();
-        casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/live10/stream1");
+        casinoArea.setVideo("live10");
     }
 
     @Override

@@ -53,7 +53,7 @@ public class DragonTigerActivity extends CasinoActivity  {
         askTiger.clickDown(v-> setRoads(source.table.mainRoadAsk2, source.table.firstRoadAsk2, source.table.secondRoadAsk2, source.table.thirdRoadAsk2, source.table.fourthRoadAsk2));
         askTiger.clickUp(v-> setRoads(source.table.mainRoad, source.table.firstRoad, source.table.secondRoad, source.table.thirdRoad, source.table.fourthRoad));
         if(source.table.stage != 1) setScores();
-        casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/dt" + source.table.groupID + "/stream1");
+        casinoArea.setVideo("dt" + source.table.groupID);
     }
 
     @Override
