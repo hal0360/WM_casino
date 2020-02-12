@@ -46,7 +46,7 @@ public class User {
     }
 
     public static float balance(){
-        return App.getFloat("balance",2000f);
+        return App.getFloat("balance",0);
     }
 
     public static void gameID(int val){

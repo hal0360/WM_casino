@@ -48,6 +48,8 @@ public class GameSource extends CasinoSource{
     public SparseIntArray pokers = new SparseIntArray();
 
     public String videoSignal;
+    public int totalBet;
+    public int stage;
 
 
     public void bind(GameBridge bridge){
@@ -74,9 +76,9 @@ public class GameSource extends CasinoSource{
         cmdTableLog = logOK;
         cmdTableFail = logFail;
         pokers.clear();
+        peoples = new ArrayList<>();
+        chipDatas = new SparseArray<>();
         login(User.sid(),data->{
-            peoples = new ArrayList<>();
-            chipDatas = new SparseArray<>();
             Client10 client = new Client10(table.groupID);
             send(Json.to(client));
         }, fail-> cmdTableFail.exec(fail));
@@ -88,7 +90,7 @@ public class GameSource extends CasinoSource{
         cmdTableFail = null;
         peoples = null;
         popup = null;
-        unbind();
+       // unbind();
         close();
     }
 
@@ -107,6 +109,7 @@ public class GameSource extends CasinoSource{
                 TableLogData tableLogData = Json.from(text, TableLogData.class);
                 if(tableLogData.data.gameID == table.gameID && tableLogData.data.groupID == table.groupID && tableLogData.data.memberID == User.memberID()){
                     if(tableLogData.data.bOk){
+                        stage = table.stage;
                         videoSignal = "wmvdo.gtgdd";
                         logData = tableLogData.data;
                         cmdTableLog.exec(tableLogData.data);
@@ -119,6 +122,21 @@ public class GameSource extends CasinoSource{
                 }
                 break;
             case 20:
+                if(gameData.data.groupID == table.groupID) {
+                    stage = gameData.data.gameStage;
+                    if(gameData.data.gameStage == 1) {
+                        totalBet = 0;
+                        for(int s = 0; s < chipDatas.size(); s++){
+                            chipDatas.valueAt(s).clear();
+                        }
+                    }else if(gameData.data.gameStage == 2) {
+                        for(int s = 0; s < chipDatas.size(); s++){
+                            chipDatas.valueAt(s).cancelBet();
+                        }
+                    }
+                    handle(() -> bridge.statusUpdate());
+                }
+
                 if(gameData.data.groupID == table.groupID && gameData.data.gameStage == 1) {
                     for(int s = 0; s < chipDatas.size(); s++){
                         chipDatas.valueAt(s).clear();
@@ -160,7 +178,8 @@ public class GameSource extends CasinoSource{
             case 28:
                 if(gameData.data.groupID == table.groupID){
                     pplOnline = gameData.data.userCount;
-                    if(popup != null) handleSimple(()-> popup.peopleIn( new People(gameData.data.userName, gameData.data.winRate, gameData.data.memberID), gameData.data.userCount));
+                    peoples.add(new People(gameData.data.userName, gameData.data.winRate, gameData.data.memberID));
+                    if(popup != null) handleSimple(()-> popup.poepleUpdate( gameData.data.userCount));
                 }
                 break;
             case 29:
@@ -169,8 +188,7 @@ public class GameSource extends CasinoSource{
                     for (int i = 0; i < peoples.size(); i++) {
                         if(gameData.data.memberID == peoples.get(i).memberID) {
                             peoples.remove(i);
-                            int pos = i;
-                            if(popup != null) handleSimple(()-> popup.peopleOut( pos, gameData.data.userCount));
+                            if(popup != null) handleSimple(()-> popup.poepleUpdate( gameData.data.userCount));
                             break;
                         }
                     }

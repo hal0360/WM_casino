@@ -63,12 +63,10 @@ public class TableData {
         public int tigerAsk4;
         public int tigerAsk5;
         public List<Integer> dataArr1BankerAsk;
-        public List<List<Integer>> dataArr2BankerAsk;
         public List<List<Integer>> dataArr3BankerAsk;
         public List<List<Integer>> dataArr4BankerAsk;
         public List<List<Integer>> dataArr5BankerAsk;
         public List<Integer> dataArr1PlayerAsk;
-        public List<List<Integer>> dataArr2PlayerAsk;
         public List<List<Integer>> dataArr3PlayerAsk;
         public List<List<Integer>> dataArr4PlayerAsk;
         public List<List<Integer>> dataArr5PlayerAsk;

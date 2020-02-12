@@ -34,6 +34,19 @@ public class RouletteActivity extends CasinoActivity {
         dozenTxt = findViewById(R.id.dozen_txt);
         columnTxt = findViewById(R.id.column_txt);
 
+        setStackAreaMax(R.id.stack1_1,8190, 50);
+        setStackAreaMax(R.id.stack2_1,33546240, 50);
+        setStackAreaMax(R.id.stack3_1,137405399040L, 50);
+        setStackAreaMax(R.id.stack1_2,524286, 100);
+        setStackAreaMax(R.id.stack2_2,45991767380L, 100);
+        setStackAreaMax(R.id.stack3_2,137438429184L, 100);
+        setStackAreaMax(R.id.stack1_3,91625968980L, 100);
+        setStackAreaMax(R.id.stack2_3,91447186090L, 100);
+        setStackAreaMax(R.id.stack3_3,45812984490L, 100);
+        setStackAreaMax(R.id.stack_row1,78536544840L, 50);
+        setStackAreaMax(R.id.stack_row2,39268272420L, 50);
+        setStackAreaMax(R.id.stack_row3,19634136210L, 50);
+
         addPage(R.id.page_1);
         addPage(R.id.page_2);
         addPage(R.id.page_3);

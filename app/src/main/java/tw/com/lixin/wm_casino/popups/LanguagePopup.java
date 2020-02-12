@@ -13,17 +13,15 @@ import tw.com.lixin.wm_casino.tools.buttons.ClickConstraint;
 
 public class LanguagePopup extends PopupFragment {
 
-    private ClickConstraint selected, english, chineseSim, chineseTra;
-
     @Override
     public void dialogCreated(FragDialog dialog) {
         dialog.setContentView(R.layout.language_popup);
         dialog.setGravity(Gravity.TOP|Gravity.END);
         dialog.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
-        english = dialog.findViewById(R.id.english_btn);
-        chineseSim = dialog.findViewById(R.id.chinese_sim_btn);
-        chineseTra = dialog.findViewById(R.id.chinese_tra_btn);
+        ClickConstraint english = dialog.findViewById(R.id.english_btn);
+        ClickConstraint chineseSim = dialog.findViewById(R.id.chinese_sim_btn);
+        ClickConstraint chineseTra = dialog.findViewById(R.id.chinese_tra_btn);
 
         if(RootActivity.locale == Locale.US){
             setSelected(english);
@@ -33,9 +31,9 @@ public class LanguagePopup extends PopupFragment {
             setSelected(chineseTra);
         }
 
-        english.clicked(v-> resetSelected(english, Locale.US));
-        chineseSim.clicked(v-> resetSelected(chineseSim, Locale.CHINA));
-        chineseTra.clicked(v-> resetSelected(chineseTra, Locale.TAIWAN));
+        english.clicked(v-> resetSelected(Locale.US));
+        chineseSim.clicked(v-> resetSelected( Locale.CHINA));
+        chineseTra.clicked(v-> resetSelected( Locale.TAIWAN));
 
     }
 
@@ -46,15 +44,12 @@ public class LanguagePopup extends PopupFragment {
 
     private void setSelected(ClickConstraint btn){
         btn.setBackgroundResource(R.drawable.language_select_border);
-        selected = btn;
     }
 
-    private void resetSelected(ClickConstraint btn, Locale loc){
+    private void resetSelected(Locale loc){
         RootActivity activity = (RootActivity) getContext();
         assert activity != null;
         activity.switchLocale(loc);
-        btn.setBackgroundResource(R.drawable.language_select_border);
-        selected.setBackgroundResource(0);
-        selected = btn;
+        dismiss();
     }
 }

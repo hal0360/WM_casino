@@ -53,6 +53,7 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         cardArea = findViewById(R.id.card_area);
         pokers = new SparseArray<>();
         casinoArea.setUp();
+        casinoArea.setBetTxt(source.totalBet);
 
         if(source.table.stage == 1){
             cardArea.setVisibility(View.INVISIBLE);
@@ -141,26 +142,29 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     public abstract void betStarted();
 
     @Override
-    public void stageUpdate() {
+    public void statusUpdate() {
         casinoArea.setPPLnum(source.pplOnline);
-        if (source.table.stage == 1) {
+        if (source.stage == 1) {
             source.pokers.clear();
+            casinoArea.setBetTxt(source.totalBet);
             casinoArea.betting();
             for(int p = 0; p < pokers.size(); p++) pokers.valueAt(p).setVisibility(View.INVISIBLE);
             betStarted();
             cardArea.setVisibility(View.INVISIBLE);
-            for(int s = 0; s < stacks.size(); s++) stacks.valueAt(s).clearCoin();
-        } else if (source.table.stage == 2) {
+            for(int s = 0; s < stacks.size(); s++) stacks.valueAt(s).refresh();
+        } else if (source.stage == 2) {
             casinoArea.dealing();
             cardArea.setVisibility(View.VISIBLE);
-            for(int s = 0; s < stacks.size(); s++) stacks.valueAt(s).cancelBet();
+            for(int s = 0; s < stacks.size(); s++) stacks.valueAt(s).refresh();
             casinoArea.cancelBtn.disable(true);
             casinoArea.rebetBtn.disable(true);
             casinoArea.confirmBtn.disable(true);
-        } else if (source.table.stage == 4) {
+        } else if (source.stage == 4) {
 
         }
     }
+    @Override
+    public void stageUpdate() { }
 
     @Override
     public void betCountdown(int sec) {
@@ -186,7 +190,13 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     public void betUpdate(boolean betOK) {
         if(betOK){
             alert("bet succ!");
-            for(int s = 0; s < stacks.size(); s++) stacks.valueAt(s).comfirmBet();
+            int sumBet = 0;
+            for(int s = 0; s < stacks.size(); s++){
+                stacks.valueAt(s).comfirmBet();
+                sumBet = sumBet + stacks.valueAt(s).data.value;
+            }
+            casinoArea.setBetTxt(sumBet);
+            source.totalBet = sumBet;
             casinoArea.cancelBtn.disable(true);
             casinoArea.rebetBtn.disable(false);
             casinoArea.confirmBtn.disable(true);
@@ -208,14 +218,11 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
 
     public void confirm(){
         Client22 client22 = new Client22(source.table.gameID, source.table.groupID);
-        int sumBet=0;
         for(int s = 0; s < stacks.size(); s++) {
             stacks.valueAt(s).addCoinToClient(client22);
-            sumBet = sumBet + stacks.valueAt(s).data.value;
         }
         if (client22.data.betArr.size() > 0) {
             source.send(Json.to(client22));
-            casinoArea.setBetTxt(sumBet);
         }
         else alert("You haven't put any money!");
     }

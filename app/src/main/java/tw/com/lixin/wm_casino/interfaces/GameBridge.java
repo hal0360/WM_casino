@@ -7,4 +7,7 @@ public interface GameBridge {
     void winLossUpdate(float win);
     void resultUpdate();
     void serverFailed();
-    void cardUpdate(int area, int img);}
+    void cardUpdate(int area, int img);
+    void statusUpdate();
+}
+

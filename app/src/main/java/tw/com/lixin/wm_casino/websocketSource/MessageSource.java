@@ -1,7 +1,5 @@
 package tw.com.lixin.wm_casino.websocketSource;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,8 +72,6 @@ public class MessageSource extends CasinoSource{
 
     @Override
     public void onReceive(String text) {
-
-        Log.e("mss", text);
 
         if(area == null) return;
         MessageData mdata = Json.from(text, MessageData.class);

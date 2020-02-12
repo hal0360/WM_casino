@@ -6,6 +6,5 @@ import java.util.List;
 
 public class Game {
     public int gameID;
-    public JsonObject dtOdds;
     public List<Group> groupArr;
 }

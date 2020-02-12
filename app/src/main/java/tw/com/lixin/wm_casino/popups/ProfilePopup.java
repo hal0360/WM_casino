@@ -1,19 +1,29 @@
 package tw.com.lixin.wm_casino.popups;
 
+import android.annotation.SuppressLint;
 import android.view.Gravity;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import tw.com.atromoby.widgets.FragDialog;
 import tw.com.atromoby.widgets.PopupFragment;
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.tools.buttons.ClickConstraint;
 
 public class ProfilePopup extends PopupFragment {
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void dialogCreated(FragDialog dialog) {
         dialog.setContentView(R.layout.profile_popup);
+
+        TextView balance = dialog.findViewById(R.id.balance_txt);
+        balance.setText(User.balance()+"");
+        TextView member = dialog.findViewById(R.id.member_txt);
+        member.setText(User.userName());
+
 
         dialog.setGravity(Gravity.TOP | Gravity.END);
         dialog.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);

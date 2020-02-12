@@ -11,6 +11,7 @@ import tw.com.lixin.wm_casino.dataModels.LobbyData;
 import tw.com.lixin.wm_casino.dataModels.TableData;
 import tw.com.lixin.wm_casino.dataModels.gameData.Game;
 import tw.com.lixin.wm_casino.dataModels.gameData.Group;
+import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
 import tw.com.lixin.wm_casino.models.Table;
 
@@ -117,6 +118,9 @@ public class LobbySource extends CasinoSource{
             case 34:
                 peopleOnline.put(lobbyData.data.gameID,lobbyData.data.onlinePeople);
                 handle(()-> bridge.peopleOnlineUpdate(lobbyData.data.gameID, lobbyData.data.onlinePeople));
+                break;
+            case 30:
+                User.balance(lobbyData.data.balance);
                 break;
         }
     }

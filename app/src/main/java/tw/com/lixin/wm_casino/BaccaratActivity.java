@@ -37,11 +37,11 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         super.onCreate(savedInstanceState);
 
         casinoArea.setTitle(getString(R.string.baccarat) + source.table.groupID);
-        setStackAreaMax(R.id.banker_stack,source.logData.maxBet01,1);
-        setStackAreaMax(R.id.player_stack,source.logData.maxBet02,2);
-        setStackAreaMax(R.id.tie_stack,source.logData.maxBet03,3);
-        setStackAreaMax(R.id.banker_pair_stack,source.logData.maxBet04,4);
-        setStackAreaMax(R.id.player_pair_stack,source.logData.maxBet04,5);
+        setStackAreaMax(R.id.banker_stack,1,source.logData.maxBet01);
+        setStackAreaMax(R.id.player_stack,2,source.logData.maxBet02);
+        setStackAreaMax(R.id.tie_stack,3,source.logData.maxBet03);
+        setStackAreaMax(R.id.banker_pair_stack,4,source.logData.maxBet04);
+        setStackAreaMax(R.id.player_pair_stack,5,source.logData.maxBet04);
 
         commBtn = findViewById(R.id.comm_btn);
         mainGrid = findViewById(R.id.main_grid);

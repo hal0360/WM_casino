@@ -2,12 +2,8 @@ package tw.com.lixin.wm_casino.models;
 
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Handler;
-import android.util.Log;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -56,6 +52,8 @@ public class Table {
     public ItemRoad thirdRoadAsk2;
     public ItemRoad fourthRoadAsk2;
 
+    public int maxBetTime;
+
     public Table(Group group, int gid){
 
         gameID = gid;
@@ -71,6 +69,11 @@ public class Table {
         number = group.gameNo;
         dealerName = group.dealerName;
         handler = LobbySource.getInstance().getGenHandler();
+
+        maxBetTime = group.betMilliSecond/1000;
+        if(group.timeMillisecond > 0){
+            receive38(group.timeMillisecond);
+        }
 
         /*
         try {
@@ -140,7 +143,6 @@ public class Table {
             mainRoad =  new ItemRoad(data.historyArr, 9);
         }
     }
-
 
     //public abstract void historyUpdate(TableData.Data data);
    // public abstract void stageUpdate();

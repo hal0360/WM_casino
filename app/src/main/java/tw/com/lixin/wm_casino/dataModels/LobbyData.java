@@ -14,6 +14,5 @@ public class LobbyData {
         public float balance;
         public int gameID;
         public int onlinePeople;
-
     }
 }
