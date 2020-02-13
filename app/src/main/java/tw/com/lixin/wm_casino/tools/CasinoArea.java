@@ -5,6 +5,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
 
     private ProfileBar bar;
     private TextView gyuShu, countdown, member, cusChipTxt, pplTxt, betTxt;
-    private ImageView dealImg;
+    private View dealImg;
     private ChipView selectedChip;
     private CollectionsView mssList;
     private CasinoActivity activity;
@@ -45,6 +46,7 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
     private MessageSource source;
     public static Chip curChip;
     private String videoUrl;
+    private ProgressBar gresBar;
 
     public CasinoArea(Context context) {super(context);}
 
@@ -66,6 +68,7 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
         rebetBtn =  findViewById(R.id.rebet_btn);
         pplTxt = findViewById(R.id.ppl_num_txt);
         betTxt = findViewById(R.id.bet_txt);
+        gresBar = findViewById(R.id.gres_bar);
 
         findViewById(R.id.chip1).setOnClickListener(this);
         findViewById(R.id.chip5).setOnClickListener(this);
@@ -167,11 +170,17 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
     }
 
     public void dealing(){
+        gresBar.setVisibility(INVISIBLE);
         dealImg.setVisibility(VISIBLE);
     }
 
     public void betting(){
+        gresBar.setVisibility(VISIBLE);
         dealImg.setVisibility(INVISIBLE);
+    }
+
+    public void setGress(int percent){
+        gresBar.setProgress(percent);
     }
 
     @SuppressLint("SetTextI18n")

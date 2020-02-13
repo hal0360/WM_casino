@@ -213,7 +213,7 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
 
     @Override
     public void winLossUpdate(float win) {
-        showPopup(new WinLossPopup(win));
+        showPopup(new WinLossPopup());
     }
 
     public void confirm(){
@@ -244,11 +244,10 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         casinoArea.cancelBtn.disable(false);
     }
 
-
-
     protected void addGrid(View grid){
         grids.add(grid);
     }
+
     protected void addPage(int page_id){
         ConstraintLayout page = findViewById(page_id);
         pages.add(page);

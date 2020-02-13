@@ -68,7 +68,8 @@ public class LoginActivity extends RootActivity implements LobbyBridge {
                 source.send(Json.to(new Client35()));
             }, fail->{
                 loading.dismiss();
-                alert(fail);
+                alert(getString(R.string.pass_incorr));
+              //  alert(fail);
             });
         });
 

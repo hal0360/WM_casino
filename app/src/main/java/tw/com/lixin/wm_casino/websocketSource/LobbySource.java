@@ -49,6 +49,11 @@ public class LobbySource extends CasinoSource{
         binded(false);
     }
 
+    public void logout(){
+        unbind();
+        close();
+    }
+
     @Override
     public void onReceive(String text) {
         TableData tableData = Json.from(text, TableData.class);

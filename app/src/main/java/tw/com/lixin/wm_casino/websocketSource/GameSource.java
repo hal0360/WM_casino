@@ -51,6 +51,7 @@ public class GameSource extends CasinoSource{
     public int totalBet;
     public int stage;
 
+    public float moneyWin;
 
     public void bind(GameBridge bridge){
         this.bridge = bridge;
@@ -90,7 +91,8 @@ public class GameSource extends CasinoSource{
         cmdTableFail = null;
         peoples = null;
         popup = null;
-       // unbind();
+        unbind();
+        unbindPeople();
         close();
     }
 
@@ -172,6 +174,7 @@ public class GameSource extends CasinoSource{
                 break;
             case 31:
                 if(gameData.data.groupID == table.groupID && gameData.data.memberID == User.memberID()){
+                    moneyWin = gameData.data.moneyWin;
                     handle(() -> bridge.winLossUpdate(gameData.data.moneyWin));
                 }
                 break;
@@ -199,7 +202,10 @@ public class GameSource extends CasinoSource{
 
     @Override
     public void onFailure(WebSocket webSocket, Throwable t, Response response) {
-        if(connected)  handle(() ->  bridge.serverFailed());
+        if(connected){
+            handle(() ->  bridge.serverFailed());
+            close();
+        }
         super.onFailure( webSocket,  t,  response);
     }
 }

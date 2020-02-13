@@ -24,6 +24,9 @@ import tw.com.lixin.wm_casino.collections.SeDieCollection;
 import tw.com.lixin.wm_casino.collections.SicBoCollection;
 import tw.com.lixin.wm_casino.interfaces.CmdCollection;
 import tw.com.lixin.wm_casino.interfaces.CmdTable;
+import tw.com.lixin.wm_casino.websocketSource.GameSource;
+import tw.com.lixin.wm_casino.websocketSource.LobbySource;
+import tw.com.lixin.wm_casino.websocketSource.MessageSource;
 
 public class App extends RegisterApplication {
 
@@ -173,8 +176,11 @@ public class App extends RegisterApplication {
 
     public void lobbyFail(){
         Kit.alert(this,"Lobby disconnected");
+        LobbySource.getInstance().logout();
+        GameSource.getInstance().tableLogout();
+        MessageSource.getInstance().logout();
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 

@@ -91,6 +91,7 @@
     <string name="minimum">最小投注</string>
     <string name="maximum">最大投注</string>
     <string name="wins">勝率</string>
+    <string name="pass_incorr">密碼錯誤!!</string>
 
     <!-- message -->
     <string name="mss_1">小美眉，給我個飛吻吧〜</string>

@@ -42,6 +42,11 @@ public class MessageSource extends CasinoSource{
         binded(false);
     }
 
+    public void logout(){
+        unbind();
+        close();
+    }
+
     final void mssLogin(int gameid, int groupid){
         defineURL("ws://gameserver.a45.me:15801");
         gameID = gameid;
