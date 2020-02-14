@@ -5,9 +5,14 @@
     <attr name="game_image" format="reference" />
     <attr name="grid_y" format="integer" />
     <attr name="grid_x" format="integer" />
+    <attr name="xml_txt" format="reference" />
 
     <declare-styleable name="CardImage">
         <attr name="card_area" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="NgaText">
+        <attr name="xml_txt" />
     </declare-styleable>
 
     <declare-styleable name="CasinoGrid">

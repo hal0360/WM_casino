@@ -133,5 +133,9 @@
     <string name="niu">Niu</string>
     <string name="no_niu">No Niu</string>
     <string name="wugong">5P</string>
-
+    <string name="nga">Nga</string>
+    <string name="nim">Nim</string>
+    <string name="fan">fan</string>
+    <string name="kwok">Kwok</string>
+    <string name="ssh">Ssh</string>
 </resources>
