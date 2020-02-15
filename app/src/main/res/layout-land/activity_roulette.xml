@@ -523,6 +523,8 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
+                app:area="39268272420"
+                app:max_val="50"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -704,6 +706,8 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="1dp"
                 android:layout_marginBottom="3dp"
+                app:area="78536544840"
+                app:max_val="50"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/stack_row2"
                 app:layout_constraintTop_toTopOf="parent">
@@ -884,6 +888,8 @@
                 android:layout_marginStart="1dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
+                app:area="19634136210"
+                app:max_val="50"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/stack_row2"
                 app:layout_constraintTop_toTopOf="parent">
@@ -1076,6 +1082,8 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
+                app:area="45991767380L"
+                app:max_val="100"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -1101,6 +1109,8 @@
                 android:layout_marginStart="1dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
+                app:area="137438429184"
+                app:max_val="100"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/stack2_2"
                 app:layout_constraintTop_toTopOf="parent">
@@ -1136,6 +1146,8 @@
                 android:layout_marginStart="1dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
+                app:area="91625968980"
+                app:max_val="100"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/stack3_2"
                 app:layout_constraintTop_toTopOf="parent">
@@ -1160,6 +1172,8 @@
                 android:layout_marginStart="1dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
+                app:area="91447186090"
+                app:max_val="100"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/stack1_3"
                 app:layout_constraintTop_toTopOf="parent">
@@ -1184,6 +1198,8 @@
                 android:layout_marginStart="1dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
+                app:area="45812984490"
+                app:max_val="100"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/stack2_3"
                 app:layout_constraintTop_toTopOf="parent">
@@ -1208,6 +1224,8 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="1dp"
                 android:layout_marginBottom="3dp"
+                app:area="524286"
+                app:max_val="100"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/stack2_2"
                 app:layout_constraintTop_toTopOf="parent">
@@ -1243,6 +1261,8 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="1dp"
                 android:layout_marginBottom="3dp"
+                app:area="137405399040"
+                app:max_val="50"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/stack1_2"
                 app:layout_constraintTop_toTopOf="parent">
@@ -1278,6 +1298,8 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="1dp"
                 android:layout_marginBottom="3dp"
+                app:area="33546240"
+                app:max_val="50"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/stack3_1"
                 app:layout_constraintTop_toTopOf="parent">
@@ -1313,6 +1335,8 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="1dp"
                 android:layout_marginBottom="3dp"
+                app:area="8190"
+                app:max_val="50"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/stack2_1"
                 app:layout_constraintTop_toTopOf="parent">

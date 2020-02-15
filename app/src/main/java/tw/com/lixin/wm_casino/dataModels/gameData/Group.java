@@ -15,7 +15,6 @@ public class Group {
     public String dealerName;
     public List<Integer> historyArr;
     public int timeMillisecond;
-    public int betMilliSecond;
     public TableData.HisData historyData;
 
 

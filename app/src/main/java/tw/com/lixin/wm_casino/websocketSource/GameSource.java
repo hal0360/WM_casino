@@ -112,7 +112,7 @@ public class GameSource extends CasinoSource{
                 if(tableLogData.data.gameID == table.gameID && tableLogData.data.groupID == table.groupID && tableLogData.data.memberID == User.memberID()){
                     if(tableLogData.data.bOk){
                         stage = table.stage;
-                        videoSignal = "wmvdo.gtgdd";
+                        videoSignal = "wmvdo.nicejj";
                         logData = tableLogData.data;
                         cmdTableLog.exec(tableLogData.data);
                         mssLogin(table.gameID, table.groupID);

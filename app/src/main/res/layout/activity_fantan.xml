@@ -8,7 +8,7 @@
     tools:ignore="HardcodedText,SpUsage"
     tools:context=".FantanActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <tw.com.lixin.wm_casino.tools.CasinoArea
         android:id="@+id/casino_area"
         android:layout_width="360dp"
         android:layout_height="545dp"
@@ -1087,6 +1087,16 @@
 
         </tw.com.lixin.wm_casino.tools.CardArea>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </tw.com.lixin.wm_casino.tools.CasinoArea>
+
+    <tw.com.lixin.wm_casino.tools.grids.TextGrid
+        android:id="@+id/main_grid"
+        android:layout_width="0dp"
+        android:layout_height="85dp"
+        app:grid_x="25"
+        app:grid_y="6"
+        app:layout_constraintEnd_toEndOf="@+id/casino_area"
+        app:layout_constraintStart_toStartOf="@+id/casino_area"
+        app:layout_constraintTop_toBottomOf="@+id/casino_area"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

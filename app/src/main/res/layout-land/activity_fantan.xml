@@ -10,7 +10,7 @@
     tools:ignore="HardcodedText,SpUsage"
     tools:context=".FantanActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <tw.com.lixin.wm_casino.tools.CasinoArea
         android:id="@+id/casino_area"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -1062,7 +1062,7 @@
             app:layout_constraintEnd_toEndOf="@+id/page_3"
             app:layout_constraintTop_toTopOf="@+id/page_3" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </tw.com.lixin.wm_casino.tools.CasinoArea>
 
     <tw.com.lixin.wm_casino.tools.grids.TextGrid
         android:id="@+id/main_grid"

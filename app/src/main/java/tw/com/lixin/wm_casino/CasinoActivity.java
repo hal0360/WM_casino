@@ -23,6 +23,7 @@ import tw.com.lixin.wm_casino.tools.CardImage;
 import tw.com.lixin.wm_casino.tools.CasinoArea;
 import tw.com.lixin.wm_casino.tools.ChipStack;
 import tw.com.lixin.wm_casino.tools.buttons.ArrowButton;
+import tw.com.lixin.wm_casino.tools.txtViews.ResultText;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
 public abstract class CasinoActivity extends RootActivity implements TableBridge, GameBridge {
@@ -37,6 +38,8 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     protected List<View> grids;
     int curGrid;
 
+    protected SparseArray<ResultText> resultTexts;
+
     private ArrowButton arrowLeft, arrowRight, arrowGridLeft, arrowGridRight;
 
     @Override
@@ -46,6 +49,7 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         curPage = 0;
         curGrid = 0;
         pages = new ArrayList<>();
+        resultTexts = new SparseArray<>();
         grids = new ArrayList<>();
         stacks = new SparseArray<>();
         source = GameSource.getInstance();
@@ -66,6 +70,12 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         casinoArea.setMember(User.userName());
         casinoArea.setPPLnum(source.pplOnline);
         casinoArea.setGyuShu(source.table.number,source.table.round);
+        casinoArea.setTitle(getString(App.appNames.get(source.table.gameID)) + source.table.groupID);
+
+    }
+
+    public void addTxt(ResultText resultText){
+        resultTexts.put(resultText.getId(),resultText);
     }
 
     public void resetVideo(){
@@ -90,7 +100,7 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     protected void addCard(int area, int card_id){
 
         ImageView img = findViewById(card_id);
-        if(source.table.stage == 1){
+        if(source.stage == 1){
             img.setVisibility(View.INVISIBLE);
         }else {
             img.setImageResource(Poker.NUM(source.pokers.get(area)));
@@ -100,7 +110,7 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     }
 
     public void addCard(CardImage cardImage){
-        if(source.table.stage == 1){
+        if(source.stage == 1){
             cardImage.setVisibility(View.INVISIBLE);
         }else {
             cardImage.setImageResource(Poker.NUM(source.pokers.get(cardImage.area)));

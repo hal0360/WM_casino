@@ -52,8 +52,6 @@ public class Table {
     public ItemRoad thirdRoadAsk2;
     public ItemRoad fourthRoadAsk2;
 
-    public int maxBetTime;
-
     public Table(Group group, int gid){
 
         gameID = gid;
@@ -70,7 +68,6 @@ public class Table {
         dealerName = group.dealerName;
         handler = LobbySource.getInstance().getGenHandler();
 
-        maxBetTime = group.betMilliSecond/1000;
         if(group.timeMillisecond > 0){
             receive38(group.timeMillisecond);
         }
@@ -101,33 +98,36 @@ public class Table {
     public void historyUpdate(TableData.Data data) {
 
         mainArr = data.historyArr;
-        firstRoad = new ItemRoad(data.historyData.dataArr2);
-       secondRoad = new ItemRoad(data.historyData.dataArr3);
-        thirdRoad = new ItemRoad(data.historyData.dataArr4);
-        fourthRoad = new ItemRoad(data.historyData.dataArr5);
         this.data = data.historyData;
-
-        if(gameID == 101 && data.historyData.dataArr1BankerAsk != null){
-            bigRoad = new ArrayList<>();
-            sortedRoad = new ArrayList<>();
+        if(gameID == 101 ){
+            apeSkull();
             for(int val: data.historyArr) divide(val);
-            mainRoad =  new ItemRoad(bigRoad, 9);
+            mainRoad = new ItemRoad(bigRoad, 9);
             firstRoad = new ItemRoad(sortedRoad,"");
+
+            apeSkull();
             for(int val: data.historyData.dataArr1BankerAsk) divide(val);
             mainRoadAsk1 = new ItemRoad(bigRoad, 9);
             firstRoadAsk1 = new ItemRoad(sortedRoad,"");
+
+            apeSkull();
             for(int val: data.historyData.dataArr1PlayerAsk) divide(val);
             mainRoadAsk2 = new ItemRoad(bigRoad, 9);
             firstRoadAsk2 = new ItemRoad(sortedRoad,"");
             bigRoad = null;
             sortedRoad = null;
+
+            secondRoad = new ItemRoad(data.historyData.dataArr3);
+            thirdRoad = new ItemRoad(data.historyData.dataArr4);
+            fourthRoad = new ItemRoad(data.historyData.dataArr5);
+
             secondRoadAsk1 = new ItemRoad(data.historyData.dataArr3BankerAsk,"");
             thirdRoadAsk1 = new ItemRoad(data.historyData.dataArr4BankerAsk,"");
             fourthRoadAsk1 = new ItemRoad(data.historyData.dataArr5BankerAsk,"");
             secondRoadAsk2 = new ItemRoad(data.historyData.dataArr3PlayerAsk,"");
             thirdRoadAsk2 = new ItemRoad(data.historyData.dataArr4PlayerAsk,"");
             fourthRoadAsk2 = new ItemRoad(data.historyData.dataArr5PlayerAsk,"");
-        } else if(gameID == 102 && data.historyData.dataArr1DragonAsk != null){
+        } else if(gameID == 102 ){
             mainRoad =  new ItemRoad(data.historyArr, 9);
             mainRoadAsk1 = new ItemRoad(data.historyData.dataArr1DragonAsk, 9);
             firstRoadAsk1 = new ItemRoad(data.historyData.dataArr2DragonAsk,"");
@@ -141,6 +141,10 @@ public class Table {
             fourthRoadAsk2 = new ItemRoad(data.historyData.dataArr5TigerAsk,"");
         }else {
             mainRoad =  new ItemRoad(data.historyArr, 9);
+            firstRoad = new ItemRoad(data.historyData.dataArr2);
+            secondRoad = new ItemRoad(data.historyData.dataArr3);
+            thirdRoad = new ItemRoad(data.historyData.dataArr4);
+            fourthRoad = new ItemRoad(data.historyData.dataArr5);
         }
     }
 
@@ -189,6 +193,12 @@ public class Table {
 
 
 
+    private void apeSkull(){
+        sortedRoad = new ArrayList<>();
+        bigRoad = new ArrayList<>();
+        preRes = 0;
+        preWin = 0;
+    }
 
     private List<List<Integer>> sortedRoad;
     private List<Integer> bigRoad;

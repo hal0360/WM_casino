@@ -37,6 +37,8 @@
             android:id="@+id/tie_stack"
             android:layout_width="82dp"
             android:layout_height="68dp"
+            app:area="3"
+            app:max_val="20"
             android:layout_marginBottom="21dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -71,6 +73,8 @@
             android:id="@+id/banker_stack"
             android:layout_width="82dp"
             android:layout_height="0dp"
+            app:area="1"
+            app:max_val="100"
             app:layout_constraintBottom_toBottomOf="@+id/tie_stack"
             app:layout_constraintStart_toEndOf="@+id/tie_stack"
             app:layout_constraintTop_toTopOf="@+id/tie_stack">
@@ -104,6 +108,8 @@
             android:id="@+id/banker_pair_stack"
             android:layout_width="82dp"
             android:layout_height="0dp"
+            app:area="4"
+            app:max_val="10"
             app:layout_constraintBottom_toBottomOf="@+id/banker_stack"
             app:layout_constraintStart_toEndOf="@+id/banker_stack"
             app:layout_constraintTop_toTopOf="@+id/banker_stack">
@@ -137,6 +143,8 @@
             android:id="@+id/player_stack"
             android:layout_width="82dp"
             android:layout_height="0dp"
+            app:area="2"
+            app:max_val="100"
             app:layout_constraintBottom_toBottomOf="@+id/tie_stack"
             app:layout_constraintEnd_toStartOf="@+id/tie_stack"
             app:layout_constraintTop_toTopOf="@+id/tie_stack">
@@ -170,6 +178,8 @@
             android:id="@+id/player_pair_stack"
             android:layout_width="82dp"
             android:layout_height="0dp"
+            app:area="5"
+            app:max_val="10"
             app:layout_constraintBottom_toBottomOf="@+id/player_stack"
             app:layout_constraintEnd_toStartOf="@+id/player_stack"
             app:layout_constraintTop_toTopOf="@+id/player_stack">

@@ -36,13 +36,6 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         setContentView(R.layout.activity_baccarat);
         super.onCreate(savedInstanceState);
 
-        casinoArea.setTitle(getString(R.string.baccarat) + source.table.groupID);
-        setStackAreaMax(R.id.banker_stack,1,source.logData.maxBet01);
-        setStackAreaMax(R.id.player_stack,2,source.logData.maxBet02);
-        setStackAreaMax(R.id.tie_stack,3,source.logData.maxBet03);
-        setStackAreaMax(R.id.banker_pair_stack,4,source.logData.maxBet04);
-        setStackAreaMax(R.id.player_pair_stack,5,source.logData.maxBet04);
-
         commBtn = findViewById(R.id.comm_btn);
         mainGrid = findViewById(R.id.main_grid);
         firstGrid = findViewById(R.id.first_grid);
@@ -114,8 +107,8 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         limitPopup.addLimit(getString(R.string.tie), "1:8", source.logData.maxBet03,1 );
         limitPopup.addLimit(getString(R.string.banker_pair), "1:11", source.logData.maxBet04,1 );
         limitPopup.addLimit(getString(R.string.player_pair), "1:11", source.logData.maxBet04,1 );
-        limitPopup.addLimit(getString(R.string.BIG), "1:0.5", source.logData.maxBet04,1 );
-        limitPopup.addLimit(getString(R.string.SMALL), "1:1.5", source.logData.maxBet04,1 );
+        limitPopup.addLimit(getString(R.string.BIG), "1:0.5", 100,1 );
+        limitPopup.addLimit(getString(R.string.SMALL), "1:1.5", 100,1 );
     }
 
     @Override

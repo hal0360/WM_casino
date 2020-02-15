@@ -2,14 +2,13 @@ package tw.com.lixin.wm_casino.tools.buttons;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import tw.com.atromoby.utils.Kit;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import tw.com.atromoby.widgets.CmdView;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.global.Road;
@@ -75,7 +74,6 @@ public class AskButton extends ConstraintLayout implements View.OnTouchListener{
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        Kit.alert(getContext(),"sdsdds");
         switch(event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 if(cmdDown != null){
