@@ -30,7 +30,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     private Animation animeDwn, animeUp;
     private int hit = 0;
     private List<Integer> ids;
-    private TextView valTxt;
+    private TextView valTxt, centerTxt;
     public ChipStackData data;
     private GradientDrawable shape;
     private GameSource source;
@@ -41,6 +41,8 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     public ChipStack(Context context, AttributeSet attrs) {
         super(context, attrs);
         View.inflate(context, R.layout.chip_stack, this);
+
+        centerTxt = findViewById(R.id.center_txt);
 
         TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.ChipStack);
         maxValue = a.getInt(R.styleable.ChipStack_max_val,5);
