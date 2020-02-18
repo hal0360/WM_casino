@@ -48,7 +48,7 @@
         <attr name="area" format="string" />
         <attr name="max_val" format="integer" />
         <attr name="text" format="string" />
-        <attr name="text_size" format="dimension" />
+        <attr name="text_size" format="integer" />
         <attr name="text_color" format="color" />
     </declare-styleable>
 

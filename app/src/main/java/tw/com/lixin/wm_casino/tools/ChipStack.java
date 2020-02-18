@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -30,7 +31,7 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
     private Animation animeDwn, animeUp;
     private int hit = 0;
     private List<Integer> ids;
-    private TextView valTxt, centerTxt;
+    private TextView valTxt;
     public ChipStackData data;
     private GradientDrawable shape;
     private GameSource source;
@@ -42,13 +43,28 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         super(context, attrs);
         View.inflate(context, R.layout.chip_stack, this);
 
-        centerTxt = findViewById(R.id.center_txt);
+        TextView centerTxt = findViewById(R.id.center_txt);
 
         TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.ChipStack);
         maxValue = a.getInt(R.styleable.ChipStack_max_val,5);
+
+        int textDim = a.getInt(R.styleable.ChipStack_text_size,12);
+        centerTxt.setTextSize(TypedValue.COMPLEX_UNIT_DIP, textDim);
+        centerTxt.setTextColor(a.getColor(R.styleable.ChipStack_text_color, 0xffffffff));
+
+
+
+        String cenStr = a.getString(R.styleable.ChipStack_text);
+        if(cenStr != null){
+            centerTxt.setVisibility(VISIBLE);
+            centerTxt.setText(cenStr);
+
+        }
+
         String areaStr = a.getString(R.styleable.ChipStack_area);
         if(areaStr != null) area = Long.parseLong(areaStr);
         a.recycle();
+
 
         setOnClickListener(this);
         coin1 = findViewById(R.id.coin1);
