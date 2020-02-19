@@ -121,6 +121,10 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
 
     @SuppressLint("SetTextI18n")
     private void setScores(){
+
+
+
+
         playerScore.setText(source.playerScore+"");
         bankerScore.setText(source.bankerScore+"");
         playerScore.setVisibility(VISIBLE);

@@ -149,7 +149,18 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         finish();
     }
 
+
+
     public abstract void betStarted();
+
+    public void setResultText(int rid, String text){
+        ResultText rTs = resultTexts.get(rid);
+        if(rTs != null){
+            rTs.setVisibility(View.VISIBLE);
+            rTs.setText(text);
+        }
+    }
+
 
     @Override
     public void statusUpdate() {
@@ -159,6 +170,11 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
             casinoArea.setBetTxt(source.totalBet);
             casinoArea.betting();
             for(int p = 0; p < pokers.size(); p++) pokers.valueAt(p).setVisibility(View.INVISIBLE);
+
+
+            for(int t = 0; t < resultTexts.size(); t++) pokers.valueAt(t).setVisibility(View.INVISIBLE);
+
+
             betStarted();
             cardArea.setVisibility(View.INVISIBLE);
             for(int s = 0; s < stacks.size(); s++) stacks.valueAt(s).refresh();
