@@ -57,15 +57,6 @@ public class SicBoActivity extends CasinoActivity {
 
     }
 
-    @Override
-    public void betStarted() {
-        sumTxt.setVisibility(INVISIBLE);
-        sizeTxt.setVisibility(INVISIBLE);
-        diceR1.setVisibility(INVISIBLE);
-        diceR2.setVisibility(INVISIBLE);
-        diceR3.setVisibility(INVISIBLE);
-        oddEvenTxt.setVisibility(INVISIBLE);
-    }
 
     @SuppressLint("SetTextI18n")
     @Override

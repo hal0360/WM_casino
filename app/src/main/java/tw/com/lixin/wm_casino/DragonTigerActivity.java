@@ -1,8 +1,6 @@
 package tw.com.lixin.wm_casino;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import tw.com.lixin.wm_casino.global.Road;
 import tw.com.lixin.wm_casino.models.ItemRoad;
@@ -11,15 +9,11 @@ import tw.com.lixin.wm_casino.tools.buttons.AskButton;
 import tw.com.lixin.wm_casino.tools.grids.CasinoDoubleGrid;
 import tw.com.lixin.wm_casino.tools.grids.TextGrid;
 
-import static android.view.View.INVISIBLE;
-import static android.view.View.VISIBLE;
-
 
 public class DragonTigerActivity extends CasinoActivity  {
 
     private TextGrid mainGrid, firstGrid;
     private CasinoDoubleGrid secondGrid, thirdGrid, fourthGrid;
-    private TextView tigerScore, tigerTxt, dragonScore, dragonTxt;
     private AskButton askTiger, askDragon;
 
     @Override
@@ -33,13 +27,8 @@ public class DragonTigerActivity extends CasinoActivity  {
         secondGrid = findViewById(R.id.second_grid);
         thirdGrid = findViewById(R.id.third_grid);
         fourthGrid = findViewById(R.id.fourth_grid);
-        tigerScore = findViewById(R.id.tiger_score);
-        tigerTxt = findViewById(R.id.tiger_txt);
-        dragonScore = findViewById(R.id.dragon_score);
-        dragonTxt = findViewById(R.id.dragon_txt);
         askTiger = findViewById(R.id.ask_tiger_btn);
         askDragon = findViewById(R.id.ask_dragon_btn);
-        betStarted();
 
         setTextView(R.id.tie_dtO, "1:8");
         setTextView(R.id.dragon_dtO, "1:1");
@@ -52,7 +41,7 @@ public class DragonTigerActivity extends CasinoActivity  {
         askDragon.clickUp(v-> setRoads(source.table.mainRoad, source.table.firstRoad, source.table.secondRoad, source.table.thirdRoad, source.table.fourthRoad));
         askTiger.clickDown(v-> setRoads(source.table.mainRoadAsk2, source.table.firstRoadAsk2, source.table.secondRoadAsk2, source.table.thirdRoadAsk2, source.table.fourthRoadAsk2));
         askTiger.clickUp(v-> setRoads(source.table.mainRoad, source.table.firstRoad, source.table.secondRoad, source.table.thirdRoad, source.table.fourthRoad));
-        if(source.table.stage != 1) setScores();
+
         casinoArea.setVideo("dt" + source.table.groupID);
     }
 
@@ -61,24 +50,6 @@ public class DragonTigerActivity extends CasinoActivity  {
         limitPopup.addLimit(getString(R.string.banker), "1", source.logData.maxBet01,1 );
         limitPopup.addLimit(getString(R.string.player), "1", source.logData.maxBet02,1 );
         limitPopup.addLimit(getString(R.string.tie), "8", source.logData.maxBet03,1 );
-    }
-
-    @Override
-    public void betStarted() {
-        tigerScore.setVisibility(INVISIBLE);
-        tigerTxt.setVisibility(INVISIBLE);
-        dragonScore.setVisibility(INVISIBLE);
-        dragonTxt.setVisibility(INVISIBLE);
-    }
-
-    @SuppressLint("SetTextI18n")
-    private void setScores(){
-        tigerScore.setText(source.playerScore+"");
-        dragonScore.setText(source.bankerScore+"");
-        tigerScore.setVisibility(VISIBLE);
-        tigerTxt.setVisibility(VISIBLE);
-        dragonScore.setVisibility(VISIBLE);
-        dragonTxt.setVisibility(VISIBLE);
     }
 
     @Override
@@ -137,7 +108,10 @@ public class DragonTigerActivity extends CasinoActivity  {
         } else if (source.result == 4) {
 
         }
-        setScores();
+        setResultText(R.id.tiger_score, source.playerScore+"");
+        setResultText(R.id.dragon_score, source.bankerScore+"");
+        showResultText(R.id.tiger_txt);
+        showResultText(R.id.dragon_txt);
     }
 
 }

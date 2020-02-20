@@ -60,7 +60,6 @@ public class RouletteActivity extends CasinoActivity {
         }
         casinoArea.setVideo("rou" + String.format("%02d", source.table.groupID));
 
-        betStarted();
     }
 
     @Override
@@ -68,24 +67,17 @@ public class RouletteActivity extends CasinoActivity {
 
     }
 
-    @Override
-    public void betStarted() {
-        resultTxt.setVisibility(INVISIBLE);
-        oddEvenTxt.setVisibility(INVISIBLE);
-        sizeTxt.setVisibility(INVISIBLE);
-        columnTxt.setVisibility(INVISIBLE);
-        dozenTxt.setVisibility(INVISIBLE);
-    }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void resultUpdate() {
 
-        resultTxt.setText(source.result+"");
-        if ( (source.result & 1) == 0 ) oddEvenTxt.setText(getString(R.string.EVEN));
-        else oddEvenTxt.setText(getString(R.string.ODD));
 
-        if(source.result >18 ) sizeTxt.setText(getString(R.string.BIG) + "19-36");
+        setResultText(R.id.result_txt,source.result+"");
+        if ( (source.result & 1) == 0 ) setResultText(R.id.odd_even_txt,getString(R.string.EVEN));
+        else setResultText(R.id.odd_even_txt,getString(R.string.ODD));
+
+        if(source.result >18 ) setResultText(R.id.size_txt,getString(R.string.BIG) + "19-36");
         else  sizeTxt.setText(getString(R.string.SMALL) + "1-18");
 
         if(source.result <13 ) dozenTxt.setText(getString(R.string.dozen1));

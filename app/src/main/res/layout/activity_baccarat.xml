@@ -277,7 +277,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <tw.com.lixin.wm_casino.tools.txtViews.ResultText
                 android:id="@+id/player_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -289,22 +289,21 @@
                 app:layout_constraintStart_toEndOf="@+id/player_score"
                 app:layout_constraintTop_toTopOf="@+id/player_score" />
 
-            <tw.com.atromoby.widgets.RonTextView
+            <tw.com.lixin.wm_casino.tools.txtViews.ResultText
                 android:id="@+id/banker_score"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="7dp"
                 android:gravity="center"
                 android:text="@string/zero"
                 android:textColor="#fff"
                 android:textSize="12dp"
-                app:border_radius="8dp"
-                app:first_color="#FF1493"
+                android:background="@drawable/pink_ball"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <tw.com.lixin.wm_casino.tools.txtViews.ResultText
                 android:id="@+id/banker_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

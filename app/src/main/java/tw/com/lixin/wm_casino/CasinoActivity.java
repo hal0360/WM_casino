@@ -75,7 +75,15 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     }
 
     public void addTxt(ResultText resultText){
+        resultText.setVisibility(View.INVISIBLE);
         resultTexts.put(resultText.getId(),resultText);
+    }
+
+    public ResultText getTxt(int rid){
+        ResultText resultText = resultTexts.get(rid);
+        if(resultText == null) resultText = findViewById(rid);
+        resultText.setVisibility(View.VISIBLE);
+        return resultText;
     }
 
     public void resetVideo(){
@@ -149,10 +157,6 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         finish();
     }
 
-
-
-    public abstract void betStarted();
-
     public void setResultText(int rid, String text){
         ResultText rTs = resultTexts.get(rid);
         if(rTs != null){
@@ -161,6 +165,12 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
         }
     }
 
+    public void showResultText(int rid){
+        ResultText rTs = resultTexts.get(rid);
+        if(rTs != null){
+            rTs.setVisibility(View.VISIBLE);
+        }
+    }
 
     @Override
     public void statusUpdate() {
@@ -170,12 +180,7 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
             casinoArea.setBetTxt(source.totalBet);
             casinoArea.betting();
             for(int p = 0; p < pokers.size(); p++) pokers.valueAt(p).setVisibility(View.INVISIBLE);
-
-
-            for(int t = 0; t < resultTexts.size(); t++) pokers.valueAt(t).setVisibility(View.INVISIBLE);
-
-
-            betStarted();
+            for(int t = 0; t < resultTexts.size(); t++) resultTexts.valueAt(t).setVisibility(View.INVISIBLE);
             cardArea.setVisibility(View.INVISIBLE);
             for(int s = 0; s < stacks.size(); s++) stacks.valueAt(s).refresh();
         } else if (source.stage == 2) {

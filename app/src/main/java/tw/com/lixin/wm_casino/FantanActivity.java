@@ -2,18 +2,14 @@ package tw.com.lixin.wm_casino;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import tw.com.lixin.wm_casino.popups.LimitPopup;
 import tw.com.lixin.wm_casino.tools.grids.TextGrid;
-
-import static android.view.View.INVISIBLE;
-import static android.view.View.VISIBLE;
+import tw.com.lixin.wm_casino.tools.txtViews.ResultText;
 
 public class FantanActivity extends CasinoActivity {
 
     private TextGrid mainGrid;
-    private TextView resultTxt, oddEvenTxt;
 
 
     @Override
@@ -22,8 +18,7 @@ public class FantanActivity extends CasinoActivity {
         super.onCreate(savedInstanceState);
 
         mainGrid = findViewById(R.id.main_grid);
-        resultTxt = findViewById(R.id.result_txt);
-        oddEvenTxt = findViewById(R.id.odd_even_txt);
+
 
         addPage(R.id.page_1);
         addPage(R.id.page_2);
@@ -31,7 +26,6 @@ public class FantanActivity extends CasinoActivity {
         addPage(R.id.page_4);
         setPageArrow();
         casinoArea.setVideo("live1" + source.table.groupID);
-        betStarted();
     }
 
     @Override
@@ -39,26 +33,19 @@ public class FantanActivity extends CasinoActivity {
 
     }
 
-    @Override
-    public void betStarted() {
-        resultTxt.setVisibility(INVISIBLE);
-        oddEvenTxt.setVisibility(INVISIBLE);
-    }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void resultUpdate() {
+        ResultText resultTxt = getTxt(R.id.result_txt);
+        ResultText oddEvenTxt = getTxt(R.id.odd_even_txt);
         resultTxt.setText(source.result+"");
         if ( (source.result & 1) == 0 ) oddEvenTxt.setText(getString(R.string.EVEN) + getString(R.string.dice));
         else oddEvenTxt.setText(getString(R.string.ODD) + getString(R.string.dice));
-
         if(source.result == 1) resultTxt.setBackgroundResource(R.drawable.grey_ball);
         else if(source.result == 2) resultTxt.setBackgroundResource(R.drawable.darkgreen_ball);
         else if(source.result == 3) resultTxt.setBackgroundResource(R.drawable.golden_ball);
         else if(source.result == 4) resultTxt.setBackgroundResource(R.drawable.brick_red_ball);
-
-        resultTxt.setVisibility(VISIBLE);
-        oddEvenTxt.setVisibility(VISIBLE);
     }
 
     @Override

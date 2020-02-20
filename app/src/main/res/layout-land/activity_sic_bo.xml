@@ -811,7 +811,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/stack_d44s"
                 app:layout_constraintStart_toEndOf="@+id/stack_d44s"
                 app:layout_constraintTop_toTopOf="@+id/stack_d44s"
-                app:max_val="20" >
+                app:max_val="20"
+                tools:ignore="TooManyViews">
                 <View
                     android:layout_width="20dp"
                     android:layout_height="20dp"
@@ -2080,7 +2081,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/casino_area" >
 
-        <ImageView
+        <tw.com.lixin.wm_casino.tools.txtViews.ResultText
             android:id="@+id/dice_r_2"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -2089,9 +2090,9 @@
             app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/dice_1" />
+            android:background="@drawable/dice_1" />
 
-        <ImageView
+        <tw.com.lixin.wm_casino.tools.txtViews.ResultText
             android:id="@+id/dice_r_1"
             android:layout_width="30dp"
             android:layout_height="0dp"
@@ -2099,9 +2100,9 @@
             app:layout_constraintBottom_toBottomOf="@+id/dice_r_2"
             app:layout_constraintEnd_toStartOf="@+id/dice_r_2"
             app:layout_constraintTop_toTopOf="@+id/dice_r_2"
-            app:srcCompat="@drawable/dice_1" />
+            android:background="@drawable/dice_1" />
 
-        <ImageView
+        <tw.com.lixin.wm_casino.tools.txtViews.ResultText
             android:id="@+id/dice_r_3"
             android:layout_width="30dp"
             android:layout_height="0dp"
@@ -2109,9 +2110,9 @@
             app:layout_constraintBottom_toBottomOf="@+id/dice_r_2"
             app:layout_constraintStart_toEndOf="@+id/dice_r_2"
             app:layout_constraintTop_toTopOf="@+id/dice_r_2"
-            app:srcCompat="@drawable/dice_1" />
+            android:background="@drawable/dice_1" />
 
-        <TextView
+        <tw.com.lixin.wm_casino.tools.txtViews.ResultText
             android:id="@+id/sum_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -2123,7 +2124,7 @@
             app:layout_constraintStart_toEndOf="@+id/dice_r_3"
             app:layout_constraintTop_toTopOf="@+id/dice_r_3" />
 
-        <TextView
+        <tw.com.lixin.wm_casino.tools.txtViews.ResultText
             android:id="@+id/size_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -2135,7 +2136,7 @@
             app:layout_constraintStart_toEndOf="@+id/sum_txt"
             app:layout_constraintTop_toTopOf="@+id/sum_txt" />
 
-        <TextView
+        <tw.com.lixin.wm_casino.tools.txtViews.ResultText
             android:id="@+id/oddeven_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

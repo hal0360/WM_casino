@@ -1084,7 +1084,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/casino_area" >
 
-        <TextView
+        <tw.com.lixin.wm_casino.tools.txtViews.ResultText
             android:id="@+id/odd_even_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -1096,7 +1096,7 @@
             app:layout_constraintStart_toEndOf="@+id/result_txt"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <tw.com.lixin.wm_casino.tools.txtViews.ResultText
             android:id="@+id/result_txt"
             android:layout_width="50dp"
             android:layout_height="50dp"

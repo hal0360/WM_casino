@@ -41,13 +41,7 @@ public class SamgongActivity extends CasinoActivity {
 
     }
 
-    @Override
-    public void betStarted() {
-        player1.setVisibility(INVISIBLE);
-        player2.setVisibility(INVISIBLE);
-        player3.setVisibility(INVISIBLE);
-        banker.setVisibility(INVISIBLE);
-    }
+
 
     @SuppressLint("SetTextI18n")
     @Override

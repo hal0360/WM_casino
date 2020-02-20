@@ -3,7 +3,6 @@ package tw.com.lixin.wm_casino;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.RadioButton;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,16 +17,12 @@ import tw.com.lixin.wm_casino.tools.grids.BacMainGrid;
 import tw.com.lixin.wm_casino.tools.grids.CasinoDoubleGrid;
 import tw.com.lixin.wm_casino.tools.grids.CasinoGrid;
 
-import static android.view.View.INVISIBLE;
-import static android.view.View.VISIBLE;
-
 public class BaccaratActivity extends CasinoActivity implements GameBridge, TableBridge {
 
     public static int comission = 0;
     private BacMainGrid mainGrid;
     private CasinoDoubleGrid secondGrid, thirdGrid, fourthGrid;
     private CasinoGrid firstGrid;
-    private TextView playerScore, playerTxt, bankerScore, bankerTxt;
     private RadioButton commBtn;
     private AskButton askBanker, askPlayer;
 
@@ -42,13 +37,8 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         secondGrid = findViewById(R.id.second_grid);
         thirdGrid = findViewById(R.id.third_grid);
         fourthGrid = findViewById(R.id.fourth_grid);
-        playerScore = findViewById(R.id.player_score);
-        playerTxt = findViewById(R.id.player_txt);
-        bankerScore = findViewById(R.id.banker_score);
-        bankerTxt = findViewById(R.id.banker_txt);
         askBanker = findViewById(R.id.ask_bank_btn);
         askPlayer = findViewById(R.id.ask_play_btn);
-        betStarted();
 
         setTextView(R.id.tie_pair_dtO, "1:8" );
         setTextView(R.id.banker_pair_dtO, "1:11" );
@@ -79,7 +69,6 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
             }
         });
 
-        if(source.table.stage != 1) setScores();
         casinoArea.setVideo("live" + source.table.groupID);
     }
 
@@ -111,27 +100,7 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         limitPopup.addLimit(getString(R.string.SMALL), "1:1.5", 100,1 );
     }
 
-    @Override
-    public void betStarted() {
-        playerScore.setVisibility(INVISIBLE);
-        playerTxt.setVisibility(INVISIBLE);
-        bankerScore.setVisibility(INVISIBLE);
-        bankerTxt.setVisibility(INVISIBLE);
-    }
 
-    @SuppressLint("SetTextI18n")
-    private void setScores(){
-
-
-
-
-        playerScore.setText(source.playerScore+"");
-        bankerScore.setText(source.bankerScore+"");
-        playerScore.setVisibility(VISIBLE);
-        playerTxt.setVisibility(VISIBLE);
-        bankerScore.setVisibility(VISIBLE);
-        bankerTxt.setVisibility(VISIBLE);
-    }
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -156,7 +125,11 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         } else if (resres == 4) {
 
         }
-        setScores();
+
+        setResultText(R.id.player_score, source.playerScore+"");
+        setResultText(R.id.banker_score, source.bankerScore+"");
+        showResultText(R.id.player_txt);
+        showResultText(R.id.banker_txt);
     }
 
     private int resDivide(int rawVal){
