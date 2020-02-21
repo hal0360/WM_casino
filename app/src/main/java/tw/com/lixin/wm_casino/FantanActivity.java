@@ -19,7 +19,6 @@ public class FantanActivity extends CasinoActivity {
 
         mainGrid = findViewById(R.id.main_grid);
 
-
         addPage(R.id.page_1);
         addPage(R.id.page_2);
         addPage(R.id.page_3);

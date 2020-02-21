@@ -2,20 +2,14 @@ package tw.com.lixin.wm_casino;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import tw.com.lixin.wm_casino.global.Road;
 import tw.com.lixin.wm_casino.popups.LimitPopup;
 import tw.com.lixin.wm_casino.tools.grids.TextGrid;
 
-import static android.view.View.INVISIBLE;
-import static android.view.View.VISIBLE;
-
 public class RouletteActivity extends CasinoActivity {
 
     private TextGrid firstGrid, secondGrid, thirdGrid, fourthGrid;
-    private TextView resultTxt, oddEvenTxt, sizeTxt, dozenTxt, columnTxt;
-
 
     @SuppressLint("DefaultLocale")
     @Override
@@ -27,11 +21,6 @@ public class RouletteActivity extends CasinoActivity {
         secondGrid = findViewById(R.id.second_grid);
         thirdGrid = findViewById(R.id.third_grid);
         fourthGrid = findViewById(R.id.fourth_grid);
-        resultTxt = findViewById(R.id.result_txt);
-        oddEvenTxt = findViewById(R.id.odd_even_txt);
-        sizeTxt = findViewById(R.id.size_txt);
-        dozenTxt = findViewById(R.id.dozen_txt);
-        columnTxt = findViewById(R.id.column_txt);
 
         /*
         setStackAreaMax(R.id.stack1_1,8190, 50);
@@ -71,28 +60,17 @@ public class RouletteActivity extends CasinoActivity {
     @SuppressLint("SetTextI18n")
     @Override
     public void resultUpdate() {
-
-
         setResultText(R.id.result_txt,source.result+"");
         if ( (source.result & 1) == 0 ) setResultText(R.id.odd_even_txt,getString(R.string.EVEN));
         else setResultText(R.id.odd_even_txt,getString(R.string.ODD));
-
         if(source.result >18 ) setResultText(R.id.size_txt,getString(R.string.BIG) + "19-36");
-        else  sizeTxt.setText(getString(R.string.SMALL) + "1-18");
-
-        if(source.result <13 ) dozenTxt.setText(getString(R.string.dozen1));
-        else if(source.result >24) dozenTxt.setText(getString(R.string.dozen3));
-        else dozenTxt.setText(getString(R.string.dozen2));
-
-        if(source.result % 3 == 0) columnTxt.setText(getString(R.string.column1));
-        else if(source.result % 3 == 2) columnTxt.setText(getString(R.string.column2));
-        else columnTxt.setText(getString(R.string.column3));
-
-        resultTxt.setVisibility(VISIBLE);
-        oddEvenTxt.setVisibility(VISIBLE);
-        sizeTxt.setVisibility(VISIBLE);
-        columnTxt.setVisibility(VISIBLE);
-        dozenTxt.setVisibility(VISIBLE);
+        else setResultText(R.id.size_txt,getString(R.string.SMALL) + "1-18");
+        if(source.result <13 ) setResultText(R.id.dozen_txt,getString(R.string.dozen1));
+        else if(source.result >24) setResultText(R.id.size_txt,getString(R.string.dozen3));
+        else setResultText(R.id.size_txt,getString(R.string.dozen2));
+        if(source.result % 3 == 0) setResultText(R.id.column_txt,getString(R.string.column1));
+        else if(source.result % 3 == 2) setResultText(R.id.column_txt,getString(R.string.column2));
+        else setResultText(R.id.column_txt,getString(R.string.column3));
     }
 
     @Override

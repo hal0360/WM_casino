@@ -31,6 +31,7 @@ public class SicBoActivity extends CasinoActivity {
         oddEvenTxt = findViewById(R.id.oddeven_txt);
         sizeTxt = findViewById(R.id.size_txt);
         diceR1 = findViewById(R.id.dice_r_1);
+
         diceR2 = findViewById(R.id.dice_r_2);
         diceR3 = findViewById(R.id.dice_r_3);
         mainGrid = findViewById(R.id.main_grid);
@@ -67,11 +68,14 @@ public class SicBoActivity extends CasinoActivity {
         DiceView.swiRoad(diceR2,digiChar[1]);
         DiceView.swiRoad(diceR3,digiChar[2]);
         int sumTol = (digiChar[0] - '0') + (digiChar[1] - '0') + (digiChar[2] - '0');
-        if(sumTol % 2 == 0) oddEvenTxt.setText(R.string.EVEN);
-        else oddEvenTxt.setText(R.string.ODD);
-        if(sumTol < 11) sizeTxt.setText(R.string.SMALL);
-        else sizeTxt.setText(R.string.BIG);
-        sumTxt.setText(sumTol+"");
+
+        if(sumTol % 2 == 0) setResultText(R.id.oddeven_txt, getString(R.string.EVEN));
+        else setResultText(R.id.oddeven_txt, getString(R.string.ODD));
+
+        if(sumTol < 11) setResultText(R.id.size_txt, getString(R.string.SMALL));
+        else setResultText(R.id.size_txt, getString(R.string.BIG));
+
+        setResultText(R.id.sum_txt, sumTol+"");
         sumTxt.setVisibility(VISIBLE);
         sizeTxt.setVisibility(VISIBLE);
         diceR1.setVisibility(VISIBLE);
