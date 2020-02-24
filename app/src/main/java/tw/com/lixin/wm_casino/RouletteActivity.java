@@ -53,7 +53,13 @@ public class RouletteActivity extends CasinoActivity {
 
     @Override
     public void limitShows(LimitPopup limitPopup) {
-
+        limitPopup.addLimit(getString(R.string.banker), "1:0.95", source.logData.maxBet01,1 );
+        limitPopup.addLimit(getString(R.string.player), "1:1", source.logData.maxBet02,1 );
+        limitPopup.addLimit(getString(R.string.tie), "1:8", source.logData.maxBet03,1 );
+        limitPopup.addLimit(getString(R.string.banker_pair), "1:11", source.logData.maxBet04,1 );
+        limitPopup.addLimit(getString(R.string.player_pair), "1:11", source.logData.maxBet04,1 );
+        limitPopup.addLimit(getString(R.string.BIG), "1:0.5", 100,1 );
+        limitPopup.addLimit(getString(R.string.SMALL), "1:1.5", 100,1 );
     }
 
 

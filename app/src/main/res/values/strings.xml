@@ -139,4 +139,10 @@
     <string name="kwok">Kwok</string>
     <string name="ssh">Ssh</string>
     <string name="dice">Dice</string>
+
+    <string name="red_black_even">Red,Black,Odd,Even,Big,Small</string>
+    <string name="column_dozen">Column/Dozen</string>
+    <string name="line">Line</string>
+    <string name="triangle">Triangle/Four Numbers</string>
+    <string name="street">Street/Three Numbers</string>
 </resources>

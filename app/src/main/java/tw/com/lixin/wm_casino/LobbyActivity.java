@@ -1,7 +1,13 @@
 package tw.com.lixin.wm_casino;
 
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.SparseArray;
+
+import java.util.Locale;
 
 import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
@@ -37,6 +43,21 @@ public class LobbyActivity extends RootActivity implements LobbyBridge {
             gameButtons.get(key).clicked(v-> enterGame(key));
         }
     }
+
+
+    private void setAppLocale(String localeCode){
+        Resources resources = getResources();
+        DisplayMetrics dm = resources.getDisplayMetrics();
+        Configuration config = resources.getConfiguration();
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.JELLY_BEAN_MR1){
+            config.setLocale(new Locale(localeCode.toLowerCase()));
+        } else {
+            config.locale = new Locale(localeCode.toLowerCase());
+        }
+        resources.updateConfiguration(config, dm);
+    }
+
+
 
     public void enterGame(int gameid){
         lobbySource.curGameID = gameid;

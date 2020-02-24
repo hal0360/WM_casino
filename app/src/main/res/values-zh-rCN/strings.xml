@@ -139,4 +139,11 @@
     <string name="kwok">角</string>
     <string name="ssh">三门</string>
     <string name="dice">骰</string>
+
+    <string name="red_black_even">双面</string>
+    <string name="column_dozen">三面</string>
+    <string name="line">线注</string>
+    <string name="triangle">角注/四个号码</string>
+    <string name="street">街注/三数</string>
+
 </resources>
