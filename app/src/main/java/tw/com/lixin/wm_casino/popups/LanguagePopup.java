@@ -8,7 +8,9 @@ import java.util.Locale;
 import tw.com.atromoby.widgets.FragDialog;
 import tw.com.atromoby.widgets.PopupFragment;
 import tw.com.atromoby.widgets.RootActivity;
+import tw.com.lixin.wm_casino.App;
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.tools.LocaleUtils;
 import tw.com.lixin.wm_casino.tools.buttons.ClickConstraint;
 
 public class LanguagePopup extends PopupFragment {
@@ -23,11 +25,11 @@ public class LanguagePopup extends PopupFragment {
         ClickConstraint chineseSim = dialog.findViewById(R.id.chinese_sim_btn);
         ClickConstraint chineseTra = dialog.findViewById(R.id.chinese_tra_btn);
 
-        if(RootActivity.locale == Locale.US){
+        if(LocaleUtils.sLocale == Locale.US){
             setSelected(english);
-        }else if(RootActivity.locale == Locale.CHINA){
+        }else if(LocaleUtils.sLocale == Locale.CHINA){
             setSelected(chineseSim);
-        }else if(RootActivity.locale == Locale.TAIWAN){
+        }else if(LocaleUtils.sLocale == Locale.TAIWAN){
             setSelected(chineseTra);
         }
 
@@ -49,7 +51,8 @@ public class LanguagePopup extends PopupFragment {
     private void resetSelected(Locale loc){
         RootActivity activity = (RootActivity) getContext();
         assert activity != null;
-        activity.switchLocale(loc);
+        App.switchLanguage(loc);
+        activity.recreate();
         dismiss();
     }
 }

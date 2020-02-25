@@ -2,6 +2,7 @@ package tw.com.lixin.wm_casino;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.util.DisplayMetrics;
 import android.util.SparseArray;
@@ -9,6 +10,7 @@ import android.util.SparseIntArray;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import tw.com.atromoby.utils.Kit;
 import tw.com.atromoby.utils.RegisterApplication;
@@ -24,6 +26,7 @@ import tw.com.lixin.wm_casino.collections.SeDieCollection;
 import tw.com.lixin.wm_casino.collections.SicBoCollection;
 import tw.com.lixin.wm_casino.interfaces.CmdCollection;
 import tw.com.lixin.wm_casino.interfaces.CmdTable;
+import tw.com.lixin.wm_casino.tools.LocaleUtils;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 import tw.com.lixin.wm_casino.websocketSource.MessageSource;
@@ -42,9 +45,23 @@ public class App extends RegisterApplication {
     public static SparseIntArray emos;
     public static SparseIntArray examples;
 
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        LocaleUtils.updateConfig(this, newConfig);
+    }
+
+    public static void switchLanguage(Locale locale){
+        LocaleUtils.setLocale(locale);
+        LocaleUtils.updateConfig(app, app.getBaseContext().getResources().getConfiguration());
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+
+        app = this;
 
         examples = new SparseIntArray();
         examples.put(1,R.string.mss_1);
@@ -109,7 +126,6 @@ public class App extends RegisterApplication {
         appNames.put(110,R.string.fish_prawn_crab);
         appNames.put(111,R.string.golden_flower);
 
-        app = this;
         sam = new SparseArray<>();
         sam.put(1,"0");
         sam.put(2,"p0");

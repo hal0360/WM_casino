@@ -17,6 +17,7 @@ import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
 import tw.com.lixin.wm_casino.popups.LanguagePopup;
 import tw.com.lixin.wm_casino.popups.LiveVideoPopup;
 import tw.com.lixin.wm_casino.popups.LoadDialog;
+import tw.com.lixin.wm_casino.tools.LocaleUtils;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
 public class LoginActivity extends RootActivity implements LobbyBridge {
@@ -91,7 +92,7 @@ public class LoginActivity extends RootActivity implements LobbyBridge {
     public void onResume() {
         super.onResume();
         source.bind(this);
-        Objects.requireNonNull(LangSwitch.get(getLocale())).exec(findViewById(R.id.lang_btn));
+        Objects.requireNonNull(LangSwitch.get(LocaleUtils.sLocale)).exec(findViewById(R.id.lang_btn));
     }
 
     @Override
