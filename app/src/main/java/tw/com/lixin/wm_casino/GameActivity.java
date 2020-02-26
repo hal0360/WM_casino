@@ -8,12 +8,15 @@ import java.util.List;
 
 import tw.com.atromoby.widgets.Collection;
 import tw.com.atromoby.widgets.CollectionsView;
-import tw.com.atromoby.widgets.RootActivity;
+import tw.com.lixin.wm_casino.collections.GameCollection;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.tools.ProfileBar;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
-public class GameActivity extends RootActivity {
+public class GameActivity extends WMActivity {
+
+    private List<GameCollection> collections;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +25,7 @@ public class GameActivity extends RootActivity {
 
         LobbySource source = LobbySource.getInstance();
         CollectionsView tableList = findViewById(R.id.table_list);
-        List<Collection> collections = new ArrayList<>();
+        collections = new ArrayList<>();
         ProfileBar bar = findViewById(R.id.pro_bar);
 
         bar.setTitle(getString(App.appNames.get(source.curGameID)));
@@ -33,6 +36,15 @@ public class GameActivity extends RootActivity {
         tableList.add(collections);
     }
 
+
+    public void toGame(Class<? extends CasinoActivity> casAct){
+        for (GameCollection collection : collections){
+            collection.unbindTable();
+        }
+        toActivity(casAct);
+    }
+
+
     @Override
     public void onResume() {
         super.onResume();
@@ -42,6 +54,11 @@ public class GameActivity extends RootActivity {
     public void onDestroy() {
         super.onDestroy();
       //  tableList.clean();
+    }
+
+    @Override
+    public void onBackPressed() {
+        toActivity(LobbyActivity.class);
     }
 
 }

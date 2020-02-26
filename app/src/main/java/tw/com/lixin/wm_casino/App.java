@@ -62,7 +62,7 @@ public class App extends RegisterApplication {
         super.onCreate();
 
         app = this;
-
+        LocaleUtils.setLocale(Locale.US);
         examples = new SparseIntArray();
         examples.put(1,R.string.mss_1);
         examples.put(2,R.string.mss_2);

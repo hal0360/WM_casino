@@ -146,10 +146,7 @@
         android:background="@drawable/lobby_banner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pro_bar">
-
-
-    </FrameLayout>
+        app:layout_constraintTop_toBottomOf="@+id/pro_bar"/>
 
     <tw.com.lixin.wm_casino.tools.NewsBroadcast
         android:id="@+id/broadcast"

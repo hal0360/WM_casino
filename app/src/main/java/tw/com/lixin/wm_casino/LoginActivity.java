@@ -9,7 +9,6 @@ import java.util.Objects;
 
 import tw.com.atromoby.utils.Json;
 import tw.com.atromoby.widgets.CustomInput;
-import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.dataModels.Client35;
 import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.CmdImg;
@@ -20,7 +19,7 @@ import tw.com.lixin.wm_casino.popups.LoadDialog;
 import tw.com.lixin.wm_casino.tools.LocaleUtils;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
-public class LoginActivity extends RootActivity implements LobbyBridge {
+public class LoginActivity extends WMActivity implements LobbyBridge {
 
     private Map<Locale, CmdImg> LangSwitch = new HashMap<>();
     private LobbySource source;

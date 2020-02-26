@@ -10,7 +10,6 @@ import java.util.List;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import tw.com.atromoby.utils.Json;
-import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.dataModels.Client22;
 import tw.com.lixin.wm_casino.global.Poker;
 import tw.com.lixin.wm_casino.global.User;
@@ -26,7 +25,7 @@ import tw.com.lixin.wm_casino.tools.buttons.ArrowButton;
 import tw.com.lixin.wm_casino.tools.txtViews.ResultText;
 import tw.com.lixin.wm_casino.websocketSource.GameSource;
 
-public abstract class CasinoActivity extends RootActivity implements TableBridge, GameBridge {
+public abstract class CasinoActivity extends WMActivity implements TableBridge, GameBridge {
 
     protected CasinoArea casinoArea;
     protected CardArea cardArea;
@@ -154,7 +153,7 @@ public abstract class CasinoActivity extends RootActivity implements TableBridge
     @Override
     public void onBackPressed() {
         source.tableLogout();
-        finish();
+        toActivity(GameActivity.class);
     }
 
     public void setResultText(int rid, String text){

@@ -12,6 +12,7 @@ import tw.com.atromoby.widgets.CollectionHolder;
 import tw.com.atromoby.widgets.FragDialog;
 import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.App;
+import tw.com.lixin.wm_casino.GameActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.interfaces.TableBridge;
 import tw.com.lixin.wm_casino.models.Table;
@@ -69,6 +70,9 @@ public abstract class GameCollection extends Collection implements TableBridge {
             if(snall){
                 source.tableLogin(table,data -> activity.toActivity(toGameActicity()), activity::alert);
             }else {
+
+                GameActivity gameActivity = (GameActivity) activity;
+
                 source.tableLogin(table,data -> activity.pushActivity(toGameActicity()), activity::alert);
             }
         });
@@ -78,6 +82,10 @@ public abstract class GameCollection extends Collection implements TableBridge {
         table.bind(this);
         started(holder);
         gridUpdate();
+    }
+
+    public void unbindTable(){
+        table.unBind();
     }
 
     protected abstract void started(CollectionHolder holder);

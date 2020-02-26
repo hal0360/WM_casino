@@ -70,27 +70,7 @@ public class LobbySource extends CasinoSource{
                 }
                 return;
             case 21:
-                if(table == null){
-                    /*
-                    if(data.gameStage != 4 && !data.dealerImage.equals("") && !data.dealerName.equals("")){
-                      //  CmdTable cmdTable = tableProvider.get(data.gameID);
-                      //  if(cmdTable == null) return;
-                        Group group = new Group();
-                        group.dealerID = data.dealerID;
-                        group.gameNo = data.gameNo;
-                        group.dealerName = data.dealerName;
-                        group.dealerImage = data.dealerImage;
-                        group.gameNoRound = data.gameNoRound;
-                        group.gameStage = 5;
-                        group.groupID = data.groupID;
-                        group.groupType = data.groupType;
-                        group.historyArr = new ArrayList<>();
-                        if(tableGroup != null) tableGroup.put(data.groupID, new Table(group, data.gameID));
-                    }
-                     */
-                }else {
-                    table.receive21(data);
-                }
+                if(table != null) table.receive21(data);
                 return;
             case 26:
                 if(table != null) table.receive26(tableData.data);

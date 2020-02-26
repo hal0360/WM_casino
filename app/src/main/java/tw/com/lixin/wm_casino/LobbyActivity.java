@@ -1,27 +1,18 @@
 package tw.com.lixin.wm_casino;
 
-import android.content.Context;
 import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.SparseArray;
 
-import java.util.Locale;
-
-import androidx.appcompat.app.AppCompatActivity;
-import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
 import tw.com.lixin.wm_casino.tools.LocaleUtils;
 import tw.com.lixin.wm_casino.tools.buttons.GameButton;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
 
-public class LobbyActivity extends AppCompatActivity implements LobbyBridge {
+public class LobbyActivity extends WMActivity implements LobbyBridge {
 
     private LobbySource lobbySource;
     private SparseArray<GameButton> gameButtons;
-
 
     @Override
     public void applyOverrideConfiguration(Configuration overrideConfiguration) {
@@ -55,16 +46,11 @@ public class LobbyActivity extends AppCompatActivity implements LobbyBridge {
             gameButtons.get(key).setPeopleNumber(lobbySource.peopleOnline.get(key));
             gameButtons.get(key).clicked(v-> enterGame(key));
         }
-
-
     }
-
-
-
 
     public void enterGame(int gameid){
         lobbySource.curGameID = gameid;
-      //  pushActivity(GameActivity.class);
+        toActivity(GameActivity.class);
     }
 
     @Override

@@ -100,8 +100,6 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         limitPopup.addLimit(getString(R.string.SMALL), "1:1.5", 100,1 );
     }
 
-
-
     @SuppressLint("SetTextI18n")
     @Override
     public void gridUpdate() {
