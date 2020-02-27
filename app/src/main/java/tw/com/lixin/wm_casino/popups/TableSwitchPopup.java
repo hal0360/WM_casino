@@ -6,12 +6,12 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import tw.com.atromoby.widgets.Collection;
 import tw.com.atromoby.widgets.CollectionsView;
 import tw.com.atromoby.widgets.FragDialog;
 import tw.com.atromoby.widgets.PopupFragment;
 import tw.com.lixin.wm_casino.App;
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.collections.GameCollection;
 import tw.com.lixin.wm_casino.models.Table;
 import tw.com.lixin.wm_casino.tools.TableSwitchSelect;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
@@ -21,6 +21,7 @@ public class TableSwitchPopup extends PopupFragment {
     private SparseArray<TableSwitchSelect> tableSelects = new SparseArray<>();
     private TableSwitchSelect curSelect;
     private CollectionsView tableList;
+    private  List<GameCollection> collections;
 
     @Override
     public void dialogCreated(FragDialog dialog) {
@@ -44,7 +45,7 @@ public class TableSwitchPopup extends PopupFragment {
         LobbySource source = LobbySource.getInstance();
         curSelect = tableSelects.get(source.curGameID);
         SparseArray<Table> tables = source.allTables.get(source.curGameID);
-        List<Collection> collections = new ArrayList<>();
+        collections = new ArrayList<>();
         for(int i = 0; i < tables.size(); i++) {
             collections.add(App.tableProvider.get(source.curGameID).exec(tables.valueAt(i),dialog));
         }
@@ -53,7 +54,9 @@ public class TableSwitchPopup extends PopupFragment {
 
     @Override
     public void dialogClosed(FragDialog dialog) {
-
+        for (GameCollection collection : collections){
+            collection.unbindTable();
+        }
     }
 
     private void switchChannel(FragDialog dialog, int rid, int gameId){
@@ -69,8 +72,10 @@ public class TableSwitchPopup extends PopupFragment {
 
     private void getGame(int gameId, FragDialog dialog){
         LobbySource source = LobbySource.getInstance();
-        List<Collection> collections = new ArrayList<>();
-
+        for (GameCollection collection : collections){
+            collection.unbindTable();
+        }
+        collections = new ArrayList<>();
         SparseArray<Table> tables = source.allTables.get(gameId);
         for(int i = 0; i < tables.size(); i++) {
             collections.add(App.tableProvider.get(gameId).exec(tables.valueAt(i),dialog));

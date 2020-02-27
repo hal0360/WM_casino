@@ -24,7 +24,7 @@ public abstract class GameCollection extends Collection implements TableBridge {
     private TextView countDown, statusTxt, tableName, dealTxt;
     private ConstraintLayout block;
     private ImageView cardImg;
-    RootActivity activity;
+    private RootActivity activity;
     protected Table table;
      TextView count1, count2, count3;
      TextGrid textGrid;
@@ -70,10 +70,9 @@ public abstract class GameCollection extends Collection implements TableBridge {
             if(snall){
                 source.tableLogin(table,data -> activity.toActivity(toGameActicity()), activity::alert);
             }else {
-
                 GameActivity gameActivity = (GameActivity) activity;
-
-                source.tableLogin(table,data -> activity.pushActivity(toGameActicity()), activity::alert);
+                gameActivity.freeCollection();
+                source.tableLogin(table,data -> activity.toActivity(toGameActicity()), activity::alert);
             }
         });
         tableName = holder.findViewById(R.id.table_name_txt);
@@ -96,7 +95,7 @@ public abstract class GameCollection extends Collection implements TableBridge {
         return activity.getString(rid);
     }
 
-    void setTableName(String name){
+    private void setTableName(String name){
         tableName.setText(name);
     }
 

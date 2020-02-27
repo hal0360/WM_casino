@@ -6,7 +6,6 @@ import android.util.SparseArray;
 import java.util.ArrayList;
 import java.util.List;
 
-import tw.com.atromoby.widgets.Collection;
 import tw.com.atromoby.widgets.CollectionsView;
 import tw.com.lixin.wm_casino.collections.GameCollection;
 import tw.com.lixin.wm_casino.models.Table;
@@ -36,24 +35,10 @@ public class GameActivity extends WMActivity {
         tableList.add(collections);
     }
 
-
-    public void toGame(Class<? extends CasinoActivity> casAct){
+    public void freeCollection(){
         for (GameCollection collection : collections){
             collection.unbindTable();
         }
-        toActivity(casAct);
-    }
-
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-      //  tableList.clean();
     }
 
     @Override
