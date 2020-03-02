@@ -2,8 +2,12 @@ package tw.com.lixin.wm_casino.models;
 
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Handler;
+import android.util.Log;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -72,13 +76,13 @@ public class Table {
             receive38(group.timeMillisecond);
         }
 
-        /*
+
         try {
             InputStream in = new java.net.URL(group.dealerImage).openStream();
             dealerImage = BitmapFactory.decodeStream(in);
         }catch(IOException e) {
             Log.e(dealerName + " BitError", e.getMessage());
-        }*/
+        }
     }
 
     public void bind(TableBridge bridge){

@@ -7,9 +7,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
-import tw.com.atromoby.utils.Json;
 import tw.com.atromoby.widgets.CustomInput;
-import tw.com.lixin.wm_casino.dataModels.Client35;
 import tw.com.lixin.wm_casino.global.User;
 import tw.com.lixin.wm_casino.interfaces.CmdImg;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
@@ -23,14 +21,16 @@ public class LoginActivity extends WMActivity implements LobbyBridge {
 
     private Map<Locale, CmdImg> LangSwitch = new HashMap<>();
     private LobbySource source;
-    private LanguagePopup popup = new LanguagePopup();
-    private LoadDialog loading = new LoadDialog();
+    private LanguagePopup popup;
+    private LoadDialog loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        popup = new LanguagePopup();
+        loading = new LoadDialog();
         source = LobbySource.getInstance();
         LangSwitch.put(Locale.US, f-> f.setImageResource(R.drawable.lang_us));
         LangSwitch.put(Locale.TAIWAN, f-> f.setImageResource(R.drawable.lang_tw));
@@ -50,7 +50,8 @@ public class LoginActivity extends WMActivity implements LobbyBridge {
                 User.userName(data.userName);
                 User.memberID(data.memberID);
                 User.sid(data.sid);
-                source.send(Json.to(new Client35()));
+                loading.dismiss();
+                toActivity(LobbyActivity.class);
             }, fail->{
                 loading.dismiss();
                 alert(fail);
@@ -65,7 +66,8 @@ public class LoginActivity extends WMActivity implements LobbyBridge {
                 User.userName(data.userName);
                 User.memberID(data.memberID);
                 User.sid(data.sid);
-                source.send(Json.to(new Client35()));
+                loading.dismiss();
+                toActivity(LobbyActivity.class);
             }, fail->{
                 loading.dismiss();
                 alert(getString(R.string.pass_incorr));
@@ -96,9 +98,6 @@ public class LoginActivity extends WMActivity implements LobbyBridge {
 
     @Override
     public void wholeDataUpdated() {
-        App.music_on();
-        loading.dismiss();
-        toActivity(LobbyActivity.class);
     }
 
     @Override

@@ -4,7 +4,10 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.SparseArray;
 
+import tw.com.atromoby.utils.Json;
+import tw.com.lixin.wm_casino.dataModels.Client35;
 import tw.com.lixin.wm_casino.interfaces.LobbyBridge;
+import tw.com.lixin.wm_casino.popups.LoadDialog;
 import tw.com.lixin.wm_casino.tools.LocaleUtils;
 import tw.com.lixin.wm_casino.tools.buttons.GameButton;
 import tw.com.lixin.wm_casino.websocketSource.LobbySource;
@@ -13,6 +16,9 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
 
     private LobbySource lobbySource;
     private SparseArray<GameButton> gameButtons;
+    private LoadDialog loading;
+
+    public static boolean langChanged = false;
 
     @Override
     public void applyOverrideConfiguration(Configuration overrideConfiguration) {
@@ -29,6 +35,15 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
         setContentView(R.layout.activity_lobby);
 
         lobbySource = LobbySource.getInstance();
+        loading = new LoadDialog();
+        App.music_on();
+
+        if(!langChanged) {
+            showPopup(loading);
+            lobbySource.send(Json.to(new Client35()));
+        }
+        langChanged = false;
+
         gameButtons = new SparseArray<>();
         gameButtons.put(101,findViewById(R.id.baccarat_game));
         gameButtons.put(102,findViewById(R.id.dragon_tiger_game));
@@ -65,8 +80,11 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
         lobbySource.unbind();
     }
 
+
     @Override
-    public void wholeDataUpdated() { }
+    public void wholeDataUpdated() {
+        loading.dismiss();
+    }
 
     @Override
     public void peopleOnlineUpdate(int gameID, int number) {

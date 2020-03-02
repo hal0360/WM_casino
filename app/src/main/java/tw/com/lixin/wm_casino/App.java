@@ -2,7 +2,6 @@ package tw.com.lixin.wm_casino;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.util.DisplayMetrics;
 import android.util.SparseArray;
@@ -46,15 +45,9 @@ public class App extends RegisterApplication {
     public static SparseIntArray examples;
 
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        LocaleUtils.updateConfig(this, newConfig);
-    }
 
     public static void switchLanguage(Locale locale){
         LocaleUtils.setLocale(locale);
-        LocaleUtils.updateConfig(app, app.getBaseContext().getResources().getConfiguration());
     }
 
     @Override

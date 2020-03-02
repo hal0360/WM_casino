@@ -66,7 +66,7 @@ public class LobbySource extends CasinoSource{
             case 20:
                 if(table != null){
                     table.receive20(data.gameStage);
-                    if(data.gameStage == 4) tableGroup.remove(data.groupID);
+                   // if(data.gameStage == 4) tableGroup.remove(data.groupID);
                 }
                 return;
             case 21:

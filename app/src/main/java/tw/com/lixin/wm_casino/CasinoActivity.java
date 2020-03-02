@@ -128,7 +128,7 @@ public abstract class CasinoActivity extends WMActivity implements TableBridge, 
     @Override
     public void serverFailed() {
         alert("Game disconnected");
-        finish();
+        onBackPressed();
     }
 
     @Override
@@ -139,6 +139,11 @@ public abstract class CasinoActivity extends WMActivity implements TableBridge, 
         source.table.bind(this);
         source.bind(this);
         casinoArea.bindMss();
+
+        if (source.stage == 4) {
+            alert("Table ended");
+            onBackPressed();
+        }
     }
 
     @Override
@@ -153,7 +158,7 @@ public abstract class CasinoActivity extends WMActivity implements TableBridge, 
     @Override
     public void onBackPressed() {
         source.tableLogout();
-        toActivity(GameActivity.class);
+        toActivity(LobbyActivity.class);
     }
 
     public void setResultText(int rid, String text){
@@ -190,7 +195,8 @@ public abstract class CasinoActivity extends WMActivity implements TableBridge, 
             casinoArea.rebetBtn.disable(true);
             casinoArea.confirmBtn.disable(true);
         } else if (source.stage == 4) {
-
+            alert("Table ended");
+            onBackPressed();
         }
     }
     @Override

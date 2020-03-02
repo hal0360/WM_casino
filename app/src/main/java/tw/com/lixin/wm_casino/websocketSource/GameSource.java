@@ -63,9 +63,7 @@ public class GameSource extends CasinoSource{
         binded(false);
     }
 
-    public void bindPeople(PeoplePopup popup){
-        this.popup = popup;
-    }
+    public void bindPeople(PeoplePopup popup){ this.popup = popup; }
 
     public void unbindPeople(){
         this.popup = null;
@@ -93,6 +91,7 @@ public class GameSource extends CasinoSource{
         popup = null;
         unbind();
         unbindPeople();
+        table.unBind();
         close();
     }
 

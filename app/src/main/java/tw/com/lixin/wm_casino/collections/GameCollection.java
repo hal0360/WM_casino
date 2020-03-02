@@ -116,7 +116,7 @@ public abstract class GameCollection extends Collection implements TableBridge {
             if(table.stage == 2){
                 statusTxt.setText(activity.getString(R.string.dealing));
                 cardImg.setImageResource(R.drawable.card_dealing);
-            }else{
+            }else if(table.stage == 0){
                 statusTxt.setText(activity.getString(R.string.waiting));
                 cardImg.setImageResource(R.drawable.card_waiting);
             }
@@ -124,6 +124,7 @@ public abstract class GameCollection extends Collection implements TableBridge {
             dealTxt.setVisibility(View.VISIBLE);
             block.setVisibility(View.VISIBLE);
         }
+
     }
 
     @SuppressLint("SetTextI18n")

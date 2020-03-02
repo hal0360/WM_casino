@@ -9,6 +9,7 @@ import tw.com.atromoby.widgets.FragDialog;
 import tw.com.atromoby.widgets.PopupFragment;
 import tw.com.atromoby.widgets.RootActivity;
 import tw.com.lixin.wm_casino.App;
+import tw.com.lixin.wm_casino.LobbyActivity;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.tools.LocaleUtils;
 import tw.com.lixin.wm_casino.tools.buttons.ClickConstraint;
@@ -52,6 +53,7 @@ public class LanguagePopup extends PopupFragment {
         RootActivity activity = (RootActivity) getContext();
         assert activity != null;
         App.switchLanguage(loc);
+        LobbyActivity.langChanged = true;
         activity.recreate();
         dismiss();
     }
