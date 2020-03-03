@@ -233,11 +233,14 @@ public abstract class CasinoActivity extends WMActivity implements TableBridge, 
             }
             casinoArea.setBetTxt(sumBet);
             source.totalBet = sumBet;
+            float curBal = User.balance();
+            User.balance(curBal-sumBet);
+            casinoArea.updateBalance();
             casinoArea.cancelBtn.disable(true);
             casinoArea.rebetBtn.disable(false);
             casinoArea.confirmBtn.disable(true);
         }else{
-            casinoArea.setBetTxt(0);
+            //casinoArea.setBetTxt(0);
             alert("bet fail!");
         }
     }

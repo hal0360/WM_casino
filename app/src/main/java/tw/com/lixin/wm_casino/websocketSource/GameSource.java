@@ -165,11 +165,9 @@ public class GameSource extends CasinoSource{
                     handle(() -> bridge.resultUpdate());
                 }
                 break;
-            case 23:
-                if(gameData.data.groupID == table.groupID && gameData.data.memberID == User.memberID()){
-                    User.balance(gameData.data.balance);
-                    handle(() -> bridge.balanceUpdate());
-                }
+            case 30:
+                User.balance(gameData.data.balance);
+                handle(() -> bridge.balanceUpdate());
                 break;
             case 31:
                 if(gameData.data.groupID == table.groupID && gameData.data.memberID == User.memberID()){
