@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import tw.com.lixin.wm_casino.R;
+import tw.com.lixin.wm_casino.tools.txtViews.ResultText;
 
 public class DiceView extends LinearLayout {
 
@@ -57,6 +58,29 @@ public class DiceView extends LinearLayout {
                 break;
             case '6' :
                 dice.setImageResource(R.drawable.dice_6);
+                break;
+        }
+    }
+
+    public static void swiRoad(ResultText dice, char digi){
+        switch(digi) {
+            case '1' :
+                dice.setBackgroundResource(R.drawable.dice_1);
+                break;
+            case '2':
+                dice.setBackgroundResource(R.drawable.dice_2);
+                break;
+            case '3' :
+                dice.setBackgroundResource(R.drawable.dice_3);
+                break;
+            case '4' :
+                dice.setBackgroundResource(R.drawable.dice_4);
+                break;
+            case '5' :
+                dice.setBackgroundResource(R.drawable.dice_5);
+                break;
+            case '6' :
+                dice.setBackgroundResource(R.drawable.dice_6);
                 break;
         }
     }

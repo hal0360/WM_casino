@@ -26,6 +26,12 @@
 
     <declare-styleable name="NiuGird">
         <attr name="grid_x" />
+        <attr name="scale" format="enum">
+            <enum name="table" value="1"/>
+            <enum name="portrait" value="2"/>
+            <enum name="landscape" value="3"/>
+
+        </attr>
     </declare-styleable>
 
     <declare-styleable name="DiceGrid">

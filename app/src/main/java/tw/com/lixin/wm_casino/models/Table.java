@@ -76,13 +76,15 @@ public class Table {
             receive38(group.timeMillisecond);
         }
 
-
+/*
         try {
             InputStream in = new java.net.URL(group.dealerImage).openStream();
             dealerImage = BitmapFactory.decodeStream(in);
         }catch(IOException e) {
             Log.e(dealerName + " BitError", e.getMessage());
         }
+
+ */
     }
 
     public void bind(TableBridge bridge){

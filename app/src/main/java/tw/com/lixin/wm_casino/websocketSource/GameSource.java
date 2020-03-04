@@ -91,7 +91,7 @@ public class GameSource extends CasinoSource{
         popup = null;
         unbind();
         unbindPeople();
-        table.unBind();
+        if(table!= null) table.unBind();
         close();
     }
 

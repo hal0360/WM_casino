@@ -41,9 +41,9 @@ public class NiuCollection extends GameCollection {
     @Override
     public void gridUpdate() {
         niuGird.drawRoad(table.mainArr);
-        count1.setText(getString(R.string.player1) + ":" + table.data.player1Count);
-        count2.setText(getString(R.string.player2) + ":" + table.data.player2Count);
-        count3.setText(getString(R.string.player3) + ":" + table.data.player3Count);
+        count1.setText(getString(R.string.player1_abb) + ":" + table.data.player1Count);
+        count2.setText(getString(R.string.player2_abb) + ":" + table.data.player2Count);
+        count3.setText(getString(R.string.player3_abb) + ":" + table.data.player3Count);
     }
 }
 

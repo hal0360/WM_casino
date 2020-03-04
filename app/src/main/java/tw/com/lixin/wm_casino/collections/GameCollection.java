@@ -26,7 +26,7 @@ public abstract class GameCollection extends Collection implements TableBridge {
     private ImageView cardImg;
     private RootActivity activity;
     protected Table table;
-     TextView count1, count2, count3;
+     TextView count1, count2, count3, count4;
      TextGrid textGrid;
      private boolean snall = false;
 
@@ -55,6 +55,7 @@ public abstract class GameCollection extends Collection implements TableBridge {
         count1 = holder.findViewById(R.id.count1);
         count2 = holder.findViewById(R.id.count2);
         count3 = holder.findViewById(R.id.count3);
+        count4 = holder.findViewById(R.id.count4);
 
         if(!snall){
             activity = (RootActivity) holder.getContex();

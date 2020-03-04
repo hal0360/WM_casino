@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
+import android.widget.TableRow;
 
 import java.util.List;
 
+import androidx.core.content.ContextCompat;
 import tw.com.lixin.wm_casino.R;
 import tw.com.lixin.wm_casino.tools.grids.CellView.DiceView;
 
@@ -28,6 +30,11 @@ public class DiceGrid extends LinearLayout {
         width = a.getInt(R.styleable.TextGrid_grid_x, 0);
         viewGrid = new DiceView[width];
         setOrientation(LinearLayout.HORIZONTAL);
+        setBackgroundColor(0xff000000);
+
+        setDividerDrawable(ContextCompat.getDrawable(context, R.drawable.table_divider_big));
+        setShowDividers(TableRow.SHOW_DIVIDER_MIDDLE);
+
         for(int i=0; i < width; i++){
             DiceView row = new DiceView(context);
             row.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 1.0f));

@@ -1,22 +1,17 @@
 package tw.com.lixin.wm_casino;
 
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+
 import tw.com.lixin.wm_casino.popups.LimitPopup;
 import tw.com.lixin.wm_casino.tools.grids.CellView.DiceView;
 import tw.com.lixin.wm_casino.tools.grids.DiceGrid;
 import tw.com.lixin.wm_casino.tools.grids.TextGrid;
-
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import static android.view.View.INVISIBLE;
-import static android.view.View.VISIBLE;
+import tw.com.lixin.wm_casino.tools.txtViews.ResultText;
 
 public class SicBoActivity extends CasinoActivity {
 
-    private TextView sumTxt, oddEvenTxt, sizeTxt;
-    private ImageView diceR1, diceR2, diceR3;
+    private ResultText diceR1, diceR2, diceR3;
     private DiceGrid mainGrid;
     private TextGrid firstGrid, secondGrid;
 
@@ -27,11 +22,7 @@ public class SicBoActivity extends CasinoActivity {
         super.onCreate(savedInstanceState);
 
         casinoArea.setTitle(getString(R.string.sic_bo) + source.table.groupID);
-        sumTxt = findViewById(R.id.sum_txt);
-        oddEvenTxt = findViewById(R.id.oddeven_txt);
-        sizeTxt = findViewById(R.id.size_txt);
         diceR1 = findViewById(R.id.dice_r_1);
-
         diceR2 = findViewById(R.id.dice_r_2);
         diceR3 = findViewById(R.id.dice_r_3);
         mainGrid = findViewById(R.id.main_grid);
@@ -76,12 +67,6 @@ public class SicBoActivity extends CasinoActivity {
         else setResultText(R.id.size_txt, getString(R.string.BIG));
 
         setResultText(R.id.sum_txt, sumTol+"");
-        sumTxt.setVisibility(VISIBLE);
-        sizeTxt.setVisibility(VISIBLE);
-        diceR1.setVisibility(VISIBLE);
-        diceR2.setVisibility(VISIBLE);
-        diceR3.setVisibility(VISIBLE);
-        oddEvenTxt.setVisibility(VISIBLE);
     }
 
     @Override

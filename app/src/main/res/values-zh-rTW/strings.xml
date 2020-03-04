@@ -40,6 +40,9 @@
     <string name="player1">閒1</string>
     <string name="player2">閒2</string>
     <string name="player3">閒3</string>
+    <string name="player1_abb">閒1</string>
+    <string name="player2_abb">閒2</string>
+    <string name="player3_abb">閒3</string>
     <string name="banker">莊</string>
     <string name="super6">超级6</string>
     <string name="tie">和</string>

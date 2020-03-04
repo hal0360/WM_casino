@@ -40,6 +40,9 @@
     <string name="player1">Player1</string>
     <string name="player2">Player2</string>
     <string name="player3">Player3</string>
+    <string name="player1_abb">P1</string>
+    <string name="player2_abb">P2</string>
+    <string name="player3_abb">P3</string>
     <string name="banker">Banker</string>
     <string name="super6">Super6</string>
     <string name="tie">Tie</string>
