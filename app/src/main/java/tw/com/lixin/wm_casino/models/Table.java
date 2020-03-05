@@ -135,6 +135,10 @@ public class Table {
             fourthRoadAsk2 = new ItemRoad(data.historyData.dataArr5PlayerAsk,"");
         } else if(gameID == 102 ){
             mainRoad =  new ItemRoad(data.historyArr, 9);
+            firstRoad = new ItemRoad(data.historyData.dataArr2);
+            secondRoad = new ItemRoad(data.historyData.dataArr3);
+            thirdRoad = new ItemRoad(data.historyData.dataArr4);
+            fourthRoad = new ItemRoad(data.historyData.dataArr5);
             mainRoadAsk1 = new ItemRoad(data.historyData.dataArr1DragonAsk, 9);
             firstRoadAsk1 = new ItemRoad(data.historyData.dataArr2DragonAsk,"");
             secondRoadAsk1 = new ItemRoad(data.historyData.dataArr3DragonAsk,"");

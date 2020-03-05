@@ -51,15 +51,11 @@ public class ChipStack extends ConstraintLayout implements Animation.AnimationLi
         int textDim = a.getInt(R.styleable.ChipStack_text_size,12);
         centerTxt.setTextSize(TypedValue.COMPLEX_UNIT_DIP, textDim);
         centerTxt.setTextColor(a.getColor(R.styleable.ChipStack_text_color, 0xffffffff));
-        centerTxt.setCompoundDrawablesRelativeWithIntrinsicBounds(a.getResourceId(R.styleable.ChipStack_text_img,0),0,0,0);
-
-
 
         String cenStr = a.getString(R.styleable.ChipStack_text);
         if(cenStr != null){
             centerTxt.setVisibility(VISIBLE);
             centerTxt.setText(cenStr);
-
         }
 
         String areaStr = a.getString(R.styleable.ChipStack_area);

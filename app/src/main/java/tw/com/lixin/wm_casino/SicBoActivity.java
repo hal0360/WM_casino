@@ -2,6 +2,7 @@ package tw.com.lixin.wm_casino;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
 
 import tw.com.lixin.wm_casino.popups.LimitPopup;
 import tw.com.lixin.wm_casino.tools.grids.CellView.DiceView;
@@ -67,6 +68,10 @@ public class SicBoActivity extends CasinoActivity {
         else setResultText(R.id.size_txt, getString(R.string.BIG));
 
         setResultText(R.id.sum_txt, sumTol+"");
+        diceR1.setVisibility(View.VISIBLE);
+        diceR2.setVisibility(View.VISIBLE);
+        diceR3.setVisibility(View.VISIBLE);
+
     }
 
     @Override

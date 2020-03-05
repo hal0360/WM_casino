@@ -1,6 +1,7 @@
 package tw.com.lixin.wm_casino.collections;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import tw.com.atromoby.widgets.CollectionHolder;
@@ -35,6 +36,9 @@ public class DragonTigerCollection extends GameCollection {
     @SuppressLint("SetTextI18n")
     @Override
     public void gridUpdate() {
+
+        if(table.firstRoad == null) Log.e("hi leg","fantasy");
+
         textGrid.drawRoad(table.firstRoad, (v,r)->{
             if(r == 1){
                 v.setTextImg(Road.Bank);

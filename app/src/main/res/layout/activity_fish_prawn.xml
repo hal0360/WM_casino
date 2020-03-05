@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:text_color="#DC143C"
-        app:text_size="21"
+        app:text_size="60"
         app:text="3434" />
 
 

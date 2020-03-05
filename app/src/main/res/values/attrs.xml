@@ -30,7 +30,6 @@
             <enum name="table" value="1"/>
             <enum name="portrait" value="2"/>
             <enum name="landscape" value="3"/>
-
         </attr>
     </declare-styleable>
 
@@ -56,13 +55,6 @@
         <attr name="text" format="string" />
         <attr name="text_size" format="integer" />
         <attr name="text_color" format="color" />
-        <attr name="text_img" format="reference" />
-        <attr name="text_img_dir" format="enum">
-            <enum name="left" value="1"/>
-            <enum name="right" value="2"/>
-            <enum name="top" value="3"/>
-            <enum name="down" value="4"/>
-        </attr>
     </declare-styleable>
 
     <declare-styleable name="CasinoDoubleGrid">
