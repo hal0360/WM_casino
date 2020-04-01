@@ -838,7 +838,7 @@
                 app:max_val="100"
                 app:text="\n11-17"
                 app:text_color="#0000CD"
-                app:text_size="15">
+                app:text_size="16">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -846,7 +846,7 @@
                     android:layout_marginTop="10dp"
                     android:text="@string/BIG"
                     android:textColor="#0000CD"
-                    android:textSize="15dp"
+                    android:textSize="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -864,7 +864,7 @@
                 app:max_val="100"
                 app:text="\n4-10"
                 app:text_color="#FF0000"
-                app:text_size="15">
+                app:text_size="16">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -872,7 +872,7 @@
                     android:layout_marginTop="10dp"
                     android:text="@string/SMALL"
                     android:textColor="#FF0000"
-                    android:textSize="15dp"
+                    android:textSize="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -904,6 +904,7 @@
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_marginBottom="1dp"
+                    android:background="#32CD32"
                     app:layout_constraintBottom_toTopOf="@+id/view27"
                     app:layout_constraintEnd_toEndOf="@+id/view27"
                     app:layout_constraintStart_toStartOf="@+id/view27" />
@@ -913,9 +914,74 @@
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_marginTop="1dp"
+                    android:background="#32CD32"
                     app:layout_constraintEnd_toEndOf="@+id/view27"
                     app:layout_constraintStart_toStartOf="@+id/view27"
                     app:layout_constraintTop_toBottomOf="@+id/view27" />
+
+                <View
+                    android:id="@+id/view12"
+                    android:layout_width="24dp"
+                    android:layout_height="0dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="#FF0000"
+                    app:layout_constraintBottom_toBottomOf="@+id/view27"
+                    app:layout_constraintEnd_toStartOf="@+id/view27"
+                    app:layout_constraintTop_toTopOf="@+id/view27" />
+
+                <View
+                    android:id="@+id/view14"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="#FF0000"
+                    app:layout_constraintBottom_toBottomOf="@+id/view10"
+                    app:layout_constraintEnd_toEndOf="@+id/view12"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/view12"
+                    app:layout_constraintTop_toTopOf="@+id/view10"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <View
+                    android:id="@+id/view18"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="#FF0000"
+                    app:layout_constraintBottom_toBottomOf="@+id/view11"
+                    app:layout_constraintEnd_toEndOf="@+id/view12"
+                    app:layout_constraintStart_toStartOf="@+id/view12"
+                    app:layout_constraintTop_toTopOf="@+id/view11" />
+
+                <View
+                    android:id="@+id/view20"
+                    android:layout_width="24dp"
+                    android:layout_height="0dp"
+                    android:background="#00FFFF"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/view27"
+                    app:layout_constraintStart_toEndOf="@+id/view27"
+                    app:layout_constraintTop_toTopOf="@+id/view27" />
+
+                <View
+                    android:id="@+id/view21"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="#00FFFF"
+                    app:layout_constraintBottom_toBottomOf="@+id/view10"
+                    app:layout_constraintEnd_toEndOf="@+id/view20"
+                    app:layout_constraintStart_toStartOf="@+id/view20"
+                    app:layout_constraintTop_toTopOf="@+id/view10"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <View
+                    android:id="@+id/view23"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="#00FFFF"
+                    app:layout_constraintBottom_toBottomOf="@+id/view11"
+                    app:layout_constraintEnd_toEndOf="@+id/view20"
+                    app:layout_constraintStart_toStartOf="@+id/view20"
+                    app:layout_constraintTop_toTopOf="@+id/view11" />
             </tw.com.lixin.wm_casino.tools.ChipStack>
 
             <tw.com.lixin.wm_casino.tools.ChipStack
@@ -926,7 +992,7 @@
                 app:max_val="100"
                 app:text="@string/ODD"
                 app:text_color="#0000CD"
-                app:text_size="15"
+                app:text_size="16"
                 app:layout_constraintBottom_toBottomOf="@+id/stack_all"
                 app:layout_constraintEnd_toEndOf="@+id/stack_big"
                 app:layout_constraintStart_toStartOf="@+id/stack_big"
@@ -939,7 +1005,7 @@
                 app:area="4"
                 app:max_val="100"
                 app:text_color="#FF0000"
-                app:text_size="15"
+                app:text_size="16"
                 app:text="@string/EVEN"
                 app:layout_constraintBottom_toBottomOf="@+id/stack_all"
                 app:layout_constraintEnd_toEndOf="@+id/stack_small"
