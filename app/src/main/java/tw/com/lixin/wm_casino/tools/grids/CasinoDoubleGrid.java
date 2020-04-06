@@ -31,8 +31,8 @@ public class CasinoDoubleGrid  extends TableLayout {
         this.context = context;
         TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.CasinoDoubleGrid);
         int gridX, gridY;
-        gridY = a.getInt(R.styleable.CasinoGrid_grid_y,0);
-        gridX = a.getInt(R.styleable.CasinoGrid_grid_x, 0);
+        gridY = a.getInt(R.styleable.CasinoDoubleGrid_grid_y,0);
+        gridX = a.getInt(R.styleable.CasinoDoubleGrid_grid_x, 0);
         setDividerDrawable(ContextCompat.getDrawable(context, R.drawable.table_divider));
         setShowDividers(TableRow.SHOW_DIVIDER_MIDDLE);
         setBackgroundColor(Color.parseColor("#ffffff"));

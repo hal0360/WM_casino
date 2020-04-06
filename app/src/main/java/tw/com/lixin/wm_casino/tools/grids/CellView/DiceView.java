@@ -39,7 +39,7 @@ public class DiceView extends LinearLayout {
 
     }
 
-    public static void swiRoad(ImageView dice, char digi){
+    private void swiRoad(ImageView dice, char digi){
         switch(digi) {
             case '1' :
                 dice.setImageResource(R.drawable.dice_1);
@@ -84,4 +84,5 @@ public class DiceView extends LinearLayout {
                 break;
         }
     }
+
 }

@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:ignore="SpUsage"
     tools:context=".FishPrawnActivity">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <tw.com.lixin.wm_casino.tools.CasinoArea
         android:id="@+id/casino_area"
         android:layout_width="360dp"
         android:layout_height="524dp"
@@ -15,7 +15,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!--
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/page_5"
             android:layout_width="0dp"
@@ -195,9 +194,7 @@
                 app:text="17  1:50"
                 app:text_size="18" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        -->
 
-        <!--
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/page_4"
             android:layout_width="0dp"
@@ -342,9 +339,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </tw.com.lixin.wm_casino.tools.ChipStack>
         </androidx.constraintlayout.widget.ConstraintLayout>
-        -->
 
-        <!--
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/page_3"
             android:layout_width="0dp"
@@ -367,7 +362,7 @@
                 app:max_val="3">
 
                 <View
-                    android:id="@+id/view11"
+                    android:id="@+id/view111"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:background="#FF0000"
@@ -381,18 +376,18 @@
                     android:layout_height="0dp"
                     android:layout_marginStart="2dp"
                     android:background="#FF0000"
-                    app:layout_constraintBottom_toBottomOf="@+id/view11"
-                    app:layout_constraintStart_toEndOf="@+id/view11"
-                    app:layout_constraintTop_toTopOf="@+id/view11" />
+                    app:layout_constraintBottom_toBottomOf="@+id/view111"
+                    app:layout_constraintStart_toEndOf="@+id/view111"
+                    app:layout_constraintTop_toTopOf="@+id/view111" />
 
                 <View
                     android:layout_width="25dp"
                     android:layout_height="0dp"
                     android:layout_marginEnd="2dp"
                     android:background="#FF0000"
-                    app:layout_constraintBottom_toBottomOf="@+id/view11"
-                    app:layout_constraintEnd_toStartOf="@+id/view11"
-                    app:layout_constraintTop_toTopOf="@+id/view11" />
+                    app:layout_constraintBottom_toBottomOf="@+id/view111"
+                    app:layout_constraintEnd_toStartOf="@+id/view111"
+                    app:layout_constraintTop_toTopOf="@+id/view111" />
             </tw.com.lixin.wm_casino.tools.ChipStack>
 
             <tw.com.lixin.wm_casino.tools.ChipStack
@@ -405,7 +400,7 @@
                 app:layout_constraintStart_toEndOf="@+id/stack_3red"
                 app:layout_constraintTop_toTopOf="@+id/stack_3red" >
                 <View
-                    android:id="@+id/view12"
+                    android:id="@+id/view121"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:background="#32CD32"
@@ -418,17 +413,17 @@
                     android:layout_height="0dp"
                     android:layout_marginStart="2dp"
                     android:background="#32CD32"
-                    app:layout_constraintBottom_toBottomOf="@+id/view12"
-                    app:layout_constraintStart_toEndOf="@+id/view12"
-                    app:layout_constraintTop_toTopOf="@+id/view12" />
+                    app:layout_constraintBottom_toBottomOf="@+id/view121"
+                    app:layout_constraintStart_toEndOf="@+id/view121"
+                    app:layout_constraintTop_toTopOf="@+id/view121" />
                 <View
                     android:layout_width="25dp"
                     android:layout_height="0dp"
                     android:layout_marginEnd="2dp"
                     android:background="#32CD32"
-                    app:layout_constraintBottom_toBottomOf="@+id/view12"
-                    app:layout_constraintEnd_toStartOf="@+id/view12"
-                    app:layout_constraintTop_toTopOf="@+id/view12" />
+                    app:layout_constraintBottom_toBottomOf="@+id/view121"
+                    app:layout_constraintEnd_toStartOf="@+id/view121"
+                    app:layout_constraintTop_toTopOf="@+id/view121" />
             </tw.com.lixin.wm_casino.tools.ChipStack>
 
             <tw.com.lixin.wm_casino.tools.ChipStack
@@ -478,7 +473,7 @@
                 app:max_val="10">
 
                 <View
-                    android:id="@+id/view14"
+                    android:id="@+id/view141"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:background="#FF0000"
@@ -493,9 +488,9 @@
                     android:layout_height="0dp"
                     android:layout_marginStart="2dp"
                     android:background="#FF0000"
-                    app:layout_constraintBottom_toBottomOf="@+id/view14"
-                    app:layout_constraintStart_toEndOf="@+id/view14"
-                    app:layout_constraintTop_toTopOf="@+id/view14" />
+                    app:layout_constraintBottom_toBottomOf="@+id/view141"
+                    app:layout_constraintStart_toEndOf="@+id/view141"
+                    app:layout_constraintTop_toTopOf="@+id/view141" />
             </tw.com.lixin.wm_casino.tools.ChipStack>
 
             <tw.com.lixin.wm_casino.tools.ChipStack
@@ -537,7 +532,7 @@
                 app:layout_constraintStart_toEndOf="@+id/stack_2green"
                 app:layout_constraintTop_toTopOf="@+id/stack_2green" >
                 <View
-                    android:id="@+id/view16"
+                    android:id="@+id/view161"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:background="#00BFFF"
@@ -551,9 +546,9 @@
                     android:layout_height="0dp"
                     android:layout_marginStart="2dp"
                     android:background="#00BFFF"
-                    app:layout_constraintBottom_toBottomOf="@+id/view16"
-                    app:layout_constraintStart_toEndOf="@+id/view16"
-                    app:layout_constraintTop_toTopOf="@+id/view16" />
+                    app:layout_constraintBottom_toBottomOf="@+id/view161"
+                    app:layout_constraintStart_toEndOf="@+id/view161"
+                    app:layout_constraintTop_toTopOf="@+id/view161" />
             </tw.com.lixin.wm_casino.tools.ChipStack>
 
             <tw.com.lixin.wm_casino.tools.ChipStack
@@ -613,9 +608,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </tw.com.lixin.wm_casino.tools.ChipStack>
         </androidx.constraintlayout.widget.ConstraintLayout>
-        -->
 
-        <!--
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/page_2"
             android:layout_width="0dp"
@@ -753,7 +746,6 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </tw.com.lixin.wm_casino.tools.ChipStack>
         </androidx.constraintlayout.widget.ConstraintLayout>
-        -->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/page_1"
@@ -838,7 +830,8 @@
                 app:max_val="100"
                 app:text="\n11-17"
                 app:text_color="#0000CD"
-                app:text_size="16">
+                app:text_size="16"
+                tools:ignore="TooManyViews">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -957,7 +950,6 @@
                     android:layout_height="0dp"
                     android:background="#00FFFF"
                     android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
                     app:layout_constraintBottom_toBottomOf="@+id/view27"
                     app:layout_constraintStart_toEndOf="@+id/view27"
                     app:layout_constraintTop_toTopOf="@+id/view27" />
@@ -1032,9 +1024,39 @@
             app:layout_constraintEnd_toEndOf="@+id/page_1"
             app:layout_constraintTop_toTopOf="@+id/page_1" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </tw.com.lixin.wm_casino.tools.CasinoArea>
 
+    <tw.com.lixin.wm_casino.tools.grids.TextGrid
+        android:id="@+id/second_grid"
+        android:layout_width="0dp"
+        android:layout_height="85dp"
+        app:grid_x="25"
+        app:grid_y="6"
+        app:layout_constraintEnd_toEndOf="@+id/casino_area"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/casino_area"
+        app:layout_constraintTop_toBottomOf="@+id/casino_area" />
 
+    <tw.com.lixin.wm_casino.tools.grids.TextGrid
+        android:id="@+id/first_grid"
+        android:layout_width="0dp"
+        android:layout_height="85dp"
+        app:grid_x="25"
+        app:grid_y="6"
+        app:layout_constraintEnd_toEndOf="@+id/casino_area"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/casino_area"
+        app:layout_constraintTop_toBottomOf="@+id/casino_area" />
+
+    <tw.com.lixin.wm_casino.tools.grids.CrabGrid
+        android:id="@+id/main_grid"
+        android:layout_width="0dp"
+        android:layout_height="85dp"
+        app:grid_x="15"
+        app:layout_constraintEnd_toEndOf="@+id/casino_area"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/casino_area"
+        app:layout_constraintTop_toBottomOf="@+id/casino_area" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

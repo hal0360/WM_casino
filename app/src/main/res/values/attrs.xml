@@ -37,6 +37,10 @@
         <attr name="grid_x" />
     </declare-styleable>
 
+    <declare-styleable name="CrabGrid">
+        <attr name="grid_x" />
+    </declare-styleable>
+
     <declare-styleable name="ArrowButton">
         <attr name="direction" format="enum">
             <enum name="left" value="1"/>

@@ -6,29 +6,30 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
 
+import androidx.core.content.ContextCompat;
+
 import java.util.List;
 
-import androidx.core.content.ContextCompat;
 import tw.com.lixin.wm_casino.R;
-import tw.com.lixin.wm_casino.tools.grids.CellView.DiceView;
+import tw.com.lixin.wm_casino.tools.grids.CellView.CrabView;
 
-public class DiceGrid extends LinearLayout {
+public class CrabGrid extends LinearLayout {
 
-    private DiceView[] viewGrid;
+    private CrabView[] viewGrid;
     public int width;
 
-    public DiceGrid(Context context)
+    public CrabGrid(Context context)
     {
         super(context);
     }
 
-    public DiceGrid(Context context, AttributeSet attrs)
+    public CrabGrid(Context context, AttributeSet attrs)
     {
         super(context, attrs);
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DiceGrid);
-        width = a.getInt(R.styleable.DiceGrid_grid_x, 0);
-        viewGrid = new DiceView[width];
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CrabGrid);
+        width = a.getInt(R.styleable.CrabGrid_grid_x, 0);
+        viewGrid = new CrabView[width];
         setOrientation(LinearLayout.HORIZONTAL);
         setBackgroundColor(0xff000000);
 
@@ -36,14 +37,13 @@ public class DiceGrid extends LinearLayout {
         setShowDividers(TableRow.SHOW_DIVIDER_MIDDLE);
 
         for(int i=0; i < width; i++){
-            DiceView row = new DiceView(context);
+            CrabView row = new CrabView(context);
             row.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 1.0f));
             viewGrid[i] = row;
             this.addView(row);
         }
         a.recycle();
     }
-
 
     public void drawRoad(List<Integer> road){
         int shift = road.size() - width;
