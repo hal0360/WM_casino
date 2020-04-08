@@ -3,6 +3,7 @@ package tw.com.lixin.wm_casino.collections;
 import androidx.appcompat.app.AppCompatActivity;
 import tw.com.atromoby.widgets.CollectionHolder;
 import tw.com.atromoby.widgets.FragDialog;
+import tw.com.lixin.wm_casino.FishPrawnActivity;
 import tw.com.lixin.wm_casino.models.Table;
 
 public class FishPrawnCollection extends GameCollection {
@@ -21,7 +22,7 @@ public class FishPrawnCollection extends GameCollection {
 
     @Override
     protected Class<? extends AppCompatActivity> toGameActicity() {
-        return null;
+        return FishPrawnActivity.class;
     }
 
     @Override
