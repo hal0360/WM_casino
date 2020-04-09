@@ -22,7 +22,6 @@ public class SicBoActivity extends CasinoActivity {
         setContentView(R.layout.activity_sic_bo);
         super.onCreate(savedInstanceState);
 
-        casinoArea.setTitle(getString(R.string.sic_bo) + source.table.groupID);
         diceR1 = findViewById(R.id.dice_r_1);
         diceR2 = findViewById(R.id.dice_r_2);
         diceR3 = findViewById(R.id.dice_r_3);
@@ -71,7 +70,6 @@ public class SicBoActivity extends CasinoActivity {
         diceR1.setVisibility(View.VISIBLE);
         diceR2.setVisibility(View.VISIBLE);
         diceR3.setVisibility(View.VISIBLE);
-
     }
 
     @Override

@@ -114,7 +114,6 @@
             android:textColor="#fff"
             android:textSize="13dp"
             android:textStyle="bold"
-            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/deal_txt"
             app:layout_constraintTop_toTopOf="parent" />

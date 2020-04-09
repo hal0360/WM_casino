@@ -56,6 +56,7 @@ public abstract class GameCollection extends Collection implements TableBridge {
         count2 = holder.findViewById(R.id.count2);
         count3 = holder.findViewById(R.id.count3);
         count4 = holder.findViewById(R.id.count4);
+        count4.setText("");
 
         if(!snall){
             activity = (RootActivity) holder.getContex();

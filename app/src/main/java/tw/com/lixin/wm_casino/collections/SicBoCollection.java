@@ -30,7 +30,9 @@ public class SicBoCollection extends GameCollection {
         textGrid.setVisibility(View.GONE);
     }
 
-    @Override
+
+
+
     protected Class<? extends AppCompatActivity> toGameActicity() {
         return SicBoActivity.class;
     }
@@ -42,6 +44,7 @@ public class SicBoCollection extends GameCollection {
         count1.setText(getString(R.string.odd) + ":" + table.data.oddCount);
         count2.setText(getString(R.string.even) + ":" + table.data.evenCount);
         count3.setText(getString(R.string.big) + ":" + table.data.bigCount);
+        count4.setText(getString(R.string.small) + ":" + table.data.smallCount);
     }
 }
 

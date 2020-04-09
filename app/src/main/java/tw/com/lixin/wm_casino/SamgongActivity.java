@@ -17,7 +17,6 @@ public class SamgongActivity extends CasinoActivity {
         setContentView(R.layout.activity_samgong);
         super.onCreate(savedInstanceState);
 
-        casinoArea.setTitle(getString(R.string.samgong) + source.table.groupID);
         mainGrid = findViewById(R.id.main_grid);
 
         addPage(R.id.page_1);

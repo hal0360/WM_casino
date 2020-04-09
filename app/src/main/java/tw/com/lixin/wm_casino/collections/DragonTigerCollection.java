@@ -50,8 +50,8 @@ public class DragonTigerCollection extends GameCollection {
                 v.setTextImg(Road.Bank_E);
             }
         });
-        count1.setText(getString(R.string.dragon_abb) + ":" + table.data.dragonCount);
-        count2.setText(getString(R.string.tiger_abb) + ":" + table.data.tigerCount);
-        count3.setText(getString(R.string.tie_abb) + ":" + table.data.tieCount);
+        count1.setText(getString(R.string.dragon_abb) + table.data.dragonCount);
+        count2.setText(getString(R.string.tiger_abb) + table.data.tigerCount);
+        count3.setText(getString(R.string.tie_abb) + table.data.tieCount);
     }
 }

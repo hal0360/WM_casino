@@ -148,4 +148,6 @@
     <string name="line">Line</string>
     <string name="triangle">Triangle/Four Numbers</string>
     <string name="street">Street/Three Numbers</string>
+    <string name="separate">Separate</string>
+    <string name="direct">Direct</string>
 </resources>

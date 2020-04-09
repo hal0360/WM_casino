@@ -42,6 +42,7 @@ public class TableData {
         public int oddCount;
         public int evenCount;
         public int bigCount;
+        public int smallCount;
         public int player1Count;
         public int player2Count;
         public int player3Count;

@@ -18,7 +18,6 @@ public class NiuNiuActivity  extends CasinoActivity {
         super.onCreate(savedInstanceState);
 
         mainGrid = findViewById(R.id.main_grid);
-        casinoArea.setTitle(getString(R.string.niuniu) + source.table.groupID);
        // casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/live10/stream1");
     }
 

@@ -148,5 +148,7 @@
     <string name="line">线注</string>
     <string name="triangle">角注/四个号码</string>
     <string name="street">街注/三数</string>
+    <string name="separate">分注</string>
+    <string name="direct">直接注</string>
 
 </resources>

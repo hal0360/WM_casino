@@ -148,4 +148,6 @@
     <string name="line">線注</string>
     <string name="triangle">角注/四個號碼</string>
     <string name="street">街注/三數</string>
+    <string name="separate">分注</string>
+    <string name="direct">直接注</string>
 </resources>
