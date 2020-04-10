@@ -138,7 +138,7 @@
     <string name="wugong">5P</string>
     <string name="nga">Nga</string>
     <string name="nim">Nim</string>
-    <string name="fan">fan</string>
+    <string name="fan">Fan</string>
     <string name="kwok">Kwok</string>
     <string name="ssh">Ssh</string>
     <string name="dice">Dice</string>
@@ -150,4 +150,32 @@
     <string name="street">Street/Three Numbers</string>
     <string name="separate">Separate</string>
     <string name="direct">Direct</string>
+
+    <string name="single_dice">Single Dice</string>
+    <string name="two_dice">Two Dice combination</string>
+    <string name="points">Points</string>
+    <string name="specific_double">Specific Double 8 or 13 points</string>
+    <string name="all_leopard">AllLeopard</string>
+    <string name="three_single">Three Single Number Combination</string>
+    <string name="specific_single">Specific Double And Single NUmber Combination</string>
+    <string name="specific_triples">Specific Triples</string>
+
+    <string name="one_of_a_kind">One of A Kind</string>
+    <string name="designate_color_1">Designate a color on 1 dice</string>
+    <string name="designate_color_2">Designate a color on 2 dice</string>
+    <string name="designate_color_3">Designate a color on 3 dice</string>
+    <string name="color_3_dice">A color on 3 dice</string>
+
+    <string name="double_normal">Double(Normal)</string>
+    <string name="double_bull">Double(Bull7~Bull9)</string>
+    <string name="double_5k">Double(5K)</string>
+    <string name="double_niu_niu">Double(Niu Niu)</string>
+
+    <string name="three_face">ThreeFace</string>
+    <string name="flush">Flush</string>
+    <string name="three_of_kind">Three of a Kind</string>
+    <string name="straight">Straight</string>
+    <string name="straight_flush">Straight Flush</string>
+    <string name="pair">Pair</string>
+
 </resources>

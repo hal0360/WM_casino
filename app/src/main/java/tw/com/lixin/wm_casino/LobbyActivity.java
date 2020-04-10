@@ -1,8 +1,11 @@
 package tw.com.lixin.wm_casino;
 
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.SparseArray;
+
+import java.util.Locale;
 
 import tw.com.atromoby.utils.Json;
 import tw.com.lixin.wm_casino.dataModels.Client35;
@@ -19,6 +22,22 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
     private LoadDialog loading;
 
     public static boolean langChanged = false;
+
+
+
+    private void setApplicationLanguage(String newLanguage) {
+        Resources activityRes = getResources();
+        Configuration activityConf = activityRes.getConfiguration();
+        Locale newLocale = new Locale(newLanguage);
+        activityConf.setLocale(newLocale);
+        activityRes.updateConfiguration(activityConf, activityRes.getDisplayMetrics());
+
+        Resources applicationRes = getApplicationContext().getResources();
+        Configuration applicationConf = applicationRes.getConfiguration();
+        applicationConf.setLocale(newLocale);
+        applicationRes.updateConfiguration(applicationConf, applicationRes.getDisplayMetrics());
+    }
+
 
     @Override
     public void applyOverrideConfiguration(Configuration overrideConfiguration) {

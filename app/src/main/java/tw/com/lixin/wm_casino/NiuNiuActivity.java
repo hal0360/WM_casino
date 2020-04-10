@@ -23,7 +23,11 @@ public class NiuNiuActivity  extends CasinoActivity {
 
     @Override
     public void limitShows(LimitPopup limitPopup) {
-
+        limitPopup.addLimit(getString(R.string.equal), "1:1", 100,1 );
+        limitPopup.addLimit(getString(R.string.double_normal), "1:1", 20,1 );
+        limitPopup.addLimit(getString(R.string.double_bull), "1:2", 20,1 );
+        limitPopup.addLimit(getString(R.string.double_niu_niu), "1:3", 20,1 );
+        limitPopup.addLimit(getString(R.string.direct), "1:5", 20,1 );
     }
 
     @SuppressLint("SetTextI18n")

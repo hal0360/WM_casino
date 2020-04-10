@@ -46,7 +46,19 @@ public class SicBoActivity extends CasinoActivity {
 
     @Override
     public void limitShows(LimitPopup limitPopup) {
-
+        limitPopup.addLimit(getString(R.string.red_black_even), "1:1", 100,1 );
+        limitPopup.addLimit(getString(R.string.single_dice), "1:1-3", 50,1 );
+        limitPopup.addLimit(getString(R.string.two_dice), "1:5", 20,1 );
+        limitPopup.addLimit(getString(R.string.points) + "9, 10, 11, 12", "1:6", 20,1 );
+        limitPopup.addLimit(getString(R.string.specific_double), "1:8", 15,1 );
+        limitPopup.addLimit(getString(R.string.points) + "7, 14", "1:12", 10,1 );
+        limitPopup.addLimit(getString(R.string.points) + "6, 15", "1:14", 10,1 );
+        limitPopup.addLimit(getString(R.string.points) + "5, 16", "1:18", 10,1 );
+        limitPopup.addLimit(getString(R.string.points) + "4, 17", "1:50", 3,1 );
+        limitPopup.addLimit(getString(R.string.all_leopard), "1:24", 5,1 );
+        limitPopup.addLimit(getString(R.string.three_single), "1:30", 5,1 );
+        limitPopup.addLimit(getString(R.string.specific_single), "1:60", 3,1 );
+        limitPopup.addLimit(getString(R.string.specific_triples), "1:150", 3,1 );
     }
 
 

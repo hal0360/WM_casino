@@ -151,4 +151,30 @@
     <string name="separate">分注</string>
     <string name="direct">直接注</string>
 
+    <string name="single_dice">单点数</string>
+    <string name="two_dice">短牌</string>
+    <string name="points">和值</string>
+    <string name="specific_double">长牌, 和值8/13</string>
+    <string name="all_leopard">全围</string>
+    <string name="three_single">三不同</string>
+    <string name="specific_single">二同号</string>
+    <string name="specific_triples">围骰</string>
+
+    <string name="one_of_a_kind">One of A Kind</string>
+    <string name="designate_color_1">Designate a color on 1 dice</string>
+    <string name="designate_color_2">Designate a color on 2 dice</string>
+    <string name="designate_color_3">Designate a color on 3 dice</string>
+    <string name="color_3_dice">A color on 3 dice</string>
+
+    <string name="double_normal">翻倍(一般牌型)</string>
+    <string name="double_bull">翻倍(牛7~牛9)</string>
+    <string name="double_5k">翻倍(五公)</string>
+    <string name="double_niu_niu">翻倍(牛牛)</string>
+
+    <string name="three_face">三公</string>
+    <string name="flush">同花</string>
+    <string name="three_of_kind">三条</string>
+    <string name="straight">顺子</string>
+    <string name="straight_flush">同花顺</string>
+    <string name="pair">一对</string>
 </resources>

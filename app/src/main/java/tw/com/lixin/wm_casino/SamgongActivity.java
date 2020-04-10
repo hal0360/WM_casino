@@ -28,10 +28,16 @@ public class SamgongActivity extends CasinoActivity {
 
     @Override
     public void limitShows(LimitPopup limitPopup) {
-
+        limitPopup.addLimit("(" + getString(R.string.player) + ")" + getString(R.string.win), "1:0.96", 100,1 );
+        limitPopup.addLimit("(" + getString(R.string.player) + ")" + getString(R.string.lose), "1:0.96", 100,1 );
+        limitPopup.addLimit("(" + getString(R.string.player) + ")" + getString(R.string.tie), "1:8", 20,1 );
+        limitPopup.addLimit("(" + getString(R.string.player) + ")" + getString(R.string.three_face), "1:16", 10,1 );
+        limitPopup.addLimit("(" + getString(R.string.pairPlus) + ")" + getString(R.string.pair), "1:1", 5,1 );
+        limitPopup.addLimit("(" + getString(R.string.pairPlus) + ")" + getString(R.string.straight), "1:6", 5,1 );
+        limitPopup.addLimit("(" + getString(R.string.pairPlus) + ")" + getString(R.string.flush), "1:3", 5,1 );
+        limitPopup.addLimit("(" + getString(R.string.pairPlus) + ")" + getString(R.string.three_of_kind), "1:30", 5,1 );
+        limitPopup.addLimit("(" + getString(R.string.pairPlus) + ")" + getString(R.string.straight_flush), "1:40", 5,1 );
     }
-
-
 
     @SuppressLint("SetTextI18n")
     @Override

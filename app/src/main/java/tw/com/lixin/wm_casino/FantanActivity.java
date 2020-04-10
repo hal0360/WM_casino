@@ -29,9 +29,14 @@ public class FantanActivity extends CasinoActivity {
 
     @Override
     public void limitShows(LimitPopup limitPopup) {
-
+        limitPopup.addLimit(getString(R.string.ODD), "1:0.95", 100,1 );
+        limitPopup.addLimit(getString(R.string.EVEN), "1:0.95", 100,1 );
+        limitPopup.addLimit(getString(R.string.fan), "1:2.85", 25,1 );
+        limitPopup.addLimit(getString(R.string.nim), "1:1.9", 35,1 );
+        limitPopup.addLimit(getString(R.string.kwok), "1:0.95", 100,1 );
+        limitPopup.addLimit(getString(R.string.nga), "1:0.475", 100,1 );
+        limitPopup.addLimit(getString(R.string.ssh), "1:0.31", 100,1 );
     }
-
 
     @SuppressLint("SetTextI18n")
     @Override
