@@ -31,7 +31,6 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
         Locale newLocale = new Locale(newLanguage);
         activityConf.setLocale(newLocale);
         activityRes.updateConfiguration(activityConf, activityRes.getDisplayMetrics());
-
         Resources applicationRes = getApplicationContext().getResources();
         Configuration applicationConf = applicationRes.getConfiguration();
         applicationConf.setLocale(newLocale);

@@ -159,12 +159,12 @@
     <string name="three_single">三不同</string>
     <string name="specific_single">二同號</string>
     <string name="specific_triples">圍骰</string>
-
-    <string name="one_of_a_kind">One of A Kind</string>
-    <string name="designate_color_1">Designate a color on 1 dice</string>
-    <string name="designate_color_2">Designate a color on 2 dice</string>
-    <string name="designate_color_3">Designate a color on 3 dice</string>
-    <string name="color_3_dice">A color on 3 dice</string>
+    <string name="one_of_a_kind">三軍</string>
+    <string name="designate_color_1">指定單色</string>
+    <string name="designate_color_2">指定雙色</string>
+    <string name="designate_color_3">指定三色</string>
+    <string name="color_3_dice">任意三色</string>
+    <string name="sum_of_points">點數總和:</string>
 
     <string name="double_normal">翻倍(一般牌型)</string>
     <string name="double_bull">翻倍(牛7~牛9)</string>

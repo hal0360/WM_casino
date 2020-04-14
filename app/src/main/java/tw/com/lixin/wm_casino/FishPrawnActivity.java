@@ -45,7 +45,20 @@ public class FishPrawnActivity extends CasinoActivity {
 
     @Override
     public void limitShows(LimitPopup limitPopup) {
-
+        limitPopup.addLimit(getString(R.string.all_leopard), "1:24", 3,1 );
+        limitPopup.addLimit(getString(R.string.specific_triples), "1:150", 1,1 );
+        limitPopup.addLimit(getString(R.string.red_black_even), "1:1", 100,1 );
+        limitPopup.addLimit(getString(R.string.one_of_a_kind), "1:1~3", 100,1 );
+        limitPopup.addLimit(getString(R.string.designate_color_1), "1:1", 100,1 );
+        limitPopup.addLimit(getString(R.string.designate_color_2), "1:3", 10,1 );
+        limitPopup.addLimit(getString(R.string.designate_color_3), "1:20", 3,1 );
+        limitPopup.addLimit(getString(R.string.color_3_dice), "1:7", 10,1 );
+        limitPopup.addLimit(getString(R.string.sum_of_points)+"9/10/11/12", "1:6", 10,1 );
+        limitPopup.addLimit(getString(R.string.sum_of_points)+"8/13", "1:8", 10,1 );
+        limitPopup.addLimit(getString(R.string.sum_of_points)+"7/14", "1:12", 10,1 );
+        limitPopup.addLimit(getString(R.string.sum_of_points)+"6/15", "1:14", 5,1 );
+        limitPopup.addLimit(getString(R.string.sum_of_points)+"5/16", "1:18", 3,1 );
+        limitPopup.addLimit(getString(R.string.sum_of_points)+"4/17", "1:50", 2,1 );
     }
 
     @Override
