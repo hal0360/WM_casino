@@ -150,7 +150,6 @@
     <string name="street">街注/三数</string>
     <string name="separate">分注</string>
     <string name="direct">直接注</string>
-
     <string name="single_dice">单点数</string>
     <string name="two_dice">短牌</string>
     <string name="points">和值</string>
@@ -159,12 +158,12 @@
     <string name="three_single">三不同</string>
     <string name="specific_single">二同号</string>
     <string name="specific_triples">围骰</string>
-
-    <string name="one_of_a_kind">One of A Kind</string>
-    <string name="designate_color_1">Designate a color on 1 dice</string>
-    <string name="designate_color_2">Designate a color on 2 dice</string>
-    <string name="designate_color_3">Designate a color on 3 dice</string>
-    <string name="color_3_dice">A color on 3 dice</string>
+    <string name="one_of_a_kind">三军</string>
+    <string name="designate_color_1">指定单色</string>
+    <string name="designate_color_2">指定双色</string>
+    <string name="designate_color_3">指定三色</string>
+    <string name="color_3_dice">任意三色</string>
+    <string name="sum_of_points">点数总和:</string>
 
     <string name="double_normal">翻倍(一般牌型)</string>
     <string name="double_bull">翻倍(牛7~牛9)</string>

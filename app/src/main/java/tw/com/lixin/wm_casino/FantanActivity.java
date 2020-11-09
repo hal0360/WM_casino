@@ -7,10 +7,10 @@ import tw.com.lixin.wm_casino.popups.LimitPopup;
 import tw.com.lixin.wm_casino.tools.grids.TextGrid;
 import tw.com.lixin.wm_casino.tools.txtViews.ResultText;
 
+
 public class FantanActivity extends CasinoActivity {
 
     private TextGrid mainGrid;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
