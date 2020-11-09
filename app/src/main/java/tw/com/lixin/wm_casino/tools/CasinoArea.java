@@ -191,14 +191,14 @@ public class CasinoArea extends ConstraintLayout implements View.OnClickListener
     public void setVideo(String url){
         videoUrl = url;
         GameSource gameSource = GameSource.getInstance();
-        String urlll = "rtmp://" + gameSource.videoSignal + ".cn/" + url + "/stream1";
-        video.setVideoPath(urlll);
+        String urlll = "rtmp://wmvdo.nicejj.cn/" + url + "/720p";
+        video.setVideoPath(url);
     }
 
     public void resetVideo(){
         video.stopPlayback();
         GameSource gameSource = GameSource.getInstance();
-        String urlll = "rtmp://" + gameSource.videoSignal + ".cn/" + videoUrl + "/stream1";
+        String urlll = "rtmp://" + gameSource.videoSignal + ".cn/" + videoUrl + "/720p";
         video.setVideoPath(urlll);
         video.start();
     }

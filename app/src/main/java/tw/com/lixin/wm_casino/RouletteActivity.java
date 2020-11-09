@@ -47,7 +47,7 @@ public class RouletteActivity extends CasinoActivity {
             addGrid(thirdGrid);
             setGridArrow();
         }
-        casinoArea.setVideo("rou" + String.format("%02d", source.table.groupID));
+        casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/rou" + source.table.groupID + "/720p");
 
     }
 

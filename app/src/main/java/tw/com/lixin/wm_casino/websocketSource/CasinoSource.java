@@ -97,6 +97,7 @@ public abstract class CasinoSource extends WebSocketListener{
 
     @Override
     public void onMessage(WebSocket webSocket, String text) {
+
         if(!connected){
             LoginResData logRespend = Json.from(text, LoginResData.class);
             if(logRespend.protocol == 0){

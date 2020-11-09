@@ -1,5 +1,6 @@
 package tw.com.lixin.wm_casino.websocketSource;
 
+import android.util.Log;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 
@@ -104,6 +105,10 @@ public class GameSource extends CasinoSource{
 
     @Override
     public void onReceive(String text) {
+
+
+        Log.e("fuck",text);
+
         GameData gameData = Json.from(text, GameData.class);
         switch(gameData.protocol) {
             case 10:

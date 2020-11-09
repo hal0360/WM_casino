@@ -1,5 +1,6 @@
 package tw.com.lixin.wm_casino.websocketSource;
 
+import android.util.Log;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 
@@ -89,16 +90,25 @@ public class LobbySource extends CasinoSource{
 
                 allTables = new SparseArray<>();
                 for(Game game: lobbyData.data.gameArr){
+
                     SparseArray<Table> tableGroup = new SparseArray<>();
                     for(Group tableStage: game.groupArr){
+
+
                         if ( tableStage.gameStage != 4 && !tableStage.dealerImage.equals("") && !tableStage.dealerName.equals("")){
                             tableGroup.put(tableStage.groupID, new Table(tableStage,game.gameID));
                         }
+
+
                     }
                     allTables.put(game.gameID, tableGroup);
+
+
                 }
 
                 handle(()-> bridge.wholeDataUpdated());
+
+
                 break;
             case 34:
                 peopleOnline.put(lobbyData.data.gameID,lobbyData.data.onlinePeople);

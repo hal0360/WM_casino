@@ -24,7 +24,7 @@ public class FantanActivity extends CasinoActivity {
         addPage(R.id.page_3);
         addPage(R.id.page_4);
         setPageArrow();
-        casinoArea.setVideo("live1" + source.table.groupID);
+        casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/ft" + source.table.groupID + "/720p");
     }
 
     @Override

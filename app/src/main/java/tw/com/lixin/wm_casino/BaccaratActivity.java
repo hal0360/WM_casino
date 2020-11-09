@@ -69,7 +69,7 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
             }
         });
 
-        casinoArea.setVideo("live" + source.table.groupID);
+        casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/live" + source.table.groupID + "/720p");
     }
 
     private void setRoads(ItemRoad main, ItemRoad first, ItemRoad second, ItemRoad third, ItemRoad fourth){

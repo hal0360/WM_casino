@@ -41,7 +41,7 @@ public class SicBoActivity extends CasinoActivity {
             addGrid(secondGrid);
             setGridArrow();
         }
-        casinoArea.setVideo("sb" +  String.format("%02d", source.table.groupID));
+        casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/sb" + source.table.groupID + "/720p");
     }
 
     @Override
