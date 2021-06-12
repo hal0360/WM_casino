@@ -31,7 +31,9 @@ public class LobbySource extends CasinoSource{
 
     private LobbySource() {
         app = App.getThisApp();
-        defineURL("ws://gameserver.a45.me:15109");
+       // defineURL("ws://gameserver.a45.me:15109");
+        defineURL("wss://a45gs-t.dartspharm.com/15109");
+
         allTables = new SparseArray<>();
     }
 
@@ -57,6 +59,11 @@ public class LobbySource extends CasinoSource{
 
     @Override
     public void onReceive(String text) {
+
+        Log.e("lobbySource", text);
+
+
+
         TableData tableData = Json.from(text, TableData.class);
         TableData.Data data = tableData.data;
         SparseArray<Table> tableGroup = allTables.get(data.gameID);

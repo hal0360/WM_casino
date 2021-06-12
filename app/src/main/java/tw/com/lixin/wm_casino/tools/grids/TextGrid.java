@@ -77,6 +77,16 @@ public class TextGrid extends TableLayout {
         }
     }
 
+
+    public void drawFrom(int x, int y, int res, String txt){
+        viewGrid[x][y].setTextImg(res);
+        viewGrid[x][y].setText(txt);
+        viewGrid[x][y].setTextColor(0xffffffff);
+        viewGrid[x][y].setTextSize(7);
+    }
+
+
+
     private void iniGrid(int x, int y){
         width = x;
         height = y;

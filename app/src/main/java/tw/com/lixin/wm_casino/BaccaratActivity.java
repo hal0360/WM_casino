@@ -32,11 +32,13 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
         super.onCreate(savedInstanceState);
 
         commBtn = findViewById(R.id.comm_btn);
+
         mainGrid = findViewById(R.id.main_grid);
         firstGrid = findViewById(R.id.first_grid);
         secondGrid = findViewById(R.id.second_grid);
         thirdGrid = findViewById(R.id.third_grid);
         fourthGrid = findViewById(R.id.fourth_grid);
+
         askBanker = findViewById(R.id.ask_bank_btn);
         askPlayer = findViewById(R.id.ask_play_btn);
 
@@ -69,11 +71,11 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
             }
         });
 
-        casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/live" + source.table.groupID + "/720p");
+        casinoArea.setVideo("rtmp://wmvdo.sun1127.cn/live" + source.table.groupID + "/720p");
     }
 
     private void setRoads(ItemRoad main, ItemRoad first, ItemRoad second, ItemRoad third, ItemRoad fourth){
-        firstGrid.drawRoad(first);
+       // firstGrid.drawRoad(first);
         secondGrid.drawRoad(second, (v,r)->{
             if(r == 1) v.setBackgroundResource(Road.Bank);
             else if(r == 2) v.setBackgroundResource(Road.Play);

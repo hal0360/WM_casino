@@ -73,6 +73,7 @@ public class LobbyActivity extends WMActivity implements LobbyBridge {
         gameButtons.put(108,findViewById(R.id.se_die_game));
         gameButtons.put(110,findViewById(R.id.fish_prawn_game));
         gameButtons.put(111,findViewById(R.id.golden_flower_game));
+        gameButtons.put(128,findViewById(R.id.anda_game));
 
         for(int i = 0; i < gameButtons.size(); i++) {
             int key = gameButtons.keyAt(i);

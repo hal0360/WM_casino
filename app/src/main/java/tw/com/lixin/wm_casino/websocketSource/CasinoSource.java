@@ -22,7 +22,6 @@ public abstract class CasinoSource extends WebSocketListener{
 
     private WebSocket webSocket = null;
     private Handler genHandler = new Handler();
-
     private Handler logHandler = new Handler();
 
     boolean connected = false;
@@ -43,6 +42,7 @@ public abstract class CasinoSource extends WebSocketListener{
 
     @Override
     public void onOpen(WebSocket webSocket, Response response) {
+        Log.e(getClass().getSimpleName(), "channel opened");
         send(loginDataStr);
     }
 
@@ -53,7 +53,7 @@ public abstract class CasinoSource extends WebSocketListener{
         logHandler.postDelayed(()-> {
             if(cmdLogFail != null) cmdLogFail.exec("Websocket login timeout");
             close();
-        },6000);
+        },10000);
         loginDataStr = Json.to(new LoginData( user, pass));
         OkHttpClient client = new OkHttpClient();
         webSocket = client.newWebSocket(new Request.Builder().url(webUrl).build(), this);
@@ -67,7 +67,7 @@ public abstract class CasinoSource extends WebSocketListener{
         logHandler.postDelayed(()-> {
             if(cmdLogFail != null) cmdLogFail.exec("Websocket login timeout");
             close();
-        },7000);
+        },10000);
         loginDataStr = Json.to(new CheckData(sid));
         OkHttpClient client = new OkHttpClient();
         webSocket = client.newWebSocket(new Request.Builder().url(webUrl).build(), this);
@@ -76,13 +76,13 @@ public abstract class CasinoSource extends WebSocketListener{
 
     public final void login(int gameNum, String sid, CmdLog logOK, CmdStr logFail){
         close();
-        webUrl = "ws://gameserver.a45.me:15" + gameNum;
+        webUrl = "wss://a45gs-t.nicejj.cn/15" + gameNum;
         cmdLogOpen = logOK;
         cmdLogFail = logFail;
         logHandler.postDelayed(()-> {
             if(cmdLogFail != null) cmdLogFail.exec("Websocket login timeout");
             close();
-        },7000);
+        },10000);
         loginDataStr = Json.to(new CheckData(sid));
         OkHttpClient client = new OkHttpClient();
         webSocket = client.newWebSocket(new Request.Builder().url(webUrl).build(), this);
@@ -97,6 +97,7 @@ public abstract class CasinoSource extends WebSocketListener{
 
     @Override
     public void onMessage(WebSocket webSocket, String text) {
+
 
         if(!connected){
             LoginResData logRespend = Json.from(text, LoginResData.class);

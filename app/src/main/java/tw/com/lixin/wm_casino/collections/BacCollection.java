@@ -1,6 +1,9 @@
 package tw.com.lixin.wm_casino.collections;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
+
+import java.util.Arrays;
 
 import androidx.appcompat.app.AppCompatActivity;
 import tw.com.atromoby.widgets.CollectionHolder;
@@ -34,7 +37,9 @@ public class BacCollection extends GameCollection {
     @SuppressLint("SetTextI18n")
     @Override
     public void gridUpdate() {
-        textGrid.drawRoad(table.firstRoad, WordView::setTextImg);
+
+
+      //  textGrid.drawRoad(table.firstRoad, WordView::setTextImg);
         count1.setText(getString(R.string.banker_abb) + table.data.bankerCount);
         count2.setText(getString(R.string.player_abb) + table.data.playerCount);
         count3.setText(getString(R.string.tie_abb) + table.data.tieCount);

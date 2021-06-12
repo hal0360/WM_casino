@@ -50,6 +50,10 @@ public class TableData {
         public int number2Count;
         public int number3Count;
         public int zeroCount;
+        public int phoenixCount;
+        public int andarCount;
+        public int baharCount;
+
         public List<Integer> dataArr1DragonAsk;
         public List<List<Integer>> dataArr2DragonAsk;
         public List<List<Integer>> dataArr3DragonAsk;

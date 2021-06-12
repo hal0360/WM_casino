@@ -9,6 +9,7 @@ import android.util.Log;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -56,6 +57,8 @@ public class Table {
     public ItemRoad thirdRoadAsk2;
     public ItemRoad fourthRoadAsk2;
 
+
+
     public Table(Group group, int gid){
 
         gameID = gid;
@@ -64,8 +67,6 @@ public class Table {
         tData.data.historyArr = group.historyArr;
         tData.data.historyData = group.historyData;
         historyUpdate(tData.data);
-
-
 
         dealerID = group.dealerID;
         stage = group.gameStage;
@@ -83,16 +84,12 @@ public class Table {
 
 
 
-
-
-
         try {
             InputStream in = new java.net.URL(group.dealerImage).openStream();
             dealerImage = BitmapFactory.decodeStream(in);
         }catch(IOException e) {
             Log.e(dealerName + " BitError", e.getMessage());
         }
-
 
     }
 
@@ -115,9 +112,7 @@ public class Table {
         mainArr = data.historyArr;
         this.data = data.historyData;
 
-
         if(gameID == 101 ){
-
 
             apeSkull();
             for(int val: data.historyArr) divide(val);
@@ -129,35 +124,26 @@ public class Table {
             for(int val: data.historyData.dataArr1BankerAsk) divide(val);
             mainRoadAsk1 = new ItemRoad(bigRoad, 9);
             firstRoadAsk1 = new ItemRoad(sortedRoad,"");
-
             apeSkull();
             for(int val: data.historyData.dataArr1PlayerAsk) divide(val);
             mainRoadAsk2 = new ItemRoad(bigRoad, 9);
             firstRoadAsk2 = new ItemRoad(sortedRoad,"");
             bigRoad = null;
             sortedRoad = null;
-
              */
-
-
 
             secondRoad = new ItemRoad(data.historyData.dataArr3);
             thirdRoad = new ItemRoad(data.historyData.dataArr4);
             fourthRoad = new ItemRoad(data.historyData.dataArr5);
 
 /*
-
             secondRoadAsk1 = new ItemRoad(data.historyData.dataArr3BankerAsk,"");
             thirdRoadAsk1 = new ItemRoad(data.historyData.dataArr4BankerAsk,"");
             fourthRoadAsk1 = new ItemRoad(data.historyData.dataArr5BankerAsk,"");
             secondRoadAsk2 = new ItemRoad(data.historyData.dataArr3PlayerAsk,"");
             thirdRoadAsk2 = new ItemRoad(data.historyData.dataArr4PlayerAsk,"");
             fourthRoadAsk2 = new ItemRoad(data.historyData.dataArr5PlayerAsk,"");
-
  */
-
-
-
 
         }
 
@@ -182,10 +168,29 @@ public class Table {
             thirdRoadAsk2 = new ItemRoad(data.historyData.dataArr4TigerAsk,"");
             fourthRoadAsk2 = new ItemRoad(data.historyData.dataArr5TigerAsk,"");
 
-             */
+            */
 
+        }if(gameID == 111){
 
-        }else {
+            firstRoad = new ItemRoad(data.historyData.dataArr2);
+
+          //  apeSkull();
+         //   for(int val: data.historyArr) divide(val);
+          //  mainRoad = new ItemRoad(bigRoad, 9);
+          //  firstRoad = new ItemRoad(sortedRoad,"");
+          //  Log.e("sheboon", Arrays.deepToString(data.historyData.dataArr2).replaceAll("],", "]," + System.getProperty("line.separator")) );
+
+        }if(gameID == 128){
+
+          //  mainRoad =  new ItemRoad(data.historyArr, 9);
+            firstRoad = new ItemRoad(data.historyData.dataArr2);
+            secondRoad = new ItemRoad(data.historyData.dataArr3);
+            thirdRoad = new ItemRoad(data.historyData.dataArr4);
+            fourthRoad = new ItemRoad(data.historyData.dataArr5);
+
+        }
+
+        else {
 
             mainRoad =  new ItemRoad(data.historyArr, 9);
             firstRoad = new ItemRoad(data.historyData.dataArr2);
@@ -193,10 +198,7 @@ public class Table {
             thirdRoad = new ItemRoad(data.historyData.dataArr4);
             fourthRoad = new ItemRoad(data.historyData.dataArr5);
 
-
         }
-
-
 
 
     }
@@ -272,6 +274,7 @@ public class Table {
             }
         }
     }
+
     private void packRes(List<Integer> twos){
 
         int curRes;

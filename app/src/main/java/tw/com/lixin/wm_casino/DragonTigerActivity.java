@@ -41,7 +41,7 @@ public class DragonTigerActivity extends CasinoActivity  {
         askTiger.clickDown(v-> setRoads(source.table.mainRoadAsk2, source.table.firstRoadAsk2, source.table.secondRoadAsk2, source.table.thirdRoadAsk2, source.table.fourthRoadAsk2));
         askTiger.clickUp(v-> setRoads(source.table.mainRoad, source.table.firstRoad, source.table.secondRoad, source.table.thirdRoad, source.table.fourthRoad));
 
-        casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/dt" + source.table.groupID + "/720p");
+        casinoArea.setVideo("rtmp://rtmp://wmvdo.sun1127.cn/dt1/720p");
     }
 
     @Override
@@ -62,6 +62,7 @@ public class DragonTigerActivity extends CasinoActivity  {
     }
 
     private void setRoads(ItemRoad main, ItemRoad first, ItemRoad second, ItemRoad third, ItemRoad fourth){
+
         firstGrid.drawRoad(first, (v,r)->{
             if(r == 1) v.setTextImg(Road.Bank);
             else if(r == 2) v.setTextImg(Road.Play);
@@ -96,6 +97,7 @@ public class DragonTigerActivity extends CasinoActivity  {
                 v.setText(getString(R.string.tie_road));
             }
         });
+
     }
 
     @Override

@@ -71,7 +71,10 @@ public class GameSource extends CasinoSource{
     }
 
     public final void tableLogin(Table table, CmdTableLog logOK, CmdStr logFail){
-        defineURL("ws://gameserver.a45.me:15" + table.gameID);
+      //  defineURL("ws://gameserver.a45.me:15" + table.gameID);
+
+        defineURL("wss://a45gs-t.dartspharm.com/15" + table.gameID);
+
         this.table = table;
         cmdTableLog = logOK;
         cmdTableFail = logFail;

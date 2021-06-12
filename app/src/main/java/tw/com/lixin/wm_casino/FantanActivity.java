@@ -17,6 +17,7 @@ public class FantanActivity extends CasinoActivity {
         setContentView(R.layout.activity_fantan);
         super.onCreate(savedInstanceState);
 
+
         mainGrid = findViewById(R.id.main_grid);
 
         addPage(R.id.page_1);
@@ -24,7 +25,9 @@ public class FantanActivity extends CasinoActivity {
         addPage(R.id.page_3);
         addPage(R.id.page_4);
         setPageArrow();
-        casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/ft" + source.table.groupID + "/720p");
+        casinoArea.setVideo("rtmp://wmvdo.sun1127.cn/ft" + source.table.groupID + "/720p");
+
+
     }
 
     @Override

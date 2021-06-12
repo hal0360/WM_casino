@@ -41,7 +41,7 @@ public class SicBoActivity extends CasinoActivity {
             addGrid(secondGrid);
             setGridArrow();
         }
-        casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/sb" + source.table.groupID + "/720p");
+        casinoArea.setVideo("rtmp://wmvdo.sun1127.cn/sb" + source.table.groupID + "/720p");
     }
 
     @Override
@@ -118,4 +118,5 @@ public class SicBoActivity extends CasinoActivity {
             }
         });
     }
+
 }

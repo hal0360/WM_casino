@@ -18,7 +18,7 @@ public class NiuNiuActivity  extends CasinoActivity {
         super.onCreate(savedInstanceState);
 
         mainGrid = findViewById(R.id.main_grid);
-        casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/nn" + source.table.groupID + "/720p");
+        casinoArea.setVideo("rtmp://wmvdo.sun1127.cn/nn" + source.table.groupID + "/720p");
     }
 
     @Override

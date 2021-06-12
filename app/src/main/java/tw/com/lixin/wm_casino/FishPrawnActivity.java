@@ -40,7 +40,7 @@ public class FishPrawnActivity extends CasinoActivity {
             addGrid(secondGrid);
             setGridArrow();
         }
-        casinoArea.setVideo("rtmp://wmvdo.nicejj.cn/fish" + source.table.groupID + "/720p");
+        casinoArea.setVideo("rtmp://wmvdo.sun1127.cn/fish" + source.table.groupID + "/720p");
     }
 
     @Override

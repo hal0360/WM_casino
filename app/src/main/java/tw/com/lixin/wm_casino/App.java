@@ -13,6 +13,7 @@ import java.util.Locale;
 
 import tw.com.atromoby.utils.Kit;
 import tw.com.atromoby.utils.RegisterApplication;
+import tw.com.lixin.wm_casino.collections.AndaCollection;
 import tw.com.lixin.wm_casino.collections.BacCollection;
 import tw.com.lixin.wm_casino.collections.DragonTigerCollection;
 import tw.com.lixin.wm_casino.collections.FantanCollection;
@@ -94,6 +95,7 @@ public class App extends RegisterApplication {
         tableProvider.put(108, SeDieCollection::new);
         tableProvider.put(110, FishPrawnCollection::new);
         tableProvider.put(111, GoldenFlowerCollection::new);
+        tableProvider.put(128, AndaCollection::new);
 
         collectionProvider = new SparseArray<>();
         collectionProvider.put(101, BacCollection::new);
@@ -106,6 +108,7 @@ public class App extends RegisterApplication {
         collectionProvider.put(108, SeDieCollection::new);
         collectionProvider.put(110, FishPrawnCollection::new);
         collectionProvider.put(111, GoldenFlowerCollection::new);
+        collectionProvider.put(128, AndaCollection::new);
 
         appNames = new SparseIntArray();
         appNames.put(101,R.string.baccarat);
@@ -118,6 +121,7 @@ public class App extends RegisterApplication {
         appNames.put(108,R.string.se_die);
         appNames.put(110,R.string.fish_prawn_crab);
         appNames.put(111,R.string.golden_flower);
+        appNames.put(128,R.string.anda_baha);
 
         sam = new SparseArray<>();
         sam.put(1,"0");

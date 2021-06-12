@@ -135,6 +135,16 @@
                 app:layout_constraintStart_toStartOf="@+id/sic_bo_game"
                 app:layout_constraintTop_toBottomOf="@+id/sic_bo_game"/>
 
+            <tw.com.lixin.wm_casino.tools.buttons.GameButton
+                android:id="@+id/anda_game"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="15dp"
+                app:game_image="@drawable/games_128"
+                app:game_name="@string/anda_baha"
+                app:layout_constraintStart_toEndOf="@+id/se_die_game"
+                app:layout_constraintTop_toTopOf="@+id/se_die_game" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

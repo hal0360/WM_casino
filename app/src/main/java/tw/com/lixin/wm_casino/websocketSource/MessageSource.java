@@ -48,7 +48,7 @@ public class MessageSource extends CasinoSource{
     }
 
     final void mssLogin(int gameid, int groupid){
-        defineURL("ws://gameserver.a45.me:15801");
+        defineURL("wss://a45gs-t.dartspharm.com/15801");
         gameID = gameid;
         groupID = groupid;
         login(User.sid(),data->{
