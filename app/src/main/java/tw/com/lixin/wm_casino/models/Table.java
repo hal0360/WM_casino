@@ -66,7 +66,6 @@ public class Table {
         TableData tData = new TableData();
         tData.data.historyArr = group.historyArr;
         tData.data.historyData = group.historyData;
-        historyUpdate(tData.data);
 
         dealerID = group.dealerID;
         stage = group.gameStage;
@@ -83,13 +82,18 @@ public class Table {
         }
 
 
-
+/*
         try {
             InputStream in = new java.net.URL(group.dealerImage).openStream();
             dealerImage = BitmapFactory.decodeStream(in);
         }catch(IOException e) {
             Log.e(dealerName + " BitError", e.getMessage());
         }
+
+ */
+        historyUpdate(tData.data);
+
+
 
     }
 
@@ -114,10 +118,15 @@ public class Table {
 
         if(gameID == 101 ){
 
+
             apeSkull();
             for(int val: data.historyArr) divide(val);
+
+         //   Log.e("stubby",sortedRoad.toString());
             mainRoad = new ItemRoad(bigRoad, 9);
             firstRoad = new ItemRoad(sortedRoad,"");
+
+
 
             /*
             apeSkull();
@@ -145,9 +154,7 @@ public class Table {
             fourthRoadAsk2 = new ItemRoad(data.historyData.dataArr5PlayerAsk,"");
  */
 
-        }
-
-        else if(gameID == 102 ){
+        } else if(gameID == 102 ){
 
             mainRoad =  new ItemRoad(data.historyArr, 9);
             firstRoad = new ItemRoad(data.historyData.dataArr2);
@@ -170,7 +177,7 @@ public class Table {
 
             */
 
-        }if(gameID == 111){
+        }else if(gameID == 111){
 
             firstRoad = new ItemRoad(data.historyData.dataArr2);
 
@@ -180,7 +187,7 @@ public class Table {
           //  firstRoad = new ItemRoad(sortedRoad,"");
           //  Log.e("sheboon", Arrays.deepToString(data.historyData.dataArr2).replaceAll("],", "]," + System.getProperty("line.separator")) );
 
-        }if(gameID == 128){
+        }else if(gameID == 128){
 
           //  mainRoad =  new ItemRoad(data.historyArr, 9);
             firstRoad = new ItemRoad(data.historyData.dataArr2);
@@ -188,9 +195,7 @@ public class Table {
             thirdRoad = new ItemRoad(data.historyData.dataArr4);
             fourthRoad = new ItemRoad(data.historyData.dataArr5);
 
-        }
-
-        else {
+        } else {
 
             mainRoad =  new ItemRoad(data.historyArr, 9);
             firstRoad = new ItemRoad(data.historyData.dataArr2);
@@ -199,7 +204,6 @@ public class Table {
             fourthRoad = new ItemRoad(data.historyData.dataArr5);
 
         }
-
 
     }
 
@@ -226,6 +230,9 @@ public class Table {
 
     public void receive26(TableData.Data data) {
         historyUpdate(data);
+
+       if(gameID == 101) Log.e("stubby",Arrays.deepToString(firstRoad.road));
+
 
         handle(() -> bridge.gridUpdate());
     }

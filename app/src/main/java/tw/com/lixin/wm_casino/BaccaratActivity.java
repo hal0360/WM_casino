@@ -75,7 +75,7 @@ public class BaccaratActivity extends CasinoActivity implements GameBridge, Tabl
     }
 
     private void setRoads(ItemRoad main, ItemRoad first, ItemRoad second, ItemRoad third, ItemRoad fourth){
-       // firstGrid.drawRoad(first);
+        firstGrid.drawRoad(first);
         secondGrid.drawRoad(second, (v,r)->{
             if(r == 1) v.setBackgroundResource(Road.Bank);
             else if(r == 2) v.setBackgroundResource(Road.Play);

@@ -102,7 +102,10 @@ public class LobbySource extends CasinoSource{
                     for(Group tableStage: game.groupArr){
 
 
-                        if ( tableStage.gameStage != 4 && !tableStage.dealerImage.equals("") && !tableStage.dealerName.equals("")){
+                        if ( tableStage.gameStage != 4 && !tableStage.dealerImage.equals("") && !tableStage.dealerName.trim().equals("")){
+
+                            Log.e("anime", tableStage.dealerName.trim());
+
                             tableGroup.put(tableStage.groupID, new Table(tableStage,game.gameID));
                         }
 

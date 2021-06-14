@@ -38,8 +38,11 @@ public class BacCollection extends GameCollection {
     @Override
     public void gridUpdate() {
 
+      //  Log.e("stubby",Arrays.deepToString(table.firstRoad.road));
+      // Log.e("stubby",table.groupID +" " + table.dealerName);
+        textGrid.drawRoad(table.firstRoad, WordView::setTextImg);
 
-      //  textGrid.drawRoad(table.firstRoad, WordView::setTextImg);
+
         count1.setText(getString(R.string.banker_abb) + table.data.bankerCount);
         count2.setText(getString(R.string.player_abb) + table.data.playerCount);
         count3.setText(getString(R.string.tie_abb) + table.data.tieCount);
